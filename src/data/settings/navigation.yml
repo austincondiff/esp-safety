@@ -1,7 +1,8 @@
-navItems:
-  - {label: 'Home', path: '/'}
-  - {label: 'Products', path: '/products/'}
-  - {label: 'Work For Us', path: '/careers/'}
-  - {label: 'About Us', path: '/about/'}
-  - {label: 'Contact Us', path: '/contact/'}
-  - {label: 'News', path: '/news/'}
+navigation:
+  links:
+    - {label: 'Home', path: '/'}
+    - {label: 'Products', path: '/products/'}
+    - {label: 'Work For Us', path: '/careers/'}
+    - {label: 'About Us', path: '/about/'}
+    - {label: 'Contact Us', path: '/contact/'}
+    - {label: 'News', path: '/news/'}

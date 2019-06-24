@@ -108,19 +108,21 @@ collections:
         name: navigation
         fields:
           - label: Navigation
-            name: navItems
-            widget: list
+            name: navigation
+            widget: object
             fields:
-              - { label: "Label", name: "label", widget: string }
-              - { label: "Path", name: "path", widget: string }
-              - { label: "Open In New Window", name: "newWindow", widget: "boolean" }
               - { label: "Links", name: "links", widget: "list", fields: [
                   { label: "Label", name: "label", widget: string },
                   { label: "Path", name: "path", widget: string },
                   { label: "Open In New Window", name: "newWindow", widget: "boolean" },
                   { label: "Links", name: "links", widget: "list", fields: [
+                    { label: "Label", name: "label", widget: string },
+                    { label: "Path", name: "path", widget: string },
+                    { label: "Open In New Window", name: "newWindow", widget: "boolean" },
+                    { label: "Links", name: "links", widget: "list", fields: [
                       { label: "Label", name: "label", widget: string },
                       { label: "Path", name: "path", widget: string },
                       { label: "Open In New Window", name: "newWindow", widget: "boolean" }
                     ]}
+                  ]}
                 ]}
