@@ -34,7 +34,7 @@ collections:
       - {
           label: "Specification Categories",
           name: "specCategories",
-          widget: "list".
+          widget: "list",
           fields: [
             {
               label: "Title",
