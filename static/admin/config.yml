@@ -24,15 +24,18 @@ collections:
     label: "Product Categories"
     folder: "src/pages/product-categories"
     create: true
+    slug: "{{fields.slug}}"
     fields:
       - {label: "Product Category Name", name: "title"}
+      - {label: "Slug", name: "slug", required: true}
+      - {label: "Icon", name: "icon", widget: "image"}
   - name: "products"
     label: "Products"
     folder: "src/pages/products"
     create: true
     fields:
       - {label: "Product Name", name: "title"}
-      - {label: "Category", name: "category", widget: "relation", collection: "productCategories", searchFields: ["title"], valueField: "title"}
+      - {label: "Category", name: "category", widget: "relation", collection: "productCategories", searchFields: ["title"], displayFields: ["title"], valueField: "slug"}
       - {label: "Overview", name: "overview", widget: "markdown"}
       - {label: "Applications", name: "applications", widget: "list", fields: [{label: "Text", name: "text", widget: "text"}]}
       - {label: "Features & Benefits", name: "featuresBenefits", widget: "list", fields: [{label: "Text", name: "text", widget: "text"}]}
@@ -65,6 +68,15 @@ collections:
               widget: "string"
             },
             {
+              label: "Layout",
+              name: "layout",
+              widget: "select",
+              options: [
+                { label: "Rows", value: "rows" },
+                { label: "Columns", value: "columns" }
+              ]
+            },
+            {
               label: "Specifications",
               name: "specs",
               widget: "list",
@@ -72,12 +84,66 @@ collections:
                 {
                   label: "Label",
                   name: "label",
-                  widget: "string"
+                  widget: "text"
                 },
                 {
-                  label: "Specification",
-                  name: "spec",
+                  label: "Label Position",
+                  name: "labelPosition",
+                  widget: "select",
+                  options: [
+                    { label: "Top", value: "top" },
+                    { label: "Left", value: "left" }
+                  ]
+                },
+                {
+                  label: "Text",
+                  name: "text",
                   widget: "text"
+                },
+                {
+                  label: "Image (optional)",
+                  name: "image"
+                },
+                {
+                  label: "Image Position",
+                  name: "imagePosition",
+                  widget: "select",
+                  options: [
+                    { label: "Top", value: "top" },
+                    { label: "Left", value: "left" }
+                  ]
+                },
+                {
+                  label: "Link",
+                  name: "link",
+                  widget: "object",
+                  fields: [
+                    {
+                      label: "Text",
+                      name: "text",
+                      widget: "string"
+                    },
+                    {
+                      label: "Text",
+                      name: "text",
+                      widget: "string"
+                    },
+                    {
+                      label: "Open In New Window",
+                      name: "newWindow",
+                      widget: "boolean"
+                    }
+                  ]
+                },
+                {
+                  label: "Disclaimer",
+                  name: "disclaimer",
+                  widget: "text"
+                },
+                {
+                  label: "Full-width",
+                  name: "fullWidth",
+                  widget: "boolean"
                 }
               ]
             }
