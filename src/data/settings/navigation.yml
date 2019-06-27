@@ -6,3 +6,7 @@ navigation:
     - {label: 'About Us', path: '/about/'}
     - {label: 'Contact Us', path: '/contact/'}
     - {label: 'News', path: '/news/'}
+
+navigation:
+  links:
+    - { label: null, path: null, links: [{ label: null, path: null, links: [{ label: null, path: null }] }] }

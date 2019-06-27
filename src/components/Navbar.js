@@ -1,9 +1,9 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, graphql, StaticQuery } from 'gatsby'
 import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
 
-const Navbar = class extends React.Component {
+const NavBar = class extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -95,4 +95,26 @@ const Navbar = class extends React.Component {
   }
 }
 
-export default Navbar
+// export default Navbar
+
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query navigation {
+        allSettingsYaml {
+          edges {
+            node {
+              navigation {
+                links {
+                  label
+                  path
+                }
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={(data, count) => <NavBar data={data} count={count} />}
+  />
+)
