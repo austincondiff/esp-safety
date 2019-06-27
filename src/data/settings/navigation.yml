@@ -6,4 +6,4 @@ navigation:
     - {label: 'About Us', path: '/about/'}
     - {label: 'Contact Us', path: '/contact/'}
     - {label: 'News', path: '/blog/'}
-    - { delete: false, label: "", path: "", links: [{ delete: false, label: "", path: "", links: [{ delete: false, label: "", path: "" }] }] }
+    - { label: "", path: "", links: [{ label: "", path: "", links: [{ label: "", path: "" }] }] }
