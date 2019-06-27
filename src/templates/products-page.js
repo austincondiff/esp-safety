@@ -7,7 +7,7 @@ import Testimonials from '../components/Testimonials'
 import Pricing from '../components/Pricing'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
-export const ProductPageTemplate = ({
+export const ProductsPageTemplate = ({
   image,
   title,
   heading,
@@ -104,7 +104,7 @@ export const ProductPageTemplate = ({
   </div>
 )
 
-ProductPageTemplate.propTypes = {
+ProductsPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
   heading: PropTypes.string,
@@ -128,7 +128,7 @@ ProductPageTemplate.propTypes = {
   }),
 }
 
-const ProductPage = () => {
+const ProductsPage = () => {
 
   return (
     <Layout>
@@ -137,7 +137,7 @@ const ProductPage = () => {
   )
 }
 
-ProductPage.propTypes = {
+ProductsPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object,
@@ -145,10 +145,10 @@ ProductPage.propTypes = {
   }),
 }
 
-export default ProductPage
+export default ProductsPage
 
 // export const productPageQuery = graphql`
-//   query ProductPage($id: String!) {
+//   query ProductsPage($id: String!) {
 //     markdownRemark(id: { eq: $id }) {
 //       frontmatter {
 //         title

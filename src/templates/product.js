@@ -7,7 +7,7 @@ import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 
 export const ProductTemplate = ({
-  title, helmet
+  title, helmet, contentComponent
 }) => {
   const PostContent = contentComponent || Content
 
