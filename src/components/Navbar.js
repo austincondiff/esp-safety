@@ -2,6 +2,38 @@ import React from 'react'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
+import styled from 'styled-components'
+
+const NavWrap = styled.nav`
+
+`
+const NavInside = styled.div`
+
+`
+const NavLinksWrap = styled.div`
+
+`
+const NavLinks = styled.div`
+
+`
+const NavLinkWrap = styled.div`
+
+`
+const NavLink = styled.div`
+
+`
+const NavSubItems = styled.div`
+
+`
+const NavSubItemWrap = styled.div`
+
+`
+const NavSubItem = styled.div`
+
+`
+const MenuButton = styled.div`
+
+`
 
 const NavBar = class extends React.Component {
   constructor(props) {
@@ -33,48 +65,41 @@ const NavBar = class extends React.Component {
   }
 
   render() {
+    const { data } = this.props
+    const navigation = data.allSettingsYaml.edges[0].node.navigation
+    const { links } = navigation
+    console.log(links)
+
     return (
-      <nav
+      <NavWrap
         className="navbar is-transparent"
         role="navigation"
         aria-label="main-navigation"
       >
-        <div className="container">
+        <NavInside className="container">
           <div className="navbar-brand">
             <Link to="/" className="navbar-item" title="Logo">
-              <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
+              <img src={logo} alt="ESP Safety" style={{ width: '88px' }} />
             </Link>
             {/* Hamburger menu */}
-            <div
-              className={`navbar-burger burger ${this.state.navBarActiveClass}`}
-              data-target="navMenu"
-              onClick={() => this.toggleHamburger()}
-            >
+            <MenuButton>
               <span />
               <span />
               <span />
-            </div>
+            </MenuButton>
           </div>
           <div
             id="navMenu"
             className={`navbar-menu ${this.state.navBarActiveClass}`}
           >
             <div className="navbar-start has-text-centered">
-              <Link className="navbar-item" to="/about">
-                About
-              </Link>
-              <Link className="navbar-item" to="/products">
-                Products
-              </Link>
-              <Link className="navbar-item" to="/blog">
-                Blog
-              </Link>
-              <Link className="navbar-item" to="/contact">
-                Contact
-              </Link>
-              <Link className="navbar-item" to="/contact/examples">
-                Form Examples
-              </Link>
+
+              {links.map((navLink, i) => (
+                <Link className="navbar-item" to={navLink.path} key={`navLink${i}`}>
+                  {navLink.label}
+                </Link>
+              ))}
+
             </div>
             <div className="navbar-end has-text-centered">
               <a
@@ -89,8 +114,8 @@ const NavBar = class extends React.Component {
               </a>
             </div>
           </div>
-        </div>
-      </nav>
+        </NavInside>
+      </NavWrap>
     )
   }
 }
@@ -100,7 +125,7 @@ const NavBar = class extends React.Component {
 export default () => (
   <StaticQuery
     query={graphql`
-      query navigation {
+      query Navigation {
         allSettingsYaml {
           edges {
             node {
@@ -108,13 +133,22 @@ export default () => (
                 links {
                   label
                   path
+                  links {
+                    label
+                    path
+                    links {
+                      label
+                      path
+                    }
+                  }
                 }
               }
             }
           }
         }
       }
+
     `}
-    render={(data, count) => <NavBar data={data} count={count} />}
+    render={(data) => <NavBar data={data} />}
   />
 )

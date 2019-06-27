@@ -6,7 +6,7 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 
-export const ProductTemplate = ({
+export const ProductCategoryTemplate = ({
   title, helmet
 }) => {
   const PostContent = contentComponent || Content
@@ -27,7 +27,7 @@ export const ProductTemplate = ({
   )
 }
 
-ProductTemplate.propTypes = {
+ProductCategoryTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
   description: PropTypes.string,
@@ -35,41 +35,41 @@ ProductTemplate.propTypes = {
   helmet: PropTypes.object,
 }
 
-const Product = ({ data }) => {
-  const { markdownRemark: product } = data
+const ProductCategory = ({ data }) => {
+  const { markdownRemark: productCategory } = data
 
   return (
     <Layout>
-      <ProductTemplate
-        content={product.html}
+      <ProductCategoryTemplate
+        content={productCategory.html}
         contentComponent={HTMLContent}
-        description={product.frontmatter.description}
+        description={productCategory.frontmatter.description}
         helmet={
-          <Helmet titleTemplate="%s | Product">
-            <title>{`${product.frontmatter.title}`}</title>
+          <Helmet titleTemplate="%s | Product Category">
+            <title>{`${productCategory.frontmatter.title}`}</title>
             <meta
               name="description"
-              content={`${product.frontmatter.title}`}
+              content={`${productCategory.frontmatter.title}`}
             />
           </Helmet>
         }
-        tags={product.frontmatter.tags}
-        title={product.frontmatter.title}
+        tags={productCategory.frontmatter.tags}
+        title={productCategory.frontmatter.title}
       />
     </Layout>
   )
 }
 
-Product.propTypes = {
+ProductCategory.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.object,
   }),
 }
 
-export default Product
+export default ProductCategory
 
 export const pageQuery = graphql`
-  query ProductByID($id: String!) {
+  query ProductCategoryByID($id: String!) {
     markdownRemark(id: { eq: $id }) {
       id
       html

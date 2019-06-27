@@ -26,6 +26,7 @@ collections:
     create: true
     slug: "{{fields.slug}}"
     fields:
+      - { label: "Template Key", name: "templateKey", widget: "hidden", default: "product-category" }
       - { label: "Product Category Name", name: "title" }
       - { label: "Slug", name: "slug", required: true, pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Cannot contain spaces, capital letters, or special characters. You may separate words with dashes and numbers are allowed."], hint: "This will be used in the URL." }
       - { label: "Icon", name: "icon", widget: "image", required: false }
@@ -35,6 +36,7 @@ collections:
     create: true
     slug: "{{fields.slug}}"
     fields:
+      - { label: "Template Key", name: "templateKey", widget: "hidden", default: "product" }
       - { label: "Product Name", name: "title" }
       - { label: "Slug", name: "slug", required: true, pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Cannot contain spaces, capital letters, or special characters. You may separate words with dashes and numbers are allowed."], hint: "This will be used in the URL." }
       - { label: "Category", name: "category", widget: "relation", collection: "productCategories", searchFields: ["title"], valueField: "slug", displayFields: ["title"] }
