@@ -5,8 +5,5 @@ navigation:
     - {label: 'Work For Us', path: '/careers/'}
     - {label: 'About Us', path: '/about/'}
     - {label: 'Contact Us', path: '/contact/'}
-    - {label: 'News', path: '/news/'}
-
-navigation:
-  links:
-    - { label: null, path: null, links: [{ label: null, path: null, links: [{ label: null, path: null }] }] }
+    - {label: 'News', path: '/blog/'}
+    - { label: "", path: "", links: [{ label: "", path: "", links: [{ label: "", path: "" }] }] }
