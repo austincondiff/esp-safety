@@ -8,6 +8,7 @@ public_folder: /img
 collections:
   - name: "posts"
     label: "Posts"
+    label_singular: "Post"
     folder: "src/pages/news"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
@@ -22,6 +23,7 @@ collections:
       - { label: "Tags", name: "tags", widget: "list" }
   - name: "productCategories"
     label: "Product Categories"
+    label_singular: "Product Category"
     folder: "src/pages/product-categories"
     create: true
     slug: "{{fields.slug}}"
@@ -32,6 +34,7 @@ collections:
       - { label: "Icon", name: "icon", widget: "image", required: false }
   - name: "products"
     label: "Products"
+    label_singular: "Product"
     folder: "src/pages/products"
     create: true
     slug: "{{fields.slug}}"
@@ -81,6 +84,7 @@ collections:
       - { label: "Related Products", name: "relatedProducts", widget: "relation", collection: "products", searchFields: ["title"], valueField: "slug", displayFields: ["title"], multiple: true, required: false }
   - name: "pages"
     label: "Pages"
+    label_singular: "Page"
     files:
       - file: "src/pages/index.md"
         label: "Landing Page"
@@ -104,6 +108,7 @@ collections:
           - { label: "Body", name: "body", widget: "markdown" }
   - name: "settings"
     label: "Settings"
+    label_singular: "Setting"
     files:
       - file: "src/data/settings/navigation.yml"
         label: Navigation
@@ -113,15 +118,15 @@ collections:
             name: navigation
             widget: object
             fields:
-              - { label: "Links", name: "links", widget: "list", fields: [
+              - { label: "Links", label_singular: "Link", name: "links", widget: "list", fields: [
                   { label: "Label", name: "label", widget: string },
                   { label: "Path", name: "path", widget: string },
                   { label: "Open In New Window", name: "newWindow", widget: "boolean" },
-                  { label: "Links", name: "links", widget: "list", fields: [
+                  { label: "Links", label_singular: "Link", name: "links", widget: "list", fields: [
                     { label: "Label", name: "label", widget: string },
                     { label: "Path", name: "path", widget: string },
                     { label: "Open In New Window", name: "newWindow", widget: "boolean" },
-                    { label: "Links", name: "links", widget: "list", fields: [
+                    { label: "Links", label_singular: "Link", name: "links", widget: "list", fields: [
                       { label: "Label", name: "label", widget: string },
                       { label: "Path", name: "path", widget: string },
                       { label: "Open In New Window", name: "newWindow", widget: "boolean" }
