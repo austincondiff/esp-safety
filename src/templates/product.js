@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
-import Layout from '../components/Layout'
+
 import Content, { HTMLContent } from '../components/Content'
 
 export const ProductTemplate = ({
@@ -39,24 +39,22 @@ const Product = ({ data }) => {
   const { markdownRemark: product } = data
 
   return (
-    <Layout>
-      <ProductTemplate
-        content={product.html}
-        contentComponent={HTMLContent}
-        description={product.frontmatter.description}
-        helmet={
-          <Helmet titleTemplate="%s | Product">
-            <title>{`${product.frontmatter.title}`}</title>
-            <meta
-              name="description"
-              content={`${product.frontmatter.title}`}
-            />
-          </Helmet>
-        }
-        tags={product.frontmatter.tags}
-        title={product.frontmatter.title}
-      />
-    </Layout>
+    <ProductTemplate
+      content={product.html}
+      contentComponent={HTMLContent}
+      description={product.frontmatter.description}
+      helmet={
+        <Helmet titleTemplate="%s | Product">
+          <title>{`${product.frontmatter.title}`}</title>
+          <meta
+            name="description"
+            content={`${product.frontmatter.title}`}
+          />
+        </Helmet>
+      }
+      tags={product.frontmatter.tags}
+      title={product.frontmatter.title}
+    />
   )
 }
 

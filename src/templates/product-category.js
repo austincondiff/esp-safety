@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
-import Layout from '../components/Layout'
+
 import Content, { HTMLContent } from '../components/Content'
 
 export const ProductCategoryTemplate = ({
-  title, helmet
+  title, helmet, contentComponent
 }) => {
   const PostContent = contentComponent || Content
 
@@ -39,24 +39,22 @@ const ProductCategory = ({ data }) => {
   const { markdownRemark: productCategory } = data
 
   return (
-    <Layout>
-      <ProductCategoryTemplate
-        content={productCategory.html}
-        contentComponent={HTMLContent}
-        description={productCategory.frontmatter.description}
-        helmet={
-          <Helmet titleTemplate="%s | Product Category">
-            <title>{`${productCategory.frontmatter.title}`}</title>
-            <meta
-              name="description"
-              content={`${productCategory.frontmatter.title}`}
-            />
-          </Helmet>
-        }
-        tags={productCategory.frontmatter.tags}
-        title={productCategory.frontmatter.title}
-      />
-    </Layout>
+    <ProductCategoryTemplate
+      content={productCategory.html}
+      contentComponent={HTMLContent}
+      description={productCategory.frontmatter.description}
+      helmet={
+        <Helmet titleTemplate="%s | Product Category">
+          <title>{`${productCategory.frontmatter.title}`}</title>
+          <meta
+            name="description"
+            content={`${productCategory.frontmatter.title}`}
+          />
+        </Helmet>
+      }
+      tags={productCategory.frontmatter.tags}
+      title={productCategory.frontmatter.title}
+    />
   )
 }
 
