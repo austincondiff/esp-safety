@@ -1,8 +1,23 @@
 {
-  "name": "gatsby-starter-netlify-cms",
-  "description": "Example Gatsby, and Netlify CMS project",
+  "name": "esp-safety",
+  "description": "ESP Safety Website build with Gatsby, and Netlify CMS",
   "version": "1.1.3",
-  "author": "Austin Green",
+  "author": "Austin Condiff",
+  "scripts": {
+    "clean": "rimraf .cache public",
+    "start:app": "npm run develop",
+    "start:lambda": "netlify-lambda serve src/lambda",
+    "start": "run-p start:**",
+    "build:app": "npm run clean && gatsby build",
+    "build:lambda": "netlify-lambda build src/lambda",
+    "build": "run-p build:**",
+    "develop": "npm run clean && gatsby develop",
+    "serve": "gatsby serve",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier-eslint --write \"src/**/*.+(js|jsx)\"",
+    "prettier-dry-run": "prettier-eslint \"src/**/*.+(js|jsx)\" -l debug"
+  },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.2",
     "gatsby": "^2.1.34",
@@ -38,29 +53,23 @@
     "styled-components": "^4.3.2",
     "uuid": "^3.2.1"
   },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
-  "main": "n/a",
-  "scripts": {
-    "clean": "rimraf .cache public",
-    "start:app": "npm run develop",
-    "start:lambda": "netlify-lambda serve src/lambda",
-    "start": "run-p start:**",
-    "build:app": "npm run clean && gatsby build",
-    "build:lambda": "netlify-lambda build src/lambda",
-    "build": "run-p build:**",
-    "develop": "npm run clean && gatsby develop",
-    "serve": "gatsby serve",
-    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "devDependencies": {
+    "eslint": "4.19.1",
+    "eslint-config-react-app": "2.1.0",
+    "eslint-plugin-flowtype": "2.50.3",
+    "eslint-plugin-import": "2.17.2",
+    "eslint-plugin-jsx-a11y": "5.1.1",
+    "eslint-plugin-react": "7.13.0",
     "http-proxy-middleware": "^0.19.1",
     "netlify-lambda": "^1.4.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.15.3",
+    "prettier-eslint-cli": "4.7.1",
     "rimraf": "^2.6.2"
-  }
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "main": "n/a"
 }

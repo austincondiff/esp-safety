@@ -1,9 +1,7 @@
 import React from 'react'
 import { Link, graphql, StaticQuery } from 'gatsby'
-import github from '../img/github-icon.svg'
 import Logo from './Logo'
 import Icon from './Icon'
-import lightLogo from '../img/logo-light.svg'
 import styled, { keyframes } from 'styled-components'
 
 const slideInFromTop = keyframes`
@@ -16,13 +14,13 @@ const NavWrap = styled.nav`
   right: 0;
   left: 0;
   z-index: 100;
-  background: ${props => props.transparent ? 'transparent' : props.dark ? '#111111' : 'white'};
+  background: ${props => (props.transparent ? 'transparent' : props.dark ? '#111111' : 'white')};
   height: ${props => props.height || 104}px;
-  box-shadow: 0 1px 0 ${props => props.darkMode ? 'rgba(255,255,255,0.25)' : 'rgba(0, 0, 0, 0.15)'};
+  box-shadow: 0 1px 0 ${props => (props.darkMode ? 'rgba(255,255,255,0.25)' : 'rgba(0, 0, 0, 0.15)')};
   display: flex;
   align-items: center;
-  transition: .25s background-color, .25s box-shadow;
-  animation: ${slideInFromTop} .45s cubic-bezier(.23,1,.32,1);
+  transition: 0.25s background-color, 0.25s box-shadow;
+  animation: ${slideInFromTop} 0.45s cubic-bezier(0.23, 1, 0.32, 1);
 `
 const NavInside = styled.div`
   width: 1200px;
@@ -36,57 +34,43 @@ const LogoWrap = styled.div`
   height: 100%;
   padding: ${props => props.padding || 16}px 0;
 `
-const LogoLink = styled(Link)`
-
-`
-const NavLinksWrap = styled.div`
-
-`
-const NavLinks = styled.div`
-
-`
-const NavLinkWrap = styled.div`
-
-`
+const LogoLink = styled(Link)``
+const NavLinksWrap = styled.div``
+const NavLinks = styled.div``
+const NavLinkWrap = styled.div``
 const NavLink = styled(Link)`
   text-decoration: none;
-  color: ${props => props.darkMode ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.75)'};
+  color: ${props => (props.darkMode ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.75)')};
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 700;
   display: inline-block;
   padding: 24px 12px;
-  transition: .25s;
+  transition: 0.25s;
   position: relative;
   &:after {
-    transition: transform .25s ease-out,border-color .25s ease-out;
+    transition: transform 0.25s ease-out, border-color 0.25s ease-out;
     position: absolute;
     display: block;
     top: calc(50% + 12px);
     left: 12px;
     right: 12px;
     transform: scaleX(0);
-    border-top: 2px solid #DD2C2C;
+    border-top: 2px solid #dd2c2c;
     content: '';
   }
-  &:hover, &.active {
-    color: ${props => props.darkMode ? '#ffffff' : '#000000'};
+  &:hover,
+  &.active {
+    color: ${props => (props.darkMode ? '#ffffff' : '#000000')};
     &:after {
       backface-visibility: hidden;
       transform: scaleX(1);
     }
   }
-
 `
-const NavSubItems = styled.div`
-
-`
-const NavSubItemWrap = styled.div`
-
-`
-const NavSubItem = styled.div`
-
-`
+const NavSubItems = styled.div``
+const NavSubItemWrap = styled.div``
+const NavSubItem = styled.div``
 const NavActions = styled.div`
   margin-left: 32px;
 `
@@ -97,14 +81,14 @@ const IconButton = styled.button`
   padding: 0;
   margin: 0;
   cursor: pointer;
-  color: ${props => props.darkMode ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.75)'};
-  &:hover, &.active {
-    color: ${props => props.darkMode ? '#ffffff' : '#DD2C2C'};
+  color: ${props => (props.darkMode ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.75)')};
+  transition: 0.25s;
+  &:hover,
+  &.active {
+    color: ${props => (props.darkMode ? '#ffffff' : '#DD2C2C')};
   }
 `
-const MenuButton = styled.div`
-
-`
+const MenuButton = styled.div``
 
 const NavBar = class extends React.Component {
   constructor(props) {
@@ -119,33 +103,37 @@ const NavBar = class extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll)
+    const scrollRootEl = document.getElementById('scroll-root')
+    console.log(scrollRootEl)
+
+    scrollRootEl.addEventListener('scroll', this.handleScroll)
 
     this.setScrollStyles()
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll)
+    const scrollRootEl = document.getElementById('scroll-root')
+
+    scrollRootEl.removeEventListener('scroll', this.handleScroll)
   }
 
   handleScroll = () => window.requestAnimationFrame(this.setScrollStyles)
 
   setScrollStyles = () => {
     const { navHeight, logoPadding } = this.state
-    const scrollTop = document.documentElement.scrollTop
     const navFullHeight = 104
     const navCondensedHeight = 72
-    const logoPaddingStart = 28;
-    const logoPaddingEnd = 16;
+    const logoPaddingStart = 28
+    const logoPaddingEnd = 16
+    const scrollRootEl = document.getElementById('scroll-root')
+    const scrollTop = scrollRootEl.scrollTop
     const scrollFactor = scrollTop / (navFullHeight - navCondensedHeight)
-
-    console.log({scrollTop})
 
     if (scrollTop < navFullHeight - navCondensedHeight) {
       this.setState({
         navHeight: navFullHeight - scrollTop,
         transparent: true,
-        logoPadding: logoPaddingStart - (scrollFactor * (logoPaddingStart - logoPaddingEnd)),
+        logoPadding: logoPaddingStart - scrollFactor * (logoPaddingStart - logoPaddingEnd),
         darkMode: true
       })
     } else if (navHeight !== navCondensedHeight || logoPadding !== logoPaddingEnd) {
@@ -158,28 +146,27 @@ const NavBar = class extends React.Component {
     }
   }
 
-
   toggleHamburger = () => {
     // toggle the active boolean in the state
     this.setState(
       {
-        active: !this.state.active,
+        active: !this.state.active
       },
       // after state has been updated,
       () => {
         // set the class in state for the navbar accordingly
         this.state.active
           ? this.setState({
-              navBarActiveClass: 'is-active',
+              navBarActiveClass: 'is-active'
             })
           : this.setState({
-              navBarActiveClass: '',
+              navBarActiveClass: ''
             })
       }
     )
   }
 
-  toggleTransparency = () => this.props.setCtx({navTransparent: !this.props.ctxData.navTransparent})
+  toggleTransparency = () => this.props.setCtx({ navTransparent: !this.props.ctxData.navTransparent })
 
   render() {
     const { data, ctxData } = this.props
@@ -188,12 +175,7 @@ const NavBar = class extends React.Component {
     const { links } = navigation
 
     return (
-      <NavWrap
-        transparent={transparent}
-        darkMode={darkMode}
-        height={navHeight}
-        role="navigation"
-        aria-label="main-navigation">
+      <NavWrap transparent={transparent} darkMode={darkMode} height={navHeight} role="navigation" aria-label="main-navigation">
         <NavInside>
           <LogoWrap padding={logoPadding}>
             <LogoLink to="/" title="Logo">
@@ -202,11 +184,14 @@ const NavBar = class extends React.Component {
           </LogoWrap>
           <NavLinksWrap>
             <NavLinks>
-              {links.map((navLink, i) => navLink.label && (
-                <NavLink darkMode={darkMode} to={navLink.path} key={`navLink${i}`} activeClassName="active">
-                  {navLink.label}
-                </NavLink>
-              ))}
+              {links.map(
+                (navLink, i) =>
+                  navLink.label && (
+                    <NavLink darkMode={darkMode} to={navLink.path} key={`navLink${i}`} activeClassName="active">
+                      {navLink.label}
+                    </NavLink>
+                  )
+              )}
             </NavLinks>
           </NavLinksWrap>
           <NavActions>
@@ -227,7 +212,7 @@ const NavBar = class extends React.Component {
 
 // export default Navbar
 
-export default ({...props}) => (
+export default ({ ...props }) => (
   <StaticQuery
     query={graphql`
       query Navigation {
@@ -252,7 +237,6 @@ export default ({...props}) => (
           }
         }
       }
-
     `}
     render={data => <NavBar data={data} {...props} />}
   />

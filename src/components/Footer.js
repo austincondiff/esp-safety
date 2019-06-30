@@ -1,5 +1,8 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import styled from 'styled-components'
+
+import Section from './Section'
 
 import logo from '../img/logo.svg'
 import facebook from '../img/social/facebook.svg'
@@ -7,107 +10,72 @@ import instagram from '../img/social/instagram.svg'
 import twitter from '../img/social/twitter.svg'
 import vimeo from '../img/social/vimeo.svg'
 
+const FooterWrap = styled.footer``
+const CtaFooter = styled.section`
+  background-color: #dd2c2c;
+`
+const CtaText = styled.div``
+const CtaTitle = styled.h2`
+  color: white;
+`
+const CtaMessage = styled.div``
+const CtaActions = styled.div``
+const MainFooter = styled.section`
+  background-color: #181818;
+`
+const SubFooter = styled.section`
+  background-color: #111111;
+`
+const FooterMenuItems = styled.div``
+const FooterMenuItem = styled.div``
+
 const Footer = class extends React.Component {
   render() {
     return (
-      <footer className="footer has-background-black has-text-white-ter">
-        <div className="content has-text-centered">
-          <img
-            src={logo}
-            alt="Kaldi"
-            style={{ width: '14em', height: '10em' }}
-          />
-        </div>
-        <div className="content has-text-centered has-background-black has-text-white-ter">
-          <div className="container has-background-black has-text-white-ter">
-            <div className="columns">
-              <div className="column is-4">
-                <section className="menu">
-                  <ul className="menu-list">
-                    <li>
-                      <Link to="/" className="navbar-item">
-                        Home
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/about">
-                        About
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/products">
-                        Products
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/contact/examples">
-                        Form Examples
-                      </Link>
-                    </li>
-                    <li>
-                      <a
-                        className="navbar-item"
-                        href="/admin/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Admin
-                      </a>
-                    </li>
-                  </ul>
-                </section>
-              </div>
-              <div className="column is-4">
-                <section>
-                  <ul className="menu-list">
-                    <li>
-                      <Link className="navbar-item" to="/blog">
-                        Latest Stories
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/contact">
-                        Contact
-                      </Link>
-                    </li>
-                  </ul>
-                </section>
-              </div>
-              <div className="column is-4 social">
-                <a title="facebook" href="https://facebook.com">
-                  <img
-                    src={facebook}
-                    alt="Facebook"
-                    style={{ width: '1em', height: '1em' }}
-                  />
-                </a>
-                <a title="twitter" href="https://twitter.com">
-                  <img
-                    className="fas fa-lg"
-                    src={twitter}
-                    alt="Twitter"
-                    style={{ width: '1em', height: '1em' }}
-                  />
-                </a>
-                <a title="instagram" href="https://instagram.com">
-                  <img
-                    src={instagram}
-                    alt="Instagram"
-                    style={{ width: '1em', height: '1em' }}
-                  />
-                </a>
-                <a title="vimeo" href="https://vimeo.com">
-                  <img
-                    src={vimeo}
-                    alt="Vimeo"
-                    style={{ width: '1em', height: '1em' }}
-                  />
-                </a>
-              </div>
-            </div>
+      <FooterWrap className="footer has-background-black has-text-white-ter">
+        <Section backgroundColor="#dd2c2c">
+          <CtaText>
+            <CtaTitle>Get in touch with a rep today!</CtaTitle>
+            <CtaMessage>Experience safety like never before.</CtaMessage>
+          </CtaText>
+          <CtaActions>
+            <button>Find a rep</button>
+          </CtaActions>
+        </Section>
+        <MainFooter className="content has-text-centered">
+          <div>
+            <FooterMenuItems className="menu-list">
+              <FooterMenuItem>
+                <Link className="navbar-item" to="/blog">
+                  Latest Stories
+                </Link>
+              </FooterMenuItem>
+              <FooterMenuItem>
+                <Link className="navbar-item" to="/contact">
+                  Contact
+                </Link>
+              </FooterMenuItem>
+            </FooterMenuItems>
           </div>
-        </div>
-      </footer>
+        </MainFooter>
+        <SubFooter className="content has-text-centered has-background-black has-text-white-ter">
+          <div>© 2019 ESP Safety. All rights reserved.</div>
+          <div>
+            <a title="facebook" href="https://facebook.com">
+              <img src={facebook} alt="Facebook" style={{ width: '1em', height: '1em' }} />
+            </a>
+            <a title="twitter" href="https://twitter.com">
+              <img className="fas fa-lg" src={twitter} alt="Twitter" style={{ width: '1em', height: '1em' }} />
+            </a>
+            <a title="instagram" href="https://instagram.com">
+              <img src={instagram} alt="Instagram" style={{ width: '1em', height: '1em' }} />
+            </a>
+            <a title="vimeo" href="https://vimeo.com">
+              <img src={vimeo} alt="Vimeo" style={{ width: '1em', height: '1em' }} />
+            </a>
+          </div>
+        </SubFooter>
+      </FooterWrap>
     )
   }
 }
