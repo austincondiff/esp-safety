@@ -4,26 +4,26 @@ import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 
+import Header from '../components/Header'
 import Content, { HTMLContent } from '../components/Content'
 
-export const ProductCategoryTemplate = ({
-  title, helmet, contentComponent
-}) => {
+export const ProductCategoryTemplate = ({ title, helmet, contentComponent }) => {
   const PostContent = contentComponent || Content
 
   return (
-    <section className="section">
-      {helmet || ''}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
+    <React.Fragment>
+      <Header />
+      <section className="section">
+        {helmet || ''}
+        <div className="container content">
+          <div className="columns">
+            <div className="column is-10 is-offset-1">
+              <h1 className="title is-size-2 has-text-weight-bold is-bold-light">{title}</h1>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </React.Fragment>
   )
 }
 
@@ -32,7 +32,7 @@ ProductCategoryTemplate.propTypes = {
   contentComponent: PropTypes.func,
   description: PropTypes.string,
   title: PropTypes.string,
-  helmet: PropTypes.object,
+  helmet: PropTypes.object
 }
 
 const ProductCategory = ({ data }) => {
@@ -46,10 +46,7 @@ const ProductCategory = ({ data }) => {
       helmet={
         <Helmet titleTemplate="%s | Product Category">
           <title>{`${productCategory.frontmatter.title}`}</title>
-          <meta
-            name="description"
-            content={`${productCategory.frontmatter.title}`}
-          />
+          <meta name="description" content={`${productCategory.frontmatter.title}`} />
         </Helmet>
       }
       tags={productCategory.frontmatter.tags}
@@ -60,8 +57,8 @@ const ProductCategory = ({ data }) => {
 
 ProductCategory.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.object,
-  }),
+    markdownRemark: PropTypes.object
+  })
 }
 
 export default ProductCategory

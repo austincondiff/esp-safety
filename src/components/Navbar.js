@@ -44,6 +44,7 @@ const NavLink = styled(Link)`
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 700;
+  letter-spacing: 0.5px;
   display: inline-block;
   padding: 24px 12px;
   transition: 0.25s;

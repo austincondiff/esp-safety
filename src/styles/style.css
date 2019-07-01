@@ -1,17 +1,9 @@
 html,
 body {
   font-family: museo-sans, sans-serif;
+  -webkit-font-smoothing: antialiased;
   margin: 0;
   padding: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  -webkit-font-smoothing: antialiased;
 }
 
 h1,
@@ -24,18 +16,21 @@ p,
 ul,
 ol {
   margin-top: 0;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1 {
   font-size: 48px;
   line-height: 50px;
   font-weight: 300;
+  letter-spacing: -0.5px;
 }
 
 h2 {
   font-size: 40px;
   line-height: 44px;
   font-weight: 300;
+  letter-spacing: -0.5px;
 }
 
 h3 {
@@ -49,6 +44,10 @@ h4 {
 
 h5 {
   font-weight: 700;
+}
+
+p {
+  color: #666666;
 }
 
 p:last-child {

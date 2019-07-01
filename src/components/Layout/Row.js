@@ -11,8 +11,8 @@ const Row = styled.div`
     flex: 0 1 auto;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-right: -.5rem;
-    margin-left: -.5rem;
+    margin-right: -3%;
+    margin-left: -3%;
 
     ${reverse === 'xs' && `flex-direction: row-reverse;`}
     ${start === 'xs' && `justify-content: flex-start; text-align: start;`}

@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 import Section from './Section'
+import { Row, Col } from './Layout'
 
 import logo from '../img/logo.svg'
 import facebook from '../img/social/facebook.svg'
@@ -16,10 +17,16 @@ const CtaFooter = styled.section`
 `
 const CtaText = styled.div``
 const CtaTitle = styled.h2`
-  color: white;
+  color: #ffffff;
+  margin-bottom: 16px;
 `
-const CtaMessage = styled.div``
-const CtaActions = styled.div``
+const CtaMessage = styled.div`
+  color: #ffffff;
+  margin-bottom: 0;
+`
+const CtaActions = styled.div`
+  text-align: right;
+`
 const MainFooter = styled.section`
   background-color: #181818;
 `
@@ -34,13 +41,17 @@ const Footer = class extends React.Component {
     return (
       <FooterWrap className="footer has-background-black has-text-white-ter">
         <Section backgroundColor="#dd2c2c">
-          <CtaText>
-            <CtaTitle>Get in touch with a rep today!</CtaTitle>
-            <CtaMessage>Experience safety like never before.</CtaMessage>
-          </CtaText>
-          <CtaActions>
-            <button>Find a rep</button>
-          </CtaActions>
+          <Row>
+            <Col>
+              <CtaTitle>Get in touch with a rep today!</CtaTitle>
+              <CtaMessage>Experience safety like never before.</CtaMessage>
+            </Col>
+            <Col>
+              <CtaActions>
+                <button>Find a rep</button>
+              </CtaActions>
+            </Col>
+          </Row>
         </Section>
         <MainFooter className="content has-text-centered">
           <div>

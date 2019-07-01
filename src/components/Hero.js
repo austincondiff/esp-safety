@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 import Section from './Section'
 
@@ -25,11 +25,43 @@ const PageSubtitle = styled.h3`
   line-height: 28px;
 `
 
+const arrowBounce = keyframes`
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`
+
+const Arrow = styled.div`
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+  position: relative;
+  animation: ${arrowBounce} 2s infinite;
+  &:after {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: rotate(45deg);
+    border-right: 1.5px solid white;
+    border-bottom: 1.5px solid white;
+  }
+`
+
 const Header = ({ title, subtitle, videoSrc, imageSrc, showArrow }) => (
   <Section
     videoSrc={videoSrc}
     imageSrc={imageSrc}
-    backgroundColor="rgba(0,0,0,0.65)"
+    backgroundColor="rgba(0,0,0,0.75)"
     dark
     parallax
     parallaxContent
@@ -39,6 +71,7 @@ const Header = ({ title, subtitle, videoSrc, imageSrc, showArrow }) => (
   >
     <PageTitle>{title}</PageTitle>
     <PageSubtitle>{subtitle}</PageSubtitle>
+    <Arrow />
   </Section>
 )
 

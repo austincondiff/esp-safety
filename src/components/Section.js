@@ -7,7 +7,7 @@ import styled from 'styled-components'
 const StyledSection = styled.section`
   position: relative;
   transform-style: preserve-3d;
-  ${props => props.dark && `color: #FFFFFF;`};
+  ${props => props.dark && `&, & * { color: #FFFFFF; }`};
   ${props =>
     props.parallaxContent &&
     `
@@ -15,9 +15,10 @@ const StyledSection = styled.section`
   `}
 `
 const SectionInside = styled.div`
-  ${props => !props.fullWidth && 'width: 1200px;'}
+  width: 100%;
+  ${props => !props.fullWidth && 'max-width: calc(1200px + 12%);'}
   margin: 0 auto;
-  padding: 8% 0;
+  padding: 8% 6%;
   ${props => props.height && `height: ${props.height};`};
   ${props =>
     props.header &&
@@ -45,7 +46,6 @@ const ParallaxBackground = styled.div`
   align-items: center;
   transform-origin-x: 50%;
   transform-origin-y: 0%;
-  background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#FFFFFF')};
   background-image: url(${props => props.imageSrc});
   background-repeat: no-repeat;
   background-position: center;
@@ -73,10 +73,9 @@ const ParallaxForeground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  // transform: translateZ(60px) scale(0.8);
-  transform: translateZ(90px) scale(0.7);
-  // transform: translateZ(120px) scale(0.6);
-  transform-origin-x: 100%;
+  transform: translateZ(0.5px) scale(0.75);
+  transform-origin-x: 50%;
+  transform-origin-y: -50%;
 `
 const BackgroundColorWrap = styled.div`
   position: absolute;
@@ -95,7 +94,7 @@ const BackgroundColorWrap = styled.div`
       bottom: 0;
   `}
 
-  background-color: ${props => (props.backgroundColor ? props.backgroundColor : '#FFFFFF')};
+  background: ${props => (props.backgroundColor ? props.backgroundColor : '#FFFFFF')};
 `
 const ContentWrap = styled.div`
   position: relative;
@@ -112,6 +111,14 @@ const ContentWrap = styled.div`
   `}
 `
 
+const ForegroundImage = styled.img`
+  position: absolute;
+  top: ${props => props.position[0]};
+  left: ${props => props.position[1]};
+  width: ${props => props.width};
+  transform: translateX(-50%) translateY(-50%);
+`
+
 const Section = ({
   children,
   fullWidth,
@@ -124,6 +131,9 @@ const Section = ({
   imageDepth,
   imageSrc,
   imagePosition,
+  foregroundImageSrc,
+  foregroundImagePosition,
+  foregroundImageWidth,
   contentPosition,
   padding,
   height,
@@ -171,7 +181,9 @@ const Section = ({
           </SectionInside>
         </ParallaxBase>
         <ParallaxForeground>
-          <h1>Forground</h1>
+          {foregroundImageSrc && (
+            <ForegroundImage width={foregroundImageWidth} position={foregroundImagePosition} src={foregroundImageSrc} />
+          )}
         </ParallaxForeground>
       </React.Fragment>
     ) : (

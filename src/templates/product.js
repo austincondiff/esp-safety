@@ -4,26 +4,26 @@ import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 
+import Header from '../components/Header'
 import Content, { HTMLContent } from '../components/Content'
 
-export const ProductTemplate = ({
-  title, helmet, contentComponent
-}) => {
+export const ProductTemplate = ({ title, helmet, contentComponent }) => {
   const PostContent = contentComponent || Content
 
   return (
-    <section className="section">
-      {helmet || ''}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
+    <React.Fragment>
+      <Header />
+      <section className="section">
+        {helmet || ''}
+        <div className="container content">
+          <div className="columns">
+            <div className="column is-10 is-offset-1">
+              <h1 className="title is-size-2 has-text-weight-bold is-bold-light">{title}</h1>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </React.Fragment>
   )
 }
 
@@ -32,7 +32,7 @@ ProductTemplate.propTypes = {
   contentComponent: PropTypes.func,
   description: PropTypes.string,
   title: PropTypes.string,
-  helmet: PropTypes.object,
+  helmet: PropTypes.object
 }
 
 const Product = ({ data }) => {
@@ -46,10 +46,7 @@ const Product = ({ data }) => {
       helmet={
         <Helmet titleTemplate="%s | Product">
           <title>{`${product.frontmatter.title}`}</title>
-          <meta
-            name="description"
-            content={`${product.frontmatter.title}`}
-          />
+          <meta name="description" content={`${product.frontmatter.title}`} />
         </Helmet>
       }
       tags={product.frontmatter.tags}
@@ -60,8 +57,8 @@ const Product = ({ data }) => {
 
 Product.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.object,
-  }),
+    markdownRemark: PropTypes.object
+  })
 }
 
 export default Product

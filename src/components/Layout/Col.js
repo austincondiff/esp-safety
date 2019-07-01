@@ -9,8 +9,8 @@ const Col = styled.div`
     box-sizing: border-box;
     flex: 0 0 auto;
     flex: 1;
-    padding-right: .5rem;
-    padding-left: .5rem;
+    padding-right: 3%;
+    padding-left: 3%;
 
     ${xs === 1 && `flex-basis: 8.33333333%; max-width: 8.33333333%;`}
     ${xs === 2 && `flex-basis: 16.66666667%; max-width: 16.66666667%;`}
