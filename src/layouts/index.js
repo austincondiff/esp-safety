@@ -2,11 +2,11 @@ import React from 'react'
 import Helmet from 'react-helmet'
 
 import ContextConsumer, { ContextProvider } from '../components/Context'
-import NavBar from '../components/NavBar'
+import NavBar from '../components/Navbar'
 import ScrollRoot from '../components/ScrollRoot'
-import Header from '../components/Header'
 import Footer from '../components/Footer'
 import useSiteMetadata from '../components/SiteMetadata'
+
 import '../styles/style.css'
 
 export default ({ children }) => {
