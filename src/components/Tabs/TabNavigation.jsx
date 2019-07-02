@@ -4,7 +4,6 @@ import styled from 'styled-components'
 
 const StyledTabs = styled.div`
   display: flex;
-  overflow: hidden;
   position: relative;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   margin-bottom: 6%;
@@ -38,6 +37,7 @@ const ActiveTabIndicator = styled.div`
   left: ${props => (props.position ? props.position : 0)}px;
   bottom: 0;
   background-color: #dd2c2c;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
   transition: 200ms;
 `
 

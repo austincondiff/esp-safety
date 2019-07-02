@@ -4,6 +4,7 @@ body {
   -webkit-font-smoothing: antialiased;
   margin: 0;
   padding: 0;
+  font-size: 14px;
 }
 
 h1,
@@ -54,6 +55,11 @@ p {
 
 p:last-child {
   margin-bottom: 0;
+}
+
+a {
+  color: #dd2c2c;
+  text-decoration: none;
 }
 
 html {
