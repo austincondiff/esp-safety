@@ -7,37 +7,37 @@ import Section from '../components/Section'
 
 import Content, { HTMLContent } from '../components/Content'
 
-export const AboutPageTemplate = ({ title, content, contentComponent }) => {
+export const CareersPageTemplate = ({ title, content, contentComponent }) => {
   const PageContent = contentComponent || Content
 
   return (
     <React.Fragment>
-      <Header title="About us" />
-      <Section>About us page coming soon.</Section>
+      <Header title="Work for us" />
+      <Section>Work for us page coming soon.</Section>
     </React.Fragment>
   )
 }
 
-AboutPageTemplate.propTypes = {
+CareersPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string,
   contentComponent: PropTypes.func
 }
 
-const AboutPage = ({ data }) => {
+const CareersPage = ({ data }) => {
   const { markdownRemark: post } = data
 
-  return <AboutPageTemplate contentComponent={HTMLContent} title={post.frontmatter.title} content={post.html} />
+  return <CareersPageTemplate contentComponent={HTMLContent} title={post.frontmatter.title} content={post.html} />
 }
 
-AboutPage.propTypes = {
+CareersPage.propTypes = {
   data: PropTypes.object.isRequired
 }
 
-export default AboutPage
+export default CareersPage
 
 export const aboutPageQuery = graphql`
-  query AboutPage($id: String!) {
+  query CareersPage($id: String!) {
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {

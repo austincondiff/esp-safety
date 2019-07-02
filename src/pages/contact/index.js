@@ -2,6 +2,7 @@ import React from 'react'
 import { navigate } from 'gatsby-link'
 
 import Header from '../../components/Header'
+import Section from '../../components/Section'
 
 function encode(data) {
   return Object.keys(data)
@@ -37,11 +38,10 @@ export default class Index extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Header />
-        <section className="section">
+        <Header title="Contact us" />
+        <Section className="section">
           <div className="container">
             <div className="content">
-              <h1>Contact</h1>
               <form
                 name="contact"
                 method="post"
@@ -109,7 +109,7 @@ export default class Index extends React.Component {
               </form>
             </div>
           </div>
-        </section>
+        </Section>
       </React.Fragment>
     )
   }
