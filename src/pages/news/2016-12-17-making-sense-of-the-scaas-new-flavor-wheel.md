@@ -1,34 +1,34 @@
 ---
 templateKey: post
-title: Making sense of the SCAA’s new Flavor Wheel
+title: Test Post One
 date: 2016-12-17T15:04:10.000Z
 featuredpost: false
 featuredimage: /img/flavor_wheel.jpg
-description: The Coffee Taster’s Flavor Wheel, the official resource used by coffee tasters, has been revised for the first time this year.
+description: This is a description for test post one.
 tags:
-  - flavor
-  - tasting
+  - one
+  - two
 ---
 
-![flavor wheel](/img/flavor_wheel.jpg)
+Lorem ipsum dolor sit amet, ius autem velit honestatis in. Prima integre ne mea, in inermis alienum sea, diam putent dictas ut qui. Liber alterum aliquid nam cu. Eos putent albucius an, id eos ancillae cotidieque. His discere sanctus delicata ea.
 
-The SCAA updated the wheel to reflect the finer nuances needed to describe flavors more precisely. The new descriptions are more detailed and hence allow cuppers to distinguish between more flavors.
+Usu eruditi disputando ne, euismod intellegat scriptorem ea vix. Sea dicit simul ei, consul dissentias liberavisse an mel. Cibo dolorem quo eu, id sit virtute prodesset scripserit, cu sumo iusto nec. Ex diam dicat voluptua sit. Pri ea debitis eleifend, eam natum fabellas ex, ius ex amet eleifend.
 
-While this is going to be a big change for professional coffee tasters, it means a lot to you as a consumer as well. We’ll explain how the wheel came to be, how pros use it and what the flavors actually mean.
+## Subtitle one
 
-## What the updates mean to you
+Mel habeo dissentiet id, ei abhorreant rationibus referrentur pro. Atqui voluptaria nam eu, has alia dissentiunt ut. Postulant sadipscing mei in, ne sed tale prima expetenda, harum utroque volumus in sed. Et duo diceret rationibus mnesarchum, ut est consul laoreet urbanitas.
 
-The Specialty Coffee Association of America (SCAA), founded in 1982, is a non-profit trade organization for the specialty coffee industry. With members located in more than 40 countries, SCAA represents every segment of the specialty coffee industry, including:
+- producers
+- importers/exporters
+- retailers
+- manufacturers
 
-* producers
-* roasters
-* importers/exporters
-* retailers
-* manufacturers
-* baristas
+Lorem ipsum dolor sit amet, ius autem velit honestatis in. Prima integre ne mea, in inermis alienum sea, diam putent dictas ut qui. Liber alterum aliquid nam cu. Eos putent albucius an, id eos ancillae cotidieque. His discere sanctus delicata ea.
 
-For over 30 years, SCAA has been dedicated to creating a vibrant specialty coffee community by recognizing, developing and promoting specialty coffee. SCAA sets and maintains quality standards for the industry, conducts market research, and provides education, training, resources, and business services for its members.
+Usu eruditi disputando ne, euismod intellegat scriptorem ea vix. Sea dicit simul ei, consul dissentias liberavisse an mel. Cibo dolorem quo eu, id sit virtute prodesset scripserit, cu sumo iusto nec. Ex diam dicat voluptua sit. Pri ea debitis eleifend, eam natum fabellas ex, ius ex amet eleifend.
 
-Coffee cupping, or coffee tasting, is the practice of observing the tastes and aromas of brewed coffee. It is a professional practice but can be done informally by anyone or by professionals known as "Q Graders". A standard coffee cupping procedure involves deeply sniffing the coffee, then loudly slurping the coffee so it spreads to the back of the tongue.
+Mel no cibo utamur, id quo verear mediocrem, iudico volumus definitionem an vel. An pro congue ubique fabulas, ei nobis corpora blandit vis. Novum nominati definitiones pro ut, in eam vidit iriure suscipit. Eu illum complectitur quo.
 
-The coffee taster attempts to measure aspects of the coffee's taste, specifically the body (the texture or mouthfeel, such as oiliness), sweetness, acidity (a sharp and tangy feeling, like when biting into an orange), flavour (the characters in the cup), and aftertaste. Since coffee beans embody telltale flavours from the region where they were grown, cuppers may attempt to identify the coffee's origin.
+Mel habeo dissentiet id, ei abhorreant rationibus referrentur pro. Atqui voluptaria nam eu, has alia dissentiunt ut. Postulant sadipscing mei in, ne sed tale prima expetenda, harum utroque volumus in sed. Et duo diceret rationibus mnesarchum, ut est consul laoreet urbanitas.
+
+Ut altera doming sea, eu pro everti omnium omittantur, pri convenire adolescens et. Debitis legendos quaerendum no duo, luptatum persequeris vis at. In has minim explicari, ut admodum tractatos vix, id nec iuvaret corpora maluisset. Ea iisque habemus epicurei eos, id labitur scaevola elaboraret per.
