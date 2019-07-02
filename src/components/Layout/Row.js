@@ -2,17 +2,23 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import Col from './Col'
 import { ViewportSizeType } from '../../lib/types'
 
 const Row = styled.div`
-  ${({ reverse, start, center, end, top, middle, bottom, around, between }) => `
+  ${({ reverse, start, center, end, top, middle, bottom, around, between, gutter }) => `
     box-sizing: border-box;
     display: flex;
     flex: 0 1 auto;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-right: -3%;
-    margin-left: -3%;
+    margin-right: -${gutter || '3%'};
+    margin-left: -${gutter || '3%'};
+
+    & ${Col} {
+      padding-right: ${gutter || '3%'};
+      padding-left: ${gutter || '3%'};
+    }
 
     ${reverse === 'xs' && `flex-direction: row-reverse;`}
     ${start === 'xs' && `justify-content: flex-start; text-align: start;`}
