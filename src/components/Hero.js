@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 import styled, { keyframes } from 'styled-components'
 
 import Section from './Section'
+import { Button, ButtonGroup } from './Button'
 
 import logo from '../img/logo.svg'
 import facebook from '../img/social/facebook.svg'
@@ -37,6 +38,9 @@ const arrowBounce = keyframes`
   }
 `
 
+const Actions = styled.div`
+  margin: 64px 0;
+`
 const Arrow = styled.div`
   width: 64px;
   height: 64px;
@@ -71,6 +75,16 @@ const Header = ({ title, subtitle, videoSrc, imageSrc, showArrow }) => (
   >
     <PageTitle>{title}</PageTitle>
     <PageSubtitle>{subtitle}</PageSubtitle>
+    <Actions>
+      <ButtonGroup>
+        <Button light iconOnHover iconPosition="right">
+          Learn About Us
+        </Button>
+        <Button primary iconOnHover iconPosition="right">
+          View Our Products
+        </Button>
+      </ButtonGroup>
+    </Actions>
     <Arrow />
   </Section>
 )

@@ -20,23 +20,19 @@ const PageSubtitle = styled.h3`
   font-weight: 700;
 `
 
-const Header = class extends React.Component {
-  render() {
-    return (
-      <Section
-        imageSrc="https://images.unsplash.com/photo-1536405454887-931a1a783382?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80"
-        backgroundColor="rgba(0,0,0,0.65)"
-        dark
-        parallax
-        parallaxContent
-        follWidth
-        header
-      >
-        <PageTitle>Page title here</PageTitle>
-        <PageSubtitle>Subtitle here</PageSubtitle>
-      </Section>
-    )
-  }
-}
+const Header = ({ title, subtitle }) => (
+  <Section
+    imageSrc="https://images.unsplash.com/photo-1536405454887-931a1a783382?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80"
+    backgroundColor="rgba(0,0,0,0.65)"
+    dark
+    parallax
+    parallaxContent
+    follWidth
+    header
+  >
+    <PageTitle>{title}</PageTitle>
+    <PageSubtitle>{subtitle}</PageSubtitle>
+  </Section>
+)
 
 export default Header

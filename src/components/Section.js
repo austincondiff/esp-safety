@@ -37,10 +37,12 @@ const ParallaxBackgroundWrap = styled.div`
 const ParallaxBackground = styled.div`
   position: absolute;
   top: 50%;
-  left: ${props => (props.imagePosition === 'left' ? `-30%` : props.imagePosition === 'right' ? `70%` : '20%')};
+  left: ${props => (props.imagePosition === 'left' ? `0%` : props.imagePosition === 'right' ? `100%` : '50%')};
   width: 60%;
+  min-width: 60%;
   height: 50vh;
-  transform: translateZ(-2px) translateY(-50%) scale(3.3333);
+  min-width: 50%;
+  transform: translateZ(-2px) translateY(-50%) translateX(-50%) scale(3.3333);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,9 +54,6 @@ const ParallaxBackground = styled.div`
   background-size: cover;
 `
 const ParallaxBase = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   ${props =>
     props.parallaxContent &&
     `
@@ -76,6 +75,7 @@ const ParallaxForeground = styled.div`
   transform: translateZ(0.5px) scale(0.75);
   transform-origin-x: 50%;
   transform-origin-y: -50%;
+  pointer-events: none;
 `
 const BackgroundColorWrap = styled.div`
   position: absolute;
@@ -118,6 +118,20 @@ const ForegroundImage = styled.img`
   width: ${props => props.width};
   transform: translateX(-50%) translateY(-50%);
 `
+const Video = styled.video`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-70%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1000;
+  overflow: hidden;
+  transform-origin-x: 50%;
+  transform-origin-y: -50%;
+`
 
 const Section = ({
   children,
@@ -147,24 +161,10 @@ const Section = ({
         <ParallaxBackgroundWrap imagePosition={imagePosition}>
           <ParallaxBackground imageSrc={imageSrc} imagePosition={imagePosition} backgroundColor={backgroundColor}>
             {videoSrc && (
-              <video
-                width="1800"
-                height="700"
-                preload="auto"
-                loop
-                autoPlay
-                muted
-                playsInline
-                style={{
-                  width: '100%',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translateX(0%) translateY(-25%)'
-                }}
-              >
+              <Video width="1800" height="700" preload="auto" loop autoPlay muted playsInline>
                 <source src={videoSrc[0]} type="video/webm" />
                 <source src={videoSrc[1]} type="video/mp4" />
-              </video>
+              </Video>
             )}
           </ParallaxBackground>
         </ParallaxBackgroundWrap>

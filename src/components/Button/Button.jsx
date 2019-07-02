@@ -25,7 +25,7 @@ const Button = styled.button`
       if (props.type === 'success') return '#2D9F43'
       if (props.type === 'warning') return '#FFB81C'
       if (props.type === 'error') return '#CC1B1B'
-      return '#01B6D1'
+      return '#e82222'
     } else {
       if (props.type === 'success') return '#E5F6E8'
       if (props.type === 'info') return '#D4ECF0'
@@ -51,7 +51,7 @@ const Button = styled.button`
         if (props.type === 'success') return '#38B350'
         if (props.type === 'warning') return '#FFC139'
         if (props.type === 'error') return '#DD2929'
-        return '#00C6E3'
+        return '#f44638'
       } else {
         if (props.type === 'success') return '#EDFBF0'
         if (props.type === 'info') return '#E0F2F5'
@@ -91,7 +91,7 @@ const Button = styled.button`
         if (props.type === 'success') return '#287E3C'
         if (props.type === 'warning') return '#E8990E'
         if (props.type === 'error') return '#AF1212'
-        return '#008DAF'
+        return '#b61d1d'
       } else {
         if (props.type === 'success') return '#C5F1CE'
         if (props.type === 'info') return '#BDE7EE'

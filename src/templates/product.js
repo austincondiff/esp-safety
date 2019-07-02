@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 
 import Header from '../components/Header'
+import Section from '../components/Section'
 import Content, { HTMLContent } from '../components/Content'
 
 export const ProductTemplate = ({ title, helmet, contentComponent }) => {
@@ -12,17 +13,8 @@ export const ProductTemplate = ({ title, helmet, contentComponent }) => {
 
   return (
     <React.Fragment>
-      <Header />
-      <section className="section">
-        {helmet || ''}
-        <div className="container content">
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              <h1 className="title is-size-2 has-text-weight-bold is-bold-light">{title}</h1>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Header title={title} />
+      <Section>Product details coming soon.</Section>
     </React.Fragment>
   )
 }
@@ -36,21 +28,28 @@ ProductTemplate.propTypes = {
 }
 
 const Product = ({ data }) => {
-  const { markdownRemark: product } = data
+  console.log(data)
+
+  const product = {
+    id: data.markdownRemark.id,
+    ...data.markdownRemark.frontmatter
+  }
+
+  console.log(product)
 
   return (
     <ProductTemplate
-      content={product.html}
+      content=""
       contentComponent={HTMLContent}
-      description={product.frontmatter.description}
+      description={product.description}
       helmet={
         <Helmet titleTemplate="%s | Product">
-          <title>{`${product.frontmatter.title}`}</title>
-          <meta name="description" content={`${product.frontmatter.title}`} />
+          <title>{`${product.title}`}</title>
+          <meta name="description" content={`${product.title}`} />
         </Helmet>
       }
-      tags={product.frontmatter.tags}
-      title={product.frontmatter.title}
+      tags={product.tags}
+      title={product.title}
     />
   )
 }
