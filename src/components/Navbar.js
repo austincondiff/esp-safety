@@ -189,7 +189,13 @@ const NavBar = class extends React.Component {
               {links.map(
                 (navLink, i) =>
                   navLink.label && (
-                    <NavLink darkMode={darkMode} to={navLink.path} key={`navLink${i}`} activeClassName="active">
+                    <NavLink
+                      darkMode={darkMode}
+                      to={navLink.path}
+                      key={`navLink${i}`}
+                      activeClassName="active"
+                      partiallyActive={navLink.path !== '/'}
+                    >
                       {navLink.label}
                     </NavLink>
                   )
