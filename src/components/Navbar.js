@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, graphql, StaticQuery } from 'gatsby'
+import { Layout } from './Layout'
 import Logo from './Logo'
 import Icon from './Icon'
 import styled, { keyframes } from 'styled-components'
@@ -22,10 +23,10 @@ const NavWrap = styled.nav`
   transition: 0.25s background-color, 0.25s box-shadow;
   animation: ${slideInFromTop} 0.45s cubic-bezier(0.23, 1, 0.32, 1);
 `
-const NavInside = styled.div`
-  width: 1200px;
+const NavInside = styled(Layout)`
+  padding-top: 0;
+  padding-bottom: 0;
   height: 100%;
-  margin: 0 auto;
   display: flex;
   align-items: center;
 `

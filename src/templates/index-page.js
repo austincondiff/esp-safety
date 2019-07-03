@@ -5,22 +5,24 @@ import { Link, graphql } from 'gatsby'
 
 import Hero from '../components/Hero'
 import Section from '../components/Section'
+import IconBox from '../components/IconBox'
 import Features from '../components/Features'
 import News from '../components/News'
-
 import { Row, Col } from '../components/Layout'
+import ArrowLink from '../components/ArrowLink'
+
+import FlameIcon from '../img/flame.svg'
+import CombustibleGasIcon from '../img/combustible-gas.svg'
+import ToxicGasIcon from '../img/toxic-gas.svg'
+import OxygenIcon from '../img/oxygen.svg'
 
 const SectionSupertitle = styled.h3`
   font-size: 16px;
   margin-bottom: 8px;
 `
-
-const IconColLink = ({ title, description }) => (
-  <div style={{ textAlign: 'center' }}>
-    <h3>{title}</h3>
-    <p>{description}</p>
-  </div>
-)
+const SectionActions = styled.h3`
+  margin-top: 32px;
+`
 
 export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch, description, intro }) => (
   <div>
@@ -36,35 +38,35 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
     <Section>
       <Row>
         <Col md={3}>
-          <IconColLink
-            icon=""
+          <IconBox
+            icon={FlameIcon}
             title="Flame Detectors"
             description="Every flame detector we offer provides reliable service and long lasting field performance in the harshest of environments, all at the industry’s best pricing."
-            link=""
+            link="/products/flame-detectors"
           />
         </Col>
         <Col md={3}>
-          <IconColLink
-            icon=""
+          <IconBox
+            icon={CombustibleGasIcon}
             title="Combustible Gas Detectors"
             description="Configured to report alarms when the gas concentrations in the environment reach each of three independently programmable levels, expressed as a percentage of the lower explosive limit (LEL) in the air."
-            link=""
+            link="/products/combustible-gas-detectors"
           />
         </Col>
         <Col md={3}>
-          <IconColLink
-            icon=""
+          <IconBox
+            icon={ToxicGasIcon}
             title="Toxic Gas Detectors"
             description="Designed to safely detect and monitor a variety of toxic gases in the air, including hydrogen sulfide, carbon monoxide, chlorine, nitric oxide, and sulfur dioxide, over a range of 0-100 ppm."
-            link=""
+            link="/products/toxic-gas-detectors"
           />
         </Col>
         <Col md={3}>
-          <IconColLink
-            icon=""
+          <IconBox
+            icon={OxygenIcon}
             title="Oxygen Detectors"
             description="Monitors oxygen level in ambient air or process applications and will alarm if oxygen level dips below 19.5% v/v. Our Oxygen Detector will initiate alarm when level of oxygen increases to prevent oxygen enriched atmosphere and reduce the risk of flammability of materials and gases."
-            link=""
+            link="oxygen-detectors"
           />
         </Col>
       </Row>
@@ -151,7 +153,11 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
         </Col>
       </Row>
       <Row>
-        <Col>Contact us</Col>
+        <Col>
+          <SectionActions>
+            <ArrowLink to="/contact">Contact us</ArrowLink>
+          </SectionActions>
+        </Col>
       </Row>
     </Section>
     <Section

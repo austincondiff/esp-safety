@@ -54,13 +54,16 @@ const ParallaxBackground = styled.div`
   background-size: cover;
 `
 const ParallaxBase = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
   ${props =>
     props.parallaxContent &&
     `
     transform: translateZ(-2px) scale(2);
     transform-origin-x: 50%;
     transform-origin-y: 0%;
-    overflow: hidden;
   `}
 `
 const ParallaxForeground = styled.div`
@@ -180,11 +183,11 @@ const Section = ({
             </ContentWrap>
           </SectionInside>
         </ParallaxBase>
-        <ParallaxForeground>
-          {foregroundImageSrc && (
+        {foregroundImageSrc && (
+          <ParallaxForeground>
             <ForegroundImage width={foregroundImageWidth} position={foregroundImagePosition} src={foregroundImageSrc} />
-          )}
-        </ParallaxForeground>
+          </ParallaxForeground>
+        )}
       </React.Fragment>
     ) : (
       <React.Fragment>

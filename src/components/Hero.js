@@ -69,7 +69,6 @@ const Header = ({ title, subtitle, videoSrc, imageSrc, showArrow }) => (
     dark
     parallax
     parallaxContent
-    follWidth
     header
     contentPosition="center"
   >
