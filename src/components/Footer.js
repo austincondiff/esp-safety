@@ -27,6 +27,18 @@ const CtaMessage = styled.div`
 const CtaActions = styled.div`
   text-align: right;
 `
+const CtaButton = styled.div`
+  background-color: #b22;
+  font-size: 18px;
+  padding: 25px 40px;
+  color: #fff;
+  font-weight: 600;
+  position: relative;
+  line-height: 20px;
+  display: inline-block;
+  border-radius: 100px;
+  cursor: pointer;
+`
 const MainFooter = styled.section`
   background-color: #181818;
 `
@@ -42,13 +54,13 @@ const Footer = class extends React.Component {
       <FooterWrap className="footer has-background-black has-text-white-ter">
         <Section backgroundColor="#dd2c2c">
           <Row>
-            <Col>
+            <Col fill>
               <CtaTitle>Get in touch with a rep today!</CtaTitle>
               <CtaMessage>Experience safety like never before.</CtaMessage>
             </Col>
             <Col>
               <CtaActions>
-                <button>Find a rep</button>
+                <CtaButton>Find a rep</CtaButton>
               </CtaActions>
             </Col>
           </Row>

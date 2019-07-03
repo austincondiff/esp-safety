@@ -7,7 +7,7 @@ import { graphql, Link } from 'gatsby'
 
 import Header from '../components/Header'
 import Section from '../components/Section'
-import { Layout, Row, Col } from '../components/Layout'
+import { Layout, Row, Col, breakpoints } from '../components/Layout'
 import ImageGallery from '../components/ImageGallery'
 import ReadMore from '../components/ReadMore'
 import { Tabs, Tab } from '../components/Tabs'
@@ -15,8 +15,6 @@ import Content, { HTMLContent } from '../components/Content'
 
 const SpecificationsSection = styled.section`
   color: #ffffff;
-  padding-top: 8%;
-  padding-bottom: 8%;
   background-color: #161616;
   background-size: 128px 128px, 128px 128px, 16px 16px, 16px 16px;
   background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
@@ -24,6 +22,24 @@ const SpecificationsSection = styled.section`
     linear-gradient(90deg, rgba(255, 255, 255, 0.033) 2px, transparent 2px),
     linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  padding-top: 15%;
+  padding-bottom: 15%;
+  ${breakpoints.sm} {
+    padding-top: 12.5%;
+    padding-bottom: 12.5%;
+  }
+  ${breakpoints.md} {
+    padding-top: 10%;
+    padding-bottom: 10%;
+  }
+  ${breakpoints.lg} {
+    padding-top: 7.5%;
+    padding-bottom: 7.5%;
+  }
+  ${breakpoints.xl} {
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
 `
 
 const SpecificationCategoryRow = styled(Row)`
@@ -75,7 +91,7 @@ export const ProductTemplate = ({ title, helmet, contentComponent }) => {
           <Col xs={6}>
             <Tabs>
               <Tab label="Product Overview" value="overview">
-                <ReadMore height="100%">
+                <ReadMore>
                   <p>
                     Lorem ipsum dolor sit amet, quo te tempor mollis, posse consetetur eu pro. Ad vix malis docendi. Utroque
                     evertitur est ad, in hendrerit voluptatibus mea. Cum ut probo autem omnium. Equidem imperdiet reprehendunt
@@ -108,9 +124,45 @@ export const ProductTemplate = ({ title, helmet, contentComponent }) => {
               </Tab>
               <Tab label="Applications" value="applications">
                 <p>Applications tab content coming soon.</p>
+                <ul
+                  style={{
+                    columnCount: 2
+                  }}
+                >
+                  <li>Test One List Item</li>
+                  <li>Test Two List Item</li>
+                  <li>Test Three List Item</li>
+                  <li>Test Four List Item</li>
+                  <li>Test Five List Item</li>
+                  <li>Test Six List Item</li>
+                  <li>Test Seven List Item</li>
+                  <li>Test Eight List Item</li>
+                  <li>Test Nine List Item</li>
+                  <li>Test Ten List Item</li>
+                  <li>Test Eleven List Item</li>
+                  <li>Test Twelve List Item</li>
+                </ul>
               </Tab>
               <Tab label="Features & Benefits" value="features">
-                <p>Features tab content coming soon.</p>
+                <p>Features & Benefits tab content coming soon.</p>
+                <ul
+                  style={{
+                    columnCount: 2
+                  }}
+                >
+                  <li>Test One List Item</li>
+                  <li>Test Two List Item</li>
+                  <li>Test Three List Item</li>
+                  <li>Test Four List Item</li>
+                  <li>Test Five List Item</li>
+                  <li>Test Six List Item</li>
+                  <li>Test Seven List Item</li>
+                  <li>Test Eight List Item</li>
+                  <li>Test Nine List Item</li>
+                  <li>Test Ten List Item</li>
+                  <li>Test Eleven List Item</li>
+                  <li>Test Twelve List Item</li>
+                </ul>
               </Tab>
               <Tab label="Downloads" value="downloads">
                 <p>Downloads tab content coming soon.</p>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-import { Layout } from './Layout'
+import { Layout, breakpoints } from './Layout'
 
 const StyledSection = styled.section`
   position: relative;
@@ -16,14 +16,31 @@ const StyledSection = styled.section`
   `}
 `
 const SectionInside = styled(Layout)`
-  padding-top: 8%;
-  padding-bottom: 8%;
+  padding-top: 15%;
+  padding-bottom: 15%;
   ${props => props.height && `height: ${props.height};`};
   ${props =>
     props.header &&
     `
     margin-top: 104px;
   `}
+
+  ${breakpoints.sm} {
+    padding-top: 12.5%;
+    padding-bottom: 12.5%;
+  }
+  ${breakpoints.md} {
+    padding-top: 10%;
+    padding-bottom: 10%;
+  }
+  ${breakpoints.lg} {
+    padding-top: 7.5%;
+    padding-bottom: 7.5%;
+  }
+  ${breakpoints.xl} {
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
 `
 const ParallaxBackgroundWrap = styled.div`
   position: absolute;
@@ -122,7 +139,7 @@ const Video = styled.video`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-66.666%);
   min-width: 100%;
   min-height: 100%;
   width: auto;

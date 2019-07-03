@@ -1,18 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const ReadMoreWrap = styled.div`
-  padding-top: ${props => props.height || '100%'};
-  position: relative;
-`
-const ReadMoreInside = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+const ReadMoreContainer = styled.div`
+  height: ${props => props.height};
   mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+  mask-size: 100% ${props => (!props.overflow || props.readMore ? '200%' : '100%')};
   overflow: hidden;
+  transition: 0.2s;
 `
 const ReadMoreLink = styled.a`
   color: #dd2c2c;
@@ -28,6 +22,7 @@ const ReadMoreLink = styled.a`
   display: inline-block;
   white-space: nowrap;
   padding-right: 16px;
+  margin-top: 16px;
   transition: 0.2s;
   border-top: ${props => (props.readMore ? 8 : 0)}px solid transparent;
   border-bottom: ${props => (props.readMore ? 0 : 8)}px solid transparent;
@@ -50,6 +45,8 @@ const ReadMoreLink = styled.a`
   }
 `
 
+const ReadMoreContent = styled.div``
+
 const TriggerComponent = ({ renderTrigger, readMore, toggleReadMore }) =>
   renderTrigger ? (
     renderTrigger(readMore, toggleReadMore)
@@ -60,26 +57,64 @@ const TriggerComponent = ({ renderTrigger, readMore, toggleReadMore }) =>
   )
 
 export default class ReadMore extends React.Component {
+  constructor(props) {
+    super(props)
+    this.containerRef = React.createRef()
+    this.contentRef = React.createRef()
+  }
+
   state = { readMore: false }
+
+  componentDidMount() {
+    this.setDimensions()
+    window.addEventListener('resize', this.setDimensions)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.setDimensions)
+  }
+
+  setDimensions = () => {
+    const containerWidth = this.containerRef.current.offsetWidth + 'px'
+    const containerHeight = this.props.height || containerWidth
+    const contentHeight = this.contentRef.current.offsetHeight + 'px'
+
+    console.log({
+      containerRef: this.containerRef,
+      containerWidth,
+      containerHeight,
+      contentHeight,
+      overflow: contentHeight > containerHeight
+    })
+
+    this.setState({
+      overflow: contentHeight > containerHeight,
+      containerHeight,
+      contentHeight
+    })
+  }
 
   render() {
     const { children, height } = this.props
-    const { readMore, renderTrigger } = this.state
+    const { readMore, renderTrigger, overflow, containerHeight, contentHeight } = this.state
 
     return (
       <React.Fragment>
-        {readMore ? (
-          children
-        ) : (
-          <ReadMoreWrap height={height}>
-            <ReadMoreInside>{children}</ReadMoreInside>
-          </ReadMoreWrap>
-        )}
-        <TriggerComponent
-          renderTrigger={renderTrigger}
+        <ReadMoreContainer
+          ref={this.containerRef}
           readMore={readMore}
-          toggleReadMore={() => this.setState({ readMore: !readMore })}
-        />
+          overflow={overflow}
+          height={readMore ? contentHeight : height || containerHeight}
+        >
+          <ReadMoreContent ref={this.contentRef}>{children}</ReadMoreContent>
+        </ReadMoreContainer>
+        {overflow && (
+          <TriggerComponent
+            renderTrigger={renderTrigger}
+            readMore={readMore}
+            toggleReadMore={() => this.setState({ readMore: !readMore })}
+          />
+        )}
       </React.Fragment>
     )
   }

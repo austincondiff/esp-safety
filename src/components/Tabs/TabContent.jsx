@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 const Content = styled.div`
   position: relative;
+  backface-visibility: hidden;
 `
 
 export default class TabContent extends Component {

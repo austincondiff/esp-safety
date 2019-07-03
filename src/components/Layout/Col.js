@@ -5,9 +5,9 @@ import breakpoints from './breakpoints'
 import { ColumnSizeType, ViewportSizeType } from '../../lib/types'
 
 const Col = styled.div`
-  ${({ xs, sm, md, lg, xl, xsOffset, smOffset, mdOffset, lgOffset, xlOffset, first, last }) => `
+  ${({ xs, sm, md, lg, xl, xsOffset, smOffset, mdOffset, lgOffset, xlOffset, first, last, fill }) => `
     box-sizing: border-box;
-    flex: 0 0 auto;
+    flex: ${fill ? '1' : '0 0 auto'};
     flex-basis: 100%%;
     max-width: 100%;
 

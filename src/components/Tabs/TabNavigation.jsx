@@ -17,7 +17,7 @@ const StyledTab = styled.div`
   font-weight: 500;
   padding: 20px 0px;
   outline: none;
-  ${props => props.active && 'color: #dd2c2c;'}
+  color: ${props => (props.active ? '#dd2c2c' : '#000000')};
   transition: 200ms;
   &:first-child {
     margin-left: 0;
@@ -39,6 +39,7 @@ const ActiveTabIndicator = styled.div`
   background-color: #dd2c2c;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
   transition: 200ms;
+  backface-visibility: hidden;
 `
 
 class TabContainer extends Component {
