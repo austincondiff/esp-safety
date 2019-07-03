@@ -3,13 +3,8 @@ import { Link } from 'gatsby'
 import styled, { keyframes } from 'styled-components'
 
 import Section from './Section'
+import { Row, Col } from './Layout'
 import { Button, ButtonGroup } from './Button'
-
-import logo from '../img/logo.svg'
-import facebook from '../img/social/facebook.svg'
-import instagram from '../img/social/instagram.svg'
-import twitter from '../img/social/twitter.svg'
-import vimeo from '../img/social/vimeo.svg'
 
 const PageTitle = styled.h1`
   margin: 0;
@@ -72,19 +67,23 @@ const Header = ({ title, subtitle, videoSrc, imageSrc, showArrow }) => (
     header
     contentPosition="center"
   >
-    <PageTitle>{title}</PageTitle>
-    <PageSubtitle>{subtitle}</PageSubtitle>
-    <Actions>
-      <ButtonGroup>
-        <Button light iconOnHover iconPosition="right">
-          Learn About Us
-        </Button>
-        <Button primary iconOnHover iconPosition="right">
-          View Our Products
-        </Button>
-      </ButtonGroup>
-    </Actions>
-    <Arrow />
+    <Row>
+      <Col xs={8} xsOffset={2}>
+        <PageTitle>{title}</PageTitle>
+        <PageSubtitle>{subtitle}</PageSubtitle>
+        <Actions>
+          <ButtonGroup>
+            <Button light iconOnHover iconPosition="right">
+              Learn About Us
+            </Button>
+            <Button primary iconOnHover iconPosition="right">
+              View Our Products
+            </Button>
+          </ButtonGroup>
+        </Actions>
+        <Arrow />
+      </Col>
+    </Row>
   </Section>
 )
 

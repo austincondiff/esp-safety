@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
+import { Layout } from './Layout'
+
 const StyledSection = styled.section`
   position: relative;
-  transform-style: preserve-3d;
+  // transform-style: preserve-3d;
   ${props => props.dark && `&, & * { color: #FFFFFF; }`};
   ${props =>
     props.parallaxContent &&
@@ -14,11 +15,9 @@ const StyledSection = styled.section`
     overflow: hidden;
   `}
 `
-const SectionInside = styled.div`
-  width: 100%;
-  ${props => !props.fullWidth && 'max-width: calc(1200px + 12%);'}
-  margin: 0 auto;
-  padding: 8% 6%;
+const SectionInside = styled(Layout)`
+  padding-top: 8%;
+  padding-bottom: 8%;
   ${props => props.height && `height: ${props.height};`};
   ${props =>
     props.header &&
@@ -38,16 +37,15 @@ const ParallaxBackground = styled.div`
   position: absolute;
   top: 50%;
   left: ${props => (props.imagePosition === 'left' ? `0%` : props.imagePosition === 'right' ? `100%` : '50%')};
-  width: 60%;
-  min-width: 60%;
-  height: 50vh;
+  width: calc(60% + 1px);
   min-width: 50%;
-  transform: translateZ(-2px) translateY(-50%) translateX(-50%) scale(3.3333);
+  height: 50vh;
+  transform: translate3d(-50%, -50%, -2px) scale(3.3333);
   display: flex;
   justify-content: center;
   align-items: center;
   transform-origin-x: 50%;
-  transform-origin-y: 0%;
+  transform-origin-y: 0;
   background-image: url(${props => props.imageSrc});
   background-repeat: no-repeat;
   background-position: center;
@@ -109,7 +107,6 @@ const ContentWrap = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 25%;
     text-align: center;
   `}
 `
@@ -125,15 +122,14 @@ const Video = styled.video`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(-70%);
+  transform: translateX(-50%) translateY(-50%);
   min-width: 100%;
   min-height: 100%;
   width: auto;
   height: auto;
-  z-index: -1000;
   overflow: hidden;
   transform-origin-x: 50%;
-  transform-origin-y: -50%;
+  transform-origin-y: 0%;
 `
 
 const Section = ({

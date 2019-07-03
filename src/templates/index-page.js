@@ -37,7 +37,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
     />
     <Section>
       <Row>
-        <Col md={3}>
+        <Col sm={6} md={3}>
           <IconBox
             icon={FlameIcon}
             title="Flame Detectors"
@@ -45,7 +45,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
             link="/products/flame-detectors"
           />
         </Col>
-        <Col md={3}>
+        <Col sm={6} md={3}>
           <IconBox
             icon={CombustibleGasIcon}
             title="Combustible Gas Detectors"
@@ -53,7 +53,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
             link="/products/combustible-gas-detectors"
           />
         </Col>
-        <Col md={3}>
+        <Col sm={6} md={3}>
           <IconBox
             icon={ToxicGasIcon}
             title="Toxic Gas Detectors"
@@ -61,7 +61,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
             link="/products/toxic-gas-detectors"
           />
         </Col>
-        <Col md={3}>
+        <Col sm={6} md={3}>
           <IconBox
             icon={OxygenIcon}
             title="Oxygen Detectors"

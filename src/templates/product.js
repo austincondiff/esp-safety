@@ -15,6 +15,8 @@ import Content, { HTMLContent } from '../components/Content'
 
 const SpecificationsSection = styled.section`
   color: #ffffff;
+  padding-top: 8%;
+  padding-bottom: 8%;
   background-color: #161616;
   background-size: 128px 128px, 128px 128px, 16px 16px, 16px 16px;
   background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;

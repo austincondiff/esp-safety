@@ -25,7 +25,7 @@ const Button = styled.button`
       if (props.type === 'success') return '#2D9F43'
       if (props.type === 'warning') return '#FFB81C'
       if (props.type === 'error') return '#CC1B1B'
-      return '#e82222'
+      return '#DD2C2C'
     } else {
       if (props.type === 'success') return '#E5F6E8'
       if (props.type === 'info') return '#D4ECF0'
@@ -74,7 +74,7 @@ const Button = styled.button`
         if (props.type === 'success') return '#287E3C'
         if (props.type === 'warning') return '#E8990E'
         if (props.type === 'error') return '#AF1212'
-        return '#008DAF'
+        return '#b61d1d'
       } else {
         if (props.type === 'success') return '#C5F1CE'
         if (props.type === 'info') return '#BDE7EE'

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
+import breakpoints from './breakpoints'
 import { ColumnSizeType, ViewportSizeType } from '../../lib/types'
 
 const Col = styled.div`
@@ -38,7 +38,7 @@ const Col = styled.div`
     ${first === 'xs' ? `order: -1;` : ``}
     ${last === 'xs' ? `order: 1;` : ``}
 
-    @media only screen and (min-width: 48em) {
+    ${breakpoints.sm} {
       ${sm === 1 ? `flex-basis: 8.33333333%; max-width: 8.33333333%;` : ``}
       ${sm === 2 ? `flex-basis: 16.66666667%; max-width: 16.66666667%;` : ``}
       ${sm === 3 ? `flex-basis: 25%; max-width: 25%;` : ``}
@@ -67,7 +67,7 @@ const Col = styled.div`
       ${last === 'sm' ? `order: 1;` : ``}
     }
 
-    @media only screen and (min-width: 64em) {
+    ${breakpoints.md} {
       ${md === 1 ? `flex-basis: 8.33333333%; max-width: 8.33333333%;` : ``}
       ${md === 2 ? `flex-basis: 16.66666667%; max-width: 16.66666667%;` : ``}
       ${md === 3 ? `flex-basis: 25%; max-width: 25%;` : ``}
@@ -96,7 +96,7 @@ const Col = styled.div`
       ${last === 'md' ? `order: 1;` : ``}
     }
 
-    @media only screen and (min-width: 75em) {
+    ${breakpoints.lg} {
       ${lg === 1 ? `flex-basis: 8.33333333%; max-width: 8.33333333%;` : ``}
       ${lg === 2 ? `flex-basis: 16.66666667%; max-width: 16.66666667%;` : ``}
       ${lg === 3 ? `flex-basis: 25%; max-width: 25%;` : ``}
@@ -123,6 +123,35 @@ const Col = styled.div`
 
       ${first === 'lg' ? `order: -1;` : ``}
       ${last === 'lg' ? `order: 1;` : ``}
+    }
+
+    ${breakpoints.xl} {
+      ${xl === 1 ? `flex-basis: 8.33333333%; max-width: 8.33333333%;` : ``}
+      ${xl === 2 ? `flex-basis: 16.66666667%; max-width: 16.66666667%;` : ``}
+      ${xl === 3 ? `flex-basis: 25%; max-width: 25%;` : ``}
+      ${xl === 4 ? `flex-basis: 33.33333333%; max-width: 33.33333333%;` : ``}
+      ${xl === 5 ? `flex-basis: 41.66666667%; max-width: 41.66666667%;` : ``}
+      ${xl === 6 ? `flex-basis: 50%; max-width: 50%;` : ``}
+      ${xl === 7 ? `flex-basis: 58.33333333%; max-width: 58.33333333%;` : ``}
+      ${xl === 8 ? `flex-basis: 66.66666667%; max-width: 66.66666667%;` : ``}
+      ${xl === 9 ? `flex-basis: 75%; max-width: 75%;` : ``}
+      ${xl === 10 ? `flex-basis: 83.33333333%; max-width: 83.33333333%;` : ``}
+      ${xl === 11 ? `flex-basis: 91.66666667%; max-width: 91.66666667%;` : ``}
+
+      ${xlOffset === 1 ? `margin-left: 8.33333333%;` : ``}
+      ${xlOffset === 2 ? `margin-left: 16.66666667%;` : ``}
+      ${xlOffset === 3 ? `margin-left: 25%;` : ``}
+      ${xlOffset === 4 ? `margin-left: 33.33333333%;` : ``}
+      ${xlOffset === 5 ? `margin-left: 41.66666667%;` : ``}
+      ${xlOffset === 6 ? `margin-left: 50%;` : ``}
+      ${xlOffset === 7 ? `margin-left: 58.33333333%;` : ``}
+      ${xlOffset === 8 ? `margin-left: 66.66666667%;` : ``}
+      ${xlOffset === 9 ? `margin-left: 75%;` : ``}
+      ${xlOffset === 10 ? `margin-left: 83.33333333%;` : ``}
+      ${xlOffset === 11 ? `margin-left: 91.66666667%;` : ``}
+
+      ${first === 'xl' ? `order: -1;` : ``}
+      ${last === 'xl' ? `order: 1;` : ``}
     }
 
   `}
