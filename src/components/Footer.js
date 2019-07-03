@@ -38,6 +38,18 @@ const CtaButton = styled.div`
   display: inline-block;
   border-radius: 100px;
   cursor: pointer;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.75);
+  transition: 0.45s cubic-bezier(0.25, 1, 0.33, 1);
+  &:hover {
+    background-color: white;
+    color: #000;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+  }
+  &:active {
+    background-color: #eee;
+    color: #000;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.33);
+  }
 `
 const MainFooter = styled.section`
   background-color: #181818;
