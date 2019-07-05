@@ -79,14 +79,6 @@ export default class ReadMore extends React.Component {
     const containerHeight = this.props.height || containerWidth
     const contentHeight = this.contentRef.current.offsetHeight + 'px'
 
-    console.log({
-      containerRef: this.containerRef,
-      containerWidth,
-      containerHeight,
-      contentHeight,
-      overflow: contentHeight > containerHeight
-    })
-
     this.setState({
       overflow: contentHeight > containerHeight,
       containerHeight,

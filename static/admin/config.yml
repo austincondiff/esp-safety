@@ -2,10 +2,11 @@ backend:
   name: git-gateway
   branch: master
 
+site_url: https://esp-safety.netlify.com
 public_url: https://esp-safety.netlify.com
 logo_url: https://esp-safety.netlify.com/images/logo.svg
 media_folder: static/images
-public_folder: /images
+public_folder: images
 
 collections:
   - name: "posts"

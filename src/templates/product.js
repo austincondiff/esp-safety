@@ -10,6 +10,7 @@ import Section from '../components/Section'
 import { Layout, Row, Col, breakpoints } from '../components/Layout'
 import ImageGallery from '../components/ImageGallery'
 import ReadMore from '../components/ReadMore'
+import MarkdownContent from '../components/MarkdownContent'
 import { Tabs, Tab } from '../components/Tabs'
 import Content, { HTMLContent } from '../components/Content'
 
@@ -70,7 +71,8 @@ const SpecificationCol = styled(Col)`
   padding-bottom: 16px;
 `
 
-export const ProductTemplate = ({ title, helmet, contentComponent }) => {
+export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
+  console.log(data)
   return (
     <React.Fragment>
       <Header title={title} />
@@ -92,34 +94,7 @@ export const ProductTemplate = ({ title, helmet, contentComponent }) => {
             <Tabs>
               <Tab label="Product Overview" value="overview">
                 <ReadMore>
-                  <p>
-                    Lorem ipsum dolor sit amet, quo te tempor mollis, posse consetetur eu pro. Ad vix malis docendi. Utroque
-                    evertitur est ad, in hendrerit voluptatibus mea. Cum ut probo autem omnium. Equidem imperdiet reprehendunt
-                    ut eum, sed ex malorum admodum abhorreant, no mea aliquip suscipiantur. Euismod complectitur intellegebat at
-                    mel, nisl eligendi salutandi eum ea, et mea eirmod accusam.
-                  </p>
-                  <p>
-                    Vim nihil iisque docendi in, ut graeci suavitate scriptorem est, eos eu idque eirmod gubergren. Ne eam diam
-                    possit civibus, eu imperdiet hendrerit mel. Et usu dicta iudico. Ne dolor lobortis oportere usu. Erat tollit
-                    melius ei nam, dicat postulant qui te. Ei quo zril tantas scripta.
-                  </p>
-                  <p>
-                    Usu eligendi molestiae definitiones eu, eum probatus splendide contentiones id, an erant dolore his. Te
-                    offendit indoctum efficiantur has, ludus suscipit an sea. Stet mediocrem per ex. Ea eam etiam equidem
-                    corpora.
-                  </p>
-                  <p>
-                    Usu agam laudem disputando ea, homero populo eu cum, vix id persius aliquid propriae. Est viderer insolens
-                    cu, an aeque senserit cum. Ex mel idque latine ponderum, an legimus phaedrum quo. Id adhuc explicari
-                    vulputate vim, eu vim equidem tibique perpetua, in dictas maiorum ius. An his falli solet, sit ei eruditi
-                    dissentiunt.
-                  </p>
-                  <p>
-                    Eos nonumy expetenda scripserit te, ad vide iuvaret vel. Eum ne mandamus principes. Ad velit volumus his, ad
-                    eum illud voluptatum. Te reque zril impetus mea. Quodsi contentiones usu ei, ad epicurei antiopam omittantur
-                    eum, in quem corrumpit conceptam pro. Eu nec etiam qualisque, pri an rebum soluta. Oratio probatus gloriatur
-                    mel te, no postea dignissim sed.
-                  </p>
+                  <MarkdownContent content={data.overview} />
                 </ReadMore>
               </Tab>
               <Tab label="Applications" value="applications">
@@ -129,18 +104,9 @@ export const ProductTemplate = ({ title, helmet, contentComponent }) => {
                     columnCount: 2
                   }}
                 >
-                  <li>Test One List Item</li>
-                  <li>Test Two List Item</li>
-                  <li>Test Three List Item</li>
-                  <li>Test Four List Item</li>
-                  <li>Test Five List Item</li>
-                  <li>Test Six List Item</li>
-                  <li>Test Seven List Item</li>
-                  <li>Test Eight List Item</li>
-                  <li>Test Nine List Item</li>
-                  <li>Test Ten List Item</li>
-                  <li>Test Eleven List Item</li>
-                  <li>Test Twelve List Item</li>
+                  {data.applications.map(({application}) => (
+                    <li>{application}</li>
+                  ))}
                 </ul>
               </Tab>
               <Tab label="Features & Benefits" value="features">
@@ -150,18 +116,9 @@ export const ProductTemplate = ({ title, helmet, contentComponent }) => {
                     columnCount: 2
                   }}
                 >
-                  <li>Test One List Item</li>
-                  <li>Test Two List Item</li>
-                  <li>Test Three List Item</li>
-                  <li>Test Four List Item</li>
-                  <li>Test Five List Item</li>
-                  <li>Test Six List Item</li>
-                  <li>Test Seven List Item</li>
-                  <li>Test Eight List Item</li>
-                  <li>Test Nine List Item</li>
-                  <li>Test Ten List Item</li>
-                  <li>Test Eleven List Item</li>
-                  <li>Test Twelve List Item</li>
+                  {data.features.map(({feature}) => (
+                    <li>{feature}</li>
+                  ))}
                 </ul>
               </Tab>
               <Tab label="Downloads" value="downloads">
@@ -297,6 +254,7 @@ const Product = ({ data }) => {
       }
       tags={product.tags}
       title={product.title}
+      data={product}
     />
   )
 }
@@ -316,6 +274,15 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
+        slug
+        category
+        overview
+        applications {
+          application
+        }
+        features {
+          feature
+        }
       }
     }
   }
