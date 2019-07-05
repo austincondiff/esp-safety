@@ -92,12 +92,12 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
           </Col>
           <Col xs={6}>
             <Tabs>
-              <Tab label="Product Overview" value="overview">
+              {data.overview && <Tab label="Product Overview" value="overview">
                 <ReadMore>
                   <MarkdownContent content={data.overview} />
                 </ReadMore>
-              </Tab>
-              <Tab label="Applications" value="applications">
+              </Tab>}
+              {data.applications && <Tab label="Applications" value="applications">
                 <p>Applications tab content coming soon.</p>
                 <ul
                   style={{
@@ -108,8 +108,8 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
                     <li>{application}</li>
                   ))}
                 </ul>
-              </Tab>
-              <Tab label="Features & Benefits" value="features">
+              </Tab>}
+              {data.features && <Tab label="Features & Benefits" value="features">
                 <p>Features & Benefits tab content coming soon.</p>
                 <ul
                   style={{
@@ -120,7 +120,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
                     <li>{feature}</li>
                   ))}
                 </ul>
-              </Tab>
+              </Tab>}
               <Tab label="Downloads" value="downloads">
                 <p>Downloads tab content coming soon.</p>
               </Tab>
