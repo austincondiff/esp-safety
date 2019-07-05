@@ -46,14 +46,17 @@ collections:
       - { label: "Slug", name: "slug", required: true, pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Cannot contain spaces, capital letters, or special characters. You may separate words with dashes and numbers are allowed."], hint: "This will be used in the URL." }
       - { label: "Category", name: "category", widget: "relation", collection: "productCategories", searchFields: ["title"], valueField: "slug", displayFields: ["title"] }
       - { label: "Overview", name: "overview", widget: "markdown" }
-      - { label: "Applications", name: "applications", widget: "list", fields: [{label: "Application", name: "application", widget: "string"}] }
-      - { label: "Features", name: "features", widget: "list", fields: [{label: "Feature", name: "feature", widget: "string"}] }
-      - { label: "Downloads", name: "downloads", widget: "list", fields: [
-          { label: "File", name: "file", widget: "file" },
+      - { label: "Applications", label_singular: "Application", name: "applications", widget: "list", fields: [{label: "Application", name: "application", widget: "string"}] }
+      - { label: "Features", label_singular: "Feature", name: "features", widget: "list", fields: [{label: "Feature", name: "feature", widget: "string"}] }
+      - { label: "Download Categories", label_singular: "Download Category", name: "downloadCategories", widget: "list", fields: [
           { label: "Title", name: "title", widget: "string" },
-          { label: "Description", name: "description", widget: "string" }
+          { label: "Downloads", label_singular: "Download", name: "downloads", widget: "list", fields: [
+            { label: "File", name: "file", widget: "file" },
+            { label: "Title", name: "title", widget: "string" },
+            { label: "Description", name: "description", widget: "string" }
+          ]}
         ]}
-      - { label: "Sections", name: "sections", widget: "list", fields: [
+      - { label: "Sections", label_singular: "Section", name: "sections", widget: "list", fields: [
           { label: "Content", name: "content", widget: "markdown" },
           { label: "Image", name: "image", widget: "image" }
         ]}
