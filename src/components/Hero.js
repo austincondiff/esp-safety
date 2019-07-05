@@ -56,7 +56,17 @@ const Arrow = styled.div`
   }
 `
 
-const Header = ({ title, subtitle, videoSrc, imageSrc, showArrow }) => (
+const Header = ({
+  title,
+  subtitle,
+  videoSrc,
+  imageSrc,
+  showArrow,
+  secondaryButtonLink,
+  secondaryButtonLabel,
+  primaryButtonLink,
+  primaryButtonLabel
+}) => (
   <Section
     videoSrc={videoSrc}
     imageSrc={imageSrc}
@@ -73,12 +83,20 @@ const Header = ({ title, subtitle, videoSrc, imageSrc, showArrow }) => (
         <PageSubtitle>{subtitle}</PageSubtitle>
         <Actions>
           <ButtonGroup>
-            <Button light iconOnHover iconPosition="right">
-              Learn About Us
-            </Button>
-            <Button primary iconOnHover iconPosition="right">
-              View Our Products
-            </Button>
+            {secondaryButtonLink && secondaryButtonLabel && (
+              <Link to={secondaryButtonLink}>
+                <Button light iconOnHover iconPosition="right">
+                  {secondaryButtonLabel}
+                </Button>
+              </Link>
+            )}
+            {primaryButtonLink && primaryButtonLabel && (
+              <Link to={primaryButtonLink}>
+                <Button primary iconOnHover iconPosition="right">
+                  {primaryButtonLabel}
+                </Button>
+              </Link>
+            )}
           </ButtonGroup>
         </Actions>
         <Arrow />

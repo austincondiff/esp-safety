@@ -35,7 +35,10 @@ const LogoWrap = styled.div`
   height: 100%;
   padding: ${props => props.padding || 16}px 0;
 `
-const LogoLink = styled(Link)``
+const LogoLink = styled(Link)`
+  display: block;
+  height: 100%;
+`
 const NavLinksWrap = styled.div``
 const NavLinks = styled.div``
 const NavLinkWrap = styled.div``
@@ -128,7 +131,7 @@ const NavBar = class extends React.Component {
     const logoPaddingStart = 28
     const logoPaddingEnd = 16
     const scrollRootEl = document.getElementById('scroll-root')
-    const scrollTop = scrollRootEl.scrollTop
+    const scrollTop = scrollRootEl.scrollTop > 0 ? scrollRootEl.scrollTop : 0
     const scrollFactor = scrollTop / (navFullHeight - navCondensedHeight)
 
     if (scrollTop < navFullHeight - navCondensedHeight) {
@@ -247,6 +250,8 @@ export default ({ ...props }) => (
         }
       }
     `}
-    render={data => <NavBar data={data.allSettingsYaml.edges.filter(edge => edge.node.navigation)[0].node.navigation} {...props} />}
+    render={data => (
+      <NavBar data={data.allSettingsYaml.edges.filter(edge => edge.node.navigation)[0].node.navigation} {...props} />
+    )}
   />
 )

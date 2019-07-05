@@ -24,10 +24,10 @@ const SectionActions = styled.h3`
   margin-top: 32px;
 `
 const Logos = styled.div`
-display: flex;
-flex: 0 1 auto;
-flex-direction: row;
-flex-wrap: wrap;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
 `
 const Logo = styled(Link).attrs(props => ({
   to: props.url,
@@ -45,8 +45,8 @@ const Logo = styled(Link).attrs(props => ({
   width: 16.666666666%;
   padding-top: 16.666666666%;
   filter: grayscale(1) brightness(0.75) contrast(1.25);
-  opacity: .75;
-  transition: .25s;
+  opacity: 0.75;
+  transition: 0.25s;
   &:hover {
     filter: grayscale(0) brightness(1) contrast(1);
     opacity: 1;
@@ -62,6 +62,10 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
         'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/esp-hero-bg-480p.webm',
         'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/esp-hero-bg-480p.mp4'
       ]}
+      primaryButtonLink={'/products'}
+      primaryButtonLabel={'View Our Products'}
+      secondaryButtonLink={'/about'}
+      secondaryButtonLabel={'Learn About Us'}
       showArrow
     />
     <Section>
@@ -103,18 +107,66 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
     <Section backgroundColor="#F6F6F6">
       <h2 style={{ color: '#DD2C2C', textAlign: 'center' }}>Who we serve</h2>
       <Logos>
-        <Logo label="British Petroleum" image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/bp.png" url="https://www.bp.com/" />
-        <Logo label="Caspian Pipeline Consortium" image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/caspianpipeline.png" url="http://www.cpc.ru/EN/" />
-        <Logo label="Chevron" image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/chevron.png" url="https://www.chevron.com/" />
-        <Logo label="CNPC" image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/cnpc.png" url="http://www.cnpc.com.cn/en/" />
-        <Logo label="Conoco Phillips" image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/conocophillips.png" url="http://www.conocophillips.com/" />
-        <Logo label="ENI" image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/eni.png" url="https://www.eni.com/" />
-        <Logo label="Mitsui & Co." image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/mitsui.png" url="https://www.mitsui.com/" />
-        <Logo label="Mitsubishi" image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/mitsubishi.png" url="http://www.mitsubishicorp.com/" />
-        <Logo label="Pemex" image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/pemex.png" url="http://www.pemex.com/en/" />
-        <Logo label="Shell" image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/shell.png" url="http://www.shell.com/" />
-        <Logo label="Tethys Petroleum" image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/unilever.png" url="http://www.tethyspetroleum.com/" />
-        <Logo label="Unilever" image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/tethys.png" url="https://www.unilever.com/" />
+        <Logo
+          label="British Petroleum"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/bp.png"
+          url="https://www.bp.com/"
+        />
+        <Logo
+          label="Caspian Pipeline Consortium"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/caspianpipeline.png"
+          url="http://www.cpc.ru/EN/"
+        />
+        <Logo
+          label="Chevron"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/chevron.png"
+          url="https://www.chevron.com/"
+        />
+        <Logo
+          label="CNPC"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/cnpc.png"
+          url="http://www.cnpc.com.cn/en/"
+        />
+        <Logo
+          label="Conoco Phillips"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/conocophillips.png"
+          url="http://www.conocophillips.com/"
+        />
+        <Logo
+          label="ENI"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/eni.png"
+          url="https://www.eni.com/"
+        />
+        <Logo
+          label="Mitsui & Co."
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/mitsui.png"
+          url="https://www.mitsui.com/"
+        />
+        <Logo
+          label="Mitsubishi"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/mitsubishi.png"
+          url="http://www.mitsubishicorp.com/"
+        />
+        <Logo
+          label="Pemex"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/pemex.png"
+          url="http://www.pemex.com/en/"
+        />
+        <Logo
+          label="Shell"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/shell.png"
+          url="http://www.shell.com/"
+        />
+        <Logo
+          label="Tethys Petroleum"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/unilever.png"
+          url="http://www.tethyspetroleum.com/"
+        />
+        <Logo
+          label="Unilever"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/tethys.png"
+          url="https://www.unilever.com/"
+        />
       </Logos>
     </Section>
     <Section
