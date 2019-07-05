@@ -1,6 +1,6 @@
 socialMedia:
   links:
-    - { type: 'twitter', path: 'https://twitter.com/' }
-    - { type: 'linkedin', path: 'https://linkedin.com/' }
-    - { type: 'facebook', path: 'https://facebook.com/' }
-    - { type: 'instagram', path: 'https://instagram.com/' }
+    - { type: 'twitter', url: 'https://twitter.com/' }
+    - { type: 'linkedin', url: 'https://linkedin.com/' }
+    - { type: 'facebook', url: 'https://facebook.com/' }
+    - { type: 'instagram', url: 'https://instagram.com/' }

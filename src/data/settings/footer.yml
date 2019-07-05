@@ -6,4 +6,3 @@ footer:
     - { label: 'About Us', path: '/about/' }
     - { label: 'Contact Us', path: '/contact/' }
     - { label: 'News', path: '/news/' }
-    

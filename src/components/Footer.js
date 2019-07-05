@@ -66,7 +66,8 @@ const SocialLink = styled.a`
 
 const Footer = class extends React.Component {
   render() {
-    console.log(this.props.data)
+    const { socialMedia } = this.props
+
     return (
       <FooterWrap className="footer has-background-black has-text-white-ter">
         <Section backgroundColor="#dd2c2c">
@@ -103,19 +104,11 @@ const Footer = class extends React.Component {
             <Row>
               <Col fill>© 2019 ESP Safety. All rights reserved.</Col>
               <Col>
-
-                <SocialLink title="twitter" target="_blank" href="https://twitter.com">
-                  <Icon name="twitter" />
-                </SocialLink>
-                <SocialLink title="linkedin" target="_blank" href="https://linkedin.com">
-                  <Icon name="linkedin" />
-                </SocialLink>
-                <SocialLink title="facebook" target="_blank" href="https://facebook.com">
-                  <Icon name="facebook" />
-                </SocialLink>
-                <SocialLink title="instagram" target="_blank" href="https://instagram.com">
-                  <Icon name="instagram" />
-                </SocialLink>
+                {socialMedia.links.map(s => (
+                  <SocialLink title={s.type} target="_blank" href={s.url}>
+                    <Icon name={s.type} />
+                  </SocialLink>
+                ))}
               </Col>
             </Row>
           </Layout>
@@ -135,7 +128,7 @@ export default ({ ...props }) => (
               socialMedia {
                 links {
                   type
-                  path
+                  url
                 }
               }
               footer {

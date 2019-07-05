@@ -22,6 +22,34 @@ export default ({ children }) => {
               <title>{title}</title>
               <meta name="description" content={description} />
 
+              {`<!--
+
+
+    	  /$$$$$$   /$$$$$$$  $$$$$$$
+    	 /$$___/$$ /$$_____/ /$$__  $$|
+    	| $$$$$$$$|  $$$$$$ | $$  \ $$
+    	| $$_____/ \____  $$| $$  | $$
+    	|  $$$$$$$ /$$$$$$$/| $$$$$$$/
+    	 \_______/|_______/ | $$____/
+                          | $$
+                          |/_/
+                              /$$$$
+          									/ $$  $$         	/$$
+          									| $$ /_/         | $$
+    	  /$$$$$$$  /$$$$$$$ /$$$$$$  /$$$$$$ /$$$$$$   /$$   /$$
+    	 /$$_____/ /$$____$$|_  $$_/ /$$___/$$_  $$_/  | $$  | $$
+    	|  $$$$$$ | $$    $$  | $$  | $$$$$$$$ | $$    | $$  | $$
+    	 \____  $$| $$    $$  | $$  | $$_____/ | $$ /$$| $$  | $$
+    	 /$$$$$$$/|  $$$$$$$  | $$  |  $$$$$$$ |  $$$$/|  $$$$$$$
+    	|_______/  \_______/  |/_/   \_______/  \___/   \____  $$
+                                                      /$$  | $$
+                    							                    | $$$$$$/
+                    							                    \______/
+
+
+      espsafety.com was made with ♥ by @austincondiff.
+              -->`}
+
               <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png" />
               <link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-icon-60x60.png" />
               <link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-icon-72x72.png" />
