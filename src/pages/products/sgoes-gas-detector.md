@@ -39,42 +39,41 @@ overview: >-
   The rugged SGOES design allows it to be used in harsh environments. It will
   operate from -76o F to +185o F (-60oC to +85oC) at relative humidity up to 95%
 applications:
-  - text: Drilling and production platforms
-  - text: 'Shipping tankers, freighters, and other vessels'
-  - text: Fuel loading facilities
-  - text: 'Refineries, bulk terminals, and tank farms'
-  - text: LNG/LPG processing and storage facilities
-  - text: Compressor stations and pipeline facilities
-  - text: 'Petrochemical, paint, and fertilizer plants'
-  - text: Power plants and gas turbine facilities
-  - text: Transportation facilities (airports and subways)
-  - text: Oil and gas fired boilers / furnaces
-  - text: Environmental regulation monitoring
-featuresBenefits:
-  - text: >-
+  - application: Drilling and production platforms
+  - application: 'Shipping tankers, freighters, and other vessels'
+  - application: Fuel loading facilities
+  - application: 'Refineries, bulk terminals, and tank farms'
+  - application: LNG/LPG processing and storage facilities
+  - application: Compressor stations and pipeline facilities
+  - application: 'Petrochemical, paint, and fertilizer plants'
+  - application: Power plants and gas turbine facilities
+  - application: Transportation facilities (airports and subways)
+  - application: Oil and gas fired boilers / furnaces
+  - application: Environmental regulation monitoring
+features:
+  - feature: >-
       High sensitivity to all hydrocarbon gases/vapors for maximum property
       protection and personal safety
-  - text: >-
+  - feature: >-
       Open path optical sensor - no physical contact between sensor and
       environment
-  - text: >-
+  - feature: >-
       IR optical path obstruction monitoring (dust, paint, etc.) provides
       maintenance alerts
-  - text: >-
+  - feature: >-
       Heated optics, secondary heater function helps to prevent condensation
       problems
-  - text: Low power (<4.5W) operation for cost savings
-  - text: ' Versatile indoor/outdoor installation'
-  - text: >-
+  - feature: Low power (<4.5W) operation for cost savings
+  - feature: ' Versatile indoor/outdoor installation'
+  - feature: >-
       Industry standard analog, digital, and relay outputs are used for remote
       alarm and fault indications
-  - text: Resistance to vibration ensures reliability and durability
-  - text: Operates effectively in fog and high humidity
-  - text: Wide operating temperature range provides flexibility and reliability
-  - text: >-
+  - feature: Resistance to vibration ensures reliability and durability
+  - feature: Operates effectively in fog and high humidity
+  - feature: Wide operating temperature range provides flexibility and reliability
+  - feature: >-
       Tri-color status LED on the device is easily viewable for a visual report
       of the device’s operating status
 downloads: []
 specCategories: []
 ---
-
