@@ -173,8 +173,9 @@ const NavBar = class extends React.Component {
   render() {
     const { data, ctxData } = this.props
     const { navHeight, transparent, logoPadding, darkMode } = this.state
-    const navigation = data.allSettingsYaml.edges[0].node.navigation
-    const { links } = navigation
+    const { links } = data
+
+    console.log()
 
     return (
       <NavWrap transparent={transparent} darkMode={darkMode} height={navHeight} role="navigation" aria-label="main-navigation">
@@ -246,6 +247,6 @@ export default ({ ...props }) => (
         }
       }
     `}
-    render={data => <NavBar data={data} {...props} />}
+    render={data => <NavBar data={data.allSettingsYaml.edges.filter(edge => edge.node.navigation)[0].node.navigation} {...props} />}
   />
 )

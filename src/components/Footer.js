@@ -1,15 +1,10 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, graphql, StaticQuery } from 'gatsby'
 import styled from 'styled-components'
 
 import Section from './Section'
-import { Row, Col } from './Layout'
-
-import logo from '../img/logo.svg'
-import facebook from '../img/social/facebook.svg'
-import instagram from '../img/social/instagram.svg'
-import twitter from '../img/social/twitter.svg'
-import vimeo from '../img/social/vimeo.svg'
+import Icon from './Icon'
+import { Layout, Row, Col } from './Layout'
 
 const FooterWrap = styled.footer``
 const CtaFooter = styled.section`
@@ -56,12 +51,22 @@ const MainFooter = styled.section`
 `
 const SubFooter = styled.section`
   background-color: #111111;
+  padding: 32px 0;
 `
 const FooterMenuItems = styled.div``
 const FooterMenuItem = styled.div``
 
+const SocialLink = styled.a`
+  color: #ffffff;
+  padding: 0 12px;
+  &:last-child {
+    padding-right: 0;
+  }
+`
+
 const Footer = class extends React.Component {
   render() {
+    console.log(this.props.data)
     return (
       <FooterWrap className="footer has-background-black has-text-white-ter">
         <Section backgroundColor="#dd2c2c">
@@ -77,7 +82,7 @@ const Footer = class extends React.Component {
             </Col>
           </Row>
         </Section>
-        <MainFooter className="content has-text-centered">
+        <Section backgroundColor="#181818">
           <div>
             <FooterMenuItems className="menu-list">
               <FooterMenuItem>
@@ -92,27 +97,58 @@ const Footer = class extends React.Component {
               </FooterMenuItem>
             </FooterMenuItems>
           </div>
-        </MainFooter>
-        <SubFooter className="content has-text-centered has-background-black has-text-white-ter">
-          <div>© 2019 ESP Safety. All rights reserved.</div>
-          <div>
-            <a title="facebook" href="https://facebook.com">
-              <img src={facebook} alt="Facebook" style={{ width: '1em', height: '1em' }} />
-            </a>
-            <a title="twitter" href="https://twitter.com">
-              <img className="fas fa-lg" src={twitter} alt="Twitter" style={{ width: '1em', height: '1em' }} />
-            </a>
-            <a title="instagram" href="https://instagram.com">
-              <img src={instagram} alt="Instagram" style={{ width: '1em', height: '1em' }} />
-            </a>
-            <a title="vimeo" href="https://vimeo.com">
-              <img src={vimeo} alt="Vimeo" style={{ width: '1em', height: '1em' }} />
-            </a>
-          </div>
+        </Section>
+        <SubFooter>
+          <Layout>
+            <Row>
+              <Col fill>© 2019 ESP Safety. All rights reserved.</Col>
+              <Col>
+
+                <SocialLink title="twitter" target="_blank" href="https://twitter.com">
+                  <Icon name="twitter" />
+                </SocialLink>
+                <SocialLink title="linkedin" target="_blank" href="https://linkedin.com">
+                  <Icon name="linkedin" />
+                </SocialLink>
+                <SocialLink title="facebook" target="_blank" href="https://facebook.com">
+                  <Icon name="facebook" />
+                </SocialLink>
+                <SocialLink title="instagram" target="_blank" href="https://instagram.com">
+                  <Icon name="instagram" />
+                </SocialLink>
+              </Col>
+            </Row>
+          </Layout>
         </SubFooter>
       </FooterWrap>
     )
   }
 }
 
-export default Footer
+export default ({ ...props }) => (
+  <StaticQuery
+    query={graphql`
+      query Footer {
+        allSettingsYaml {
+          edges {
+            node {
+              socialMedia {
+                links {
+                  type
+                  path
+                }
+              }
+              footer {
+                links {
+                  label
+                  path
+                }
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={data => <Footer footer={data.allSettingsYaml.edges.filter(edge => edge.node.footer)[0].node.footer} socialMedia={data.allSettingsYaml.edges.filter(edge => edge.node.socialMedia)[0].node.socialMedia} {...props} />}
+  />
+)

@@ -3,7 +3,7 @@ templateKey: post
 title: Test Post Two
 date: 2017-01-04T15:04:10.000Z
 featuredpost: false
-featuredimage: /img/chemex.jpg
+featuredimage: /images/chemex.jpg
 description: This is a description for test post two.
 tags:
   - one

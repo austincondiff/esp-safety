@@ -2,8 +2,10 @@ backend:
   name: git-gateway
   branch: master
 
-media_folder: static/img
-public_folder: /img
+public_url: https://esp-safety.netlify.com
+logo_url: https://esp-safety.netlify.com/images/logo.svg
+media_folder: static/images
+public_folder: /images
 
 collections:
   - name: "posts"
@@ -132,4 +134,23 @@ collections:
                       { label: "Open In New Window", name: "newWindow", widget: "boolean", required: false }
                     ]}
                   ]}
+                ]}
+      - file: "src/data/settings/social-media.yml"
+        label: "Social Media"
+        name: social-media
+        fields:
+          - label: "Social Media"
+            name: social-media
+            widget: object
+            fields:
+              - { label: "Links", label_singular: "Link", name: "links", widget: "list", fields: [
+                  { label: "Type", name: "type", widget: "select", options: [
+                    { label: "Facebook", value: "facebook" },
+                    { label: "Twitter", value: "twitter" },
+                    { label: "YouTube", value: "youtube" },
+                    { label: "LinkedIn", value: "linkedin" },
+                    { label: "Instagram", value: "instagram" },
+                    { label: "Pinterest", value: "pinterest" }
+                  ]},
+                  { label: "Path", name: "path", widget: string, required: false }
                 ]}

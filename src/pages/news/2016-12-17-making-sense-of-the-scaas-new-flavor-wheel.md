@@ -3,7 +3,7 @@ templateKey: post
 title: Test Post One
 date: 2016-12-17T15:04:10.000Z
 featuredpost: false
-featuredimage: /img/flavor_wheel.jpg
+featuredimage: /images/flavor_wheel.jpg
 description: This is a description for test post one.
 tags:
   - one

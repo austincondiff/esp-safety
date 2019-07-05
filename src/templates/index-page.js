@@ -11,10 +11,10 @@ import News from '../components/News'
 import { Row, Col } from '../components/Layout'
 import ArrowLink from '../components/ArrowLink'
 
-import FlameIcon from '../img/flame.svg'
-import CombustibleGasIcon from '../img/combustible-gas.svg'
-import ToxicGasIcon from '../img/toxic-gas.svg'
-import OxygenIcon from '../img/oxygen.svg'
+import FlameIcon from '../images/flame.svg'
+import CombustibleGasIcon from '../images/combustible-gas.svg'
+import ToxicGasIcon from '../images/toxic-gas.svg'
+import OxygenIcon from '../images/oxygen.svg'
 
 const SectionSupertitle = styled.h3`
   font-size: 16px;
