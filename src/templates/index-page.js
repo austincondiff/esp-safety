@@ -13,6 +13,7 @@ import News from '../components/News'
 import { Layout, Row, Col } from '../components/Layout'
 import ArrowLink from '../components/ArrowLink'
 import Stat from '../components/Stat'
+import { Testimonials, Testimonial } from '../components/Testimonials'
 
 import FlameIcon from '../images/flame.svg'
 import CombustibleGasIcon from '../images/combustible-gas.svg'
@@ -78,13 +79,15 @@ const PageIntroDescription = styled.p`
 `
 const TestimonalTitle = styled.h2`
   text-align: center;
+  margin-bottom: 6vw;
 `
 const TestimonalDescription = styled.p`
   text-align: center;
+  color: ${props => props.theme.color.primary};
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 4px;
 `
-
-const Testimonal = styled.div``
-const Testimonals = styled.div``
 
 export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch, description, intro }) => (
   <div>
@@ -317,17 +320,42 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       </Row>
     </Section>
     <Section>
+      <TestimonalDescription>Customer testimonials</TestimonalDescription>
       <TestimonalTitle>What people are saying about us</TestimonalTitle>
-      <TestimonalDescription>Testimonials coming soon</TestimonalDescription>
-      <Testimonal>
-        <Testimonal
+      <Testimonials>
+        <Testimonial
           quote="In our previous projects we worked extensively with the ESP Safety line of Flame and Gas detectors, and had nothing but good experiences. We have determined that the ESP’s flame detectors significantly outshines the others. "
-          authorName="John S."
-          authorTitle="Industrial Engineer"
+          name="John S."
+          title="Industrial Engineer"
           avatar=""
-          clientLogo=""
+          logo=""
+          company="Pemex"
         />
-      </Testimonal>
+        <Testimonial
+          quote="I have worked with ESP Safety since 2011. We use ESP gas detectors and controllers along with flame detectors on our offshore platforms. They have performed exceptionally well and are highly reliable. Minimum maintenance has been required despite the harsh operating environment. "
+          name="Jane D."
+          title="Industrial Engineer"
+          avatar=""
+          logo=""
+          company="Energy XXL"
+        />
+        <Testimonial
+          quote="Because of recent issues with the alignment and alarms of a different vendor’s gas detector I had to research alternatives to our problem. My first call was to ESP Safety. Within a few days ESP employees appeared at our site and installed the open path gas detector in one of our most difficult locations. Since the installation this detection equipment has worked great. "
+          name="Jack G."
+          title="Industrial Engineer"
+          avatar=""
+          logo=""
+          company="Philips 66"
+        />
+        <Testimonial
+          quote="We have dealt with ESP Safety for the past several months, during which time they have provided an excellent product and support in the areas of long Range Gas Detection. I can confidently recommend ESP Safety as a solid and reliable supplier, and experts in their field. "
+          name="Zak R."
+          title="Industrial Engineer"
+          avatar=""
+          logo=""
+          company="Acme Co."
+        />
+    </Testimonials>
     </Section>
   </div>
 )
