@@ -33,8 +33,9 @@ const Logos = styled.div`
   height: 12vh;
   align-items: center;
 `
-const Logo = styled(Link).attrs(props => ({
-  to: props.url,
+const Logo = styled.a.attrs(props => ({
+  href: props.url,
+  target: '_blank',
   title: props.label
 }))`
   display: block;
@@ -57,7 +58,6 @@ const Logo = styled(Link).attrs(props => ({
     opacity: 1;
   }
 `
-
 const PageIntroTitle = styled.h2`
   font-size: 28px;
   font-weight: 300;
@@ -74,7 +74,6 @@ const PageIntroDescription = styled.p`
   text-align: center;
   line-height: 32px;
 `
-
 const TestimonalTitle = styled.h2`
   text-align: center;
 `
