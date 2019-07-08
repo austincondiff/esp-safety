@@ -16,31 +16,32 @@ const StyledSection = styled.section`
   `}
 `
 const SectionInside = styled(Layout)`
-  padding-top: 15%;
-  padding-bottom: 15%;
-  ${props => props.height && `height: ${props.height};`};
-  ${props =>
-    props.header &&
-    `
-    margin-top: 104px;
+  ${({noPaddingTop, noPaddingBottom, height}) => `
+    ${!noPaddingTop && `padding-top: 12%;`}
+    ${!noPaddingBottom && `padding-bottom: 12%;`}
+    ${height && `
+      height: ${height};
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    `};
+    ${breakpoints.sm} {
+      ${!noPaddingTop && `padding-top: 11%;`}
+      ${!noPaddingBottom && `padding-bottom: 11%;`}
+    }
+    ${breakpoints.md} {
+      ${!noPaddingTop && `padding-top: 10%;`}
+      ${!noPaddingBottom && `padding-bottom: 10%;`}
+    }
+    ${breakpoints.lg} {
+      ${!noPaddingTop && `padding-top: 9%;`}
+      ${!noPaddingBottom && `padding-bottom: 9%;`}
+    }
+    ${breakpoints.xl} {
+      ${!noPaddingTop && `padding-top: 8%;`}
+      ${!noPaddingBottom && `padding-bottom: 8%;`}
+    }
   `}
-
-  ${breakpoints.sm} {
-    padding-top: 12.5%;
-    padding-bottom: 12.5%;
-  }
-  ${breakpoints.md} {
-    padding-top: 10%;
-    padding-bottom: 10%;
-  }
-  ${breakpoints.lg} {
-    padding-top: 7.5%;
-    padding-bottom: 7.5%;
-  }
-  ${breakpoints.xl} {
-    padding-top: 5%;
-    padding-bottom: 5%;
-  }
 `
 const ParallaxBackgroundWrap = styled.div`
   position: absolute;
@@ -56,7 +57,7 @@ const ParallaxBackground = styled.div`
   left: ${props => (props.imagePosition === 'left' ? `0%` : props.imagePosition === 'right' ? `100%` : '50%')};
   width: calc(60% + 1px);
   min-width: 50%;
-  height: 50vh;
+  height: 66.66vh;
   transform: translate3d(-50%, -50%, -2px) scale(3.3333);
   display: flex;
   justify-content: center;
@@ -112,7 +113,7 @@ const BackgroundColorWrap = styled.div`
       bottom: 0;
   `}
 
-  background: ${props => (props.backgroundColor ? props.backgroundColor : '#FFFFFF')};
+  background: ${props => (props.backgroundColor ? props.backgroundColor : 'transparent')};
 `
 const ContentWrap = styled.div`
   position: relative;
@@ -125,6 +126,11 @@ const ContentWrap = styled.div`
     flex-direction: column;
     align-items: center;
     text-align: center;
+  `}
+  ${props =>
+    props.header &&
+    `
+    margin-top: 104px;
   `}
 `
 
@@ -153,6 +159,8 @@ const Section = ({
   children,
   fullWidth,
   noPadding,
+  noPaddingTop,
+  noPaddingBottom,
   backgroundColor,
   backgroundVideo,
   parallax,
@@ -190,8 +198,8 @@ const Section = ({
             imagePosition={imagePosition}
             parallaxContent={parallaxContent}
           />
-          <SectionInside header={header} fullWidth={fullWidth} height={height}>
-            <ContentWrap contentPosition={contentPosition} imagePosition={imagePosition}>
+        <SectionInside noPaddingTop={noPaddingTop} noPaddingBottom={noPaddingBottom} fullWidth={fullWidth} height={height}>
+            <ContentWrap header={header} contentPosition={contentPosition} imagePosition={imagePosition}>
               {children}
             </ContentWrap>
           </SectionInside>
@@ -209,7 +217,7 @@ const Section = ({
           imagePosition={imagePosition}
           parallaxContent={parallaxContent}
         />
-        <SectionInside header={header} fullWidth={fullWidth} height={height}>
+      <SectionInside noPaddingTop={noPaddingTop} noPaddingBottom={noPaddingBottom} header={header} fullWidth={fullWidth} height={height}>
           <ContentWrap contentPosition={contentPosition} imagePosition={imagePosition}>
             {children}
           </ContentWrap>

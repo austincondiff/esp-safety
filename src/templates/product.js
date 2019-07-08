@@ -70,6 +70,9 @@ const SpecificationCol = styled(Col)`
   padding-top: 16px;
   padding-bottom: 16px;
 `
+const SpecificationsTitle = styled.h2`
+  color: #ffffff;
+`
 
 export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
   console.log(data)
@@ -158,7 +161,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
       </Section>
       <SpecificationsSection>
         <Layout>
-          <h2>Specifications</h2>
+          <SpecificationsTitle>Specifications</SpecificationsTitle>
           <SpecificationCategoryRow>
             <Col lg={4}>
               <SpecificationCategoryTitle>Category Title</SpecificationCategoryTitle>

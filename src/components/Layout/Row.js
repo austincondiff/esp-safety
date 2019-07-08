@@ -20,62 +20,62 @@ const Row = styled.div`
       padding-left: ${gutter || '3%'};
     }
 
-    ${reverse === 'xs' && `flex-direction: row-reverse;`}
-    ${start === 'xs' && `justify-content: flex-start; text-align: start;`}
-    ${center === 'xs' && `justify-content: center; text-align: center;`}
-    ${end === 'xs' && `justify-content: flex-end; text-align: end;`}
-    ${top === 'xs' && `align-items: flex-start;`}
-    ${middle === 'xs' && `align-items: center;`}
-    ${bottom === 'xs' && `align-items: flex-end;`}
-    ${around === 'xs' && `justify-content: space-around;`}
-    ${between === 'xs' && `justify-content: space-between;`}
+    ${reverse === true || reverse === 'xs' ? `flex-direction: row-reverse;` : ``}
+    ${start === true || start === 'xs' ? `justify-content: flex-start; text-align: start;` : ``}
+    ${center === true || center === 'xs' ? `justify-content: center; text-align: center;` : ``}
+    ${end === true || end === 'xs' ? `justify-content: flex-end; text-align: end;` : ``}
+    ${top === true || top === 'xs' ? `align-items: flex-start;` : ``}
+    ${middle === true || middle === 'xs' ? `align-items: center;` : ``}
+    ${bottom === true || bottom === 'xs' ? `align-items: flex-end;` : ``}
+    ${around === true || around === 'xs' ? `justify-content: space-around;` : ``}
+    ${between === true || between === 'xs' ? `justify-content: space-between;` : ``}
 
     ${breakpoints.sm} {
-      ${reverse === 'sm' && `flex-direction: row-reverse;`}
-      ${start === 'sm' && `justify-content: flex-start; text-align: start;`}
-      ${center === 'sm' && `justify-content: center; text-align: center;`}
-      ${end === 'sm' && `justify-content: flex-end; text-align: end;`}
-      ${top === 'sm' && `align-items: flex-start;`}
-      ${middle === 'sm' && `align-items: center;`}
-      ${bottom === 'sm' && `align-items: flex-end;`}
-      ${around === 'sm' && `justify-content: space-around;`}
-      ${between === 'sm' && `justify-content: space-between;`}
+      ${reverse === 'sm' ? `flex-direction: row-reverse;` : ``}
+      ${start === 'sm' ? `justify-content: flex-start; text-align: start;` : ``}
+      ${center === 'sm' ? `justify-content: center; text-align: center;` : ``}
+      ${end === 'sm' ? `justify-content: flex-end; text-align: end;` : ``}
+      ${top === 'sm' ? `align-items: flex-start;` : ``}
+      ${middle === 'sm' ? `align-items: center;` : ``}
+      ${bottom === 'sm' ? `align-items: flex-end;` : ``}
+      ${around === 'sm' ? `justify-content: space-around;` : ``}
+      ${between === 'sm' ? `justify-content: space-between;` : ``}
     }
 
     ${breakpoints.md} {
-      ${reverse === 'md' && `flex-direction: row-reverse;`}
-      ${start === 'md' && `justify-content: flex-start; text-align: start;`}
-      ${center === 'md' && `justify-content: center; text-align: center;`}
-      ${end === 'md' && `justify-content: flex-end; text-align: end;`}
-      ${top === 'md' && `align-items: flex-start;`}
-      ${middle === 'md' && `align-items: center;`}
-      ${bottom === 'md' && `align-items: flex-end;`}
-      ${around === 'md' && `justify-content: space-around;`}
-      ${between === 'md' && `justify-content: space-between;`}
+      ${reverse === 'md' ? `flex-direction: row-reverse;` : ``}
+      ${start === 'md' ? `justify-content: flex-start; text-align: start;` : ``}
+      ${center === 'md' ? `justify-content: center; text-align: center;` : ``}
+      ${end === 'md' ? `justify-content: flex-end; text-align: end;` : ``}
+      ${top === 'md' ? `align-items: flex-start;` : ``}
+      ${middle === 'md' ? `align-items: center;` : ``}
+      ${bottom === 'md' ? `align-items: flex-end;` : ``}
+      ${around === 'md' ? `justify-content: space-around;` : ``}
+      ${between === 'md' ? `justify-content: space-between;` : ``}
     }
 
     ${breakpoints.lg} {
-      ${reverse === 'lg' && `flex-direction: row-reverse;`}
-      ${start === 'lg' && `justify-content: flex-start; text-align: start;`}
-      ${center === 'lg' && `justify-content: center; text-align: center;`}
-      ${end === 'lg' && `justify-content: flex-end; text-align: end;`}
-      ${top === 'lg' && `align-items: flex-start;`}
-      ${middle === 'lg' && `align-items: center;`}
-      ${bottom === 'lg' && `align-items: flex-end;`}
-      ${around === 'lg' && `justify-content: space-around;`}
-      ${between === 'lg' && `justify-content: space-between;`}
+      ${reverse === 'lg' ? `flex-direction: row-reverse;` : ``}
+      ${start === 'lg' ? `justify-content: flex-start; text-align: start;` : ``}
+      ${center === 'lg' ? `justify-content: center; text-align: center;` : ``}
+      ${end === 'lg' ? `justify-content: flex-end; text-align: end;` : ``}
+      ${top === 'lg' ? `align-items: flex-start;` : ``}
+      ${middle === 'lg' ? `align-items: center;` : ``}
+      ${bottom === 'lg' ? `align-items: flex-end;` : ``}
+      ${around === 'lg' ? `justify-content: space-around;` : ``}
+      ${between === 'lg' ? `justify-content: space-between;` : ``}
     }
 
     ${breakpoints.xl} {
-      ${reverse === 'xl' && `flex-direction: row-reverse;`}
-      ${start === 'xl' && `justify-content: flex-start; text-align: start;`}
-      ${center === 'xl' && `justify-content: center; text-align: center;`}
-      ${end === 'xl' && `justify-content: flex-end; text-align: end;`}
-      ${top === 'xl' && `align-items: flex-start;`}
-      ${middle === 'xl' && `align-items: center;`}
-      ${bottom === 'xl' && `align-items: flex-end;`}
-      ${around === 'xl' && `justify-content: space-around;`}
-      ${between === 'xl' && `justify-content: space-between;`}
+      ${reverse === 'xl' ? `flex-direction: row-reverse;` : ``}
+      ${start === 'xl' ? `justify-content: flex-start; text-align: start;` : ``}
+      ${center === 'xl' ? `justify-content: center; text-align: center;` : ``}
+      ${end === 'xl' ? `justify-content: flex-end; text-align: end;` : ``}
+      ${top === 'xl' ? `align-items: flex-start;` : ``}
+      ${middle === 'xl' ? `align-items: center;` : ``}
+      ${bottom === 'xl' ? `align-items: flex-end;` : ``}
+      ${around === 'xl' ? `justify-content: space-around;` : ``}
+      ${between === 'xl' ? `justify-content: space-between;` : ``}
     }
   `}
 `

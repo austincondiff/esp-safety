@@ -3,8 +3,13 @@ import { Link, graphql, StaticQuery } from 'gatsby'
 import styled from 'styled-components'
 
 import Section from './Section'
+import Logo from './Logo'
 import Icon from './Icon'
+import { Button } from './Button'
 import { Layout, Row, Col } from './Layout'
+
+import FooterCap from '../images/footer-cap.svg'
+
 
 const FooterWrap = styled.footer``
 const CtaFooter = styled.section`
@@ -33,6 +38,7 @@ const CtaButton = styled.div`
   display: inline-block;
   border-radius: 100px;
   cursor: pointer;
+  white-space: nowrap;
   box-shadow: 0 0 0 rgba(0, 0, 0, 0.75);
   transition: 0.45s cubic-bezier(0.25, 1, 0.33, 1);
   &:hover {
@@ -48,14 +54,49 @@ const CtaButton = styled.div`
 `
 const MainFooter = styled.section`
   background-color: #181818;
+  padding: 128px 0;
+  position: relative;
 `
 const SubFooter = styled.section`
   background-color: #111111;
   padding: 32px 0;
 `
-const FooterMenuItems = styled.div``
-const FooterMenuItem = styled.div``
-
+const FooterSections = styled(Row)``
+const FooterSection = styled(Col).attrs({ fill: true })``
+const FooterSectionTitle = styled.h4`
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 24px;
+`
+const FooterSectionItem = styled(Link)`
+  color: #CCCCCC;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  display: block;
+  padding: 8px 0;
+  transition: .25s;
+  &:hover {
+    color: #FFFFFF;
+  }
+  &:last-child {
+    padding-bottom: 0;
+  }
+`
+const FooterSectionAddress = styled.div`
+  color: #CCCCCC;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  display: block;
+  padding: 8px 0;
+  &:last-child {
+    padding-bottom: 0;
+  }
+`
 const SocialLink = styled.a`
   color: #ffffff;
   padding: 0 12px;
@@ -63,13 +104,28 @@ const SocialLink = styled.a`
     padding-right: 0;
   }
 `
+const SocialLinks = styled.div`
+  white-space: nowrap;
+`
+const StyledFooterCap = styled(FooterCap)`
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+`
+const LogoWrap = styled.div`
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(64px);
+`
 
 const Footer = class extends React.Component {
   render() {
     const { socialMedia } = this.props
 
     return (
-      <FooterWrap className="footer has-background-black has-text-white-ter">
+      <FooterWrap>
         <Section backgroundColor="#dd2c2c">
           <Row>
             <Col fill>
@@ -78,37 +134,89 @@ const Footer = class extends React.Component {
             </Col>
             <Col>
               <CtaActions>
-                <CtaButton>Find a rep</CtaButton>
+                <Button overlay size="xl">Find a rep</Button>
               </CtaActions>
             </Col>
           </Row>
         </Section>
-        <Section backgroundColor="#181818">
-          <div>
-            <FooterMenuItems className="menu-list">
-              <FooterMenuItem>
-                <Link className="navbar-item" to="/blog">
-                  Latest Stories
-                </Link>
-              </FooterMenuItem>
-              <FooterMenuItem>
-                <Link className="navbar-item" to="/contact">
-                  Contact
-                </Link>
-              </FooterMenuItem>
-            </FooterMenuItems>
-          </div>
-        </Section>
+        <MainFooter backgroundColor="#181818">
+          <StyledFooterCap />
+          <LogoWrap>
+            <Logo stacked light width="171px" />
+          </LogoWrap>
+          <Layout>
+            <FooterSections>
+              <FooterSection>
+                <FooterSectionTitle>Locations</FooterSectionTitle>
+                <FooterSectionAddress>
+                  4001 W. Sam Houston Pkwy N. <br />
+                  Suite #150 <br />
+                  Houston, TX. 77043 <br />
+                  +1.713.999.1050
+                </FooterSectionAddress>
+                <FooterSectionAddress>
+                  555 North First St.<br />
+                  San Jose, CA. 95112 <br />
+                  +1.408.886.9746
+                </FooterSectionAddress>
+              </FooterSection>
+              <FooterSection>
+                <FooterSectionTitle>Contact</FooterSectionTitle>
+                <FooterSectionItem to="/contact">
+                  Contact ESP Safety
+                </FooterSectionItem>
+                <FooterSectionItem to="/contact">
+                  Business Inquiries
+                </FooterSectionItem>
+              </FooterSection>
+              <FooterSection>
+                <FooterSectionTitle>About</FooterSectionTitle>
+                <FooterSectionItem to="/about">
+                  About ESP Safety
+                </FooterSectionItem>
+                <FooterSectionItem to="/careers">
+                  Work For Us
+                </FooterSectionItem>
+              </FooterSection>
+              <FooterSection>
+                <FooterSectionTitle>Products</FooterSectionTitle>
+                <FooterSectionItem to="/products">
+                  All Products
+                </FooterSectionItem>
+                <FooterSectionItem to="/contact">
+                  Fire Detectors
+                </FooterSectionItem>
+                <FooterSectionItem to="/contact">
+                  Combostible Gas Detectors
+                </FooterSectionItem>
+                <FooterSectionItem to="/contact">
+                  Toxic Gas Detectors
+                </FooterSectionItem>
+                <FooterSectionItem to="/contact">
+                  Oxygen Detectors
+                </FooterSectionItem>
+              </FooterSection>
+              <FooterSection>
+                <FooterSectionTitle>Certifications</FooterSectionTitle>
+                <FooterSectionItem to="/">
+                  Certification images coming soon
+                </FooterSectionItem>
+              </FooterSection>
+            </FooterSections>
+          </Layout>
+        </MainFooter>
         <SubFooter>
           <Layout>
             <Row>
               <Col fill>© 2019 ESP Safety. All rights reserved.</Col>
               <Col>
-                {socialMedia.links.map(s => (
-                  <SocialLink title={s.type} target="_blank" href={s.url}>
-                    <Icon name={s.type} />
-                  </SocialLink>
-                ))}
+                <SocialLinks>
+                  {socialMedia.links.map(s => (
+                    <SocialLink title={s.type} target="_blank" href={s.url}>
+                      <Icon name={s.type} />
+                    </SocialLink>
+                  ))}
+                </SocialLinks>
               </Col>
             </Row>
           </Layout>

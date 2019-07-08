@@ -8,8 +8,9 @@ import Section from '../components/Section'
 import IconBox from '../components/IconBox'
 import Features from '../components/Features'
 import News from '../components/News'
-import { Row, Col } from '../components/Layout'
+import { Layout, Row, Col } from '../components/Layout'
 import ArrowLink from '../components/ArrowLink'
+import Stat from '../components/Stat'
 
 import FlameIcon from '../images/flame.svg'
 import CombustibleGasIcon from '../images/combustible-gas.svg'
@@ -28,6 +29,9 @@ const Logos = styled.div`
   flex: 0 1 auto;
   flex-direction: row;
   flex-wrap: wrap;
+  margin: 0 -5%;
+  height: 12vh;
+  align-items: center;
 `
 const Logo = styled(Link).attrs(props => ({
   to: props.url,
@@ -43,9 +47,10 @@ const Logo = styled(Link).attrs(props => ({
   background-position: center;
   background-repeat: no-repeat;
   width: 16.666666666%;
-  padding-top: 16.666666666%;
-  filter: grayscale(1) brightness(0.75) contrast(1.25);
-  opacity: 0.75;
+  height: 6.667vw;
+  min-height: 7vh;
+  max-height: 9vh;
+  filter: grayscale(1) brightness(0.8) contrast(2.5);
   transition: 0.25s;
   &:hover {
     filter: grayscale(0) brightness(1) contrast(1);
@@ -53,9 +58,34 @@ const Logo = styled(Link).attrs(props => ({
   }
 `
 
+const PageIntroTitle = styled.h2`
+  font-size: 28px;
+  font-weight: 300;
+  color: #dd2c2c;
+  letter-spacing: -0.5px;
+  text-align: center;
+  line-height: 40px;
+`
+const PageIntroDescription = styled.p`
+  font-size: 18px;
+  font-weight: 300;
+  color: #000000;
+  letter-spacing: -0.33px;
+  text-align: center;
+  line-height: 32px;
+`
+
+const TestimonalTitle = styled.h2`
+  text-align: center;
+`
+const TestimonalDescription = styled.p`
+  text-align: center;
+`
+
 export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch, description, intro }) => (
   <div>
     <Hero
+      height="88vh"
       title="Technology of the future, protection for today"
       subtitle="We keep you safe with our industry leading safety products specializing in gas and flame detectors"
       videoSrc={[
@@ -68,6 +98,87 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       secondaryButtonLabel={'Learn About Us'}
       showArrow
     />
+    <Layout>
+      <Logos>
+        <Logo
+          label="Chevron"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/chevron.png"
+          url="https://www.chevron.com/"
+        />
+        <Logo
+          label="Shell"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/shell.png"
+          url="http://www.shell.com/"
+        />
+        <Logo
+          label="British Petroleum"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/bp.png"
+          url="https://www.bp.com/"
+        />
+        <Logo
+          label="Mitsubishi"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/mitsubishi.png"
+          url="http://www.mitsubishicorp.com/"
+        />
+        <Logo
+          label="Pemex"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/pemex.png"
+          url="http://www.pemex.com/en/"
+        />
+        <Logo
+          label="CNPC"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/cnpc.png"
+          url="http://www.cnpc.com.cn/en/"
+        />
+        {/*
+        <Logo
+          label="Caspian Pipeline Consortium"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/caspianpipeline.png"
+          url="http://www.cpc.ru/EN/"
+        />
+        <Logo
+          label="Conoco Phillips"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/conocophillips.png"
+          url="http://www.conocophillips.com/"
+        />
+        <Logo
+          label="ENI"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/eni.png"
+          url="https://www.eni.com/"
+        />
+        <Logo
+          label="Mitsui & Co."
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/mitsui.png"
+          url="https://www.mitsui.com/"
+        />
+        <Logo
+          label="Tethys Petroleum"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/unilever.png"
+          url="http://www.tethyspetroleum.com/"
+        />
+        <Logo
+          label="Unilever"
+          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/tethys.png"
+          url="https://www.unilever.com/"
+        />
+        */}
+      </Logos>
+    </Layout>
+    <Section noPaddingBottom>
+      <Row>
+        <Col xs={10} xsOffset={1}>
+          <PageIntroTitle>
+            We are a team of experts who specialize in the design of fixed toxic and combustible gas detection, flame detection,
+            and complete turn-key safety systems.
+          </PageIntroTitle>
+          <PageIntroDescription>
+            Our state-of-the-art manufacturing facility allows us to apply strict quality standards and intelligent engineering
+            to ensure that all of our products meet the demands of the toughest industrial environments and applications. The
+            result is a line of world class products all certified to the strictest global standards for safety and performance.
+          </PageIntroDescription>
+        </Col>
+      </Row>
+    </Section>
     <Section>
       <Row>
         <Col sm={6} md={3}>
@@ -104,73 +215,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
         </Col>
       </Row>
     </Section>
-    <Section backgroundColor="#F6F6F6">
-      <h2 style={{ color: '#DD2C2C', textAlign: 'center' }}>Who we serve</h2>
-      <Logos>
-        <Logo
-          label="British Petroleum"
-          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/bp.png"
-          url="https://www.bp.com/"
-        />
-        <Logo
-          label="Caspian Pipeline Consortium"
-          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/caspianpipeline.png"
-          url="http://www.cpc.ru/EN/"
-        />
-        <Logo
-          label="Chevron"
-          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/chevron.png"
-          url="https://www.chevron.com/"
-        />
-        <Logo
-          label="CNPC"
-          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/cnpc.png"
-          url="http://www.cnpc.com.cn/en/"
-        />
-        <Logo
-          label="Conoco Phillips"
-          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/conocophillips.png"
-          url="http://www.conocophillips.com/"
-        />
-        <Logo
-          label="ENI"
-          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/eni.png"
-          url="https://www.eni.com/"
-        />
-        <Logo
-          label="Mitsui & Co."
-          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/mitsui.png"
-          url="https://www.mitsui.com/"
-        />
-        <Logo
-          label="Mitsubishi"
-          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/mitsubishi.png"
-          url="http://www.mitsubishicorp.com/"
-        />
-        <Logo
-          label="Pemex"
-          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/pemex.png"
-          url="http://www.pemex.com/en/"
-        />
-        <Logo
-          label="Shell"
-          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/shell.png"
-          url="http://www.shell.com/"
-        />
-        <Logo
-          label="Tethys Petroleum"
-          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/unilever.png"
-          url="http://www.tethyspetroleum.com/"
-        />
-        <Logo
-          label="Unilever"
-          image="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/tethys.png"
-          url="https://www.unilever.com/"
-        />
-      </Logos>
-    </Section>
     <Section
-      backgroundColor="#FFFFFF"
       contentPosition="right"
       foregroundImageSrc="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/product-001.png"
       foregroundImageWidth="45%"
@@ -187,7 +232,6 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       </p>
     </Section>
     <Section
-      backgroundColor="#F6F6F6"
       contentPosition="left"
       foregroundImageSrc="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2019/06/IR3-IRUVAL-IRUVSS.png"
       foregroundImageWidth="50%"
@@ -203,8 +247,6 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       </p>
     </Section>
     <Section
-      backgroundColor="#000000"
-      dark
       contentPosition="right"
       foregroundImageSrc="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2016/07/SSS-903_2013C.png"
       foregroundImageWidth="20%"
@@ -254,37 +296,25 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
         </Col>
       </Row>
     </Section>
-    <Section
-      imageSrc="https://images.unsplash.com/photo-1561717507-080fac4a8cca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80"
-      backgroundColor="black"
-      dark
-      parallax
-      imagePosition="right"
-      follWidth
-    >
-      <h2 style={{ color: '#DD2C2C' }}>Straightforward, user-friendly design</h2>
-      <p>
-        ESP Safety detectors are designed to ease the complications of installations, calibrations and maintenance. By offering
-        standard multiple signal outputs, the detectors provide the compatibility to work with different fire and gas systems.
-        The different methods available to perform calibrations give you the flexibility to choose the best option for your
-        needs. With minimum maintenance required, your detector’s service life is maximized.
-      </p>
+    <Section backgroundColor="black" dark>
+      <Row between>
+        <Col>
+          <Stat number={15} unit="M" label="Products sold" />
+        </Col>
+        <Col>
+          <Stat number={75} unit="k" label="Satisfied customers" />
+        </Col>
+        <Col>
+          <Stat number={100} unit="%" label="Safety record" />
+        </Col>
+        <Col>
+          <Stat number={62} unit="k" label="Accidents prevented" />
+        </Col>
+      </Row>
     </Section>
-    <Section
-      imageSrc="https://images.unsplash.com/photo-1561716749-2ab5a223957c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80"
-      backgroundColor="black"
-      dark
-      parallax
-      imagePosition="left"
-      follWidth
-    >
-      <h2>Straightforward, user-friendly design</h2>
-      <p>
-        ESP Safety detectors are designed to ease the complications of installations, calibrations and maintenance. By offering
-        standard multiple signal outputs, the detectors provide the compatibility to work with different fire and gas systems.
-        The different methods available to perform calibrations give you the flexibility to choose the best option for your
-        needs. With minimum maintenance required, your detector’s service life is maximized.
-      </p>
+    <Section>
+      <TestimonalTitle>What people are saying about us</TestimonalTitle>
+      <TestimonalDescription>Testimonials coming soon</TestimonalDescription>
     </Section>
   </div>
 )

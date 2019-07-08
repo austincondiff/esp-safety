@@ -6,18 +6,23 @@ import Section from './Section'
 import { Row, Col } from './Layout'
 import { Button, ButtonGroup } from './Button'
 
+const Header = styled.header`
+  position: relative;
+`
 const PageTitle = styled.h1`
   margin: 0;
-  font-size: 42px;
+  font-size: 48px;
+  font-weight: 300;
   line-height: 44px;
   letter-spacing: -0.5px;
   -webkit-font-smoothing: antialiased;
 `
+
 const PageSubtitle = styled.h3`
   margin: 40px 0 0 0;
-  color: #dd2c2c;
-  font-size: 20px;
-  font-weight: 700;
+  color: #cccccc;
+  font-size: 24px;
+  font-weight: 500;
   line-height: 28px;
 `
 
@@ -37,26 +42,22 @@ const Actions = styled.div`
   margin: 64px 0;
 `
 const Arrow = styled.div`
-  width: 64px;
-  height: 64px;
-  margin: 0 auto;
-  position: relative;
+  position: absolute;
+  bottom: 6vw;
+  left: calc(50% - 8px);
   animation: ${arrowBounce} 2s infinite;
   &:after {
     content: '';
     display: block;
     width: 16px;
     height: 16px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
     transform: rotate(45deg);
     border-right: 1.5px solid white;
     border-bottom: 1.5px solid white;
   }
 `
 
-const Header = ({
+const Hero = ({
   title,
   subtitle,
   videoSrc,
@@ -65,44 +66,45 @@ const Header = ({
   secondaryButtonLink,
   secondaryButtonLabel,
   primaryButtonLink,
-  primaryButtonLabel
+  primaryButtonLabel,
+  ...props
 }) => (
-  <Section
-    videoSrc={videoSrc}
-    imageSrc={imageSrc}
-    backgroundColor="rgba(0,0,0,0.75)"
-    dark
-    parallax
-    parallaxContent
-    header
-    contentPosition="center"
-  >
-    <Row>
-      <Col xs={8} xsOffset={2}>
-        <PageTitle>{title}</PageTitle>
-        <PageSubtitle>{subtitle}</PageSubtitle>
-        <Actions>
-          <ButtonGroup>
-            {secondaryButtonLink && secondaryButtonLabel && (
-              <Link to={secondaryButtonLink}>
-                <Button light iconOnHover iconPosition="right">
-                  {secondaryButtonLabel}
-                </Button>
-              </Link>
-            )}
-            {primaryButtonLink && primaryButtonLabel && (
-              <Link to={primaryButtonLink}>
-                <Button primary iconOnHover iconPosition="right">
-                  {primaryButtonLabel}
-                </Button>
-              </Link>
-            )}
-          </ButtonGroup>
-        </Actions>
-        <Arrow />
-      </Col>
-    </Row>
+  <Header>
+    <Section
+      {...props}
+      videoSrc={videoSrc}
+      imageSrc={imageSrc}
+      backgroundColor="rgba(0,0,0,0.75)"
+      dark
+      parallax
+      parallaxContent
+      header
+      contentPosition="center"
+    >
+      <PageTitle>{title}</PageTitle>
+      <PageSubtitle>{subtitle}</PageSubtitle>
+      <Actions>
+        <ButtonGroup vertical>
+          {primaryButtonLink && primaryButtonLabel && (
+            <Link to={primaryButtonLink}>
+              <Button size="lg" primary iconOnHover iconPosition="right">
+                {primaryButtonLabel}
+              </Button>
+            </Link>
+          )}
+          {secondaryButtonLink && secondaryButtonLabel && (
+            <Link to={secondaryButtonLink}>
+              <Button size="lg" transparent light iconOnHover iconPosition="right">
+                {secondaryButtonLabel}
+              </Button>
+            </Link>
+          )}
+        </ButtonGroup>
+      </Actions>
+
   </Section>
+  <Arrow />
+</Header>
 )
 
-export default Header
+export default Hero
