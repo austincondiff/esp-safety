@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link, graphql } from 'gatsby'
 
+import theme from '../lib/theme'
+
 import Hero from '../components/Hero'
 import Section from '../components/Section'
 import IconBox from '../components/IconBox'
@@ -61,7 +63,7 @@ const Logo = styled.a.attrs(props => ({
 const PageIntroTitle = styled.h2`
   font-size: 28px;
   font-weight: 300;
-  color: #dd2c2c;
+  color: ${props => props.theme.color.primary};
   letter-spacing: -0.5px;
   text-align: center;
   line-height: 40px;
@@ -80,6 +82,9 @@ const TestimonalTitle = styled.h2`
 const TestimonalDescription = styled.p`
   text-align: center;
 `
+
+const Testimonal = styled.div``
+const Testimonals = styled.div``
 
 export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch, description, intro }) => (
   <div>
@@ -222,7 +227,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       parallax
     >
       <SectionSupertitle>Performance when it counts</SectionSupertitle>
-      <h2 style={{ color: '#DD2C2C' }}>Our detectors work as hard as you do</h2>
+      <h2 style={{ color: theme.color.primary }}>Our detectors work as hard as you do</h2>
       <p>
         The proven design of ESP Safety’s detectors guarantees the precise response when a real event occurs in your critical
         area under normal or severe environmental conditions. The engineered smart-design of the flame and gas detectors
@@ -238,7 +243,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       parallax
     >
       <SectionSupertitle>Reliability is protection</SectionSupertitle>
-      <h2 style={{ color: '#DD2C2C' }}>Tried, tested, and certified</h2>
+      <h2 style={{ color: theme.color.primary }}>Tried, tested, and certified</h2>
       <p>
         ESP Safety explosion-proof detectors are certified to meet the most demanding performance standards in the industry,
         including FM, ATEX, IECx, GOST, and ABS. The detectors are widely used in hazardous locations that demand high
@@ -253,7 +258,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       parallax
     >
       <SectionSupertitle>Convenient and easy to use</SectionSupertitle>
-      <h2 style={{ color: '#DD2C2C' }}>Straightforward, user-friendly design</h2>
+      <h2 style={{ color: theme.color.primary }}>Straightforward, user-friendly design</h2>
       <p>
         ESP Safety detectors are designed to ease the complications of installations, calibrations and maintenance. By offering
         standard multiple signal outputs, the detectors provide the compatibility to work with different fire and gas systems.
@@ -269,7 +274,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
     >
       <Row>
         <Col xs={6}>
-          <h2 style={{ color: '#DD2C2C' }}>Meeting your expectations with premium service</h2>
+          <h2 style={{ color: theme.color.primary }}>Meeting your expectations with premium service</h2>
         </Col>
       </Row>
       <Row>
@@ -314,6 +319,15 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
     <Section>
       <TestimonalTitle>What people are saying about us</TestimonalTitle>
       <TestimonalDescription>Testimonials coming soon</TestimonalDescription>
+      <Testimonal>
+        <Testimonal
+          quote="In our previous projects we worked extensively with the ESP Safety line of Flame and Gas detectors, and had nothing but good experiences. We have determined that the ESP’s flame detectors significantly outshines the others. "
+          authorName="John S."
+          authorTitle="Industrial Engineer"
+          avatar=""
+          clientLogo=""
+        />
+      </Testimonal>
     </Section>
   </div>
 )

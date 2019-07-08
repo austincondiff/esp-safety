@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import breakpoints from './breakpoints'
+import mediaQueries from './mediaQueries'
 import { ColumnSizeType, ViewportSizeType } from '../../lib/types'
 
 const Col = styled.div`
@@ -38,7 +38,7 @@ const Col = styled.div`
     ${first === 'xs' ? `order: -1;` : ``}
     ${last === 'xs' ? `order: 1;` : ``}
 
-    ${breakpoints.sm} {
+    ${mediaQueries.sm} {
       ${sm === 1 ? `flex-basis: 8.33333333%; max-width: 8.33333333%;` : ``}
       ${sm === 2 ? `flex-basis: 16.66666667%; max-width: 16.66666667%;` : ``}
       ${sm === 3 ? `flex-basis: 25%; max-width: 25%;` : ``}
@@ -67,7 +67,7 @@ const Col = styled.div`
       ${last === 'sm' ? `order: 1;` : ``}
     }
 
-    ${breakpoints.md} {
+    ${mediaQueries.md} {
       ${md === 1 ? `flex-basis: 8.33333333%; max-width: 8.33333333%;` : ``}
       ${md === 2 ? `flex-basis: 16.66666667%; max-width: 16.66666667%;` : ``}
       ${md === 3 ? `flex-basis: 25%; max-width: 25%;` : ``}
@@ -96,7 +96,7 @@ const Col = styled.div`
       ${last === 'md' ? `order: 1;` : ``}
     }
 
-    ${breakpoints.lg} {
+    ${mediaQueries.lg} {
       ${lg === 1 ? `flex-basis: 8.33333333%; max-width: 8.33333333%;` : ``}
       ${lg === 2 ? `flex-basis: 16.66666667%; max-width: 16.66666667%;` : ``}
       ${lg === 3 ? `flex-basis: 25%; max-width: 25%;` : ``}
@@ -125,7 +125,7 @@ const Col = styled.div`
       ${last === 'lg' ? `order: 1;` : ``}
     }
 
-    ${breakpoints.xl} {
+    ${mediaQueries.xl} {
       ${xl === 1 ? `flex-basis: 8.33333333%; max-width: 8.33333333%;` : ``}
       ${xl === 2 ? `flex-basis: 16.66666667%; max-width: 16.66666667%;` : ``}
       ${xl === 3 ? `flex-basis: 25%; max-width: 25%;` : ``}

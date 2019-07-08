@@ -10,12 +10,9 @@ import { Layout, Row, Col } from './Layout'
 
 import FooterCap from '../images/footer-cap.svg'
 
+import theme from '../lib/theme'
 
 const FooterWrap = styled.footer``
-const CtaFooter = styled.section`
-  background-color: #dd2c2c;
-`
-const CtaText = styled.div``
 const CtaTitle = styled.h2`
   color: #ffffff;
   margin-bottom: 16px;
@@ -27,31 +24,6 @@ const CtaMessage = styled.div`
 const CtaActions = styled.div`
   text-align: right;
 `
-const CtaButton = styled.div`
-  background-color: #b22;
-  font-size: 18px;
-  padding: 25px 40px;
-  color: #fff;
-  font-weight: 600;
-  position: relative;
-  line-height: 20px;
-  display: inline-block;
-  border-radius: 100px;
-  cursor: pointer;
-  white-space: nowrap;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0.75);
-  transition: 0.45s cubic-bezier(0.25, 1, 0.33, 1);
-  &:hover {
-    background-color: white;
-    color: #000;
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
-  }
-  &:active {
-    background-color: #eee;
-    color: #000;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.33);
-  }
-`
 const MainFooter = styled.section`
   background-color: #181818;
   padding: 128px 0;
@@ -60,6 +32,7 @@ const MainFooter = styled.section`
 const SubFooter = styled.section`
   background-color: #111111;
   padding: 32px 0;
+  overflow: hidden;
 `
 const FooterSections = styled(Row)``
 const FooterSection = styled(Col).attrs({ fill: true })``
@@ -126,7 +99,7 @@ const Footer = class extends React.Component {
 
     return (
       <FooterWrap>
-        <Section backgroundColor="#dd2c2c">
+        <Section backgroundColor={theme.color.primary}>
           <Row>
             <Col fill>
               <CtaTitle>Get in touch with a rep today!</CtaTitle>

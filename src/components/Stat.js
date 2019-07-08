@@ -19,7 +19,7 @@ const Unit = styled.span`
 const Label = styled.div`
   font-weight: 700;
   font-size: 16px;
-  color: #dd2c2c;
+  color: ${props => props.theme.color.primary};
   letter-spacing: 0.5px;
   text-align: center;
   text-transform: uppercase;

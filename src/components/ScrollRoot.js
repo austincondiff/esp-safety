@@ -9,6 +9,7 @@ const ScrollRoot = styled.div.attrs({ id: 'scroll-root' })`
   perspective: 2px;
   perspective-origin-x: 50%;
   perspective-origin-y: 0%;
+  -webkit-overflow-scrolling: touch;
 `
 
 export default ScrollRoot

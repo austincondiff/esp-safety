@@ -61,7 +61,7 @@ const NavLink = styled(Link)`
     left: 12px;
     right: 12px;
     transform: scaleX(0);
-    border-top: 2px solid #dd2c2c;
+    border-top: 2px solid ${props => props.theme.color.primary};
     content: '';
   }
   &:hover,
@@ -90,7 +90,7 @@ const IconButton = styled.button`
   transition: 0.25s;
   &:hover,
   &.active {
-    color: ${props => (props.darkMode ? '#ffffff' : '#DD2C2C')};
+    color: ${props => (props.darkMode ? '#ffffff' : props.theme.color.primary)};
   }
 `
 const MenuButton = styled.div``

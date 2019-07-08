@@ -15,7 +15,7 @@ const PageTitle = styled.h1`
 `
 const PageSubtitle = styled.h3`
   margin: 8px 0 0 0;
-  color: #dd2c2c;
+  color: ${props => props.theme.color.primary};
   font-size: 20px;
   font-weight: 700;
 `

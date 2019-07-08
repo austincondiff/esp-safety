@@ -9,7 +9,7 @@ const ReadMoreContainer = styled.div`
   transition: 0.2s;
 `
 const ReadMoreLink = styled.a`
-  color: #dd2c2c;
+  color: ${props => props.theme.color.primary};
   display: inline-block;
   position: relative;
   font-size: 12px;
@@ -31,8 +31,8 @@ const ReadMoreLink = styled.a`
     display: block;
     width: 8px;
     height: 8px;
-    border-top: 1.5px solid #dd2c2c;
-    border-right: 1.5px solid #dd2c2c;
+    border-top: 1.5px solid ${props => props.theme.color.primary};
+    border-right: 1.5px solid ${props => props.theme.color.primary};
     position: absolute;
     top: calc(50% - ${props => (props.readMore ? 3 : 6)}px);
     right: 0;

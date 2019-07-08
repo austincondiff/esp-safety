@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 
 const ArrowLink = styled(Link)`
-  color: #dd2c2c;
+  color: ${props => props.theme.color.primary};
   display: inline-block;
   position: relative;
   font-size: 12px;
@@ -21,8 +21,8 @@ const ArrowLink = styled(Link)`
     display: block;
     width: 8px;
     height: 8px;
-    border-top: 1.5px solid #dd2c2c;
-    border-right: 1.5px solid #dd2c2c;
+    border-top: 1.5px solid ${props => props.theme.color.primary};
+    border-right: 1.5px solid ${props => props.theme.color.primary};
     position: absolute;
     top: calc(50% - 5px);
     right: 0;

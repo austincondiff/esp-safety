@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Button = styled.button`
-  ${({ size, type, primary, transparent, light, overlay }) => `
+  ${({ theme, size, type, primary, transparent, light, overlay }) => `
     font-size: ${
       size === 'sm' ? 16 :
       size === 'lg' ? 16 :
@@ -35,7 +35,7 @@ const Button = styled.button`
         type === 'success' ? '#2D9F43' :
         type === 'warning' ? '#FFB81C' :
         type === 'error' ? '#CC1B1B' :
-        '#DD2C2C'
+        theme.color.primary
       ) : (
         type === 'success' ? '#E5F6E8' :
         type === 'info' ? '#D4ECF0' :

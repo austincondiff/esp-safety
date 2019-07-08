@@ -42,11 +42,11 @@ const Thumbnail = styled.div`
   background-repeat: no-repeat;
   border-radius: 8px;
   box-shadow: ${props =>
-    props.active ? `inset 0 0 0 3px #DD2C2C, 0 8px 24px 0 rgba(0,0,0,0.20)` : `inset 0 0 0 1px rgba(0,0,0,0.15)`};
+    props.active ? `inset 0 0 0 3px ${props.theme.color.primary}, 0 8px 24px 0 rgba(0,0,0,0.20)` : `inset 0 0 0 1px rgba(0,0,0,0.15)`};
   transition: 0.25s;
   &:hover {
     box-shadow: ${props =>
-      props.active ? `inset 0 0 0 3px #DD2C2C, 0 8px 24px 0 rgba(0,0,0,0.20)` : `inset 0 0 0 3px rgba(0,0,0,0.15)`};
+      props.active ? `inset 0 0 0 3px ${props.theme.color.primary}, 0 8px 24px 0 rgba(0,0,0,0.20)` : `inset 0 0 0 3px rgba(0,0,0,0.15)`};
   }
 `
 

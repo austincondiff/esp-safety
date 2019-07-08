@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-import { Layout, breakpoints } from './Layout'
+import { Layout, mediaQueries } from './Layout'
 
 const StyledSection = styled.section`
   position: relative;
@@ -25,19 +25,19 @@ const SectionInside = styled(Layout)`
       justify-content: center;
       flex-direction: column;
     `};
-    ${breakpoints.sm} {
+    ${mediaQueries.sm} {
       ${!noPaddingTop && `padding-top: 11%;`}
       ${!noPaddingBottom && `padding-bottom: 11%;`}
     }
-    ${breakpoints.md} {
+    ${mediaQueries.md} {
       ${!noPaddingTop && `padding-top: 10%;`}
       ${!noPaddingBottom && `padding-bottom: 10%;`}
     }
-    ${breakpoints.lg} {
+    ${mediaQueries.lg} {
       ${!noPaddingTop && `padding-top: 9%;`}
       ${!noPaddingBottom && `padding-bottom: 9%;`}
     }
-    ${breakpoints.xl} {
+    ${mediaQueries.xl} {
       ${!noPaddingTop && `padding-top: 8%;`}
       ${!noPaddingBottom && `padding-bottom: 8%;`}
     }

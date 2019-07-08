@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import theme from '../lib/theme'
+
 const StyledSvg = styled.svg`
   ${({ width, height, transitionDuration, light }) => `
     ${width && `width: ${width};`}
@@ -19,7 +21,7 @@ const StyledSvg = styled.svg`
 
 const Logo = ({stacked, light, ...props}) => stacked ? (
   <StyledSvg light={light} {...props} x="0px" y="0px" viewBox="0 0 205.5 109.5">
-  	<polygon class="logomark" fill="#DD2C2C" points="114.8,29 99.8,14 99.8,36 92.8,29 84.8,29 105.8,8 105.8,0 70.8,35 90.8,35 105.8,50 105.8,28
+  	<polygon class="logomark" fill={theme.color.primary} points="114.8,29 99.8,14 99.8,36 92.8,29 84.8,29 105.8,8 105.8,0 70.8,35 90.8,35 105.8,50 105.8,28
   		112.8,35 120.8,35 99.8,56 99.8,64 134.8,29 	"/>
     <path fill={light ? '#ffffff' : '#000000'} class="esp-text" d="M53.7,94.2h3.4c2.4,0,3.6-1.6,3.6-3.9c0-2.3-1.2-3.8-3.5-3.8h-3.6V94.2z M46.7,109.1V80.5h11.9
   		c5.6,0,9.3,4.1,9.3,9.8c0,5.8-3.8,9.9-9.3,9.9h-4.9v8.8H46.7z M21.4,105.5c0,0,3.7,4.1,10.4,4.1c6.4,0,10.1-4.1,10.1-8.9
@@ -36,7 +38,7 @@ const Logo = ({stacked, light, ...props}) => stacked ? (
   </StyledSvg>
 ) : (
   <StyledSvg light={light} {...props} x="0px" y="0px" viewBox="0 0 285.5 64">
-  	<polygon class="logomark" fill="#DD2C2C" points="44,29 29,14 29,36 22,29 14,29 35,8 35,0 0,35 20,35 35,50 35,28 42,35 50,35 29,56 29,64 64,29 	"/>
+  	<polygon class="logomark" fill={theme.color.primary} points="44,29 29,14 29,36 22,29 14,29 35,8 35,0 0,35 20,35 35,50 35,28 42,35 50,35 29,56 29,64 64,29 	"/>
   	<path fill={light ? '#ffffff' : '#000000'} class="esp-text" d="M133.7,31.6h3.4c2.4,0,3.6-1.6,3.6-3.9c0-2.3-1.2-3.8-3.5-3.8h-3.6V31.6z M126.7,46.4V17.8
   		h11.9c5.6,0,9.3,4.1,9.3,9.8c0,5.8-3.8,9.9-9.3,9.9h-4.9v8.8H126.7z M101.4,42.8c0,0,3.7,4.1,10.4,4.1c6.4,0,10.1-4.1,10.1-8.9
   		c0-9-12.9-8.4-12.9-12c0-1.6,1.6-2.2,3-2.2c3.4,0,6.3,2.5,6.3,2.5l3-5.7c0,0-3-3.2-9.2-3.2c-5.7,0-10.1,3.5-10.1,8.8

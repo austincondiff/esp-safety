@@ -7,7 +7,7 @@ import { graphql, Link } from 'gatsby'
 
 import Header from '../components/Header'
 import Section from '../components/Section'
-import { Layout, Row, Col, breakpoints } from '../components/Layout'
+import { Layout, Row, Col, mediaQueries } from '../components/Layout'
 import ImageGallery from '../components/ImageGallery'
 import ReadMore from '../components/ReadMore'
 import MarkdownContent from '../components/MarkdownContent'
@@ -25,19 +25,19 @@ const SpecificationsSection = styled.section`
     linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
   padding-top: 15%;
   padding-bottom: 15%;
-  ${breakpoints.sm} {
+  ${mediaQueries.sm} {
     padding-top: 12.5%;
     padding-bottom: 12.5%;
   }
-  ${breakpoints.md} {
+  ${mediaQueries.md} {
     padding-top: 10%;
     padding-bottom: 10%;
   }
-  ${breakpoints.lg} {
+  ${mediaQueries.lg} {
     padding-top: 7.5%;
     padding-bottom: 7.5%;
   }
-  ${breakpoints.xl} {
+  ${mediaQueries.xl} {
     padding-top: 5%;
     padding-bottom: 5%;
   }

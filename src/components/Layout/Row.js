@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import breakpoints from './breakpoints'
+import mediaQueries from './mediaQueries'
 import Col from './Col'
 import { ViewportSizeType } from '../../lib/types'
 
@@ -12,12 +12,10 @@ const Row = styled.div`
     flex: 0 1 auto;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-right: -${gutter || '3%'};
-    margin-left: -${gutter || '3%'};
+    margin: -${gutter || '3%'};
 
     & ${Col} {
-      padding-right: ${gutter || '3%'};
-      padding-left: ${gutter || '3%'};
+      padding: ${gutter || '3%'};
     }
 
     ${reverse === true || reverse === 'xs' ? `flex-direction: row-reverse;` : ``}
@@ -30,7 +28,7 @@ const Row = styled.div`
     ${around === true || around === 'xs' ? `justify-content: space-around;` : ``}
     ${between === true || between === 'xs' ? `justify-content: space-between;` : ``}
 
-    ${breakpoints.sm} {
+    ${mediaQueries.sm} {
       ${reverse === 'sm' ? `flex-direction: row-reverse;` : ``}
       ${start === 'sm' ? `justify-content: flex-start; text-align: start;` : ``}
       ${center === 'sm' ? `justify-content: center; text-align: center;` : ``}
@@ -42,7 +40,7 @@ const Row = styled.div`
       ${between === 'sm' ? `justify-content: space-between;` : ``}
     }
 
-    ${breakpoints.md} {
+    ${mediaQueries.md} {
       ${reverse === 'md' ? `flex-direction: row-reverse;` : ``}
       ${start === 'md' ? `justify-content: flex-start; text-align: start;` : ``}
       ${center === 'md' ? `justify-content: center; text-align: center;` : ``}
@@ -54,7 +52,7 @@ const Row = styled.div`
       ${between === 'md' ? `justify-content: space-between;` : ``}
     }
 
-    ${breakpoints.lg} {
+    ${mediaQueries.lg} {
       ${reverse === 'lg' ? `flex-direction: row-reverse;` : ``}
       ${start === 'lg' ? `justify-content: flex-start; text-align: start;` : ``}
       ${center === 'lg' ? `justify-content: center; text-align: center;` : ``}
@@ -66,7 +64,7 @@ const Row = styled.div`
       ${between === 'lg' ? `justify-content: space-between;` : ``}
     }
 
-    ${breakpoints.xl} {
+    ${mediaQueries.xl} {
       ${reverse === 'xl' ? `flex-direction: row-reverse;` : ``}
       ${start === 'xl' ? `justify-content: flex-start; text-align: start;` : ``}
       ${center === 'xl' ? `justify-content: center; text-align: center;` : ``}
