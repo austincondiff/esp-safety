@@ -13,5 +13,4 @@ MarkdownContent.propTypes = {
   className: PropTypes.string,
 }
 
-
 export default MarkdownContent
