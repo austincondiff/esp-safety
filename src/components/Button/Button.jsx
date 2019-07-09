@@ -1,27 +1,36 @@
 import styled from 'styled-components'
+import { mediaQueries } from '../Layout'
 
 const Button = styled.button`
   ${({ theme, size, type, primary, transparent, light, overlay }) => `
+    font-family: ${theme.fontFamily};
     font-size: ${
-      size === 'sm' ? 16 :
-      size === 'lg' ? 16 :
+      size === 'sm' ? 11 :
+      size === 'lg' ? 13 :
       size === 'xl' ? 16 :
-      16
+      12
     }px;
+    padding: 1.25em 2em;
+    ${mediaQueries.sm} {
+      font-size: ${
+        size === 'sm' ? 12 :
+        size === 'lg' ? 14 :
+        size === 'xl' ? 18 :
+        14
+      }px;
+    }
+    ${mediaQueries.md} {
+      padding: 1.75em 2.75em;
+    }
     font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: .05em;
     text-align: center;
     border-radius: 128px;
     border: 0;
     outline: 0;
     cursor: pointer;
     white-space: nowrap;
-    padding: ${
-      size === 'sm' ? '12px 24px' :
-      size === 'lg' ? '16px 28px' :
-      size === 'xl' ? '25px 40px' :
-      '17px 28px 15px 28px'
-    };
     transition: 200ms;
     box-shadow: 0 0 0 rgba(0,0,0,0.75);
     background-color: ${
