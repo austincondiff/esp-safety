@@ -95,6 +95,10 @@ const ParallaxForeground = styled.div`
   transform-origin-x: 50%;
   transform-origin-y: -50%;
   pointer-events: none;
+  display: none;
+  ${mediaQueries.sm} {
+    display: block;
+  }
 `
 const BackgroundColorWrap = styled.div`
   position: absolute;
@@ -117,8 +121,10 @@ const BackgroundColorWrap = styled.div`
 `
 const ContentWrap = styled.div`
   position: relative;
-  ${props => (props.imagePosition === 'left' || props.contentPosition === 'right') && 'padding-left: calc(50% + 8%);'}
-  ${props => (props.imagePosition === 'right' || props.contentPosition === 'left') && 'padding-right: calc(50% + 8%);'}
+  ${mediaQueries.sm} {
+    ${props => (props.imagePosition === 'left' || props.contentPosition === 'right') && 'padding-left: calc(50% + 8%);'}
+    ${props => (props.imagePosition === 'right' || props.contentPosition === 'left') && 'padding-right: calc(50% + 8%);'}
+  }
   ${props =>
     props.contentPosition === 'center' &&
     `
@@ -219,7 +225,7 @@ const Section = ({
           imagePosition={imagePosition}
           parallaxContent={parallaxContent}
         />
-      <SectionInside noPaddingTop={noPaddingTop} noPaddingBottom={noPaddingBottom} header={header} fullWidth={fullWidth} height={height}>
+        <SectionInside noPaddingTop={noPaddingTop} noPaddingBottom={noPaddingBottom} header={header} fullWidth={fullWidth} height={height}>
           <ContentWrap contentPosition={contentPosition} imagePosition={imagePosition}>
             {children}
           </ContentWrap>

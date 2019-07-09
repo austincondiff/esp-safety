@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { mediaQueries } from './Layout'
 
 const GlobalStyles = createGlobalStyle`
   html,
@@ -35,17 +36,41 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1 {
-    font-size: 48px;
-    line-height: 50px;
+    font-size: 24px;
+    line-height: 1;
     font-weight: 300;
     letter-spacing: -0.5px;
+    ${mediaQueries.sm} {
+      font-size: 32px;
+    }
+    ${mediaQueries.md} {
+      font-size: 36px;
+    }
+    ${mediaQueries.lg} {
+      font-size: 40px;
+    }
+    ${mediaQueries.xl} {
+      font-size: 48px;
+    }
   }
 
   h2 {
-    font-size: 40px;
-    line-height: 44px;
+    font-size: 24px;
+    line-height: 1.1em;
     font-weight: 300;
     letter-spacing: -0.5px;
+    ${mediaQueries.sm} {
+      font-size: 28px;
+    }
+    ${mediaQueries.md} {
+      font-size: 32px;
+    }
+    ${mediaQueries.lg} {
+      font-size: 36px;
+    }
+    ${mediaQueries.xl} {
+      font-size: 40px;
+    }
   }
 
   h3 {

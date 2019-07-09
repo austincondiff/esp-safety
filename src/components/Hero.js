@@ -130,7 +130,6 @@ const Hero = ({
       backgroundColor="rgba(0,0,0,0.75)"
       dark
       parallax
-      parallaxContent
       header
       contentPosition="center"
     >

@@ -71,20 +71,26 @@ const Logo = styled.a.attrs(props => ({
   }
 `
 const PageIntroTitle = styled.h2`
-  font-size: 28px;
+  font-size: 18px;
   font-weight: 300;
   color: ${props => props.theme.color.primary};
   letter-spacing: -0.5px;
   text-align: center;
-  line-height: 40px;
+  line-height: 1.428em;
+  ${mediaQueries.md} {
+    font-size: 28px;
+  }
 `
 const PageIntroDescription = styled.p`
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 300;
   color: #000000;
   letter-spacing: -0.33px;
   text-align: center;
-  line-height: 32px;
+  line-height: 1.7777em;
+  ${mediaQueries.md} {
+    font-size: 18px;
+  }
 `
 const TestimonalTitle = styled.h2`
   text-align: center;
@@ -182,7 +188,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
     </Layout>
     <Section noPaddingBottom>
       <Row>
-        <Col xs={10} xsOffset={1}>
+        <Col sm={10} smOffset={1}>
           <PageIntroTitle>
             We are a team of experts who specialize in the design of fixed toxic and combustible gas detection, flame detection,
             and complete turn-key safety systems.
@@ -197,7 +203,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
     </Section>
     <Section>
       <Row>
-        <Col sm={6} md={3}>
+        <Col xs={6} md={3}>
           <IconBox
             icon={FlameIcon}
             title="Flame Detectors"
@@ -205,7 +211,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
             link="/products/flame-detectors"
           />
         </Col>
-        <Col sm={6} md={3}>
+        <Col xs={6} md={3}>
           <IconBox
             icon={CombustibleGasIcon}
             title="Combustible Gas Detectors"
@@ -213,7 +219,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
             link="/products/combustible-gas-detectors"
           />
         </Col>
-        <Col sm={6} md={3}>
+        <Col xs={6} md={3}>
           <IconBox
             icon={ToxicGasIcon}
             title="Toxic Gas Detectors"
@@ -221,7 +227,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
             link="/products/toxic-gas-detectors"
           />
         </Col>
-        <Col sm={6} md={3}>
+        <Col xs={6} md={3}>
           <IconBox
             icon={OxygenIcon}
             title="Oxygen Detectors"
@@ -235,7 +241,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       contentPosition="right"
       foregroundImageSrc="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/product-001.png"
       foregroundImageWidth="45%"
-      foregroundImagePosition={['45%', 'calc(30% - 100px)']}
+      foregroundImagePosition={['45%', '28%']}
       parallax
     >
       <SectionSupertitle>Performance when it counts</SectionSupertitle>
@@ -251,7 +257,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       contentPosition="left"
       foregroundImageSrc="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2019/06/IR3-IRUVAL-IRUVSS.png"
       foregroundImageWidth="50%"
-      foregroundImagePosition={['45%', 'calc(60% + 300px)']}
+      foregroundImagePosition={['45%', '75%']}
       parallax
     >
       <SectionSupertitle>Reliability is protection</SectionSupertitle>
@@ -266,7 +272,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       contentPosition="right"
       foregroundImageSrc="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2016/07/SSS-903_2013C.png"
       foregroundImageWidth="20%"
-      foregroundImagePosition={['45%', 'calc(40% - 100px)']}
+      foregroundImagePosition={['45%', '28%']}
       parallax
     >
       <SectionSupertitle>Convenient and easy to use</SectionSupertitle>

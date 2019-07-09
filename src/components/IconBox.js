@@ -2,27 +2,39 @@ import React from 'react'
 import styled from 'styled-components'
 import ArrowLink from './ArrowLink'
 
+import { mediaQueries } from '../components/Layout'
+
 const Title = styled.h3`
-  font-size: 24px;
-  font-weight: 300;
-`
-const Description = styled.p`
   font-size: 16px;
   font-weight: 300;
-  line-height: 28px;
+  ${mediaQueries.md} {
+    font-size: 24px;
+  }
+`
+const Description = styled.p`
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.75em;
   ${props => (props.hasLink ? 'margin-bottom: 24px;' : '')}
+  ${mediaQueries.md} {
+    font-size: 16px;
+  }
 `
 const IconWrap = styled.div`
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   margin-bottom: 32px;
+  ${mediaQueries.md} {
+    width: 56px;
+    height: 56px;
+  }
 `
 
 const IconBox = ({ title, description, link, linkLabel, icon: Icon }) => (
   <div>
     {Icon && (
       <IconWrap>
-        <Icon width="56" />
+        <Icon width="100%" />
       </IconWrap>
     )}
     <Title>{title}</Title>

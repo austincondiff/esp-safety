@@ -2,28 +2,53 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import { mediaQueries } from './Layout'
+
 const StatWrap = styled.div``
 const NumberWrap = styled.div`
   text-align: center;
-`
-const Number = styled.span`
   font-weight: 100;
-  font-size: 88px;
+  font-size: 48px;
   letter-spacing: -1.75px;
+  ${mediaQueries.sm} {
+    font-size: 56px;
+  }
+  ${mediaQueries.md} {
+    font-size: 64px;
+  }
+  ${mediaQueries.lg} {
+    font-size: 72px;
+  }
+  ${mediaQueries.xl} {
+    font-size: 88px;
+  }
 `
+const Number = styled.span``
 const Unit = styled.span`
   font-weight: 900;
-  font-size: 44px;
-  margin-left: 8px;
+  font-size: 0.5em;
+  margin-left: 0.1em;
 `
 const Label = styled.div`
   font-weight: 700;
-  font-size: 16px;
+  font-size: 12px;
   color: ${props => props.theme.color.primary};
-  letter-spacing: 0.5px;
+  letter-spacing: 0.1em;
   text-align: center;
   text-transform: uppercase;
   white-space: nowrap;
+  ${mediaQueries.sm} {
+    font-size: 13px;
+  }
+  ${mediaQueries.md} {
+    font-size: 14px;
+  }
+  ${mediaQueries.lg} {
+    font-size: 15px;
+  }
+  ${mediaQueries.xl} {
+    font-size: 16px;
+  }
 `
 
 class Stat extends React.Component {
