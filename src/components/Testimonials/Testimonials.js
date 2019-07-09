@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
-import Flickity from 'react-flickity-component'
+import { mediaQueries } from '../Layout'
+
+const Flickity =
+  typeof window !== 'undefined'
+    ? require('react-flickity-component')
+    : () => null
 
 const TestimonialsWrap = styled.div`
   position: relative;
@@ -56,6 +61,10 @@ const TestimonialsWrap = styled.div`
     border: none;
     padding: 0;
     outline: none;
+    display: none;
+    ${mediaQueries.lg} {
+      display: block;
+    }
     & svg {
       display: none;
     }

@@ -7,10 +7,11 @@ import { ColumnSizeType, ViewportSizeType } from '../../lib/types'
 const Col = styled.div`
   ${({ xs, sm, md, lg, xl, xsOffset, smOffset, mdOffset, lgOffset, xlOffset, first, last, fill }) => `
     box-sizing: border-box;
-    flex: ${fill ? '1' : '0 0 auto'};
+    flex: ${fill === true ? '1' : '0 0 auto'};
     flex-basis: 100%%;
     max-width: 100%;
 
+    ${xs === 0 ? `flex-basis: auto; max-width: none;` : ``}
     ${xs === 1 ? `flex-basis: 8.33333333%; max-width: 8.33333333%;` : ``}
     ${xs === 2 ? `flex-basis: 16.66666667%; max-width: 16.66666667%;` : ``}
     ${xs === 3 ? `flex-basis: 25%; max-width: 25%;` : ``}
@@ -22,6 +23,7 @@ const Col = styled.div`
     ${xs === 9 ? `flex-basis: 75%; max-width: 75%;` : ``}
     ${xs === 10 ? `flex-basis: 83.33333333%; max-width: 83.33333333%;` : ``}
     ${xs === 11 ? `flex-basis: 91.66666667%; max-width: 91.66666667%;` : ``}
+    ${xs === 12 ? `flex-basis: 100%; max-width: 100%;` : ``}
 
     ${xsOffset === 1 ? `margin-left: 8.33333333%;` : ``}
     ${xsOffset === 2 ? `margin-left: 16.66666667%;` : ``}
@@ -37,8 +39,10 @@ const Col = styled.div`
 
     ${first === 'xs' ? `order: -1;` : ``}
     ${last === 'xs' ? `order: 1;` : ``}
+    ${fill === 'xs' ? `flex: 1;` : ``}
 
     ${mediaQueries.sm} {
+      ${sm === 0 ? `flex-basis: auto; max-width: none;` : ``}
       ${sm === 1 ? `flex-basis: 8.33333333%; max-width: 8.33333333%;` : ``}
       ${sm === 2 ? `flex-basis: 16.66666667%; max-width: 16.66666667%;` : ``}
       ${sm === 3 ? `flex-basis: 25%; max-width: 25%;` : ``}
@@ -50,6 +54,7 @@ const Col = styled.div`
       ${sm === 9 ? `flex-basis: 75%; max-width: 75%;` : ``}
       ${sm === 10 ? `flex-basis: 83.33333333%; max-width: 83.33333333%;` : ``}
       ${sm === 11 ? `flex-basis: 91.66666667%; max-width: 91.66666667%;` : ``}
+      ${sm === 12 ? `flex-basis: 100%; max-width: 100%;` : ``}
 
       ${smOffset === 1 ? `margin-left: 8.33333333%;` : ``}
       ${smOffset === 2 ? `margin-left: 16.66666667%;` : ``}
@@ -65,9 +70,11 @@ const Col = styled.div`
 
       ${first === 'sm' ? `order: -1;` : ``}
       ${last === 'sm' ? `order: 1;` : ``}
+      ${fill === 'sm' ? `flex: 1;` : ``}
     }
 
     ${mediaQueries.md} {
+      ${md === 0 ? `flex-basis: auto; max-width: none;` : ``}
       ${md === 1 ? `flex-basis: 8.33333333%; max-width: 8.33333333%;` : ``}
       ${md === 2 ? `flex-basis: 16.66666667%; max-width: 16.66666667%;` : ``}
       ${md === 3 ? `flex-basis: 25%; max-width: 25%;` : ``}
@@ -79,6 +86,7 @@ const Col = styled.div`
       ${md === 9 ? `flex-basis: 75%; max-width: 75%;` : ``}
       ${md === 10 ? `flex-basis: 83.33333333%; max-width: 83.33333333%;` : ``}
       ${md === 11 ? `flex-basis: 91.66666667%; max-width: 91.66666667%;` : ``}
+      ${md === 12 ? `flex-basis: 100%; max-width: 100%;` : ``}
 
       ${mdOffset === 1 ? `margin-left: 8.33333333%;` : ``}
       ${mdOffset === 2 ? `margin-left: 16.66666667%;` : ``}
@@ -94,9 +102,11 @@ const Col = styled.div`
 
       ${first === 'md' ? `order: -1;` : ``}
       ${last === 'md' ? `order: 1;` : ``}
+      ${fill === 'md' ? `flex: 1;` : ``}
     }
 
     ${mediaQueries.lg} {
+      ${lg === 0 ? `flex-basis: auto; max-width: none;` : ``}
       ${lg === 1 ? `flex-basis: 8.33333333%; max-width: 8.33333333%;` : ``}
       ${lg === 2 ? `flex-basis: 16.66666667%; max-width: 16.66666667%;` : ``}
       ${lg === 3 ? `flex-basis: 25%; max-width: 25%;` : ``}
@@ -108,6 +118,7 @@ const Col = styled.div`
       ${lg === 9 ? `flex-basis: 75%; max-width: 75%;` : ``}
       ${lg === 10 ? `flex-basis: 83.33333333%; max-width: 83.33333333%;` : ``}
       ${lg === 11 ? `flex-basis: 91.66666667%; max-width: 91.66666667%;` : ``}
+      ${lg === 12 ? `flex-basis: 100%; max-width: 100%;` : ``}
 
       ${lgOffset === 1 ? `margin-left: 8.33333333%;` : ``}
       ${lgOffset === 2 ? `margin-left: 16.66666667%;` : ``}
@@ -123,9 +134,11 @@ const Col = styled.div`
 
       ${first === 'lg' ? `order: -1;` : ``}
       ${last === 'lg' ? `order: 1;` : ``}
+      ${fill === 'lg' ? `flex: 1;` : ``}
     }
 
     ${mediaQueries.xl} {
+      ${xl === 0 ? `flex-basis: auto; max-width: none;` : ``}
       ${xl === 1 ? `flex-basis: 8.33333333%; max-width: 8.33333333%;` : ``}
       ${xl === 2 ? `flex-basis: 16.66666667%; max-width: 16.66666667%;` : ``}
       ${xl === 3 ? `flex-basis: 25%; max-width: 25%;` : ``}
@@ -137,6 +150,7 @@ const Col = styled.div`
       ${xl === 9 ? `flex-basis: 75%; max-width: 75%;` : ``}
       ${xl === 10 ? `flex-basis: 83.33333333%; max-width: 83.33333333%;` : ``}
       ${xl === 11 ? `flex-basis: 91.66666667%; max-width: 91.66666667%;` : ``}
+      ${xl === 12 ? `flex-basis: 100%; max-width: 100%;` : ``}
 
       ${xlOffset === 1 ? `margin-left: 8.33333333%;` : ``}
       ${xlOffset === 2 ? `margin-left: 16.66666667%;` : ``}
@@ -152,6 +166,7 @@ const Col = styled.div`
 
       ${first === 'xl' ? `order: -1;` : ``}
       ${last === 'xl' ? `order: 1;` : ``}
+      ${fill === 'xl' ? `flex: 1;` : ``}
     }
 
   `}

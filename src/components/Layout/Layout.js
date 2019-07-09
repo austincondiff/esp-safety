@@ -7,7 +7,7 @@ const Layout = styled.div`
   ${({ fullWidth, noPadding }) => `
     width: 100%;
     margin: 0 auto;
-    ${!noPadding ? 'padding-left: 2.5%; padding-right: 2.5%;' : ''}
+    ${!noPadding ? 'padding-left: 24px; padding-right: 24px;' : ''}
 
     ${mediaQueries.sm} {
       ${!noPadding ? 'padding-left: 5%; padding-right: 5%;' : ''}

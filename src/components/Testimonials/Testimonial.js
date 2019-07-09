@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import { mediaQueries } from '../Layout'
+
 import QuotationMark from '../../images/quotation-mark.svg'
 
 const TestimonalWrap = styled.div`
@@ -10,16 +12,39 @@ const TestimonalWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 33.33vw;
+  width: 100%;
   padding: 0 16px;
+  user-select: none;
+  ${mediaQueries.sm} {
+    width: 50vw;
+  }
+  ${mediaQueries.lg} {
+    width: 33.33vw;
+  }
 `
 const TestimonalBubble = styled.div`
-  padding: calc(3vw - .5em) 3vw calc(3vw - .5em) calc(3vw + 80px);
+  padding: calc(6vw - .5em) 6vw calc(6vw - .5em) calc(6vw + 48px);
   background-color: transparent;
   color: #999999;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 32px;
+  font-size: 14px;
+  line-height: 24px;
+  ${mediaQueries.sm} {
+    font-size: 16px;
+    line-height: 28px;
+    padding: calc(5vw - .5em) 5vw calc(5vw - .5em) calc(5vw + 64px);
+  }
+  ${mediaQueries.md} {
+    font-size: 16px;
+    line-height: 28px;
+    padding: calc(4vw - .5em) 4vw calc(4vw - .5em) calc(4vw + 64px);
+  }
+  ${mediaQueries.lg} {
+    font-size: 18px;
+    line-height: 32px;
+    padding: calc(3vw - .5em) 3vw calc(3vw - .5em) calc(3vw + 80px);
+  }
+
   border-radius: 12px;
   position: relative;
   box-shadow: 0 0 0 rgba(0,0,0,0.25);
@@ -46,10 +71,25 @@ const TestimonalBubble = styled.div`
 `
 const StyledQuotationMark = styled(QuotationMark)`
   position: absolute;
-  top: 3vw;
-  left: 3vw;
-  width: 54px;
+  top: 6vw;
+  left: 6vw;
+  width: 32px;
   opacity: .15;
+  ${mediaQueries.sm} {
+    top: 5vw;
+    left: 5vw;
+    width: 40px;
+  }
+  ${mediaQueries.md} {
+    top: 4vw;
+    left: 4vw;
+    width: 48px;
+  }
+  ${mediaQueries.lg} {
+    top: 3vw;
+    left: 3vw;
+    width: 56px;
+  }
 `
 const AuthorWrap = styled.div`
 

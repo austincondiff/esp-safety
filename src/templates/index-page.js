@@ -10,7 +10,7 @@ import Section from '../components/Section'
 import IconBox from '../components/IconBox'
 import Features from '../components/Features'
 import News from '../components/News'
-import { Layout, Row, Col } from '../components/Layout'
+import { Layout, Row, Col, mediaQueries } from '../components/Layout'
 import ArrowLink from '../components/ArrowLink'
 import Stat from '../components/Stat'
 import { Testimonials, Testimonial } from '../components/Testimonials'
@@ -33,8 +33,10 @@ const Logos = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   margin: 0 -5%;
-  height: 12vh;
   align-items: center;
+  ${mediaQueries.md} {
+    height: 12vh;
+  }
 `
 const Logo = styled.a.attrs(props => ({
   href: props.url,
@@ -44,14 +46,15 @@ const Logo = styled.a.attrs(props => ({
   display: block;
   box-sizing: border-box;
   flex: 0 0 auto;
-  flex-basis: 100%%;
   max-width: 100%;
   background-image: url(${props => props.image});
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  width: 16.666666666%;
-  height: 6.667vw;
+  flex-basis: 33.333333333%;
+  width: 33.333333333%;
+  height: 10vw;
+  margin: 3% 0;
   min-height: 7vh;
   max-height: 9vh;
   filter: grayscale(1) brightness(0.8) contrast(2.5);
@@ -59,6 +62,12 @@ const Logo = styled.a.attrs(props => ({
   &:hover {
     filter: grayscale(0) brightness(1) contrast(1);
     opacity: 1;
+  }
+  ${mediaQueries.md} {
+    flex-basis: 16.666666666%;
+    width: 16.666666666%;
+    height: 6.667vw;
+    margin: 0;
   }
 `
 const PageIntroTitle = styled.h2`
@@ -305,16 +314,16 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
     </Section>
     <Section backgroundColor="black" dark>
       <Row between>
-        <Col>
+        <Col xs={6} md={3}>
           <Stat number={15} unit="M" label="Products sold" />
         </Col>
-        <Col>
+        <Col xs={6} md={3}>
           <Stat number={75} unit="k" label="Satisfied customers" />
         </Col>
-        <Col>
+        <Col xs={6} md={3}>
           <Stat number={100} unit="%" label="Safety record" />
         </Col>
-        <Col>
+        <Col xs={6} md={3}>
           <Stat number={62} unit="k" label="Accidents prevented" />
         </Col>
       </Row>

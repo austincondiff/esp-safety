@@ -81,7 +81,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
       <Header title={title} />
       <Section>
         <Row>
-          <Col xs={6}>
+          <Col xs={12} sm={6}>
             <ImageGallery
               images={[
                 'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2019/06/sgoes.png',
@@ -93,7 +93,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
               ]}
             />
           </Col>
-          <Col xs={6}>
+          <Col xs={12} sm={6}>
             <Tabs>
               {data.overview && <Tab label="Product Overview" value="overview">
                 <ReadMore>
