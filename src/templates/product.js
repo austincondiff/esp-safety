@@ -78,7 +78,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
   console.log(data)
   return (
     <React.Fragment>
-      <Header title={title} />
+      <Header title={title} subtitle={data.category} />
       <Section>
         <Row>
           <Col xs={12} sm={6}>

@@ -3,6 +3,7 @@ import { Link, graphql, StaticQuery } from 'gatsby'
 import { Layout } from './Layout'
 import Logo from './Logo'
 import Icon from './Icon'
+import { mediaQueries, breakpoints } from './Layout'
 import styled, { keyframes } from 'styled-components'
 
 const slideInFromTop = keyframes`
@@ -39,37 +40,89 @@ const LogoLink = styled(Link)`
   display: block;
   height: 100%;
 `
-const NavLinksWrap = styled.div``
-const NavLinks = styled.div``
+const NavLinksWrap = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 66vw;
+  background-color: #000000;
+  z-index: 100;
+  transform: translateX(${props => props.showMobileMenu ? '0%' : '100%'});
+  transition: transform .25s;
+  overflow-x: hidden;
+  overflow-y: auto;
+  ${mediaQueries.md} {
+    width: auto;
+    position: static;
+    transform: translateX(0);
+    z-index: auto;
+    background-color: transparent;
+    display: block;
+    overflow: visible;
+  }
+`
+const NavLinks = styled.div`
+  padding: 64px 0;
+  ${mediaQueries.md} {
+    padding: 0;
+  }
+`
 const NavLinkWrap = styled.div``
 const NavLink = styled(Link)`
   text-decoration: none;
-  color: ${props => (props.darkMode ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.75)')};
+  color: rgba(255,255,255,0.75);
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.5px;
   display: inline-block;
-  padding: 24px 12px;
+  padding: 16px 24px;
   transition: 0.25s;
   position: relative;
+  width: 100%;
   &:after {
     transition: transform 0.25s ease-out, border-color 0.25s ease-out;
     position: absolute;
     display: block;
-    top: calc(50% + 12px);
-    left: 12px;
-    right: 12px;
-    transform: scaleX(0);
-    border-top: 2px solid ${props => props.theme.color.primary};
+    top: 12px;
+    left: 0;
+    bottom: 12px;
+    transform: scaleY(0);
+    border-left: 3px solid ${props => props.theme.color.primary};
     content: '';
   }
-  &:hover,
   &.active {
-    color: ${props => (props.darkMode ? '#ffffff' : '#000000')};
+    color: #ffffff;
     &:after {
       backface-visibility: hidden;
-      transform: scaleX(1);
+      transform: scaleY(1);
+    }
+  }
+  ${mediaQueries.md} {
+    width: auto;
+    padding: 24px 12px;
+    color: ${props => (props.darkMode ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.75)')};
+    &:after {
+      transition: transform 0.25s ease-out, border-color 0.25s ease-out;
+      position: absolute;
+      display: block;
+      top: calc(50% + 12px);
+      left: 12px;
+      right: 12px;
+      bottom: auto;
+      transform: scaleX(0);
+      border-left: none;
+      border-top: 2px solid ${props => props.theme.color.primary};
+      content: '';
+    }
+    &:hover,
+    &.active {
+      color: ${props => (props.darkMode ? '#ffffff' : '#000000')};
+      &:after {
+        backface-visibility: hidden;
+        transform: scaleX(1);
+      }
     }
   }
 `
@@ -77,7 +130,9 @@ const NavSubItems = styled.div``
 const NavSubItemWrap = styled.div``
 const NavSubItem = styled.div``
 const NavActions = styled.div`
-  margin-left: 32px;
+  margin-left: 24px;
+  margin-right: -8px;
+  display: flex;
 `
 const IconButton = styled.button`
   background-color: transparent;
@@ -86,14 +141,24 @@ const IconButton = styled.button`
   padding: 0;
   margin: 0;
   cursor: pointer;
-  color: ${props => (props.darkMode ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.75)')};
+  opacity: 0.75;
+  margin: 0 8px;
+  color: ${props => (props.darkMode ? '#ffffff' : '#000000')};
   transition: 0.25s;
   &:hover,
   &.active {
+    opacity: 1;
     color: ${props => (props.darkMode ? '#ffffff' : props.theme.color.primary)};
   }
 `
-const MenuButton = styled.div``
+const MenuIconButton = styled(IconButton)`
+  position: relative;
+  z-index: 101;
+  color: ${props => ((props.darkMode || props.showMobileMenu) ? '#ffffff' : '#000000')};
+  ${mediaQueries.md} {
+    display: none;
+  }
+`
 
 const NavBar = class extends React.Component {
   constructor(props) {
@@ -103,7 +168,8 @@ const NavBar = class extends React.Component {
       active: false,
       transparent: false,
       darkOnTransparent: false,
-      darkMode: false
+      darkMode: false,
+      showMobileMenu: false
     }
   }
 
@@ -126,11 +192,12 @@ const NavBar = class extends React.Component {
 
   setScrollStyles = () => {
     const { navHeight, logoPadding } = this.state
-    const navFullHeight = 104
-    const navCondensedHeight = 72
-    const logoPaddingStart = 28
-    const logoPaddingEnd = 16
     const scrollRootEl = document.getElementById('scroll-root')
+    const isMobile = scrollRootEl.clientWidth < breakpoints.md
+    const navFullHeight = isMobile ? 96 : 104
+    const navCondensedHeight = isMobile ? 64 : 72
+    const logoPaddingStart = isMobile ? 32 : 28
+    const logoPaddingEnd = isMobile ? 16 : 16
     const scrollTop = scrollRootEl.scrollTop > 0 ? scrollRootEl.scrollTop : 0
     const scrollFactor = scrollTop / (navFullHeight - navCondensedHeight)
 
@@ -175,7 +242,7 @@ const NavBar = class extends React.Component {
 
   render() {
     const { data, ctxData } = this.props
-    const { navHeight, transparent, logoPadding, darkMode } = this.state
+    const { navHeight, transparent, logoPadding, darkMode, showMobileMenu } = this.state
     const { links } = data
 
     console.log()
@@ -188,7 +255,7 @@ const NavBar = class extends React.Component {
               <Logo light={darkMode} height="100%" />
             </LogoLink>
           </LogoWrap>
-          <NavLinksWrap>
+          <NavLinksWrap showMobileMenu={showMobileMenu}>
             <NavLinks>
               {links.map(
                 (navLink, i) =>
@@ -199,6 +266,7 @@ const NavBar = class extends React.Component {
                       key={`navLink${i}`}
                       activeClassName="active"
                       partiallyActive={navLink.path !== '/'}
+                      onClick={() => this.setState({ showMobileMenu: false })}
                     >
                       {navLink.label}
                     </NavLink>
@@ -210,11 +278,19 @@ const NavBar = class extends React.Component {
             <IconButton darkMode={darkMode} onClick={() => console.log('Search functionality coming soon.')}>
               <Icon name="search" />
             </IconButton>
-            <MenuButton>
-              <span />
-              <span />
-              <span />
-            </MenuButton>
+            <MenuIconButton
+              showMobileMenu={showMobileMenu}
+              darkMode={darkMode}
+              onClick={() =>
+                this.setState({
+                  showMobileMenu: !showMobileMenu,
+                  menuMode: null,
+                  mobileMenuActiveItems: [],
+                })
+              }
+            >
+              <Icon name="menu" className={showMobileMenu && 'close'} />
+            </MenuIconButton>
           </NavActions>
         </NavInside>
       </NavWrap>

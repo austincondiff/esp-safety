@@ -3,27 +3,63 @@ import { Link } from 'gatsby'
 import styled, { keyframes } from 'styled-components'
 
 import Section from './Section'
-import { Row, Col } from './Layout'
+import { Row, Col, mediaQueries } from './Layout'
 import { Button, ButtonGroup } from './Button'
 
 const Header = styled.header`
   position: relative;
 `
+const HeadingText = styled.div`
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  ${mediaQueries.sm} {
+    flex: 0 0 auto;
+  }
+`
 const PageTitle = styled.h1`
   margin: 0;
-  font-size: 48px;
+  font-size: 32px;
+  line-height: 0.95em;
   font-weight: 300;
-  line-height: 44px;
   letter-spacing: -0.5px;
   -webkit-font-smoothing: antialiased;
+  ${mediaQueries.sm} {
+    font-size: 36px;
+  }
+  ${mediaQueries.md} {
+    font-size: 40px;
+  }
+  ${mediaQueries.lg} {
+    font-size: 44px;
+  }
+  ${mediaQueries.xl} {
+    font-size: 48px;
+  }
+
 `
 
 const PageSubtitle = styled.h3`
   margin: 40px 0 0 0;
   color: #cccccc;
-  font-size: 24px;
   font-weight: 500;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 1.25em;
+
+  ${mediaQueries.sm} {
+    font-size: 18px;
+  }
+  ${mediaQueries.md} {
+    font-size: 20px;
+  }
+  ${mediaQueries.lg} {
+    font-size: 22px;
+  }
+  ${mediaQueries.xl} {
+    font-size: 24px;
+  }
 `
 
 const arrowBounce = keyframes`
@@ -40,6 +76,10 @@ const arrowBounce = keyframes`
 
 const Actions = styled.div`
   margin: 64px 0;
+  width: 100%;
+  ${mediaQueries.sm} {
+    width: auto;
+  }
 `
 const Arrow = styled.div`
   position: absolute;
@@ -56,6 +96,19 @@ const Arrow = styled.div`
     border-bottom: 1.5px solid white;
   }
 `
+const StyledButton = styled(Button)`
+  width: calc(100% - 16px);
+  ${mediaQueries.sm} {
+    width: auto;
+  }
+`
+const StyledButtonGroup = styled(ButtonGroup)`
+  width: 100%;
+  ${mediaQueries.sm} {
+    width: auto;
+  }
+`
+
 
 const Hero = ({
   title,
@@ -81,25 +134,28 @@ const Hero = ({
       header
       contentPosition="center"
     >
-      <PageTitle>{title}</PageTitle>
-      <PageSubtitle>{subtitle}</PageSubtitle>
+      <HeadingText>
+        <PageTitle>{title}</PageTitle>
+        <PageSubtitle>{subtitle}</PageSubtitle>
+      </HeadingText>
+
       <Actions>
-        <ButtonGroup vertical>
+        <StyledButtonGroup vertical>
           {primaryButtonLink && primaryButtonLabel && (
             <Link to={primaryButtonLink}>
-              <Button size="lg" primary iconOnHover iconPosition="right">
+              <StyledButton size="lg" primary iconOnHover iconPosition="right">
                 {primaryButtonLabel}
-              </Button>
+              </StyledButton>
             </Link>
           )}
           {secondaryButtonLink && secondaryButtonLabel && (
             <Link to={secondaryButtonLink}>
-              <Button size="lg" transparent light iconOnHover iconPosition="right">
+              <StyledButton size="lg" transparent light iconOnHover iconPosition="right">
                 {secondaryButtonLabel}
-              </Button>
+              </StyledButton>
             </Link>
           )}
-        </ButtonGroup>
+        </StyledButtonGroup>
       </Actions>
 
   </Section>

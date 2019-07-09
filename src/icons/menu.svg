@@ -8,22 +8,22 @@
     #menu-icon-top {
       transform: translateY(0px) rotate(0deg);
       opacity: 1;
-      transition: 250ms;
+      transition: transform 250ms;
     }
     #menu-icon-middle-1 {
       transform: rotate(0deg);
       transform-origin: center;
-      transition: 250ms;
+      transition: transform 250ms;
     }
     #menu-icon-middle-2 {
       transform: rotate(0deg);
       transform-origin: center;
-      transition: 250ms;
+      transition: transform 250ms;
     }
     #menu-icon-bottom {
       transform: translateY(0px);
       opacity: 1;
-      transition: 250ms;
+      transition: transform 250ms;
     }
 
     .close #menu-icon-top {

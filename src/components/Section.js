@@ -132,6 +132,8 @@ const ContentWrap = styled.div`
     `
     margin-top: 104px;
   `}
+    height: 100%;
+    justify-content: center;
 `
 
 const ForegroundImage = styled.img`

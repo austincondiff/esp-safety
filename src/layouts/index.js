@@ -78,6 +78,8 @@ export default ({ children }) => {
                 <meta property="og:title" content={title} />
                 <meta property="og:url" content="/" />
                 <meta property="og:image" content="/images/og-image.jpg" />
+
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
               </Helmet>
               <GlobalStyles />
               <NavBar ctxData={data} setCtx={set} />

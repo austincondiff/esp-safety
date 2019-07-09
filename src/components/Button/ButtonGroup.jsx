@@ -11,7 +11,7 @@ const ButtonGroup = styled.div`
     `
     flex-direction: column;
     & > a > button {
-      width: 100%;
+      width: calc(100% - 16px);
     }
   `}
   & ${Button} {
