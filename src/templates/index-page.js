@@ -2,11 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link, graphql } from 'gatsby'
+import { Spring } from 'react-spring/renderprops'
 
 import theme from '../lib/theme'
 
 import Hero from '../components/Hero'
 import Section from '../components/Section'
+import VisibilitySensor from '../components/VisibilitySensor'
 import IconBox from '../components/IconBox'
 import Features from '../components/Features'
 import News from '../components/News'
@@ -370,7 +372,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
           logo=""
           company="Acme Co."
         />
-    </Testimonials>
+      </Testimonials>
     </Section>
   </div>
 )

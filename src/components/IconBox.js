@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import ArrowLink from './ArrowLink'
-
+import VisibilityTrailAnimation from './VisibilityTrailAnimation'
 import { mediaQueries } from '../components/Layout'
 
 const Title = styled.h3`
@@ -31,7 +31,7 @@ const IconWrap = styled.div`
 `
 
 const IconBox = ({ title, description, link, linkLabel, icon: Icon }) => (
-  <div>
+  <VisibilityTrailAnimation>
     {Icon && (
       <IconWrap>
         <Icon width="100%" />
@@ -40,7 +40,7 @@ const IconBox = ({ title, description, link, linkLabel, icon: Icon }) => (
     <Title>{title}</Title>
     <Description hasLink={link}>{description}</Description>
     {link && <ArrowLink to={link}>{linkLabel || 'Learn More'}</ArrowLink>}
-  </div>
+  </VisibilityTrailAnimation>
 )
 
 export default IconBox

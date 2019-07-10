@@ -10,7 +10,6 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     color: #666666;
     font-size: 14px;
-    overflow: hidden;
   }
 
   h1,

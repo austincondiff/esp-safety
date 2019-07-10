@@ -48,8 +48,8 @@ const NavLinksWrap = styled.div`
   width: 66vw;
   background-color: #000000;
   z-index: 100;
-  transform: translateX(${props => props.showMobileMenu ? '0%' : '100%'});
-  transition: transform .25s;
+  transform: translateX(${props => (props.showMobileMenu ? '0%' : '100%')});
+  transition: transform 0.25s;
   overflow-x: hidden;
   overflow-y: auto;
   ${mediaQueries.md} {
@@ -71,7 +71,7 @@ const NavLinks = styled.div`
 const NavLinkWrap = styled.div``
 const NavLink = styled(Link)`
   text-decoration: none;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255, 255, 255, 0.75);
   text-transform: uppercase;
   font-size: 13px;
   font-weight: 700;
@@ -154,7 +154,7 @@ const IconButton = styled.button`
 const MenuIconButton = styled(IconButton)`
   position: relative;
   z-index: 101;
-  color: ${props => ((props.darkMode || props.showMobileMenu) ? '#ffffff' : '#000000')};
+  color: ${props => (props.darkMode || props.showMobileMenu ? '#ffffff' : '#000000')};
   ${mediaQueries.md} {
     display: none;
   }
@@ -174,31 +174,25 @@ const NavBar = class extends React.Component {
   }
 
   componentDidMount() {
-    const scrollRootEl = document.getElementById('scroll-root')
-    console.log(scrollRootEl)
-
-    scrollRootEl.addEventListener('scroll', this.handleScroll)
+    // window.addEventListener('scroll', this.handleScroll)
 
     this.setScrollStyles()
   }
 
   componentWillUnmount() {
-    const scrollRootEl = document.getElementById('scroll-root')
-
-    scrollRootEl.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('scroll', this.handleScroll)
   }
 
   handleScroll = () => window.requestAnimationFrame(this.setScrollStyles)
 
   setScrollStyles = () => {
     const { navHeight, logoPadding } = this.state
-    const scrollRootEl = document.getElementById('scroll-root')
-    const isMobile = scrollRootEl.clientWidth < breakpoints.md
+    const isMobile = document.clientWidth < breakpoints.md
     const navFullHeight = isMobile ? 96 : 104
     const navCondensedHeight = isMobile ? 64 : 72
     const logoPaddingStart = isMobile ? 32 : 28
     const logoPaddingEnd = isMobile ? 16 : 16
-    const scrollTop = scrollRootEl.scrollTop > 0 ? scrollRootEl.scrollTop : 0
+    const scrollTop = window.scrollY > 0 ? window.scrollY : 0
     const scrollFactor = scrollTop / (navFullHeight - navCondensedHeight)
 
     if (scrollTop < navFullHeight - navCondensedHeight) {
@@ -285,7 +279,7 @@ const NavBar = class extends React.Component {
                 this.setState({
                   showMobileMenu: !showMobileMenu,
                   menuMode: null,
-                  mobileMenuActiveItems: [],
+                  mobileMenuActiveItems: []
                 })
               }
             >

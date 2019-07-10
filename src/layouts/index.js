@@ -83,10 +83,8 @@ export default ({ children }) => {
               </Helmet>
               <GlobalStyles />
               <NavBar ctxData={data} setCtx={set} />
-              <ScrollRoot>
-                {children}
-                <Footer />
-              </ScrollRoot>
+              {children}
+              <Footer />
             </React.Fragment>
           </ThemeProvider>
         )}
