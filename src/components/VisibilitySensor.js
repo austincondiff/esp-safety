@@ -12,10 +12,12 @@ class VisibilitySensor extends Component {
 
   render() {
     const { active } = this.state
-    const { once, children, ...theRest } = this.props
+    const { once, partialVisibility, offset, children, ...theRest } = this.props
     return (
       <VSensor
         active={active}
+        partialVisibility={partialVisibility}
+        offset={offset}
         onChange={isVisible =>
           once && isVisible && this.setState({ active: false }, () => console.log('turned the thing off!'))
         }
@@ -29,13 +31,14 @@ class VisibilitySensor extends Component {
 
 VisibilitySensor.propTypes = {
   once: PropTypes.bool,
-  partiallyVisible: PropTypes.bool,
+  partialVisibility: PropTypes.bool,
   children: PropTypes.func.isRequired
 }
 
 VisibilitySensor.defaultProps = {
   once: true,
-  partiallyVisible: true
+  partialVisibility: true,
+  offset: { bottom: -100 }
 }
 
 export default VisibilitySensor

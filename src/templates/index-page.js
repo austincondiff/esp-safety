@@ -6,9 +6,10 @@ import { Spring } from 'react-spring/renderprops'
 
 import theme from '../lib/theme'
 
+import VisibilityTrailAnimation from '../components/VisibilityTrailAnimation'
+import VisibilitySensor from '../components/VisibilitySensor'
 import Hero from '../components/Hero'
 import Section from '../components/Section'
-import VisibilitySensor from '../components/VisibilitySensor'
 import IconBox from '../components/IconBox'
 import Features from '../components/Features'
 import News from '../components/News'
@@ -191,15 +192,18 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
     <Section noPaddingBottom>
       <Row>
         <Col sm={10} smOffset={1}>
-          <PageIntroTitle>
-            We are a team of experts who specialize in the design of fixed toxic and combustible gas detection, flame detection,
-            and complete turn-key safety systems.
-          </PageIntroTitle>
-          <PageIntroDescription>
-            Our state-of-the-art manufacturing facility allows us to apply strict quality standards and intelligent engineering
-            to ensure that all of our products meet the demands of the toughest industrial environments and applications. The
-            result is a line of world class products all certified to the strictest global standards for safety and performance.
-          </PageIntroDescription>
+          <VisibilityTrailAnimation>
+            <PageIntroTitle>
+              We are a team of experts who specialize in the design of fixed toxic and combustible gas detection, flame
+              detection, and complete turn-key safety systems.
+            </PageIntroTitle>
+            <PageIntroDescription>
+              Our state-of-the-art manufacturing facility allows us to apply strict quality standards and intelligent
+              engineering to ensure that all of our products meet the demands of the toughest industrial environments and
+              applications. The result is a line of world class products all certified to the strictest global standards for
+              safety and performance.
+            </PageIntroDescription>
+          </VisibilityTrailAnimation>
         </Col>
       </Row>
     </Section>
@@ -246,14 +250,16 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       foregroundImagePosition={['45%', '28%']}
       parallax
     >
-      <SectionSupertitle>Performance when it counts</SectionSupertitle>
-      <h2 style={{ color: theme.color.primary }}>Our detectors work as hard as you do</h2>
-      <p>
-        The proven design of ESP Safety’s detectors guarantees the precise response when a real event occurs in your critical
-        area under normal or severe environmental conditions. The engineered smart-design of the flame and gas detectors
-        eliminates the false alarms due to false stimulating factors present in your detection area minimizing the unnecessary
-        and costly process shutdowns.
-      </p>
+      <VisibilityTrailAnimation>
+        <SectionSupertitle>Performance when it counts</SectionSupertitle>
+        <h2 style={{ color: theme.color.primary }}>Our detectors work as hard as you do</h2>
+        <p>
+          The proven design of ESP Safety’s detectors guarantees the precise response when a real event occurs in your critical
+          area under normal or severe environmental conditions. The engineered smart-design of the flame and gas detectors
+          eliminates the false alarms due to false stimulating factors present in your detection area minimizing the unnecessary
+          and costly process shutdowns.
+        </p>
+      </VisibilityTrailAnimation>
     </Section>
     <Section
       contentPosition="left"
@@ -262,13 +268,15 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       foregroundImagePosition={['45%', '75%']}
       parallax
     >
-      <SectionSupertitle>Reliability is protection</SectionSupertitle>
-      <h2 style={{ color: theme.color.primary }}>Tried, tested, and certified</h2>
-      <p>
-        ESP Safety explosion-proof detectors are certified to meet the most demanding performance standards in the industry,
-        including FM, ATEX, IECx, GOST, and ABS. The detectors are widely used in hazardous locations that demand high
-        performance, reliability, and continuous integrity levels.
-      </p>
+      <VisibilityTrailAnimation>
+        <SectionSupertitle>Reliability is protection</SectionSupertitle>
+        <h2 style={{ color: theme.color.primary }}>Tried, tested, and certified</h2>
+        <p>
+          ESP Safety explosion-proof detectors are certified to meet the most demanding performance standards in the industry,
+          including FM, ATEX, IECx, GOST, and ABS. The detectors are widely used in hazardous locations that demand high
+          performance, reliability, and continuous integrity levels.
+        </p>
+      </VisibilityTrailAnimation>
     </Section>
     <Section
       contentPosition="right"
@@ -277,14 +285,16 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       foregroundImagePosition={['45%', '28%']}
       parallax
     >
-      <SectionSupertitle>Convenient and easy to use</SectionSupertitle>
-      <h2 style={{ color: theme.color.primary }}>Straightforward, user-friendly design</h2>
-      <p>
-        ESP Safety detectors are designed to ease the complications of installations, calibrations and maintenance. By offering
-        standard multiple signal outputs, the detectors provide the compatibility to work with different fire and gas systems.
-        The different methods available to perform calibrations give you the flexibility to choose the best option for your
-        needs. With minimum maintenance required, your detector’s service life is maximized.
-      </p>
+      <VisibilityTrailAnimation>
+        <SectionSupertitle>Convenient and easy to use</SectionSupertitle>
+        <h2 style={{ color: theme.color.primary }}>Straightforward, user-friendly design</h2>
+        <p>
+          ESP Safety detectors are designed to ease the complications of installations, calibrations and maintenance. By
+          offering standard multiple signal outputs, the detectors provide the compatibility to work with different fire and gas
+          systems. The different methods available to perform calibrations give you the flexibility to choose the best option
+          for your needs. With minimum maintenance required, your detector’s service life is maximized.
+        </p>
+      </VisibilityTrailAnimation>
     </Section>
     <Section
       imageSrc="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/smoke_PNG962-blurred-1.png"
@@ -292,87 +302,97 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       parallax
       follWidth
     >
-      <Row>
-        <Col xs={6}>
-          <h2 style={{ color: theme.color.primary }}>Meeting your expectations with premium service</h2>
-        </Col>
-      </Row>
-      <Row>
-        <Col sm={6}>
-          <p>
-            When you contact us, you are assigned a dedicated representative that works with you to recommend the right solution
-            for your application. By working with an experienced representative you are assured that you are speaking with
-            someone that knows and fully understands your project from the beginning.{' '}
-          </p>
-        </Col>
-        <Col sm={6}>
-          <p>
-            An experienced team of engineers will support and assist you from start to finish ensuring your project’s success.
-            Have a project in mind? Contact us and we’ll help you get started!
-          </p>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <SectionActions>
-            <ArrowLink to="/contact">Contact us</ArrowLink>
-          </SectionActions>
-        </Col>
-      </Row>
+      <VisibilityTrailAnimation>
+        <Row>
+          <Col xs={6}>
+            <h2 style={{ color: theme.color.primary }}>Meeting your expectations with premium service</h2>
+          </Col>
+        </Row>
+        <Row>
+          <Col sm={6}>
+            <p>
+              When you contact us, you are assigned a dedicated representative that works with you to recommend the right
+              solution for your application. By working with an experienced representative you are assured that you are speaking
+              with someone that knows and fully understands your project from the beginning.{' '}
+            </p>
+          </Col>
+          <Col sm={6}>
+            <p>
+              An experienced team of engineers will support and assist you from start to finish ensuring your project’s success.
+              Have a project in mind? Contact us and we’ll help you get started!
+            </p>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <SectionActions>
+              <ArrowLink to="/contact">Contact us</ArrowLink>
+            </SectionActions>
+          </Col>
+        </Row>
+      </VisibilityTrailAnimation>
     </Section>
     <Section backgroundColor="black" dark>
-      <Row between>
-        <Col xs={6} md={3}>
-          <Stat number={15} unit="M" label="Products sold" />
-        </Col>
-        <Col xs={6} md={3}>
-          <Stat number={75} unit="k" label="Satisfied customers" />
-        </Col>
-        <Col xs={6} md={3}>
-          <Stat number={100} unit="%" label="Safety record" />
-        </Col>
-        <Col xs={6} md={3}>
-          <Stat number={62} unit="k" label="Accidents prevented" />
-        </Col>
-      </Row>
+      <VisibilityTrailAnimation>
+        <VisibilitySensor>
+          {({ isVisible }) => (
+            <Row between>
+              <Col xs={6} md={3}>
+                <Stat isVisible={isVisible} number={15} unit="M" label="Products sold" />
+              </Col>
+              <Col xs={6} md={3}>
+                <Stat isVisible={isVisible} number={75} unit="k" label="Satisfied customers" />
+              </Col>
+              <Col xs={6} md={3}>
+                <Stat isVisible={isVisible} number={100} unit="%" label="Safety record" />
+              </Col>
+              <Col xs={6} md={3}>
+                <Stat isVisible={isVisible} number={62} unit="k" label="Accidents prevented" />
+              </Col>
+            </Row>
+          )}
+        </VisibilitySensor>
+      </VisibilityTrailAnimation>
     </Section>
     <Section>
-      <TestimonalDescription>Customer testimonials</TestimonalDescription>
-      <TestimonalTitle>What people are saying about us</TestimonalTitle>
-      <Testimonials>
-        <Testimonial
-          quote="In our previous projects we worked extensively with the ESP Safety line of Flame and Gas detectors, and had nothing but good experiences. We have determined that the ESP’s flame detectors significantly outshines the others. "
-          name="John S."
-          title="Industrial Engineer"
-          avatar=""
-          logo=""
-          company="Pemex"
-        />
-        <Testimonial
-          quote="I have worked with ESP Safety since 2011. We use ESP gas detectors and controllers along with flame detectors on our offshore platforms. They have performed exceptionally well and are highly reliable. Minimum maintenance has been required despite the harsh operating environment. "
-          name="Jane D."
-          title="Industrial Engineer"
-          avatar=""
-          logo=""
-          company="Energy XXL"
-        />
-        <Testimonial
-          quote="Because of recent issues with the alignment and alarms of a different vendor’s gas detector I had to research alternatives to our problem. My first call was to ESP Safety. Within a few days ESP employees appeared at our site and installed the open path gas detector in one of our most difficult locations. Since the installation this detection equipment has worked great. "
-          name="Jack G."
-          title="Industrial Engineer"
-          avatar=""
-          logo=""
-          company="Philips 66"
-        />
-        <Testimonial
-          quote="We have dealt with ESP Safety for the past several months, during which time they have provided an excellent product and support in the areas of long Range Gas Detection. I can confidently recommend ESP Safety as a solid and reliable supplier, and experts in their field. "
-          name="Zak R."
-          title="Industrial Engineer"
-          avatar=""
-          logo=""
-          company="Acme Co."
-        />
-      </Testimonials>
+      <VisibilityTrailAnimation>
+        <TestimonalDescription>Customer testimonials</TestimonalDescription>
+        <TestimonalTitle>What people are saying about us</TestimonalTitle>
+        <Testimonials>
+          <Testimonial
+            quote="In our previous projects we worked extensively with the ESP Safety line of Flame and Gas detectors, and had nothing but good experiences. We have determined that the ESP’s flame detectors significantly outshines the others. "
+            name="John S."
+            title="Industrial Engineer"
+            avatar=""
+            logo=""
+            company="Pemex"
+          />
+          <Testimonial
+            quote="I have worked with ESP Safety since 2011. We use ESP gas detectors and controllers along with flame detectors on our offshore platforms. They have performed exceptionally well and are highly reliable. Minimum maintenance has been required despite the harsh operating environment. "
+            name="Jane D."
+            title="Industrial Engineer"
+            avatar=""
+            logo=""
+            company="Energy XXL"
+          />
+          <Testimonial
+            quote="Because of recent issues with the alignment and alarms of a different vendor’s gas detector I had to research alternatives to our problem. My first call was to ESP Safety. Within a few days ESP employees appeared at our site and installed the open path gas detector in one of our most difficult locations. Since the installation this detection equipment has worked great. "
+            name="Jack G."
+            title="Industrial Engineer"
+            avatar=""
+            logo=""
+            company="Philips 66"
+          />
+          <Testimonial
+            quote="We have dealt with ESP Safety for the past several months, during which time they have provided an excellent product and support in the areas of long Range Gas Detection. I can confidently recommend ESP Safety as a solid and reliable supplier, and experts in their field. "
+            name="Zak R."
+            title="Industrial Engineer"
+            avatar=""
+            logo=""
+            company="Acme Co."
+          />
+        </Testimonials>
+      </VisibilityTrailAnimation>
     </Section>
   </div>
 )

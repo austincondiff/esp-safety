@@ -174,7 +174,7 @@ const NavBar = class extends React.Component {
   }
 
   componentDidMount() {
-    // window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', this.handleScroll)
 
     this.setScrollStyles()
   }

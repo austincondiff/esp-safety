@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
+import { Parallax } from 'react-scroll-parallax'
 
 import { Layout, mediaQueries } from './Layout'
 
@@ -16,10 +17,11 @@ const StyledSection = styled.section`
   `}
 `
 const SectionInside = styled(Layout)`
-  ${({noPaddingTop, noPaddingBottom, height}) => `
+  ${({ noPaddingTop, noPaddingBottom, height }) => `
     ${!noPaddingTop && `padding-top: 12%;`}
     ${!noPaddingBottom && `padding-bottom: 12%;`}
-    ${height && `
+    ${height &&
+      `
       height: ${height};
       display: flex;
       justify-content: center;
@@ -50,20 +52,31 @@ const ParallaxBackgroundWrap = styled.div`
   left: ${props => (props.imagePosition === 'right' ? `50%` : `0`)};
   bottom: 0;
   overflow: hidden;
+  & .parallax-outer {
+    width: 100vw;
+    height: 100vh;
+  }
+  & .parallax-inner {
+    width: 100vw;
+    height: 100vh;
+  }
 `
 const ParallaxBackground = styled.div`
-  position: absolute;
-  top: 50%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
   left: ${props => (props.imagePosition === 'left' ? `0%` : props.imagePosition === 'right' ? `100%` : '50%')};
-  width: calc(60% + 1px);
-  min-width: 50%;
-  height: 66.66vh;
-  transform: translate3d(-50%, -50%, -2px) scale(3.3333);
+  // width: calc(60% + 1px);
+  // min-width: 50%;
+  // height: 66.66vh;
+  // transform: translate3d(-50%, -50%, -2px) scale(3.3333);
   display: flex;
   justify-content: center;
   align-items: center;
-  transform-origin-x: 50%;
-  transform-origin-y: 0;
+  // transform-origin-x: 50%;
+  // transform-origin-y: 0;
   background-image: url(${props => props.imageSrc});
   background-repeat: no-repeat;
   background-position: center;
@@ -77,9 +90,9 @@ const ParallaxBase = styled.div`
   ${props =>
     props.parallaxContent &&
     `
-    transform: translateZ(-2px) scale(2);
-    transform-origin-x: 50%;
-    transform-origin-y: 0%;
+    // transform: translateZ(-2px) scale(2);
+    // transform-origin-x: 50%;
+    // transform-origin-y: 0%;
   `}
 `
 const ParallaxForeground = styled.div`
@@ -91,9 +104,9 @@ const ParallaxForeground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateZ(0.5px) scale(0.75);
-  transform-origin-x: 50%;
-  transform-origin-y: -50%;
+  // transform: translateZ(0.5px) scale(0.75);
+  // transform-origin-x: 50%;
+  // transform-origin-y: -50%;
   pointer-events: none;
   display: none;
   ${mediaQueries.sm} {
@@ -139,7 +152,7 @@ const ContentWrap = styled.div`
     margin-top: 104px;
   `}
     height: 100%;
-    justify-content: center;
+  justify-content: center;
 `
 
 const ForegroundImage = styled.img`
@@ -153,14 +166,14 @@ const Video = styled.video`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(-66.666%);
+  transform: translateX(-50%) translateY(-50%);
   min-width: 100%;
   min-height: 100%;
   width: auto;
   height: auto;
   overflow: hidden;
-  transform-origin-x: 50%;
-  transform-origin-y: 0%;
+  // transform-origin-x: 50%;
+  // transform-origin-y: 0%;
 `
 
 const Section = ({
@@ -191,14 +204,16 @@ const Section = ({
     {parallax ? (
       <React.Fragment>
         <ParallaxBackgroundWrap imagePosition={imagePosition}>
-          <ParallaxBackground imageSrc={imageSrc} imagePosition={imagePosition} backgroundColor={backgroundColor}>
-            {videoSrc && (
-              <Video width="1800" height="700" preload="auto" loop autoPlay muted playsInline>
-                <source src={videoSrc[0]} type="video/webm" />
-                <source src={videoSrc[1]} type="video/mp4" />
-              </Video>
-            )}
-          </ParallaxBackground>
+          <Parallax>
+            <ParallaxBackground imageSrc={imageSrc} imagePosition={imagePosition} backgroundColor={backgroundColor}>
+              {videoSrc && (
+                <Video width="1800" height="700" preload="auto" loop autoPlay muted playsInline>
+                  <source src={videoSrc[0]} type="video/webm" />
+                  <source src={videoSrc[1]} type="video/mp4" />
+                </Video>
+              )}
+            </ParallaxBackground>
+          </Parallax>
         </ParallaxBackgroundWrap>
         <ParallaxBase parallaxContent={parallaxContent}>
           <BackgroundColorWrap
@@ -206,7 +221,7 @@ const Section = ({
             imagePosition={imagePosition}
             parallaxContent={parallaxContent}
           />
-        <SectionInside noPaddingTop={noPaddingTop} noPaddingBottom={noPaddingBottom} fullWidth={fullWidth} height={height}>
+          <SectionInside noPaddingTop={noPaddingTop} noPaddingBottom={noPaddingBottom} fullWidth={fullWidth} height={height}>
             <ContentWrap header={header} contentPosition={contentPosition} imagePosition={imagePosition}>
               {children}
             </ContentWrap>
@@ -225,7 +240,13 @@ const Section = ({
           imagePosition={imagePosition}
           parallaxContent={parallaxContent}
         />
-        <SectionInside noPaddingTop={noPaddingTop} noPaddingBottom={noPaddingBottom} header={header} fullWidth={fullWidth} height={height}>
+        <SectionInside
+          noPaddingTop={noPaddingTop}
+          noPaddingBottom={noPaddingBottom}
+          header={header}
+          fullWidth={fullWidth}
+          height={height}
+        >
           <ContentWrap contentPosition={contentPosition} imagePosition={imagePosition}>
             {children}
           </ContentWrap>

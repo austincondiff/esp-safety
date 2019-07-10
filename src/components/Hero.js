@@ -5,6 +5,7 @@ import styled, { keyframes } from 'styled-components'
 import Section from './Section'
 import { Row, Col, mediaQueries } from './Layout'
 import { Button, ButtonGroup } from './Button'
+import VisibilityTrailAnimation from './VisibilityTrailAnimation'
 
 const Header = styled.header`
   position: relative;
@@ -38,7 +39,6 @@ const PageTitle = styled.h1`
   ${mediaQueries.xl} {
     font-size: 48px;
   }
-
 `
 
 const PageSubtitle = styled.h3`
@@ -109,7 +109,6 @@ const StyledButtonGroup = styled(ButtonGroup)`
   }
 `
 
-
 const Hero = ({
   title,
   subtitle,
@@ -133,33 +132,37 @@ const Hero = ({
       header
       contentPosition="center"
     >
-      <HeadingText>
-        <PageTitle>{title}</PageTitle>
-        <PageSubtitle>{subtitle}</PageSubtitle>
-      </HeadingText>
-
-      <Actions>
-        <StyledButtonGroup vertical>
-          {primaryButtonLink && primaryButtonLabel && (
-            <Link to={primaryButtonLink}>
-              <StyledButton size="lg" primary iconOnHover iconPosition="right">
-                {primaryButtonLabel}
-              </StyledButton>
-            </Link>
-          )}
-          {secondaryButtonLink && secondaryButtonLabel && (
-            <Link to={secondaryButtonLink}>
-              <StyledButton size="lg" transparent light iconOnHover iconPosition="right">
-                {secondaryButtonLabel}
-              </StyledButton>
-            </Link>
-          )}
-        </StyledButtonGroup>
-      </Actions>
-
-  </Section>
-  <Arrow />
-</Header>
+      <VisibilityTrailAnimation>
+        <HeadingText>
+          <VisibilityTrailAnimation>
+            <PageTitle>{title}</PageTitle>
+            <PageSubtitle>{subtitle}</PageSubtitle>
+          </VisibilityTrailAnimation>
+        </HeadingText>
+        <Actions>
+          <StyledButtonGroup vertical>
+            <VisibilityTrailAnimation>
+              {primaryButtonLink && primaryButtonLabel && (
+                <Link to={primaryButtonLink}>
+                  <StyledButton size="lg" primary iconOnHover iconPosition="right">
+                    {primaryButtonLabel}
+                  </StyledButton>
+                </Link>
+              )}
+              {secondaryButtonLink && secondaryButtonLabel && (
+                <Link to={secondaryButtonLink}>
+                  <StyledButton size="lg" transparent light iconOnHover iconPosition="right">
+                    {secondaryButtonLabel}
+                  </StyledButton>
+                </Link>
+              )}
+            </VisibilityTrailAnimation>
+          </StyledButtonGroup>
+        </Actions>
+      </VisibilityTrailAnimation>
+    </Section>
+    <Arrow />
+  </Header>
 )
 
 export default Hero

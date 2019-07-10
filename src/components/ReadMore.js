@@ -8,7 +8,8 @@ const ReadMoreContainer = styled.div`
   overflow: hidden;
   transition: 0.2s;
 `
-const ReadMoreLink = styled.a`
+const ReadMoreLink = styled.span`
+  cursor: pointer;
   color: ${props => props.theme.color.primary};
   display: inline-block;
   position: relative;

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
+import { Spring } from 'react-spring/renderprops'
 import { mediaQueries } from './Layout'
 
 const StatWrap = styled.div``
@@ -53,12 +53,20 @@ const Label = styled.div`
 
 class Stat extends React.Component {
   render() {
-    const { number, unit, label } = this.props
+    const { number, unit, label, isVisible } = this.props
 
     return (
       <StatWrap>
         <NumberWrap>
-          <Number>{number}</Number>
+          <Spring
+            config={{ tension: 10, friction: 6, precision: 0.1, clamp: true }}
+            to={{
+              number: isVisible ? number : 0
+            }}
+          >
+            {props => <Number>{Math.trunc(props.number)}</Number>}
+          </Spring>
+
           {unit && <Unit>{unit}</Unit>}
         </NumberWrap>
         <Label>{label}</Label>

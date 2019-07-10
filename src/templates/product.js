@@ -13,6 +13,7 @@ import ReadMore from '../components/ReadMore'
 import MarkdownContent from '../components/MarkdownContent'
 import { Tabs, Tab } from '../components/Tabs'
 import Content, { HTMLContent } from '../components/Content'
+import VisibilityTrailAnimation from '../components/VisibilityTrailAnimation'
 
 const SpecificationsSection = styled.section`
   color: #ffffff;
@@ -82,52 +83,70 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
       <Section>
         <Row>
           <Col xs={12} sm={6}>
-            <ImageGallery
-              images={[
-                'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2019/06/sgoes.png',
-                'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/product-001.png',
-                'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2019/06/IR3-IRUVAL-IRUVSS.png',
-                'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2016/07/SSS-903_2013C.png',
-                'https://images.unsplash.com/photo-1561717507-080fac4a8cca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80',
-                'https://images.unsplash.com/photo-1561716749-2ab5a223957c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80'
-              ]}
-            />
+            <VisibilityTrailAnimation>
+              <ImageGallery
+                images={[
+                  'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2019/06/sgoes.png',
+                  'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/product-001.png',
+                  'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2019/06/IR3-IRUVAL-IRUVSS.png',
+                  'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2016/07/SSS-903_2013C.png',
+                  'https://images.unsplash.com/photo-1561717507-080fac4a8cca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80',
+                  'https://images.unsplash.com/photo-1561716749-2ab5a223957c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80'
+                ]}
+              />
+            </VisibilityTrailAnimation>
           </Col>
           <Col xs={12} sm={6}>
-            <Tabs>
-              {data.overview && <Tab label="Product Overview" value="overview">
-                <ReadMore>
-                  <MarkdownContent content={data.overview} />
-                </ReadMore>
-              </Tab>}
-              {data.applications && <Tab label="Applications" value="applications">
-                <p>Applications tab content coming soon.</p>
-                <ul
-                  style={{
-                    columnCount: 2
-                  }}
-                >
-                  {data.applications.map(({application}) => (
-                    <li>{application}</li>
-                  ))}
-                </ul>
-              </Tab>}
-              {data.features && <Tab label="Features & Benefits" value="features">
-                <p>Features & Benefits tab content coming soon.</p>
-                <ul
-                  style={{
-                    columnCount: 2
-                  }}
-                >
-                  {data.features.map(({feature}) => (
-                    <li>{feature}</li>
-                  ))}
-                </ul>
-              </Tab>}
-              <Tab label="Downloads" value="downloads">
-                <p>Downloads tab content coming soon.</p>
-              </Tab>
-            </Tabs>
+            <VisibilityTrailAnimation>
+              <Tabs>
+                {data.overview && (
+                  <Tab label="Product Overview" value="overview">
+                    <ReadMore>
+                      <VisibilityTrailAnimation>
+                        <MarkdownContent content={data.overview} />
+                      </VisibilityTrailAnimation>
+                    </ReadMore>
+                  </Tab>
+                )}
+                {data.applications && (
+                  <Tab label="Applications" value="applications">
+                    <VisibilityTrailAnimation>
+                      <p>Applications tab content coming soon.</p>
+                      <ul
+                        style={{
+                          columnCount: 2
+                        }}
+                      >
+                        {data.applications.map(({ application }) => (
+                          <li>{application}</li>
+                        ))}
+                      </ul>
+                    </VisibilityTrailAnimation>
+                  </Tab>
+                )}
+                {data.features && (
+                  <Tab label="Features & Benefits" value="features">
+                    <VisibilityTrailAnimation>
+                      <p>Features & Benefits tab content coming soon.</p>
+                      <ul
+                        style={{
+                          columnCount: 2
+                        }}
+                      >
+                        {data.features.map(({ feature }) => (
+                          <li>{feature}</li>
+                        ))}
+                      </ul>
+                    </VisibilityTrailAnimation>
+                  </Tab>
+                )}
+                <Tab label="Downloads" value="downloads">
+                  <VisibilityTrailAnimation>
+                    <p>Downloads tab content coming soon.</p>
+                  </VisibilityTrailAnimation>
+                </Tab>
+              </Tabs>
+            </VisibilityTrailAnimation>
           </Col>
         </Row>
       </Section>

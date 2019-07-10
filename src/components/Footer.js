@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import styled from 'styled-components'
 
+import VisibilityTrailAnimation from './VisibilityTrailAnimation'
 import Section from './Section'
 import Logo from './Logo'
 import Icon from './Icon'
@@ -53,14 +54,14 @@ const SubFooter = styled.section`
   overflow: hidden;
 `
 const FooterSections = styled(Row)`
-page-break-inside: avoid;
-break-inside: avoid;
-display: block;
-columns: 2;
-${mediaQueries.sm} {
-  columns: 1;
-  display: flex;
-}
+  page-break-inside: avoid;
+  break-inside: avoid;
+  display: block;
+  columns: 2;
+  ${mediaQueries.sm} {
+    columns: 1;
+    display: flex;
+  }
 `
 const FooterSection = styled(Col).attrs({ fill: true })`
   page-break-inside: avoid;
@@ -72,7 +73,7 @@ const FooterSection = styled(Col).attrs({ fill: true })`
   }
 `
 const FooterSectionTitle = styled.h4`
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
@@ -84,22 +85,22 @@ const FooterSectionTitle = styled.h4`
   }
 `
 const FooterSectionItem = styled(Link)`
-  color: #CCCCCC;
+  color: #cccccc;
   font-size: 14px;
   font-weight: 500;
   line-height: 24px;
   display: block;
   padding: 8px 0;
-  transition: .25s;
+  transition: 0.25s;
   &:hover {
-    color: #FFFFFF;
+    color: #ffffff;
   }
   &:last-child {
     padding-bottom: 0;
   }
 `
 const FooterSectionAddress = styled.div`
-  color: #CCCCCC;
+  color: #cccccc;
   font-size: 14px;
   font-weight: 500;
   line-height: 24px;
@@ -155,7 +156,9 @@ const Footer = class extends React.Component {
             </Col>
             <Col xs={12} md={0}>
               <CtaActions>
-                <Button overlay size="xl">Find a rep</Button>
+                <Button overlay size="xl">
+                  Find a rep
+                </Button>
               </CtaActions>
             </Col>
           </Row>
@@ -163,82 +166,79 @@ const Footer = class extends React.Component {
         </Section>
         <MainFooter backgroundColor="#181818">
           <StyledFooterCap />
-          <StyledLogo stacked light />
+          <VisibilityTrailAnimation>
+            <StyledLogo stacked light />
+          </VisibilityTrailAnimation>
           <Layout>
             <FooterSections>
               <FooterSection sm={4}>
-                <FooterSectionTitle>Locations</FooterSectionTitle>
-                <FooterSectionAddress>
-                  4001 W. Sam Houston Pkwy N. <br />
-                  Suite #150 <br />
-                  Houston, TX. 77043 <br />
-                  +1.713.999.1050
-                </FooterSectionAddress>
-                <FooterSectionAddress>
-                  555 North First St.<br />
-                  San Jose, CA. 95112 <br />
-                  +1.408.886.9746
-                </FooterSectionAddress>
+                <VisibilityTrailAnimation>
+                  <FooterSectionTitle>Locations</FooterSectionTitle>
+                  <FooterSectionAddress>
+                    4001 W. Sam Houston Pkwy N. <br />
+                    Suite #150 <br />
+                    Houston, TX. 77043 <br />
+                    +1.713.999.1050
+                  </FooterSectionAddress>
+                  <FooterSectionAddress>
+                    555 North First St.
+                    <br />
+                    San Jose, CA. 95112 <br />
+                    +1.408.886.9746
+                  </FooterSectionAddress>
+                </VisibilityTrailAnimation>
               </FooterSection>
               <FooterSection sm={4}>
-                <FooterSectionTitle>Contact</FooterSectionTitle>
-                <FooterSectionItem to="/contact">
-                  Contact ESP Safety
-                </FooterSectionItem>
-                <FooterSectionItem to="/contact">
-                  Business Inquiries
-                </FooterSectionItem>
+                <VisibilityTrailAnimation>
+                  <FooterSectionTitle>Contact</FooterSectionTitle>
+                  <FooterSectionItem to="/contact">Contact ESP Safety</FooterSectionItem>
+                  <FooterSectionItem to="/contact">Business Inquiries</FooterSectionItem>
+                </VisibilityTrailAnimation>
               </FooterSection>
               <FooterSection sm={4}>
-                <FooterSectionTitle>About</FooterSectionTitle>
-                <FooterSectionItem to="/about">
-                  About ESP Safety
-                </FooterSectionItem>
-                <FooterSectionItem to="/careers">
-                  Work For Us
-                </FooterSectionItem>
+                <VisibilityTrailAnimation>
+                  <FooterSectionTitle>About</FooterSectionTitle>
+                  <FooterSectionItem to="/about">About ESP Safety</FooterSectionItem>
+                  <FooterSectionItem to="/careers">Work For Us</FooterSectionItem>
+                </VisibilityTrailAnimation>
               </FooterSection>
               <FooterSection sm={4}>
-                <FooterSectionTitle>Products</FooterSectionTitle>
-                <FooterSectionItem to="/products">
-                  All Products
-                </FooterSectionItem>
-                <FooterSectionItem to="/contact">
-                  Fire Detectors
-                </FooterSectionItem>
-                <FooterSectionItem to="/contact">
-                  Combostible Gas Detectors
-                </FooterSectionItem>
-                <FooterSectionItem to="/contact">
-                  Toxic Gas Detectors
-                </FooterSectionItem>
-                <FooterSectionItem to="/contact">
-                  Oxygen Detectors
-                </FooterSectionItem>
+                <VisibilityTrailAnimation>
+                  <FooterSectionTitle>Products</FooterSectionTitle>
+                  <FooterSectionItem to="/products">All Products</FooterSectionItem>
+                  <FooterSectionItem to="/contact">Fire Detectors</FooterSectionItem>
+                  <FooterSectionItem to="/contact">Combostible Gas Detectors</FooterSectionItem>
+                  <FooterSectionItem to="/contact">Toxic Gas Detectors</FooterSectionItem>
+                  <FooterSectionItem to="/contact">Oxygen Detectors</FooterSectionItem>
+                </VisibilityTrailAnimation>
               </FooterSection>
               <FooterSection sm={4}>
-                <FooterSectionTitle>Certifications</FooterSectionTitle>
-                <FooterSectionItem to="/">
-                  Certification images coming soon
-                </FooterSectionItem>
+                <VisibilityTrailAnimation>
+                  <FooterSectionTitle>Certifications</FooterSectionTitle>
+                  <FooterSectionItem to="/">Certification images coming soon</FooterSectionItem>
+                </VisibilityTrailAnimation>
               </FooterSection>
             </FooterSections>
           </Layout>
         </MainFooter>
         <SubFooter>
           <Layout>
-            <Row start="md" center="xs" middle>
-              <Col xs={12} md={0} fill="md">© 2019 ESP Safety. All rights reserved.</Col>
-              <Col xs={12} md={0}>
-                <SocialLinks>
-                  {socialMedia.links.map(s => (
-                    <SocialLink title={s.type} target="_blank" href={s.url}>
-                      <Icon name={s.type} />
-                    </SocialLink>
-                  ))}
-                </SocialLinks>
-              </Col>
-            </Row>
+            <VisibilityTrailAnimation>
+              <Row start="md" center="xs" middle>
+                <Col xs={12} md={0} fill="md">
+                  © 2019 ESP Safety. All rights reserved.
+                </Col>
+                <Col xs={12} md={0}>
+                  <SocialLinks>
+                    {socialMedia.links.map(s => (
+                      <SocialLink title={s.type} target="_blank" href={s.url}>
+                        <Icon name={s.type} />
+                      </SocialLink>
+                    ))}
+                  </SocialLinks>
+                </Col>
+              </Row>
+            </VisibilityTrailAnimation>
           </Layout>
         </SubFooter>
       </FooterWrap>
@@ -270,6 +270,12 @@ export default ({ ...props }) => (
         }
       }
     `}
-    render={data => <Footer footer={data.allSettingsYaml.edges.filter(edge => edge.node.footer)[0].node.footer} socialMedia={data.allSettingsYaml.edges.filter(edge => edge.node.socialMedia)[0].node.socialMedia} {...props} />}
+    render={data => (
+      <Footer
+        footer={data.allSettingsYaml.edges.filter(edge => edge.node.footer)[0].node.footer}
+        socialMedia={data.allSettingsYaml.edges.filter(edge => edge.node.socialMedia)[0].node.socialMedia}
+        {...props}
+      />
+    )}
   />
 )
