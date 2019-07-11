@@ -185,8 +185,11 @@ const NavBar = class extends React.Component {
   }
 
   handleScroll = () => {
+    const isMobile = document.clientWidth < breakpoints.md
+    const navFullHeight = isMobile ? 96 : 104
+
     // Prevent multiple rAF callbacks
-    if (this.scheduledAnimationFrame) {
+    if (this.scheduledAnimationFrame || (!this.state.transparent && window.scrollY > navFullHeight)) {
       return
     }
 

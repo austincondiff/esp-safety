@@ -7,12 +7,17 @@ class Parallax extends React.Component {
     this.parallaxContainerRef = React.createRef()
     this.parallaxOuterRef = React.createRef()
     this.parallaxInnerRef = React.createRef()
+    this.parallaxVideoRef = React.createRef()
     this.handleScroll = this.handleScroll.bind(this)
     this.scheduledAnimationFrame = false
   }
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('focus', this.playVideo)
+    window.addEventListener('blur', this.pauseVideo)
+    this.parallaxInnerRef.current.style.opacity = '0'
+    this.parallaxInnerRef.current.style.transition = 'opacity .5s'
     this.handleScroll()
     if (this.parallaxContainerRef.current && window.getComputedStyle(this.parallaxContainerRef.current).position === 'static') {
       this.parallaxContainerRef.current.style.position = 'relative'
@@ -21,7 +26,22 @@ class Parallax extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('focus', this.playVideo)
+    window.removeEventListener('blur', this.pauseVideo)
   }
+
+  isVideoPlaying = () =>
+    !!(
+      this.parallaxVideoRef &&
+      this.parallaxVideoRef.current.currentTime > 0 &&
+      !this.parallaxVideoRef.current.paused &&
+      !this.parallaxVideoRef.current.ended &&
+      this.parallaxVideoRef.current.readyState > 2
+    )
+
+  playVideo = () => this.parallaxVideoRef.current && this.parallaxVideoRef.current.play()
+
+  pauseVideo = () => this.parallaxVideoRef.current && this.parallaxVideoRef.current.pause()
 
   handleScroll = () => {
     // Prevent multiple rAF callbacks
@@ -32,7 +52,7 @@ class Parallax extends React.Component {
     this.scheduledAnimationFrame = true
 
     requestAnimationFrame(() => {
-      const { windowAnchor, contentAnchor, strength } = this.props
+      const { windowAnchor, contentAnchor, strength, backgroundVideo } = this.props
 
       // Get dimensions
       const scrollTop = window.scrollY
@@ -47,7 +67,18 @@ class Parallax extends React.Component {
       const parallaxTransform = (contentAnchorOffset - scrollAnchor) * strength
 
       // Apply styles
+      this.parallaxInnerRef.current.style.opacity = '1'
       this.parallaxInnerRef.current.style.transform = `translateY(${parallaxTransform}px)`
+
+      if (backgroundVideo) {
+        const parallaxInViewport = parallaxTop + parallaxHeight > scrollTop && parallaxTop < parallaxTop + windowHeight
+
+        if (!parallaxInViewport && this.isVideoPlaying()) {
+          this.pauseVideo()
+        } else if (parallaxInViewport && !this.isVideoPlaying()) {
+          this.playVideo()
+        }
+      }
 
       // Allow for another anamation frame to be requested
       this.scheduledAnimationFrame = false
@@ -76,6 +107,7 @@ class Parallax extends React.Component {
           >
             {backgroundVideo && (
               <video
+                ref={this.parallaxVideoRef}
                 width="1080"
                 height="720"
                 preload="auto"
