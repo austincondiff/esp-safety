@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link, graphql } from 'gatsby'
 import { Spring } from 'react-spring/renderprops'
-import { Parallax } from 'react-scroll-parallax'
 
 import theme from '../lib/theme'
 

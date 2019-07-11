@@ -1,7 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { ThemeProvider } from 'styled-components'
-import { ParallaxProvider } from 'react-scroll-parallax'
 
 import ContextConsumer, { ContextProvider } from '../components/Context'
 import NavBar from '../components/Navbar'
@@ -84,12 +83,8 @@ export default ({ children }) => {
               </Helmet>
               <GlobalStyles />
               <NavBar ctxData={data} setCtx={set} />
-              <ParallaxProvider>
-                <main>
-                  {children}
-                  <Footer />
-                </main>
-              </ParallaxProvider>
+              {children}
+              <Footer />
             </React.Fragment>
           </ThemeProvider>
         )}
