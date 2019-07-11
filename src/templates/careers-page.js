@@ -12,7 +12,10 @@ export const CareersPageTemplate = ({ title, content, contentComponent }) => {
 
   return (
     <React.Fragment>
-      <Header title="Work for us" />
+      <Header
+        title="Work for us"
+        backgroundImage="https://images.unsplash.com/photo-1542175603-f59071ce6e30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80"
+      />
       <Section>Work for us page coming soon.</Section>
     </React.Fragment>
   )

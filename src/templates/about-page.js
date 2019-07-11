@@ -12,7 +12,10 @@ export const AboutPageTemplate = ({ title, content, contentComponent }) => {
 
   return (
     <React.Fragment>
-      <Header title="About us" />
+      <Header
+        title="About us"
+        backgroundImage="https://images.unsplash.com/photo-1556388275-bb5585725aca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
+      />
       <Section>About us page coming soon.</Section>
     </React.Fragment>
   )

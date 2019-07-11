@@ -38,7 +38,10 @@ export default class Index extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Header title="Contact us" />
+        <Header
+          title="Contact us"
+          backgroundImage="https://images.unsplash.com/photo-1503217195339-397eb18024e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80"
+        />
         <Section className="section">
           <div className="container">
             <div className="content">

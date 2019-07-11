@@ -16,7 +16,10 @@ const ProductsIndexPage = ({ data }) => {
 
   return (
     <React.Fragment>
-      <Header title="Products" />
+      <Header
+        title="Products"
+        backgroundImage="https://images.unsplash.com/photo-1536405454887-931a1a783382?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80"
+      />
       <Section>
         <p>Product page here</p>
         {products.map(product => (
