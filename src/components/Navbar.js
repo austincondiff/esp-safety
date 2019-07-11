@@ -203,10 +203,10 @@ const NavBar = class extends React.Component {
 
   setScrollStyles = () => {
     const { navHeight, logoPadding } = this.state
-    const isMobile = document.clientWidth < breakpoints.md
+    const isMobile = window.innerWidth < breakpoints.md
     const navFullHeight = isMobile ? 96 : 104
     const navCondensedHeight = isMobile ? 64 : 72
-    const logoPaddingStart = isMobile ? 32 : 28
+    const logoPaddingStart = isMobile ? 28 : 28
     const logoPaddingEnd = isMobile ? 16 : 16
     const scrollTop = window.scrollY > 0 ? window.scrollY : 0
     const scrollFactor = scrollTop / (navFullHeight - navCondensedHeight)
