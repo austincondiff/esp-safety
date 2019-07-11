@@ -18,9 +18,7 @@ class VisibilitySensor extends Component {
         active={active}
         partialVisibility={partialVisibility}
         offset={offset}
-        onChange={isVisible =>
-          once && isVisible && this.setState({ active: false }, () => console.log('turned the thing off!'))
-        }
+        onChange={isVisible => once && isVisible && this.setState({ active: false })}
         {...theRest}
       >
         {({ isVisible }) => children({ isVisible })}

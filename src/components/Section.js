@@ -1,32 +1,44 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
 import styled from 'styled-components'
-import { Parallax } from 'react-scroll-parallax'
 
 import { Layout, mediaQueries } from './Layout'
+import Parallax from './Parallax'
 
 const StyledSection = styled.section`
   position: relative;
-  // transform-style: preserve-3d;
+  background: ${props => (props.backgroundColor ? props.backgroundColor : 'transparent')};
   ${props => props.dark && `&, & * { color: #FFFFFF; }`};
-  ${props =>
-    props.parallaxContent &&
-    `
-    overflow: hidden;
-  `}
+  & img.react-parallax-bgimage,
+  & .react-parallax-background-children video {
+    opacity: ${props => props.backgroundImageOpacity || 1};
+  }
 `
 const SectionInside = styled(Layout)`
-  ${({ noPaddingTop, noPaddingBottom, height }) => `
-    ${!noPaddingTop && `padding-top: 12%;`}
-    ${!noPaddingBottom && `padding-bottom: 12%;`}
-    ${height &&
-      `
+  ${({ noPaddingTop, noPaddingBottom, height, parallaxContent, percentage }) => `
+    ${
+      parallaxContent
+        ? `
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      transform: translateY(calc(100% - ${percentage * 500}px));
+    `
+        : ``
+    }
+    ${!noPaddingTop ? `padding-top: 12%;` : ``}
+    ${!noPaddingBottom ? `padding-bottom: 12%;` : ``}
+    ${
+      height
+        ? `
       height: ${height};
       display: flex;
       justify-content: center;
       flex-direction: column;
-    `};
+    `
+        : ``
+    };
     ${mediaQueries.sm} {
       ${!noPaddingTop && `padding-top: 11%;`}
       ${!noPaddingBottom && `padding-bottom: 11%;`}
@@ -45,92 +57,28 @@ const SectionInside = styled(Layout)`
     }
   `}
 `
-const ParallaxBackgroundWrap = styled.div`
-  position: absolute;
-  top: 0;
-  right: ${props => (props.imagePosition === 'left' ? `50%` : `0`)};
-  left: ${props => (props.imagePosition === 'right' ? `50%` : `0`)};
-  bottom: 0;
-  overflow: hidden;
-  & .parallax-outer {
-    width: 100vw;
-    height: 100vh;
-  }
-  & .parallax-inner {
-    width: 100vw;
-    height: 100vh;
-  }
-`
-const ParallaxBackground = styled.div`
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  left: ${props => (props.imagePosition === 'left' ? `0%` : props.imagePosition === 'right' ? `100%` : '50%')};
-  // width: calc(60% + 1px);
-  // min-width: 50%;
-  // height: 66.66vh;
-  // transform: translate3d(-50%, -50%, -2px) scale(3.3333);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  // transform-origin-x: 50%;
-  // transform-origin-y: 0;
-  background-image: url(${props => props.imageSrc});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-`
-const ParallaxBase = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  ${props =>
-    props.parallaxContent &&
-    `
-    // transform: translateZ(-2px) scale(2);
-    // transform-origin-x: 50%;
-    // transform-origin-y: 0%;
-  `}
-`
-const ParallaxForeground = styled.div`
+const ParallaxBackground = styled(Parallax)`
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  // transform: translateZ(0.5px) scale(0.75);
-  // transform-origin-x: 50%;
-  // transform-origin-y: -50%;
-  pointer-events: none;
-  display: none;
+  opacity: 0.5;
+`
+const ParallaxForeground = styled(Parallax)`
+  width: ${props => props.width};
+  margin-left: 50%;
+  transform: translateX(-50%);
   ${mediaQueries.sm} {
-    display: block;
+    margin: 0;
+    position: absolute;
+    top: ${props => (props.position ? props.position[0] : 0)};
+    left: ${props => (props.position ? props.position[1] : 0)};
+    transform: translateX(-50%) translateY(-50%);
   }
 `
-const BackgroundColorWrap = styled.div`
-  position: absolute;
-  ${props =>
-    props.parallaxContent
-      ? `
-      top: -100%;
-      left: -100%;
-      right: -100%;
-      bottom: -100%;
-    `
-      : `
-      top: 0;
-      left: ${props.imagePosition === 'left' ? '50%' : '0'};
-      right: ${props.imagePosition === 'right' ? '50%' : '0'};
-      bottom: 0;
-  `}
-
-  background: ${props => (props.backgroundColor ? props.backgroundColor : 'transparent')};
+const ForegroundImage = styled.img`
+  width: 100%;
 `
 const ContentWrap = styled.div`
   position: relative;
@@ -143,7 +91,7 @@ const ContentWrap = styled.div`
     `
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     text-align: center;
   `}
   ${props =>
@@ -153,27 +101,9 @@ const ContentWrap = styled.div`
   `}
     height: 100%;
   justify-content: center;
-`
-
-const ForegroundImage = styled.img`
-  position: absolute;
-  top: ${props => props.position[0]};
-  left: ${props => props.position[1]};
-  width: ${props => props.width};
-  transform: translateX(-50%) translateY(-50%);
-`
-const Video = styled.video`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  overflow: hidden;
-  // transform-origin-x: 50%;
-  // transform-origin-y: 0%;
+  ${mediaQueries.sm} {
+    align-items: center;
+  }
 `
 
 const Section = ({
@@ -188,7 +118,8 @@ const Section = ({
   parallaxContent,
   image,
   imageDepth,
-  imageSrc,
+  backgroundImage,
+  backgroundImageOpacity,
   imagePosition,
   foregroundImageSrc,
   foregroundImagePosition,
@@ -199,62 +130,51 @@ const Section = ({
   dark,
   header,
   videoSrc
-}) => (
-  <StyledSection dark={dark} parallaxContent={parallaxContent}>
-    {parallax ? (
-      <React.Fragment>
-        <ParallaxBackgroundWrap imagePosition={imagePosition}>
-          <Parallax>
-            <ParallaxBackground imageSrc={imageSrc} imagePosition={imagePosition} backgroundColor={backgroundColor}>
-              {videoSrc && (
-                <Video width="1800" height="700" preload="auto" loop autoPlay muted playsInline>
-                  <source src={videoSrc[0]} type="video/webm" />
-                  <source src={videoSrc[1]} type="video/mp4" />
-                </Video>
-              )}
-            </ParallaxBackground>
-          </Parallax>
-        </ParallaxBackgroundWrap>
-        <ParallaxBase parallaxContent={parallaxContent}>
-          <BackgroundColorWrap
-            backgroundColor={backgroundColor}
-            imagePosition={imagePosition}
-            parallaxContent={parallaxContent}
+}) => {
+  return (
+    <StyledSection
+      dark={dark}
+      backgroundImageOpacity={backgroundImageOpacity}
+      parallaxContent={parallaxContent}
+      backgroundColor={backgroundColor}
+    >
+      {parallax ? (
+        <React.Fragment>
+          <ParallaxBackground
+            windowAnchor={header ? 0 : 0.5}
+            strength={-0.5}
+            backgroundImage={backgroundImage}
+            backgroundVideo={backgroundVideo}
           />
           <SectionInside noPaddingTop={noPaddingTop} noPaddingBottom={noPaddingBottom} fullWidth={fullWidth} height={height}>
             <ContentWrap header={header} contentPosition={contentPosition} imagePosition={imagePosition}>
               {children}
             </ContentWrap>
           </SectionInside>
-        </ParallaxBase>
-        {foregroundImageSrc && (
-          <ParallaxForeground>
-            <ForegroundImage width={foregroundImageWidth} position={foregroundImagePosition} src={foregroundImageSrc} />
-          </ParallaxForeground>
-        )}
-      </React.Fragment>
-    ) : (
-      <React.Fragment>
-        <BackgroundColorWrap
-          backgroundColor={backgroundColor}
-          imagePosition={imagePosition}
-          parallaxContent={parallaxContent}
-        />
-        <SectionInside
-          noPaddingTop={noPaddingTop}
-          noPaddingBottom={noPaddingBottom}
-          header={header}
-          fullWidth={fullWidth}
-          height={height}
-        >
-          <ContentWrap contentPosition={contentPosition} imagePosition={imagePosition}>
-            {children}
-          </ContentWrap>
-        </SectionInside>
-      </React.Fragment>
-    )}
-  </StyledSection>
-)
+          {foregroundImageSrc && (
+            <ParallaxForeground width={foregroundImageWidth} position={foregroundImagePosition}>
+              <ForegroundImage position={foregroundImagePosition} src={foregroundImageSrc} />
+            </ParallaxForeground>
+          )}
+        </React.Fragment>
+      ) : (
+        <React.Fragment>
+          <SectionInside
+            noPaddingTop={noPaddingTop}
+            noPaddingBottom={noPaddingBottom}
+            header={header}
+            fullWidth={fullWidth}
+            height={height}
+          >
+            <ContentWrap contentPosition={contentPosition} imagePosition={imagePosition}>
+              {children}
+            </ContentWrap>
+          </SectionInside>
+        </React.Fragment>
+      )}
+    </StyledSection>
+  )
+}
 
 // Section.propTypes = {
 //   fullWidth

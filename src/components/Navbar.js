@@ -171,6 +171,7 @@ const NavBar = class extends React.Component {
       darkMode: false,
       showMobileMenu: false
     }
+    this.scheduledAnimationFrame = false
   }
 
   componentDidMount() {
@@ -183,7 +184,19 @@ const NavBar = class extends React.Component {
     window.removeEventListener('scroll', this.handleScroll)
   }
 
-  handleScroll = () => window.requestAnimationFrame(this.setScrollStyles)
+  handleScroll = () => {
+    // Prevent multiple rAF callbacks
+    if (this.scheduledAnimationFrame) {
+      return
+    }
+
+    this.scheduledAnimationFrame = true
+
+    requestAnimationFrame(() => {
+      this.setScrollStyles()
+      this.scheduledAnimationFrame = false
+    })
+  }
 
   setScrollStyles = () => {
     const { navHeight, logoPadding } = this.state

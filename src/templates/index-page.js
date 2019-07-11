@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link, graphql } from 'gatsby'
 import { Spring } from 'react-spring/renderprops'
+import { Parallax } from 'react-scroll-parallax'
 
 import theme from '../lib/theme'
 
@@ -113,10 +114,10 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       height="88vh"
       title="Technology of the future, protection for today"
       subtitle="We keep you safe with our industry leading safety products specializing in gas and flame detectors"
-      videoSrc={[
-        'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/esp-hero-bg-480p.webm',
-        'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/esp-hero-bg-480p.mp4'
-      ]}
+      backgroundVideo={{
+        webm: 'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/esp-hero-bg-480p.webm',
+        mp4: 'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/esp-hero-bg-480p.mp4'
+      }}
       primaryButtonLink={'/products'}
       primaryButtonLabel={'View Our Products'}
       secondaryButtonLink={'/about'}
@@ -246,8 +247,8 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
     <Section
       contentPosition="right"
       foregroundImageSrc="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/product-001.png"
-      foregroundImageWidth="45%"
-      foregroundImagePosition={['45%', '28%']}
+      foregroundImageWidth="55%"
+      foregroundImagePosition={['55%', '25%']}
       parallax
     >
       <VisibilityTrailAnimation>
@@ -264,8 +265,8 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
     <Section
       contentPosition="left"
       foregroundImageSrc="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2019/06/IR3-IRUVAL-IRUVSS.png"
-      foregroundImageWidth="50%"
-      foregroundImagePosition={['45%', '75%']}
+      foregroundImageWidth="60%"
+      foregroundImagePosition={['55%', '80%']}
       parallax
     >
       <VisibilityTrailAnimation>
@@ -281,8 +282,8 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
     <Section
       contentPosition="right"
       foregroundImageSrc="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2016/07/SSS-903_2013C.png"
-      foregroundImageWidth="20%"
-      foregroundImagePosition={['45%', '28%']}
+      foregroundImageWidth="30%"
+      foregroundImagePosition={['70%', '30%']}
       parallax
     >
       <VisibilityTrailAnimation>

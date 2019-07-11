@@ -166,9 +166,7 @@ const Footer = class extends React.Component {
         </Section>
         <MainFooter backgroundColor="#181818">
           <StyledFooterCap />
-          <VisibilityTrailAnimation>
-            <StyledLogo stacked light />
-          </VisibilityTrailAnimation>
+          <StyledLogo stacked light />
           <Layout>
             <FooterSections>
               <FooterSection sm={4}>

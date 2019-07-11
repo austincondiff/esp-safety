@@ -151,7 +151,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
         </Row>
       </Section>
       <Section
-        imageSrc="https://images.unsplash.com/photo-1561717507-080fac4a8cca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80"
+        backgroundImage="https://images.unsplash.com/photo-1561717507-080fac4a8cca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80"
         backgroundColor="#F6F6F6"
         parallax
         imagePosition="right"
@@ -165,7 +165,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
         </p>
       </Section>
       <Section
-        imageSrc="https://images.unsplash.com/photo-1561716749-2ab5a223957c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80"
+        backgroundImage="https://images.unsplash.com/photo-1561716749-2ab5a223957c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80"
         backgroundColor="#FFFFFF"
         parallax
         imagePosition="left"

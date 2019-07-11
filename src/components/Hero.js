@@ -83,7 +83,7 @@ const Actions = styled.div`
 `
 const Arrow = styled.div`
   position: absolute;
-  bottom: 6vw;
+  bottom: 20vw;
   left: calc(50% - 8px);
   animation: ${arrowBounce} 2s infinite;
   &:after {
@@ -94,6 +94,9 @@ const Arrow = styled.div`
     transform: rotate(45deg);
     border-right: 1.5px solid white;
     border-bottom: 1.5px solid white;
+  }
+  ${mediaQueries.sm} {
+    bottom: 6vw;
   }
 `
 const StyledButton = styled(Button)`
@@ -126,7 +129,8 @@ const Hero = ({
       {...props}
       videoSrc={videoSrc}
       imageSrc={imageSrc}
-      backgroundColor="rgba(0,0,0,0.75)"
+      backgroundImageOpacity={0.5}
+      backgroundColor="#000000"
       dark
       parallax
       header

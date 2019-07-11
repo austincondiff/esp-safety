@@ -3,6 +3,7 @@ import { Link, graphql, StaticQuery } from 'gatsby'
 
 import Header from '../../components/Header'
 import Section from '../../components/Section'
+import Parallax from '../../components/Parallax'
 
 const ProductsIndexPage = ({ data }) => {
   console.log(data)

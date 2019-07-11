@@ -4,6 +4,15 @@ import ArrowLink from './ArrowLink'
 import VisibilityTrailAnimation from './VisibilityTrailAnimation'
 import { mediaQueries } from '../components/Layout'
 
+const IconWrap = styled.div`
+  width: 48px;
+  height: 48px;
+  margin-bottom: 32px;
+  ${mediaQueries.md} {
+    width: 56px;
+    height: 56px;
+  }
+`
 const Title = styled.h3`
   font-size: 16px;
   font-weight: 300;
@@ -20,14 +29,8 @@ const Description = styled.p`
     font-size: 16px;
   }
 `
-const IconWrap = styled.div`
-  width: 48px;
-  height: 48px;
-  margin-bottom: 32px;
-  ${mediaQueries.md} {
-    width: 56px;
-    height: 56px;
-  }
+const StyledArrowLink = styled(ArrowLink)`
+  margin-top: 24px;
 `
 
 const IconBox = ({ title, description, link, linkLabel, icon: Icon }) => (
@@ -39,7 +42,7 @@ const IconBox = ({ title, description, link, linkLabel, icon: Icon }) => (
     )}
     <Title>{title}</Title>
     <Description hasLink={link}>{description}</Description>
-    {link && <ArrowLink to={link}>{linkLabel || 'Learn More'}</ArrowLink>}
+    {link && <StyledArrowLink to={link}>{linkLabel || 'Learn More'}</StyledArrowLink>}
   </VisibilityTrailAnimation>
 )
 
