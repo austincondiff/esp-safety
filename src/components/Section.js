@@ -58,12 +58,37 @@ const SectionInside = styled(Layout)`
   `}
 `
 const ParallaxBackground = styled(Parallax)`
+  opacity: ${props => (props.imagePosition ? 1 : 0.5)};
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  opacity: 0.5;
+  ${props =>
+    props.imagePosition
+      ? `
+      position: static;
+      width: 100%;
+      height: 100vw;
+  `
+      : ``}
+  ${mediaQueries.sm} {
+    width: auto;
+    height: auto;
+    position: absolute;
+    ${props =>
+      props.imagePosition === 'left'
+        ? `
+      right: 50%;
+    `
+        : ``}
+    ${props =>
+      props.imagePosition === 'right'
+        ? `
+      left: 50%;
+    `
+        : ``}
+  }
 `
 const ParallaxForeground = styled(Parallax)`
   width: ${props => props.width};
@@ -145,6 +170,7 @@ const Section = ({
             strength={-0.5}
             backgroundImage={backgroundImage}
             backgroundVideo={backgroundVideo}
+            imagePosition={imagePosition}
           />
           <SectionInside noPaddingTop={noPaddingTop} noPaddingBottom={noPaddingBottom} fullWidth={fullWidth} height={height}>
             <ContentWrap header={header} contentPosition={contentPosition} imagePosition={imagePosition}>
