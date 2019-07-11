@@ -316,7 +316,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
     >
       <VisibilityTrailAnimation>
         <Row>
-          <Col xs={6}>
+          <Col sm={6}>
             <h2 style={{ color: theme.color.primary }}>Meeting your expectations with premium service</h2>
           </Col>
         </Row>
