@@ -6,6 +6,7 @@ import { Spring } from 'react-spring/renderprops'
 
 import theme from '../lib/theme'
 
+import Parallax from '../components/Parallax'
 import VisibilityTrailAnimation from '../components/VisibilityTrailAnimation'
 import VisibilitySensor from '../components/VisibilitySensor'
 import Hero from '../components/Hero'
@@ -105,6 +106,11 @@ const TestimonalDescription = styled.p`
   font-weight: 700;
   font-size: 16px;
   margin-bottom: 4px;
+`
+const FloatingImg = styled.img`
+  border-radius: 8px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25), 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.1);
 `
 
 export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch, description, intro }) => (
@@ -207,7 +213,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
         </Col>
       </Row>
     </Section>
-    <Section>
+    <Section noPaddingBottom>
       <Row>
         <Col xs={6} md={3}>
           <IconBox
@@ -243,40 +249,46 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
         </Col>
       </Row>
     </Section>
-    <Section
-      contentPosition="right"
-      foregroundImageSrc="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/product-001.png"
-      foregroundImageWidth="55%"
-      foregroundImagePosition={['55%', '25%']}
-      parallax
-    >
-      <VisibilityTrailAnimation>
-        <SectionSupertitle>Performance when it counts</SectionSupertitle>
-        <h2 style={{ color: theme.color.primary }}>Our detectors work as hard as you do</h2>
-        <p>
-          The proven design of ESP Safety’s detectors guarantees the precise response when a real event occurs in your critical
-          area under normal or severe environmental conditions. The engineered smart-design of the flame and gas detectors
-          eliminates the false alarms due to false stimulating factors present in your detection area minimizing the unnecessary
-          and costly process shutdowns.
-        </p>
-      </VisibilityTrailAnimation>
+    <Section noPaddingBottom>
+      <Row middle reverse="sm">
+        <Col sm={6}>
+          <VisibilityTrailAnimation>
+            <SectionSupertitle>Performance when it counts</SectionSupertitle>
+            <h2 style={{ color: theme.color.primary }}>Our detectors work as hard as you do</h2>
+            <p>
+              The proven design of ESP Safety’s detectors guarantees the precise response when a real event occurs in your
+              critical area under normal or severe environmental conditions. The engineered smart-design of the flame and gas
+              detectors eliminates the false alarms due to false stimulating factors present in your detection area minimizing
+              the unnecessary and costly process shutdowns.
+            </p>
+          </VisibilityTrailAnimation>
+        </Col>
+        <Col sm={6}>
+          <Parallax style={{ width: '100%' }}>
+            <FloatingImg src={'/images/shutterstock_705791.jpg'} style={{ width: '100%' }} />
+          </Parallax>
+        </Col>
+      </Row>
     </Section>
-    <Section
-      contentPosition="left"
-      foregroundImageSrc="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2019/06/IR3-IRUVAL-IRUVSS.png"
-      foregroundImageWidth="60%"
-      foregroundImagePosition={['55%', '80%']}
-      parallax
-    >
-      <VisibilityTrailAnimation>
-        <SectionSupertitle>Reliability is protection</SectionSupertitle>
-        <h2 style={{ color: theme.color.primary }}>Tried, tested, and certified</h2>
-        <p>
-          ESP Safety explosion-proof detectors are certified to meet the most demanding performance standards in the industry,
-          including FM, ATEX, IECx, GOST, and ABS. The detectors are widely used in hazardous locations that demand high
-          performance, reliability, and continuous integrity levels.
-        </p>
-      </VisibilityTrailAnimation>
+    <Section noPaddingBottom>
+      <Row middle>
+        <Col sm={6}>
+          <VisibilityTrailAnimation>
+            <SectionSupertitle>Reliability is protection</SectionSupertitle>
+            <h2 style={{ color: theme.color.primary }}>Tried, tested, and certified</h2>
+            <p>
+              ESP Safety explosion-proof detectors are certified to meet the most demanding performance standards in the
+              industry, including FM, ATEX, IECx, GOST, and ABS. The detectors are widely used in hazardous locations that
+              demand high performance, reliability, and continuous integrity levels.
+            </p>
+          </VisibilityTrailAnimation>
+        </Col>
+        <Col sm={6}>
+          <Parallax style={{ width: '100%' }}>
+            <FloatingImg src={'/images/shutterstock_68568742.jpg'} style={{ width: '100%' }} />
+          </Parallax>
+        </Col>
+      </Row>
     </Section>
     <Section
       contentPosition="right"
@@ -297,7 +309,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       </VisibilityTrailAnimation>
     </Section>
     <Section
-      imageSrc="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/smoke_PNG962-blurred-1.png"
+      backgroundImage="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/smoke_PNG962-blurred-1.png"
       backgroundColor="linear-gradient(to bottom,rgba(249,249,249,0.2) 0%,#f9f9f9 100%)"
       parallax
       follWidth
