@@ -4,6 +4,8 @@ class Parallax extends React.Component {
   constructor(props) {
     super(props)
 
+    this.state = { backgroundImageLoaded: false }
+
     this.parallaxContainerRef = React.createRef()
     this.parallaxOuterRef = React.createRef()
     this.parallaxInnerRef = React.createRef()
@@ -16,8 +18,6 @@ class Parallax extends React.Component {
     window.addEventListener('scroll', this.handleScroll)
     window.addEventListener('focus', this.playVideo)
     window.addEventListener('blur', this.pauseVideo)
-    this.parallaxInnerRef.current.style.opacity = '0'
-    this.parallaxInnerRef.current.style.transition = 'opacity .5s'
     this.handleScroll()
     if (this.parallaxContainerRef.current && window.getComputedStyle(this.parallaxContainerRef.current).position === 'static') {
       this.parallaxContainerRef.current.style.position = 'relative'
@@ -28,6 +28,10 @@ class Parallax extends React.Component {
     window.removeEventListener('scroll', this.handleScroll)
     window.removeEventListener('focus', this.playVideo)
     window.removeEventListener('blur', this.pauseVideo)
+  }
+
+  handleBackgroundImageLoad = () => {
+    this.setState({ backgroundImageLoaded: true })
   }
 
   isVideoPlaying = () =>
@@ -67,7 +71,6 @@ class Parallax extends React.Component {
       const parallaxTransform = (contentAnchorOffset - scrollAnchor) * strength
 
       // Apply styles
-      this.parallaxInnerRef.current.style.opacity = '1'
       this.parallaxInnerRef.current.style.transform = `translateY(${parallaxTransform}px)`
 
       if (backgroundVideo) {
@@ -87,6 +90,7 @@ class Parallax extends React.Component {
 
   render() {
     const { backgroundImage, backgroundVideo, children, className, style } = this.props
+    const { backgroundImageLoaded } = this.state
 
     return backgroundImage || backgroundVideo ? (
       <div ref={this.parallaxContainerRef} style={{ overflow: 'hidden', ...style }} className={className}>
@@ -102,9 +106,18 @@ class Parallax extends React.Component {
               backgroundImage: `url(${backgroundImage})`,
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center'
+              backgroundPosition: 'center',
+              transition: 'opacity .5s',
+              opacity: (backgroundImage || backgroundVideo) && !backgroundImageLoaded ? 0 : 1
             }}
           >
+            {backgroundImage && !backgroundImageLoaded && (
+              <img
+                src={backgroundImage}
+                style={{ opacity: 0, pointerEvents: 'none' }}
+                onLoad={this.handleBackgroundImageLoad}
+              />
+            )}
             {backgroundVideo && (
               <video
                 ref={this.parallaxVideoRef}
@@ -115,6 +128,7 @@ class Parallax extends React.Component {
                 autoPlay
                 muted
                 playsInline
+                onCanPlay={this.handleBackgroundImageLoad}
                 style={{
                   position: 'absolute',
                   top: '50%',

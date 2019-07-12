@@ -129,7 +129,7 @@ const Hero = ({
       {...props}
       videoSrc={videoSrc}
       imageSrc={imageSrc}
-      backgroundImageOpacity={0.5}
+      backgroundImageOpacity={0.65}
       backgroundColor="#000000"
       dark
       parallax

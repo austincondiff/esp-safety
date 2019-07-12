@@ -189,7 +189,7 @@ const NavBar = class extends React.Component {
     const navFullHeight = isMobile ? 96 : 104
 
     // Prevent multiple rAF callbacks
-    if (this.scheduledAnimationFrame || (!this.state.transparent && window.scrollY > navFullHeight)) {
+    if (!this.state.transparent && window.scrollY > navFullHeight) {
       return
     }
 
@@ -205,9 +205,9 @@ const NavBar = class extends React.Component {
     const { navHeight, logoPadding } = this.state
     const isMobile = window.innerWidth < breakpoints.md
     const navFullHeight = isMobile ? 96 : 104
-    const navCondensedHeight = isMobile ? 64 : 72
+    const navCondensedHeight = isMobile ? 56 : 64
     const logoPaddingStart = isMobile ? 28 : 28
-    const logoPaddingEnd = isMobile ? 16 : 16
+    const logoPaddingEnd = isMobile ? 12 : 16
     const scrollTop = window.scrollY > 0 ? window.scrollY : 0
     const scrollFactor = scrollTop / (navFullHeight - navCondensedHeight)
 
