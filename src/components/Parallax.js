@@ -89,7 +89,7 @@ class Parallax extends React.Component {
   }
 
   render() {
-    const { backgroundImage, backgroundVideo, children, className, style } = this.props
+    const { backgroundImage, backgroundVideo, children, className, style, windowAnchor } = this.props
     const { backgroundImageLoaded } = this.state
 
     return backgroundImage || backgroundVideo ? (
@@ -99,9 +99,9 @@ class Parallax extends React.Component {
             ref={this.parallaxInnerRef}
             style={{
               position: 'absolute',
-              top: '-25vh',
+              top: `${-windowAnchor * 25}vh`,
               right: 0,
-              bottom: '-25vh',
+              bottom: `${-(1 - windowAnchor) * 25}vh`,
               left: 0,
               backgroundImage: `url(${backgroundImage})`,
               backgroundSize: 'cover',

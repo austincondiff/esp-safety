@@ -166,7 +166,7 @@ const NavBar = class extends React.Component {
     this.state = {
       activeNavItem: null,
       active: false,
-      transparent: false,
+      transparent: true,
       darkOnTransparent: false,
       darkMode: false,
       showMobileMenu: false
