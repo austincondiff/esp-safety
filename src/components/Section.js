@@ -9,10 +9,6 @@ const StyledSection = styled.section`
   position: relative;
   background: ${props => (props.backgroundColor ? props.backgroundColor : 'transparent')};
   ${props => props.dark && `&, & * { color: #FFFFFF; }`};
-  & img.react-parallax-bgimage,
-  & .react-parallax-background-children video {
-    opacity: ${props => props.backgroundImageOpacity || 1};
-  }
 `
 const SectionInside = styled(Layout)`
   ${({ noPaddingTop, noPaddingBottom, height, parallaxContent, percentage }) => `
@@ -58,7 +54,7 @@ const SectionInside = styled(Layout)`
   `}
 `
 const ParallaxBackground = styled(Parallax)`
-  opacity: ${props => (props.imagePosition ? 1 : 0.5)};
+  opacity: ${props => (props.imagePosition ? 1 : props.backgroundImageOpacity)};
   position: absolute;
   top: 0;
   right: 0;
@@ -167,6 +163,7 @@ const Section = ({
       {parallax ? (
         <React.Fragment>
           <ParallaxBackground
+            backgroundImageOpacity={backgroundImageOpacity}
             windowAnchor={header ? 0 : 0.5}
             strength={-0.5}
             backgroundImage={backgroundImage}
