@@ -72,7 +72,6 @@ class Parallax extends React.Component {
       const scrollAnchor = scrollTop + windowAnchorOffset
       const parallaxTranslateY = (contentAnchorOffset - scrollAnchor) * strength
       const parallaxScale = (parallaxHeight / windowHeight) * -strength * parallaxOffsetFactor + 1
-      const widthCorrection = parallaxWidth / parallaxScale
 
       console.log({
         parallaxHeight,
