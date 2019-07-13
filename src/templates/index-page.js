@@ -212,13 +212,13 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
         </Col>
       </Row>
     </Section>
-    <Section noPaddingBottom>
+    <Section>
       <Row>
         <Col xs={6} md={3}>
           <IconBox
             icon={FlameIcon}
             title="Flame Detectors"
-            description="Every flame detector we offer provides reliable service and long lasting field performance in the harshest of environments, all at the industry’s best pricing."
+            description="Every flame detector we offer provides reliable service and long-lasting field performance in the harshest of environments, all at the industry’s best pricing."
             link="/products/flame-detectors"
           />
         </Col>
@@ -226,7 +226,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
           <IconBox
             icon={CombustibleGasIcon}
             title="Combustible Gas Detectors"
-            description="Configured to report alarms when the gas concentrations in the environment reach each of three independently programmable levels, expressed as a percentage of the lower explosive limit (LEL) in the air."
+            description="Configured to alarm when gas concentrations in the environment reach three independently programmable levels, expressed as a percentage of the lower explosive limit."
             link="/products/combustible-gas-detectors"
           />
         </Col>
@@ -234,7 +234,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
           <IconBox
             icon={ToxicGasIcon}
             title="Toxic Gas Detectors"
-            description="Designed to safely detect and monitor a variety of toxic gases in the air, including hydrogen sulfide, carbon monoxide, chlorine, nitric oxide, and sulfur dioxide, over a range of 0-100 ppm."
+            description="Designed to safely detect and monitor a variety of toxic gases, including hydrogen sulfide, carbon monoxide, chlorine, nitric oxide, and sulfur dioxide, over a range of 0-100 ppm."
             link="/products/toxic-gas-detectors"
           />
         </Col>
@@ -242,34 +242,25 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
           <IconBox
             icon={OxygenIcon}
             title="Oxygen Detectors"
-            description="Monitors oxygen level in ambient air or process applications and will alarm if oxygen level dips below 19.5% v/v. Our Oxygen Detector will initiate alarm when level of oxygen increases to prevent oxygen enriched atmosphere and reduce the risk of flammability of materials and gases."
+            description="Monitors oxygen levels and will alarm if it dips below 19.5% v/v or if levels increases to prevent oxygen enriched atmosphere and reduce the risk of flammability of materials and gases."
             link="oxygen-detectors"
           />
         </Col>
       </Row>
     </Section>
-    <Section noPaddingBottom>
-      <Row middle reverse="sm">
-        <Col sm={6}>
-          <VisibilityTrailAnimation>
-            <SectionSupertitle>Performance when it counts</SectionSupertitle>
-            <h2 style={{ color: theme.color.primary }}>Our detectors work as hard as you do</h2>
-            <p>
-              The proven design of ESP Safety’s detectors guarantees the precise response when a real event occurs in your
-              critical area under normal or severe environmental conditions. The engineered smart-design of the flame and gas
-              detectors eliminates the false alarms due to false stimulating factors present in your detection area minimizing
-              the unnecessary and costly process shutdowns.
-            </p>
-          </VisibilityTrailAnimation>
-        </Col>
-        <Col sm={6}>
-          <Parallax style={{ width: '100%' }}>
-            <FloatingImg src={'/images/shutterstock_705791.jpg'} style={{ width: '100%' }} />
-          </Parallax>
-        </Col>
-      </Row>
+    <Section backgroundImage="/images/shutterstock_705791.jpg" backgroundColor="#000000" dark parallax imagePosition="left">
+      <VisibilityTrailAnimation>
+        <SectionSupertitle>Performance when it counts</SectionSupertitle>
+        <h2 style={{ color: theme.color.primary }}>Our detectors work as hard as you do</h2>
+        <p>
+          The proven design of ESP Safety’s detectors guarantees the precise response when a real event occurs in your critical
+          area under normal or severe environmental conditions. The engineered smart-design of the flame and gas detectors
+          eliminates the false alarms due to false stimulating factors present in your detection area minimizing the unnecessary
+          and costly process shutdowns.
+        </p>
+      </VisibilityTrailAnimation>
     </Section>
-    <Section noPaddingBottom>
+    <Section backgroundColor="#F6F6F6">
       <Row middle>
         <Col sm={6}>
           <VisibilityTrailAnimation>
@@ -283,14 +274,15 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
           </VisibilityTrailAnimation>
         </Col>
         <Col sm={6}>
-          <Parallax style={{ width: '100%' }}>
-            <FloatingImg src={'/images/shutterstock_68568742.jpg'} style={{ width: '100%' }} />
+          <Parallax style={{ width: '50%', margin: '0 auto' }}>
+            <img src={'/images/certified-badge.svg'} style={{ width: '100%', transform: 'rotate(-22.5deg)' }} />
           </Parallax>
         </Col>
       </Row>
     </Section>
     <Section
       contentPosition="right"
+      backgroundColor="#FFFFFF"
       foregroundImageSrc="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2016/07/SSS-903_2013C.png"
       foregroundImageWidth="30%"
       foregroundImagePosition={['70%', '30%']}
@@ -309,7 +301,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
     </Section>
     <Section
       backgroundImage="/images/shutterstock_68568742.jpg"
-      backgroundColor="#FFFFFF"
+      backgroundColor="#F6F6F6"
       imagePosition="right"
       backgroundImagePosition="center left"
       contentPosition="left"

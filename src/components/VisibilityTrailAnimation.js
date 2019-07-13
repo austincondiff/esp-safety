@@ -12,7 +12,7 @@ const VisibilityTrailAnimation = ({ children }) => (
         keys={(item, i) => i}
       >
         {(item, i) => props => (
-          <div key={i} style={props}>
+          <div className="visibility-animation-container" key={i} style={props}>
             {item}
           </div>
         )}

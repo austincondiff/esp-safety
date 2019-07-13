@@ -133,7 +133,8 @@ const GlobalStyles = createGlobalStyle`
     transform: rotate(45deg);
   }
 
-  p:last-child,
+  *:not(.visibility-animation-container) > p:last-child,
+  .visibility-animation-container:last-child > p,
   ul:last-child,
   li:last-child {
     margin-bottom: 0;
