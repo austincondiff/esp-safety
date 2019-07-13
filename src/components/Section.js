@@ -145,6 +145,7 @@ const Section = ({
   imageDepth,
   backgroundImage,
   backgroundImageOpacity,
+  backgroundImagePosition,
   imagePosition,
   foregroundImageSrc,
   foregroundImagePosition,
@@ -171,6 +172,7 @@ const Section = ({
             backgroundImage={backgroundImage}
             backgroundVideo={backgroundVideo}
             imagePosition={imagePosition}
+            backgroundImagePosition={backgroundImagePosition}
           />
           <SectionInside noPaddingTop={noPaddingTop} noPaddingBottom={noPaddingBottom} fullWidth={fullWidth} height={height}>
             <ContentWrap header={header} contentPosition={contentPosition} imagePosition={imagePosition}>

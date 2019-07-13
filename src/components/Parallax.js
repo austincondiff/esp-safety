@@ -56,22 +56,41 @@ class Parallax extends React.Component {
     this.scheduledAnimationFrame = true
 
     requestAnimationFrame(() => {
-      const { windowAnchor, contentAnchor, strength, backgroundVideo } = this.props
+      const { windowAnchor, contentAnchor, strength, backgroundVideo, backgroundImage } = this.props
 
       // Get dimensions
       const scrollTop = window.scrollY
       const windowHeight = window.innerHeight
       const parallaxTop = window.scrollY + this.parallaxOuterRef.current.getBoundingClientRect().top
       const parallaxHeight = this.parallaxOuterRef.current.offsetHeight
+      const parallaxWidth = this.parallaxOuterRef.current.offsetWidth
 
       // Do parallax calculations
-      const contentAnchorOffset = parallaxTop + parallaxHeight * contentAnchor
+      const parallaxOffsetFactor = -4 * (windowAnchor * windowAnchor) + 4 * windowAnchor
+      const contentAnchorOffset = (parallaxTop + parallaxHeight * contentAnchor) * parallaxOffsetFactor
       const windowAnchorOffset = windowHeight * windowAnchor
       const scrollAnchor = scrollTop + windowAnchorOffset
-      const parallaxTransform = (contentAnchorOffset - scrollAnchor) * strength
+      const parallaxTranslateY = (contentAnchorOffset - scrollAnchor) * strength
+      const parallaxScale = (parallaxHeight / windowHeight) * -strength * parallaxOffsetFactor + 1
+      const widthCorrection = parallaxWidth / parallaxScale
+
+      console.log({
+        parallaxHeight,
+        windowHeight,
+        contentAnchorOffset,
+        scrollAnchor,
+        strength,
+        windowAnchor,
+        backgroundImage,
+        parallaxOffsetFactor,
+        parallaxTranslateY,
+        parallaxScale
+      })
 
       // Apply styles
-      this.parallaxInnerRef.current.style.transform = `translateY(${parallaxTransform}px)`
+      this.parallaxInnerRef.current.style.transform = `translateY(${parallaxTranslateY}px) scale(${
+        backgroundImage || backgroundVideo ? parallaxScale : 1
+      })`
 
       if (backgroundVideo) {
         const parallaxInViewport = parallaxTop + parallaxHeight > scrollTop && parallaxTop < parallaxTop + windowHeight
@@ -89,7 +108,7 @@ class Parallax extends React.Component {
   }
 
   render() {
-    const { backgroundImage, backgroundVideo, children, className, style, windowAnchor } = this.props
+    const { backgroundImage, backgroundImagePosition, backgroundVideo, children, className, style, windowAnchor } = this.props
     const { backgroundImageLoaded } = this.state
 
     return backgroundImage || backgroundVideo ? (
@@ -100,13 +119,16 @@ class Parallax extends React.Component {
             style={{
               position: 'absolute',
               top: `${-windowAnchor * 25}vh`,
+              top: 0,
               right: 0,
               bottom: `${-(1 - windowAnchor) * 25}vh`,
+              bottom: 0,
               left: 0,
+              transformOrigin: `50% ${windowAnchor * 100}%`,
               backgroundImage: `url(${backgroundImage})`,
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
+              backgroundPosition: backgroundImagePosition || 'center',
               transition: 'opacity .5s',
               opacity: (backgroundImage || backgroundVideo) && !backgroundImageLoaded ? 0 : 1
             }}

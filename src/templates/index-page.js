@@ -82,7 +82,7 @@ const PageIntroTitle = styled.h2`
   text-align: center;
   line-height: 1.428em;
   ${mediaQueries.md} {
-    font-size: 28px;
+    font-size: 32px;
   }
 `
 const PageIntroDescription = styled.p`
@@ -118,7 +118,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
     <Hero
       height="88vh"
       title="Technology of the future, protection for today"
-      subtitle="We keep you safe with our industry leading safety products specializing in gas and flame detectors"
+      subtitle="We are a team of experts who specialize in the design of fixed toxic and combustible gas detection, flame detection, and complete turn-key safety systems."
       backgroundVideo={{
         webm: 'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/esp-hero-bg-480p.webm',
         mp4: 'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/esp-hero-bg-480p.mp4'
@@ -200,8 +200,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
         <Col sm={10} smOffset={1}>
           <VisibilityTrailAnimation>
             <PageIntroTitle>
-              We are a team of experts who specialize in the design of fixed toxic and combustible gas detection, flame
-              detection, and complete turn-key safety systems.
+              We keep you safe with our industry leading safety products specializing in gas and flame detectors
             </PageIntroTitle>
             <PageIntroDescription>
               Our state-of-the-art manufacturing facility allows us to apply strict quality standards and intelligent
@@ -309,39 +308,28 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       </VisibilityTrailAnimation>
     </Section>
     <Section
-      backgroundImage="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/smoke_PNG962-blurred-1.png"
-      backgroundColor="linear-gradient(to bottom,rgba(249,249,249,0.2) 0%,#f9f9f9 100%)"
+      backgroundImage="/images/shutterstock_68568742.jpg"
+      backgroundColor="#FFFFFF"
+      imagePosition="right"
+      backgroundImagePosition="center left"
+      contentPosition="left"
       parallax
       follWidth
     >
       <VisibilityTrailAnimation>
-        <Row>
-          <Col sm={6}>
-            <h2 style={{ color: theme.color.primary }}>Meeting your expectations with premium service</h2>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm={6}>
-            <p>
-              When you contact us, you are assigned a dedicated representative that works with you to recommend the right
-              solution for your application. By working with an experienced representative you are assured that you are speaking
-              with someone that knows and fully understands your project from the beginning.{' '}
-            </p>
-          </Col>
-          <Col sm={6}>
-            <p>
-              An experienced team of engineers will support and assist you from start to finish ensuring your project’s success.
-              Have a project in mind? Contact us and we’ll help you get started!
-            </p>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <SectionActions>
-              <ArrowLink to="/contact">Contact us</ArrowLink>
-            </SectionActions>
-          </Col>
-        </Row>
+        <h2 style={{ color: theme.color.primary }}>Meeting your expectations with premium service</h2>
+        <p>
+          When you contact us, you are assigned a dedicated representative that works with you to recommend the right solution
+          for your application. By working with an experienced representative you are assured that you are speaking with someone
+          that knows and fully understands your project from the beginning.{' '}
+        </p>
+        <p>
+          An experienced team of engineers will support and assist you from start to finish ensuring your project’s success.
+          Have a project in mind? Contact us and we’ll help you get started!
+        </p>
+        <SectionActions>
+          <ArrowLink to="/contact">Contact us</ArrowLink>
+        </SectionActions>
       </VisibilityTrailAnimation>
     </Section>
     <Section backgroundColor="black" dark>

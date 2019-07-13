@@ -136,34 +136,38 @@ const Hero = ({
       header
       contentPosition="center"
     >
-      <VisibilityTrailAnimation>
-        <HeadingText>
+      <Row>
+        <Col lg={10} lgOffset={1}>
           <VisibilityTrailAnimation>
-            <PageTitle>{title}</PageTitle>
-            <PageSubtitle>{subtitle}</PageSubtitle>
+            <HeadingText>
+              <VisibilityTrailAnimation>
+                <PageTitle>{title}</PageTitle>
+                <PageSubtitle>{subtitle}</PageSubtitle>
+              </VisibilityTrailAnimation>
+            </HeadingText>
+            <Actions>
+              <StyledButtonGroup vertical>
+                <VisibilityTrailAnimation>
+                  {primaryButtonLink && primaryButtonLabel && (
+                    <Link to={primaryButtonLink}>
+                      <StyledButton size="lg" primary iconOnHover iconPosition="right">
+                        {primaryButtonLabel}
+                      </StyledButton>
+                    </Link>
+                  )}
+                  {secondaryButtonLink && secondaryButtonLabel && (
+                    <Link to={secondaryButtonLink}>
+                      <StyledButton size="lg" transparent light iconOnHover iconPosition="right">
+                        {secondaryButtonLabel}
+                      </StyledButton>
+                    </Link>
+                  )}
+                </VisibilityTrailAnimation>
+              </StyledButtonGroup>
+            </Actions>
           </VisibilityTrailAnimation>
-        </HeadingText>
-        <Actions>
-          <StyledButtonGroup vertical>
-            <VisibilityTrailAnimation>
-              {primaryButtonLink && primaryButtonLabel && (
-                <Link to={primaryButtonLink}>
-                  <StyledButton size="lg" primary iconOnHover iconPosition="right">
-                    {primaryButtonLabel}
-                  </StyledButton>
-                </Link>
-              )}
-              {secondaryButtonLink && secondaryButtonLabel && (
-                <Link to={secondaryButtonLink}>
-                  <StyledButton size="lg" transparent light iconOnHover iconPosition="right">
-                    {secondaryButtonLabel}
-                  </StyledButton>
-                </Link>
-              )}
-            </VisibilityTrailAnimation>
-          </StyledButtonGroup>
-        </Actions>
-      </VisibilityTrailAnimation>
+        </Col>
+      </Row>
     </Section>
     <Arrow />
   </Header>
