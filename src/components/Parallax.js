@@ -61,8 +61,9 @@ class Parallax extends React.Component {
       // Get dimensions
       const scrollTop = window.scrollY
       const windowHeight = window.innerHeight
-      const parallaxTop = window.scrollY + this.parallaxOuterRef.current.getBoundingClientRect().top
-      const parallaxHeight = this.parallaxOuterRef.current.offsetHeight
+      const parallaxTop =
+        this.parallaxOuterRef.current && window.scrollY + this.parallaxOuterRef.current.getBoundingClientRect().top
+      const parallaxHeight = this.parallaxOuterRef.current && this.parallaxOuterRef.current.offsetHeight
 
       // Do parallax calculations
       const parallaxOffsetFactor = windowAnchor < 0.5 ? 2 * windowAnchor : 2 - 2 * windowAnchor

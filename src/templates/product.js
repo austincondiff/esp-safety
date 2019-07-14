@@ -151,26 +151,29 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
         </Row>
       </Section>
       <Section
-        backgroundImage="https://images.unsplash.com/photo-1561717507-080fac4a8cca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80"
+        backgroundImage="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2016/10/pexels-photo-87236.jpeg"
         backgroundColor="#F6F6F6"
         parallax
         imagePosition="right"
       >
-        <h2 style={{ color: '#DD2C2C' }}>Straightforward, user-friendly design</h2>
+        <h2 style={{ color: '#DD2C2C' }}>Tried, tested, and certified, so you can use it pretty much anywhere</h2>
         <p>
-          ESP Safety detectors are designed to ease the complications of installations, calibrations and maintenance. By
-          offering standard multiple signal outputs, the detectors provide the compatibility to work with different fire and gas
-          systems. The different methods available to perform calibrations give you the flexibility to choose the best option
-          for your needs. With minimum maintenance required, your detector’s service life is maximized.
+          The explosion-proof design of SGOES makes it ideal for use in hazardous environments such as: • Refineries • Tank
+          farms • Pipelines • Loading racks. • Oil and gas facilities • Pumping stations
+        </p>
+        <p>
+          SGOES is FM-certified for use in potentially explosive gas/vapor environments in compliance with FM3615 and CSA-C22.2
+          No 30 standards for explosion proof protection. In addition, it meets CSA standard E60079-1 for flameproof protection,
+          and ANSI/ISA standard 12.13.01-2000 for performance of combustible gas detectors.
         </p>
       </Section>
       <Section
-        backgroundImage="https://images.unsplash.com/photo-1561716749-2ab5a223957c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80"
+        backgroundImage="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2016/10/296063_thumb.jpg"
         backgroundColor="#FFFFFF"
         parallax
         imagePosition="left"
       >
-        <h2>Straightforward, user-friendly design</h2>
+        <h2 style={{ color: '#DD2C2C' }}>Straightforward, user-friendly design</h2>
         <p>
           ESP Safety detectors are designed to ease the complications of installations, calibrations and maintenance. By
           offering standard multiple signal outputs, the detectors provide the compatibility to work with different fire and gas
@@ -181,24 +184,126 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
       <SpecificationsSection>
         <Layout>
           <SpecificationsTitle>Specifications</SpecificationsTitle>
+          {false && (
+            <SpecificationCategoryRow>
+              <Col lg={4}>
+                <SpecificationCategoryTitle>Electrical</SpecificationCategoryTitle>
+              </Col>
+              <Col lg={8}>
+                <Row>
+                  <SpecificationCol xs={6}>
+                    <SpecificationLabel>Power requirements</SpecificationLabel>
+                    <SpecificationValue>24VDC nominal (18‐32VDC range)</SpecificationValue>
+                  </SpecificationCol>
+                  <SpecificationCol xs={6}>
+                    <SpecificationLabel>Power consumption</SpecificationLabel>
+                    <SpecificationValue>Stand By: 2 W max; Alarm State: 3 W max</SpecificationValue>
+                  </SpecificationCol>
+                  <SpecificationCol xs={6}>
+                    <SpecificationLabel>Analog signal</SpecificationLabel>
+                    <SpecificationValue>4 to 20mA (0 to 100% LEL)</SpecificationValue>
+                  </SpecificationCol>
+                  <SpecificationCol xs={6}>
+                    <SpecificationLabel>Relay contact</SpecificationLabel>
+                    <SpecificationValue>
+                      Two alarm relays (isolated, dry contact type) with programmable thresholds <br />
+                      Fault relay indicating optical path obstruction
+                    </SpecificationValue>
+                  </SpecificationCol>
+                  <SpecificationCol xs={6}>
+                    <SpecificationLabel>Digital</SpecificationLabel>
+                    <SpecificationValue>RS‐485 Modbus</SpecificationValue>
+                  </SpecificationCol>
+                  <SpecificationCol xs={6}>
+                    <SpecificationLabel>Wiring</SpecificationLabel>
+                    <SpecificationValue>
+                      14 AWG (2.08 mm2) or 16 AWG (1.31 mm2)
+                      <br />
+                      Shielded cable is recommended
+                      <br />
+                      16 AWG (1.5mm) for 4000ft (1200m) max
+                    </SpecificationValue>
+                  </SpecificationCol>
+                </Row>
+              </Col>
+            </SpecificationCategoryRow>
+          )}
           <SpecificationCategoryRow>
             <Col lg={4}>
-              <SpecificationCategoryTitle>Category Title</SpecificationCategoryTitle>
+              <SpecificationCategoryTitle>Electrical Characteristics</SpecificationCategoryTitle>
             </Col>
             <Col lg={8}>
               <Row>
                 <SpecificationCol xs={6}>
-                  <SpecificationLabel>Spec label coming soon</SpecificationLabel>
-                  <SpecificationValue>Spec value coming soon</SpecificationValue>
+                  <SpecificationLabel>Voltage</SpecificationLabel>
+                  <SpecificationValue>18 to 32 VDC</SpecificationValue>
                 </SpecificationCol>
                 <SpecificationCol xs={6}>
-                  <SpecificationLabel>Spec label coming soon</SpecificationLabel>
-                  <SpecificationValue>Spec value coming soon</SpecificationValue>
+                  <SpecificationLabel>Recommended Wiring</SpecificationLabel>
+                  <SpecificationValue>16 AWG (1.5mm) for 4000ft (1200m) max</SpecificationValue>
                 </SpecificationCol>
                 <SpecificationCol xs={6}>
-                  <SpecificationLabel>Spec label coming soon</SpecificationLabel>
-                  <SpecificationValue>Spec value coming soon</SpecificationValue>
+                  <SpecificationLabel>Outputs</SpecificationLabel>
+                  <SpecificationValue>
+                    4-20mA, analog (0 to 100% LEL)
+                    <br />
+                    two alarm relays (isolated, dry contact type)
+                    <br />
+                    with programmable thresholds
+                    <br />
+                    fault relay indicating optical path obstruction
+                    <br />
+                    RS-485 Modbus RTU, HART, Ethernet
+                  </SpecificationValue>
                 </SpecificationCol>
+                <SpecificationCol xs={6}>
+                  <SpecificationLabel>Power</SpecificationLabel>
+                  <SpecificationValue>
+                    2 W, standby
+                    <br />
+                    4.5 W, during alarm
+                    <br />
+                    7.9 W, heater on maximum
+                  </SpecificationValue>
+                </SpecificationCol>
+              </Row>
+            </Col>
+          </SpecificationCategoryRow>
+          <SpecificationCategoryRow>
+            <Col lg={4}>
+              <SpecificationCategoryTitle>Mechanical Characteristics</SpecificationCategoryTitle>
+            </Col>
+            <Col lg={8}>
+              <Row>
+                <SpecificationCol xs={6}>
+                  <SpecificationLabel>Material</SpecificationLabel>
+                  <SpecificationValue>316 Stainless Steel</SpecificationValue>
+                </SpecificationCol>
+                <SpecificationCol xs={6}>
+                  <SpecificationLabel>Weight</SpecificationLabel>
+                  <SpecificationValue>14.3lbs (6.5 kg)</SpecificationValue>
+                </SpecificationCol>
+                <SpecificationCol xs={6}>
+                  <SpecificationLabel>Diameter</SpecificationLabel>
+                  <SpecificationValue>5.5” (14 cm)</SpecificationValue>
+                </SpecificationCol>
+                <SpecificationCol xs={6}>
+                  <SpecificationLabel>Conduit Entry</SpecificationLabel>
+                  <SpecificationValue>¾” NPT</SpecificationValue>
+                </SpecificationCol>
+                <SpecificationCol xs={6}>
+                  <SpecificationLabel>Length</SpecificationLabel>
+                  <SpecificationValue>11.5” (29 cm)</SpecificationValue>
+                </SpecificationCol>
+              </Row>
+            </Col>
+          </SpecificationCategoryRow>
+          <SpecificationCategoryRow>
+            <Col lg={4}>
+              <SpecificationCategoryTitle>Dimensions</SpecificationCategoryTitle>
+            </Col>
+            <Col lg={8}>
+              <Row>
                 <SpecificationCol xs={6}>
                   <SpecificationLabel>Spec label coming soon</SpecificationLabel>
                   <SpecificationValue>Spec value coming soon</SpecificationValue>
@@ -212,29 +317,97 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
           </SpecificationCategoryRow>
           <SpecificationCategoryRow>
             <Col lg={4}>
-              <SpecificationCategoryTitle>Category Title</SpecificationCategoryTitle>
+              <SpecificationCategoryTitle>Calibration</SpecificationCategoryTitle>
+            </Col>
+            <Col lg={8}>
+              <Row>
+                <SpecificationCol xs={12}>
+                  <SpecificationValue>
+                    Factory calibrated at 0%, 20%, 50%, and 95% LEL with methane or propane. Calibration with NIST traceable
+                    calibration gas is optional.
+                  </SpecificationValue>
+                </SpecificationCol>
+              </Row>
+            </Col>
+          </SpecificationCategoryRow>
+          <SpecificationCategoryRow>
+            <Col lg={4}>
+              <SpecificationCategoryTitle>Configuration Options</SpecificationCategoryTitle>
             </Col>
             <Col lg={8}>
               <Row>
                 <SpecificationCol xs={6}>
-                  <SpecificationLabel>Spec label coming soon</SpecificationLabel>
-                  <SpecificationValue>Spec value coming soon</SpecificationValue>
+                  <SpecificationLabel>Standard gas options</SpecificationLabel>
+                  <SpecificationValue>
+                    Methane, Propane, Butane, Pentane, Hexane, Isobutane, Cyclopentane, Ethanol,
+                  </SpecificationValue>
+                </SpecificationCol>
+                <SpecificationCol xs={6}>
+                  <SpecificationLabel>Custom gas configuration options</SpecificationLabel>
+                  <SpecificationValue>
+                    Volatile Organic Compounds (VOC)
+                    <br />
+                    Optional calibration with gas mixtures directly traceable to NIST standard reference materials.
+                  </SpecificationValue>
+                </SpecificationCol>
+              </Row>
+            </Col>
+          </SpecificationCategoryRow>
+          <SpecificationCategoryRow>
+            <Col lg={4}>
+              <SpecificationCategoryTitle>Certifications</SpecificationCategoryTitle>
+            </Col>
+            <Col lg={8}>
+              <Row>
+                <SpecificationCol xs={6}>
+                  <SpecificationLabel>Certification logo coming soon</SpecificationLabel>
+                  <SpecificationValue>
+                    Class I, Division 1 <br />
+                    Groups B, C & D <br />
+                    T4 Ta = -40°F to +167°F <br />
+                    (-40°C to +75°C) <br />
+                    IP66
+                  </SpecificationValue>
+                </SpecificationCol>
+                <SpecificationCol xs={6}>
+                  <SpecificationLabel>Certification logo coming soon</SpecificationLabel>
+                  <SpecificationValue>
+                    Ex d IIC T4 <br />
+                    -40°F to +185°F <br />
+                    (-40°C to +85°C) <br />
+                    CE Mark for EMC (TUV) <br />
+                    CE Mark for IECEx <br />
+                    IP66
+                  </SpecificationValue>
+                </SpecificationCol>
+                <SpecificationCol xs={6}>
+                  <SpecificationLabel>Certification logo coming soon</SpecificationLabel>
+                  <SpecificationValue>
+                    Class I, Division 1 <br />
+                    Groups B, C & D <br />
+                    T4 Ta = -40°F to +167°F <br />
+                    (-40°C to +75°C) <br />
+                    IP66
+                  </SpecificationValue>
+                </SpecificationCol>
+                <SpecificationCol xs={6}>
+                  <SpecificationLabel>Certification logo coming soon</SpecificationLabel>
+                  <SpecificationValue>
+                    Class I, Division 1 <br />
+                    Groups B, C & D <br />
+                    T4 Ta = -40°F to +167°F <br />
+                    (-40°C to +75°C) <br />
+                    IP66
+                  </SpecificationValue>
                 </SpecificationCol>
                 <SpecificationCol xs={6}>
                   <SpecificationLabel>Spec label coming soon</SpecificationLabel>
-                  <SpecificationValue>Spec value coming soon</SpecificationValue>
-                </SpecificationCol>
-                <SpecificationCol xs={6}>
-                  <SpecificationLabel>Spec label coming soon</SpecificationLabel>
-                  <SpecificationValue>Spec value coming soon</SpecificationValue>
-                </SpecificationCol>
-                <SpecificationCol xs={6}>
-                  <SpecificationLabel>Spec label coming soon</SpecificationLabel>
-                  <SpecificationValue>Spec value coming soon</SpecificationValue>
-                </SpecificationCol>
-                <SpecificationCol xs={6}>
-                  <SpecificationLabel>Spec label coming soon</SpecificationLabel>
-                  <SpecificationValue>Spec value coming soon</SpecificationValue>
+                  <SpecificationValue>
+                    Ex d IIC T4 <br />
+                    -40°F to +185°F <br />
+                    (-40°C to +85°C) <br />
+                    IP66
+                  </SpecificationValue>
                 </SpecificationCol>
               </Row>
             </Col>

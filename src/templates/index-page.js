@@ -274,9 +274,9 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
           </VisibilityTrailAnimation>
         </Col>
         <Col sm={6}>
-          <Parallax style={{ width: '50%', margin: '0 auto' }}>
+          <div style={{ width: '50%', margin: '0 auto' }}>
             <img src={'/images/certified-badge.svg'} style={{ width: '100%', transform: 'rotate(-22.5deg)' }} />
-          </Parallax>
+          </div>
         </Col>
       </Row>
     </Section>
