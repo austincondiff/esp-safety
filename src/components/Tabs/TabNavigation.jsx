@@ -2,13 +2,25 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+const TabsWrapper = styled.div`
+  padding-bottom: 6%;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  margin: 0 -24px;
+`
 const StyledTabs = styled.div`
-  display: flex;
+  display: block;
   position: relative;
+  width: fit-content;
+  min-width: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-  margin-bottom: 6%;
+  white-space: nowrap;
+
+  padding: 0 24px;
 `
 const StyledTab = styled.div`
+  display: inline-block;
   text-align: center;
   margin: 0 16px 0 16px;
   vertical-align: middle;
@@ -19,6 +31,7 @@ const StyledTab = styled.div`
   outline: none;
   color: ${props => (props.active ? props.theme.color.primary : '#000000')};
   transition: 200ms;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   &:first-child {
     margin-left: 0;
   }
@@ -72,23 +85,25 @@ class TabContainer extends Component {
     const { tabs, value } = this.props
 
     return tabs && tabs.length > 1 ? (
-      <StyledTabs>
-        {tabs.map((tab, i) => (
-          <StyledTab
-            active={tab.value === value}
-            key={`tab-${tab.value}-${i}`}
-            onClick={() => this.handleTabChange(tab.value)}
-            onKeyDown={event => this.handleKeyDown(tab.value, event)}
-            ref={el => {
-              this.tabRefs[`tab_${tab.value}`] = el
-            }}
-            tabIndex="0"
-          >
-            <StyledLabel>{tab.label}</StyledLabel>
-          </StyledTab>
-        ))}
-        <ActiveTabIndicator width={activeTabWidth} position={activeTabPosition} />
-      </StyledTabs>
+      <TabsWrapper>
+        <StyledTabs>
+          {tabs.map((tab, i) => (
+            <StyledTab
+              active={tab.value === value}
+              key={`tab-${tab.value}-${i}`}
+              onClick={() => this.handleTabChange(tab.value)}
+              onKeyDown={event => this.handleKeyDown(tab.value, event)}
+              ref={el => {
+                this.tabRefs[`tab_${tab.value}`] = el
+              }}
+              tabIndex="0"
+            >
+              <StyledLabel>{tab.label}</StyledLabel>
+            </StyledTab>
+          ))}
+          <ActiveTabIndicator width={activeTabWidth} position={activeTabPosition} />
+        </StyledTabs>
+      </TabsWrapper>
     ) : null
   }
 }

@@ -151,8 +151,10 @@ const Footer = class extends React.Component {
         <Section backgroundColor={theme.color.primary}>
           <Row>
             <Col xs={12} md={0} fill="md">
-              <CtaTitle>Get in touch with a rep today!</CtaTitle>
-              <CtaMessage>Experience safety like never before.</CtaMessage>
+              <VisibilityTrailAnimation>
+                <CtaTitle>Get in touch with a rep today!</CtaTitle>
+                <CtaMessage>Experience safety like never before.</CtaMessage>
+              </VisibilityTrailAnimation>
             </Col>
             <Col xs={12} md={0}>
               <CtaActions>
@@ -221,7 +223,7 @@ const Footer = class extends React.Component {
         </MainFooter>
         <SubFooter>
           <Layout>
-            <VisibilityTrailAnimation>
+            <VisibilityTrailAnimation offset={{ bottom: 0 }}>
               <Row start="md" center="xs" middle>
                 <Col xs={12} md={0} fill="md">
                   © 2019 ESP Safety. All rights reserved.

@@ -3,8 +3,8 @@ import { Trail } from 'react-spring/renderprops'
 import VisibilitySensor from '../components/VisibilitySensor'
 import uuid from 'uuid/v4'
 
-const VisibilityTrailAnimation = ({ children }) => (
-  <VisibilitySensor>
+const VisibilityTrailAnimation = ({ children, ...props }) => (
+  <VisibilitySensor {...props}>
     {({ isVisible }) => (
       <Trail
         to={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0px)' : 'translateY(100px)' }}

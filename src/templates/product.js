@@ -102,60 +102,47 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
                 {data.overview && (
                   <Tab label="Product Overview" value="overview">
                     <ReadMore>
-                      <VisibilityTrailAnimation>
-                        <MarkdownContent content={data.overview} />
-                      </VisibilityTrailAnimation>
+                      <MarkdownContent content={data.overview} />
                     </ReadMore>
                   </Tab>
                 )}
                 {data.applications && (
                   <Tab label="Applications" value="applications">
-                    <VisibilityTrailAnimation>
-                      <p>Applications tab content coming soon.</p>
-                      <ul
-                        style={{
-                          columnCount: 2
-                        }}
-                      >
-                        {data.applications.map(({ application }) => (
-                          <li>{application}</li>
-                        ))}
-                      </ul>
-                    </VisibilityTrailAnimation>
+                    <p>Applications tab content coming soon.</p>
+                    <ul
+                      style={{
+                        columnCount: 2
+                      }}
+                    >
+                      {data.applications.map(({ application }) => (
+                        <li>{application}</li>
+                      ))}
+                    </ul>
                   </Tab>
                 )}
                 {data.features && (
                   <Tab label="Features & Benefits" value="features">
-                    <VisibilityTrailAnimation>
-                      <p>Features & Benefits tab content coming soon.</p>
-                      <ul
-                        style={{
-                          columnCount: 2
-                        }}
-                      >
-                        {data.features.map(({ feature }) => (
-                          <li>{feature}</li>
-                        ))}
-                      </ul>
-                    </VisibilityTrailAnimation>
+                    <p>Features & Benefits tab content coming soon.</p>
+                    <ul
+                      style={{
+                        columnCount: 2
+                      }}
+                    >
+                      {data.features.map(({ feature }) => (
+                        <li>{feature}</li>
+                      ))}
+                    </ul>
                   </Tab>
                 )}
                 <Tab label="Downloads" value="downloads">
-                  <VisibilityTrailAnimation>
-                    <p>Downloads tab content coming soon.</p>
-                  </VisibilityTrailAnimation>
+                  <p>Downloads tab content coming soon.</p>
                 </Tab>
               </Tabs>
             </VisibilityTrailAnimation>
           </Col>
         </Row>
       </Section>
-      <Section
-        backgroundImage="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2016/10/pexels-photo-87236.jpeg"
-        backgroundColor="#F6F6F6"
-        parallax
-        imagePosition="right"
-      >
+      <Section backgroundImage="/images/pexels-photo-87236.jpg" backgroundColor="#F6F6F6" parallax imagePosition="right">
         <h2 style={{ color: '#DD2C2C' }}>Tried, tested, and certified, so you can use it pretty much anywhere</h2>
         <p>
           The explosion-proof design of SGOES makes it ideal for use in hazardous environments such as: • Refineries • Tank
@@ -167,12 +154,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
           and ANSI/ISA standard 12.13.01-2000 for performance of combustible gas detectors.
         </p>
       </Section>
-      <Section
-        backgroundImage="http://clients.continuumcreative.com/espsafety/wp-content/uploads/2016/10/296063_thumb.jpg"
-        backgroundColor="#FFFFFF"
-        parallax
-        imagePosition="left"
-      >
+      <Section backgroundImage="/images/296063_thumb.jpg" backgroundColor="#FFFFFF" parallax imagePosition="left">
         <h2 style={{ color: '#DD2C2C' }}>Straightforward, user-friendly design</h2>
         <p>
           ESP Safety detectors are designed to ease the complications of installations, calibrations and maintenance. By

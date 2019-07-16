@@ -36,7 +36,7 @@ VisibilitySensor.propTypes = {
 VisibilitySensor.defaultProps = {
   once: true,
   partialVisibility: true,
-  offset: { bottom: -100 }
+  offset: { bottom: 100 }
 }
 
 export default VisibilitySensor
