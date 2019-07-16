@@ -120,13 +120,10 @@ const CertificationBadge = styled(animated.img).attrs({
 
 export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch, description, intro }) => {
   const [certificationBlockIsVisible, setCertificationBlockIsVisible] = useState()
-  const stampRef = useRef()
   const stampAnimation = useSpring({
     opacity: certificationBlockIsVisible ? 1 : 0,
     transform: certificationBlockIsVisible ? 'scale(1) rotate(-22.5deg)' : 'scale(2) rotate(0deg)'
   })
-
-  console.log({ certificationBlockIsVisible, stampAnimation })
 
   return (
     <div>
@@ -246,7 +243,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
                 once
                 onChange={certificationBlockIsVisible => setCertificationBlockIsVisible(certificationBlockIsVisible)}
               >
-                {() => <CertificationBadge style={stampAnimation} />}
+                <CertificationBadge style={stampAnimation} />
               </VisibilitySensor>
             </div>
           </Col>
