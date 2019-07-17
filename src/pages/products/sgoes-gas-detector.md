@@ -74,6 +74,10 @@ features:
   - feature: >-
       Tri-color status LED on the device is easily viewable for a visual report
       of the device’s operating status
-downloads: []
-specCategories: []
+specCategories:
+  - specs:
+      - label: Voltage
+        text: 18 to 32 VDC
+    title: Electrical Characteristics
 ---
+
