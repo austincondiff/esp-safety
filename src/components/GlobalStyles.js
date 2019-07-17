@@ -13,6 +13,18 @@ const GlobalStyles = createGlobalStyle`
     overflow-x: hidden;
   }
 
+  html { background-color: #000000; }
+  body { background-color: #FFFFFF; }
+  body:after {
+    content: '';
+    position: fixed;
+    top: -50%;
+    right: -50%;
+    bottom: -50%;
+    left: -50%;
+    z-index: -1;
+    background: #000000;
+  }
   h1,
   h2,
   h3,

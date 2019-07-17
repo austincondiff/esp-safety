@@ -146,10 +146,10 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
         <Logos>
           <Logo label="Mitsubishi" image="/images/mitsubishi.png" url="http://www.mitsubishicorp.com/" />
           <Logo label="Chevron" image="/images/chevron.png" url="https://www.chevron.com/" />
-          <Logo label="Shell" image="/images/shell.png" url="http://www.shell.com/" />
-          <Logo label="British Petroleum" image="/images/bp.png" url="https://www.bp.com/" />
           <Logo label="Mitsui & Co." image="/images/mitsui.png" url="https://www.mitsui.com/" />
+          <Logo label="Shell" image="/images/shell.png" url="http://www.shell.com/" />
           <Logo label="Unilever" image="/images/unilever.png" url="https://www.unilever.com/" />
+          <Logo label="British Petroleum" image="/images/bp.png" url="https://www.bp.com/" />
           {/*
             <Logo label="Pemex" image="/images/pemex.png" url="http://www.pemex.com/en/" />
             <Logo label="CNPC" image="/images/cnpc.png" url="http://www.cnpc.com.cn/en/" />

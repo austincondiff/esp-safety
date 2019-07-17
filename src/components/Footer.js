@@ -126,6 +126,7 @@ const StyledFooterCap = styled(FooterCap)`
   left: 50%;
   transform: translateX(-50%);
   width: 195.2px;
+  filter: drop-shadow(0 2px 0 #181818);
   ${mediaQueries.md} {
     width: 244px;
   }

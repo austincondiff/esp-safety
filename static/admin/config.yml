@@ -62,27 +62,27 @@ collections:
           { label: "Image", name: "image", widget: "image" }
         ]}
       - { label: "Specification Categories", name: "specCategories", widget: "list", fields: [
-            { label: "Title", name: "title", widget: "string" },
-            { label: "Layout", name: "layout", widget: "select", options: [{ label: "Rows", value: "rows" }, { label: "Columns", value: "columns" }] },
-            { label: "Specifications", name: "specs", widget: "list", fields: [
-              { label: "Label", name: "label", widget: "text" },
-              { label: "Label Position", name: "labelPosition", widget: "select", options: [
-                { label: "Top", value: "top" },
-                { label: "Left", value: "left" }
+            { label: "Title", name: "title", widget: "string", required: true },
+            # { label: "Layout", name: "layout", widget: "select", options: [{ label: "Rows", value: "rows" }, { label: "Columns", value: "columns" }] },
+            { label: "Specifications", name: "specs", widget: "list", required: true, fields: [
+              { label: "Label", name: "label", widget: "text", required: false },
+              # { label: "Label Position", name: "labelPosition", widget: "select", options: [
+              #   { label: "Top", value: "top" },
+              #   { label: "Left", value: "left" }
+              # ]},
+              { label: "Text", name: "text", widget: "text", required: false },
+              { label: "Image",  name: "image", required: false},
+              # { label: "Image Position", name: "imagePosition", widget: "select", required: false, options: [
+              #   { label: "Top", value: "top" },
+              #   { label: "Left", value: "left" }
+              # ]},
+              { label: "Link", name: "link", widget: "object", required: false, fields: [
+                { label: "Text", name: "text", widget: "string", required: false },
+                { label: "Text", name: "text", widget: "string", required: false },
+                { label: "Open In New Window", name: "newWindow", widget: "boolean", required: false }
               ]},
-              { label: "Text", name: "text", widget: "text" },
-              { label: "Image (optional)",  name: "image"},
-              { label: "Image Position", name: "imagePosition", widget: "select", options: [
-                { label: "Top", value: "top" },
-                { label: "Left", value: "left" }
-              ]},
-              { label: "Link", name: "link", widget: "object", fields: [
-                { label: "Text", name: "text", widget: "string" },
-                { label: "Text", name: "text", widget: "string" },
-                { label: "Open In New Window", name: "newWindow", widget: "boolean" }
-              ]},
-              { label: "Disclaimer",name: "disclaimer", widget: "text"},
-              { label: "Full-width", name: "fullWidth", widget: "boolean" }
+              { label: "Disclaimer",name: "disclaimer", widget: "text", required: false },
+              { label: "Full-width", name: "fullWidth", widget: "boolean", required: false }
             ]}
           ]
         }
