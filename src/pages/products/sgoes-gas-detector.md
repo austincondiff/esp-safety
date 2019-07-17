@@ -78,6 +78,87 @@ specCategories:
   - specs:
       - label: Voltage
         text: 18 to 32 VDC
+      - label: Recommended Wiring
+        text: 16 AWG (1.5mm) for 4000ft (1200m) max
+      - label: Outputs
+        text: |-
+          4-20mA, analog (0 to 100% LEL)
+          two alarm relays (isolated, dry contact type)
+          with programmable thresholds
+          fault relay indicating optical path obstruction
+          RS-485 Modbus RTU, HART, Ethernet
+      - label: Power
+        text: |-
+          2 W, standby
+          4.5 W, during alarm
+          7.9 W, heater on maximum
     title: Electrical Characteristics
+  - specs:
+      - label: Material
+        text: 316 Stainless Steel
+      - label: Weight
+        text: 14.3lbs (6.5 kg)
+      - label: Diameter
+        text: 5.5” (14 cm)
+      - label: Conduit Entry
+        text: ¾” NPT
+      - label: Length
+        text: 11.5” (29 cm)
+    title: Mechanical Characteristics
+  - specs:
+      - label: ''
+        text: Coming soon
+      - text: Coming soon
+    title: Dimensions
+  - specs:
+      - fullWidth: true
+        text: >-
+          Factory calibrated at 0%, 20%, 50%, and 95% LEL with methane or
+          propane. Calibration with NIST traceable calibration gas is optional.
+    title: Calibration
+  - specs:
+      - label: Standard gas options
+        text: >-
+          Methane, Propane, Butane, Pentane, Hexane, Isobutane, Cyclopentane,
+          Ethanol,
+      - label: Custom gas configuration options
+        text: >-
+          Volatile Organic Compounds (VOC)
+
+          Optional calibration with gas mixtures directly traceable to NIST
+          standard reference materials.
+    title: Configuration Options
+  - specs:
+      - text: |-
+          Class I, Division 1 
+          Groups B, C & D 
+          T4 Ta = -40°F to +167°F 
+          (-40°C to +75°C) 
+          IP66
+      - text: |-
+          Ex d IIC T4 
+          -40°F to +185°F 
+          (-40°C to +85°C) 
+          CE Mark for EMC (TUV) 
+          CE Mark for IECEx 
+          IP66
+      - text: |-
+          Class I, Division 1 
+          Groups B, C & D 
+          T4 Ta = -40°F to +167°F 
+          (-40°C to +75°C) 
+          IP66
+      - text: |-
+          Class I, Division 1 
+          Groups B, C & D 
+          T4 Ta = -40°F to +167°F 
+          (-40°C to +75°C) 
+          IP66
+      - text: |-
+          Ex d IIC T4 
+          -40°F to +185°F 
+          (-40°C to +85°C) 
+          IP66
+    title: Certifications
 ---
 
