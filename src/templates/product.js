@@ -68,6 +68,11 @@ const SpecificationValue = styled.div`
   font-weight: 300;
   color: #cccccc;
   letter-spacing: -0.38px;
+  & p {
+    font-size: inherit;
+    color: inherit;
+    margin-bottom: 8px;
+  }
 `
 
 const SpecificationCol = styled(Col)`
@@ -186,11 +191,15 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
                 </Col>
                 <Col lg={8}>
                   <Row>
-                    {data.specifications &&
-                      data.specifications.map(specification => (
-                        <SpecificationCol xs={6}>
-                          <SpecificationLabel>Power requirements</SpecificationLabel>
-                          <SpecificationValue>24VDC nominal (18‐32VDC range)</SpecificationValue>
+                    {specificationCategory.specifications &&
+                      specificationCategory.specifications.map(specification => (
+                        <SpecificationCol xs={specification.fullWidth ? 12 : 6}>
+                          {specification.label && <SpecificationLabel>{specification.label}</SpecificationLabel>}
+                          {specification.text && (
+                            <SpecificationValue>
+                              <LinesToParagraphs text={specification.text} />
+                            </SpecificationValue>
+                          )}
                         </SpecificationCol>
                       ))}
                   </Row>
@@ -262,6 +271,14 @@ export const pageQuery = graphql`
         }
         features {
           feature
+        }
+        specificationCategories {
+          title
+          specifications {
+            label
+            text
+            fullWidth
+          }
         }
       }
     }

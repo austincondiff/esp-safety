@@ -61,10 +61,10 @@ collections:
           { label: "Content", name: "content", widget: "markdown" },
           { label: "Image", name: "image", widget: "image" }
         ]}
-      - { label: "Specification Categories", name: "specCategories", widget: "list", fields: [
+      - { label: "Specification Categories", name: "specificationCategories", widget: "list", fields: [
             { label: "Title", name: "title", widget: "string", required: true },
             # { label: "Layout", name: "layout", widget: "select", options: [{ label: "Rows", value: "rows" }, { label: "Columns", value: "columns" }] },
-            { label: "Specifications", name: "specs", widget: "list", required: true, fields: [
+            { label: "Specifications", name: "specifications", widget: "list", required: true, fields: [
               { label: "Label", name: "label", widget: "text", required: false },
               # { label: "Label Position", name: "labelPosition", widget: "select", options: [
               #   { label: "Top", value: "top" },
