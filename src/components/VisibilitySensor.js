@@ -12,15 +12,18 @@ class VisibilitySensor extends Component {
 
   render() {
     const { active } = this.state
-    const { once, partialVisibility, offset, children, ...theRest } = this.props
-    console.log(children)
+    const { once, partialVisibility, offset, children, onChange, ...props } = this.props
+    console.log(once)
     return (
       <VSensor
         active={active}
         partialVisibility={partialVisibility}
         offset={offset}
-        onChange={isVisible => once && isVisible && this.setState({ active: false })}
-        {...theRest}
+        onChange={isVisible => {
+          once && isVisible && this.setState({ active: false }, onChange)
+          onChange && onChange(isVisible)
+        }}
+        {...props}
       >
         {this.props.children instanceof Function
           ? ({ isVisible, visibilityRect }) => children({ isVisible, visibilityRect })

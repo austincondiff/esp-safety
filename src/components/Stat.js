@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Spring } from 'react-spring/renderprops'
+import { useSpring, animated } from 'react-spring'
 import { mediaQueries } from './Layout'
 
 const StatWrap = styled.div``
@@ -23,7 +23,7 @@ const NumberWrap = styled.div`
     font-size: 88px;
   }
 `
-const Number = styled.span``
+const Number = styled(animated.span)``
 const Unit = styled.span`
   font-weight: 900;
   font-size: 0.5em;
@@ -51,28 +51,21 @@ const Label = styled.div`
   }
 `
 
-class Stat extends React.Component {
-  render() {
-    const { number, unit, label, isVisible } = this.props
+const Stat = ({ number, unit, label, isVisible }) => {
+  const countDownAnimation = useSpring({
+    number: isVisible ? number : 0,
+    config: { tension: 10, friction: 6, precision: 0.1, clamp: true }
+  })
 
-    return (
-      <StatWrap>
-        <NumberWrap>
-          <Spring
-            config={{ tension: 10, friction: 6, precision: 0.1, clamp: true }}
-            to={{
-              number: isVisible ? number : 0
-            }}
-          >
-            {props => <Number>{Math.trunc(props.number)}</Number>}
-          </Spring>
-
-          {unit && <Unit>{unit}</Unit>}
-        </NumberWrap>
-        <Label>{label}</Label>
-      </StatWrap>
-    )
-  }
+  return (
+    <StatWrap>
+      <NumberWrap>
+        <Number>{countDownAnimation.number.interpolate(num => num.toFixed(0))}</Number>
+        {unit && <Unit>{unit}</Unit>}
+      </NumberWrap>
+      <Label>{label}</Label>
+    </StatWrap>
+  )
 }
 
 Stat.propTypes = {
