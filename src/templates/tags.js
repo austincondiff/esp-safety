@@ -36,7 +36,7 @@ const TagsTemplate = () => {
   )
 }
 
-const Tags = () => {
+const Tags = ({ data, pageContext }) => {
   const context = useContext(Context)
 
   context.set({
@@ -49,7 +49,7 @@ const Tags = () => {
     navTransparentExpanded: true
   })
 
-  return <TagsTemplate data={this.props.data} pageContext={this.props.pageContext} />
+  return <TagsTemplate data={data} pageContext={pageContext} />
 }
 
 export default Tags
