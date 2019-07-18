@@ -17,7 +17,7 @@ const NavWrap = styled.nav`
   right: 0;
   left: 0;
   z-index: 100;
-  background: ${props => (props.transparent ? 'transparent' : props.dark ? '#111111' : 'white')};
+  background: ${props => (props.transparent ? 'transparent' : props.darkMode ? '#111111' : 'white')};
   height: ${props => props.height || 104}px;
   box-shadow: 0 1px 0 ${props => (props.darkMode ? 'rgba(255,255,255,0.25)' : 'rgba(0, 0, 0, 0.15)')};
   display: flex;

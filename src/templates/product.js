@@ -19,6 +19,20 @@ import Content, { HTMLContent } from '../components/Content'
 import LinesToParagraphs from '../components/LinesToParagraphs'
 import VisibilityTrailAnimation from '../components/VisibilityTrailAnimation'
 
+const CategoryLink = styled(Link)`
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  display: inline-block;
+`
+const Subtitle = styled.span`
+  display: block;
+  margin-top: 12px;
+  font-size: 0.5em;
+  font-weight: 700;
+  color: #777777;
+`
 const SpecificationsSection = styled.section`
   color: #ffffff;
   background-color: #161616;
@@ -106,7 +120,11 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
           </Col>
           <Col xs={12} sm={6}>
             <VisibilityTrailAnimation>
-              <h1>{title}</h1>
+              <CategoryLink to={`/product-categories/${data.category.slug}`}>{data.category.title}</CategoryLink>
+              <h1>
+                {title}
+                <Subtitle>{data.subtitle}</Subtitle>
+              </h1>
               <Tabs>
                 {data.overview && (
                   <Tab label="Product Overview" value="overview">
@@ -228,7 +246,9 @@ ProductTemplate.propTypes = {
 const Product = ({ data }) => {
   const product = {
     id: data.markdownRemark.id,
-    ...data.markdownRemark.frontmatter
+    ...data.markdownRemark.frontmatter,
+    category: data.allMarkdownRemark.edges.find(c => c.node.frontmatter.slug === data.markdownRemark.frontmatter.category).node
+      .frontmatter
   }
   const context = useContext(Context)
 
@@ -239,10 +259,10 @@ const Product = ({ data }) => {
     navHidden: false,
     navNeverExpanded: false,
     navTransparent: false,
-    navTransparentExpanded: true
+    navTransparentExpanded: false
   })
 
-  console.log(data)
+  console.log({ product })
   console.log('Product rendered', product)
 
   return (
@@ -278,6 +298,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
+        subtitle
         slug
         category
         overview
@@ -293,6 +314,17 @@ export const pageQuery = graphql`
             label
             text
             fullWidth
+          }
+        }
+      }
+    }
+    allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: "product-category" } } }) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            slug
           }
         }
       }

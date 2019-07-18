@@ -1,6 +1,7 @@
 ---
 templateKey: product
 title: SGOES Gas Detector
+subtitle: SIL2 Rated
 slug: sgoes-gas-detector
 category: combustible-gas-detectors
 overview: >-
