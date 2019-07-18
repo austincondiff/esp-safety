@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
+import Context from '../components/Context'
 import Header from '../components/Header'
 import Features from '../components/Features'
 import { Testimonials } from '../components/Testimonials'
@@ -113,6 +114,18 @@ ProductsPageTemplate.propTypes = {
 }
 
 const ProductsPage = () => {
+  const context = useContext(Context)
+
+  context.set({
+    navDarkMode: false,
+    navDarkModeExpanded: true,
+    navFullWidth: false,
+    navHidden: false,
+    navNeverExpanded: false,
+    navTransparent: false,
+    navTransparentExpanded: true
+  })
+
   return <div>Product page coming soon</div>
 }
 

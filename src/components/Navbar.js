@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import { Layout } from './Layout'
 import Logo from './Logo'
 import Icon from './Icon'
 import { mediaQueries, breakpoints } from './Layout'
 import styled, { keyframes } from 'styled-components'
+import Context from './Context'
 
 const slideInFromTop = keyframes`
   from { transform: translateY(-100%) }
@@ -34,7 +35,8 @@ const NavInside = styled(Layout)`
 const LogoWrap = styled.div`
   flex: 1;
   height: 100%;
-  padding: ${props => props.padding || 16}px 0;
+  align-items: center;
+  display: flex;
 `
 const LogoLink = styled(Link)`
   display: block;
@@ -53,6 +55,7 @@ const NavLinksWrap = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
   ${mediaQueries.md} {
+    height: 100%;
     width: auto;
     position: static;
     transform: translateX(0);
@@ -65,6 +68,7 @@ const NavLinksWrap = styled.div`
 const NavLinks = styled.div`
   padding: 64px 0;
   ${mediaQueries.md} {
+    height: 100%;
     padding: 0;
   }
 `
@@ -100,8 +104,11 @@ const NavLink = styled(Link)`
     }
   }
   ${mediaQueries.md} {
+    height: 100%;
     width: auto;
     padding: 24px 12px;
+    display: inline-flex;
+    align-items: center;
     color: ${props => (props.darkMode ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.75)')};
     &:after {
       transition: transform 0.25s ease-out, border-color 0.25s ease-out;
@@ -163,7 +170,9 @@ const MenuIconButton = styled(IconButton)`
 const NavBar = class extends React.Component {
   constructor(props) {
     super(props)
+    const { neverExpanded } = props
     this.state = {
+      expanded: !neverExpanded,
       activeNavItem: null,
       active: false,
       transparent: true,
@@ -172,7 +181,11 @@ const NavBar = class extends React.Component {
       showMobileMenu: false
     }
     this.scheduledAnimationFrame = false
+    this.navRef = React.createRef()
+    this.logoRef = React.createRef()
   }
+
+  static contextType = Context
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll)
@@ -185,11 +198,10 @@ const NavBar = class extends React.Component {
   }
 
   handleScroll = () => {
-    const isMobile = document.clientWidth < breakpoints.md
-    const navFullHeight = isMobile ? 96 : 104
+    const { navExpandedHeight } = this.props
 
     // Prevent multiple rAF callbacks
-    if (!this.state.transparent && window.scrollY > navFullHeight) {
+    if (!this.state.expanded && window.scrollY > navExpandedHeight) {
       return
     }
 
@@ -202,66 +214,57 @@ const NavBar = class extends React.Component {
   }
 
   setScrollStyles = () => {
-    const { navHeight, logoPadding } = this.state
-    const isMobile = window.innerWidth < breakpoints.md
-    const navFullHeight = isMobile ? 96 : 104
-    const navCondensedHeight = isMobile ? 56 : 64
-    const logoPaddingStart = isMobile ? 28 : 28
-    const logoPaddingEnd = isMobile ? 12 : 16
+    const {
+      height,
+      heightExpanded,
+      mobileHeight,
+      mobileHeightExpanded,
+      logoHeight,
+      logoHeightExpanded,
+      logoMobileHeight,
+      logoMobileHeightExpanded,
+      isMobile
+    } = this.props
+    const { expanded } = this.state
+    const navExpandedHeight = isMobile ? mobileHeightExpanded : heightExpanded
+    const navCondensedHeight = isMobile ? mobileHeight : height
+    const logoExpandedHeight = isMobile ? logoMobileHeightExpanded : logoHeightExpanded
+    const logoCondensedHeight = isMobile ? logoMobileHeight : logoHeight
     const scrollTop = window.scrollY > 0 ? window.scrollY : 0
-    const scrollFactor = scrollTop / (navFullHeight - navCondensedHeight)
+    const scrollFactor = scrollTop / (navExpandedHeight - navCondensedHeight)
+    const currentHeight = navExpandedHeight - scrollTop
+    const currentLogoHeight = logoExpandedHeight - scrollFactor * (logoExpandedHeight - logoCondensedHeight)
 
-    if (scrollTop < navFullHeight - navCondensedHeight) {
-      this.setState({
-        navHeight: navFullHeight - scrollTop,
-        transparent: true,
-        logoPadding: logoPaddingStart - scrollFactor * (logoPaddingStart - logoPaddingEnd),
-        darkMode: true
-      })
-    } else if (navHeight !== navCondensedHeight || logoPadding !== logoPaddingEnd) {
-      this.setState({
-        navHeight: navCondensedHeight,
-        transparent: false,
-        logoPadding: logoPaddingEnd,
-        darkMode: false
-      })
+    if (scrollTop < navExpandedHeight - navCondensedHeight) {
+      this.navRef.current.style.height = `${currentHeight}px`
+      this.logoRef.current.style.height = `${currentLogoHeight}px`
+      if (!expanded) this.setState({ expanded: true })
+    } else if (expanded && currentHeight !== navCondensedHeight) {
+      this.navRef.current.style.height = `${navCondensedHeight}px`
+      this.logoRef.current.style.height = `${logoCondensedHeight}px`
+      this.setState({ expanded: false })
     }
   }
 
-  toggleHamburger = () => {
-    // toggle the active boolean in the state
-    this.setState(
-      {
-        active: !this.state.active
-      },
-      // after state has been updated,
-      () => {
-        // set the class in state for the navbar accordingly
-        this.state.active
-          ? this.setState({
-              navBarActiveClass: 'is-active'
-            })
-          : this.setState({
-              navBarActiveClass: ''
-            })
-      }
-    )
-  }
-
-  toggleTransparency = () => this.props.setCtx({ navTransparent: !this.props.ctxData.navTransparent })
-
   render() {
-    const { data, ctxData } = this.props
-    const { navHeight, transparent, logoPadding, darkMode, showMobileMenu } = this.state
+    const {
+      data,
+      darkMode: darkModeCondensed,
+      darkModeExpanded,
+      transparent: transparentCondensed,
+      transparentExpanded
+    } = this.props
+    const { expanded, showMobileMenu } = this.state
     const { links } = data
 
-    console.log()
+    const darkMode = (expanded && darkModeExpanded) || (!expanded && darkModeCondensed)
+    const transparent = (expanded && transparentExpanded) || (!expanded && transparentCondensed)
 
     return (
-      <NavWrap transparent={transparent} darkMode={darkMode} height={navHeight} role="navigation" aria-label="main-navigation">
+      <NavWrap ref={this.navRef} transparent={transparent} darkMode={darkMode} role="navigation" aria-label="main-navigation">
         <NavInside>
-          <LogoWrap padding={logoPadding}>
-            <LogoLink to="/" title="Logo">
+          <LogoWrap>
+            <LogoLink ref={this.logoRef} to="/" title="Logo">
               <Logo light={darkMode} height="100%" />
             </LogoLink>
           </LogoWrap>
@@ -310,23 +313,27 @@ const NavBar = class extends React.Component {
 
 // export default Navbar
 
-export default ({ ...props }) => (
-  <StaticQuery
-    query={graphql`
-      query Navigation {
-        allSettingsYaml {
-          edges {
-            node {
-              navigation {
-                links {
-                  label
-                  path
+export default ({ ...props }) => {
+  const context = useContext(Context)
+
+  return (
+    <StaticQuery
+      query={graphql`
+        query Navigation {
+          allSettingsYaml {
+            edges {
+              node {
+                navigation {
                   links {
                     label
                     path
                     links {
                       label
                       path
+                      links {
+                        label
+                        path
+                      }
                     }
                   }
                 }
@@ -334,10 +341,29 @@ export default ({ ...props }) => (
             }
           }
         }
-      }
-    `}
-    render={data => (
-      <NavBar data={data.allSettingsYaml.edges.filter(edge => edge.node.navigation)[0].node.navigation} {...props} />
-    )}
-  />
-)
+      `}
+      render={data => (
+        <NavBar
+          data={data.allSettingsYaml.edges.filter(edge => edge.node.navigation)[0].node.navigation}
+          fullWidth={context.data.navFullWidth}
+          neverExpanded={context.data.navNeverExpanded}
+          transparentExpanded={context.data.navTransparentExpanded}
+          transparent={context.data.navTransparent}
+          darkMode={context.data.navDarkMode}
+          darkModeExpanded={context.data.navDarkModeExpanded}
+          hidden={context.data.navHidden}
+          height={context.data.navHeight}
+          heightExpanded={context.data.navHeightExpanded}
+          mobileHeight={context.data.navMobileHeight}
+          mobileHeightExpanded={context.data.navMobileHeightExpanded}
+          logoHeight={context.data.logoHeight}
+          logoHeightExpanded={context.data.logoHeightExpanded}
+          logoMobileHeight={context.data.logoMobileHeight}
+          logoMobileHeightExpanded={context.data.logoMobileHeightExpanded}
+          isMobile={context.data.currentBreakpoint === 'xs' || context.data.currentBreakpoint === 'sm'}
+          {...props}
+        />
+      )}
+    />
+  )
+}

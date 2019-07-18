@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
 import Header from '../components/Header'
 import Section from '../components/Section'
-
+import Context from '../components/Context'
 import Content, { HTMLContent } from '../components/Content'
 
 export const CareersPageTemplate = ({ title, content, contentComponent }) => {
@@ -29,6 +29,17 @@ CareersPageTemplate.propTypes = {
 
 const CareersPage = ({ data }) => {
   const { markdownRemark: post } = data
+  const context = useContext(Context)
+
+  context.set({
+    navDarkMode: false,
+    navDarkModeExpanded: true,
+    navFullWidth: false,
+    navHidden: false,
+    navNeverExpanded: false,
+    navTransparent: false,
+    navTransparentExpanded: true
+  })
 
   return <CareersPageTemplate contentComponent={HTMLContent} title={post.frontmatter.title} content={post.html} />
 }

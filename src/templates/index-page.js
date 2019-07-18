@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link, graphql } from 'gatsby'
@@ -6,6 +6,7 @@ import { animated, useSpring, useChain, config } from 'react-spring'
 
 import theme from '../lib/theme'
 
+import Context from '../components/Context'
 import Parallax from '../components/Parallax'
 import VisibilityTrailAnimation from '../components/VisibilityTrailAnimation'
 import VisibilitySensor from '../components/VisibilitySensor'
@@ -375,6 +376,17 @@ IndexPageTemplate.propTypes = {
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
+  const context = useContext(Context)
+
+  context.set({
+    navDarkMode: false,
+    navDarkModeExpanded: true,
+    navFullWidth: false,
+    navHidden: false,
+    navNeverExpanded: false,
+    navTransparent: false,
+    navTransparentExpanded: true
+  })
 
   return (
     <IndexPageTemplate

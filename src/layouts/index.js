@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components'
 
 import ContextConsumer, { ContextProvider } from '../components/Context'
 import NavBar from '../components/Navbar'
+import App from '../components/App'
 import ScrollRoot from '../components/ScrollRoot'
 import Footer from '../components/Footer'
 import useSiteMetadata from '../components/SiteMetadata'
@@ -81,10 +82,16 @@ export default ({ children }) => {
 
                 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
               </Helmet>
-              <GlobalStyles />
-              <NavBar ctxData={data} setCtx={set} />
-              {children}
-              <Footer />
+              <GlobalStyles
+                navHeightExpanded={data.navHeightExpanded}
+                navHeight={data.navHeight}
+                navNeverExpanded={data.navNeverExpanded}
+              />
+              <App>
+                <NavBar ctxData={data} setCtx={set} />
+                {children}
+                <Footer />
+              </App>
             </React.Fragment>
           </ThemeProvider>
         )}

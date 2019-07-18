@@ -13,8 +13,16 @@ const GlobalStyles = createGlobalStyle`
     overflow-x: hidden;
   }
 
-  html { background-color: #000000; }
-  body { background-color: #FFFFFF; }
+  html {
+    background-color: #000000;
+  }
+  body {
+    background-color: #FFFFFF;
+    padding-top: ${props => (props.navNeverExpanded ? props.navMobileHeight : props.navMobileHeightExpanded)}px;
+    ${mediaQueries.md} {
+      padding-top: ${props => (props.navNeverExpanded ? props.navHeight : props.navHeightExpanded)}px;
+    }
+  }
   body:after {
     content: '';
     position: fixed;

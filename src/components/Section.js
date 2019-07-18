@@ -1,14 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { Layout, mediaQueries } from './Layout'
 import Parallax from './Parallax'
+import Context from './Context'
 
 const StyledSection = styled.section`
   position: relative;
   background: ${props => (props.backgroundColor ? props.backgroundColor : 'transparent')};
   ${props => props.dark && `&, & * { color: #FFFFFF; }`};
+  ${props =>
+    props.header
+      ? `
+        margin-top: -${props.navNeverExpanded ? props.navMobileHeight : props.navMobileHeightExpanded}px;
+        ${mediaQueries.md} {
+          margin-top: -${props.navNeverExpanded ? props.navHeight : props.navHeightExpanded}px;
+        }
+      `
+      : ``}
 `
 const SectionInside = styled(Layout)`
   ${({ noPaddingTop, noPaddingBottom, height, parallaxContent, percentage }) => `
@@ -153,12 +163,20 @@ const Section = ({
   header,
   videoSrc
 }) => {
+  const { navNeverExpanded, navHeight, navHeightExpanded, navMobileHeight, navMobileHeightExpanded } = useContext(Context).data
+
   return (
     <StyledSection
+      header={header}
       dark={dark}
       backgroundImageOpacity={backgroundImageOpacity}
       parallaxContent={parallaxContent}
       backgroundColor={backgroundColor}
+      navNeverExpanded={navNeverExpanded}
+      navHeight={navHeight}
+      navHeightExpanded={navHeightExpanded}
+      navMobileHeight={navMobileHeight}
+      navMobileHeightExpanded={navMobileHeightExpanded}
     >
       {parallax ? (
         <React.Fragment>

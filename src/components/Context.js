@@ -1,15 +1,24 @@
-import React from "react"
+import React from 'react'
 
 const defaultContextValue = {
   data: {
-    // set your initial data shape here
+    navFullWidth: false,
+    navNeverExpanded: false,
+    navTransparentExpanded: true,
     navTransparent: false,
-    navDark: false,
-    navDarkWhenTransparent: true,
-    navTransparentAtTop: true,
-    navCondensedAtTop: false
+    navDarkMode: false,
+    navDarkModeExpanded: true,
+    navHidden: false,
+    navHeight: 64,
+    navHeightExpanded: 104,
+    navMobileHeight: 96,
+    navMobileHeightExpanded: 56,
+    logoHeight: 32,
+    logoHeightExpanded: 40,
+    logoMobileHeight: 32,
+    logoMobileHeightExpanded: 40
   },
-  set: () => {},
+  set: () => {}
 }
 
 const { Provider, Consumer } = React.createContext(defaultContextValue)
@@ -21,7 +30,7 @@ class ContextProvider extends React.Component {
     this.setData = this.setData.bind(this)
     this.state = {
       ...defaultContextValue,
-      set: this.setData,
+      set: this.setData
     }
   }
 
@@ -29,8 +38,8 @@ class ContextProvider extends React.Component {
     this.setState(state => ({
       data: {
         ...state.data,
-        ...newData,
-      },
+        ...newData
+      }
     }))
   }
 

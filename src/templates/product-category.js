@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 
 import Header from '../components/Header'
+import Context from '../components/Context'
 import Content, { HTMLContent } from '../components/Content'
 
 export const ProductCategoryTemplate = ({ title, helmet, contentComponent }) => {
@@ -37,6 +38,17 @@ ProductCategoryTemplate.propTypes = {
 
 const ProductCategory = ({ data }) => {
   const { markdownRemark: productCategory } = data
+  const context = useContext(Context)
+
+  context.set({
+    navDarkMode: false,
+    navDarkModeExpanded: true,
+    navFullWidth: false,
+    navHidden: false,
+    navNeverExpanded: false,
+    navTransparent: false,
+    navTransparentExpanded: true
+  })
 
   return (
     <ProductCategoryTemplate

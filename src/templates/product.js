@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { kebabCase } from 'lodash'
@@ -7,6 +7,7 @@ import { graphql, Link } from 'gatsby'
 
 import { convertLinesToParagraphs } from '../lib/utils'
 
+import Context from '../components/Context'
 import Header from '../components/Header'
 import Section from '../components/Section'
 import { Layout, Row, Col, mediaQueries } from '../components/Layout'
@@ -84,10 +85,9 @@ const SpecificationsTitle = styled.h2`
 `
 
 export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
-  console.log({ data })
   return (
     <React.Fragment>
-      <Header title={title} subtitle={data.category} />
+      {/*}<Header title={title} subtitle={data.category} />*/}
       <Section>
         <Row>
           <Col xs={12} sm={6}>
@@ -106,6 +106,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
           </Col>
           <Col xs={12} sm={6}>
             <VisibilityTrailAnimation>
+              <h1>{title}</h1>
               <Tabs>
                 {data.overview && (
                   <Tab label="Product Overview" value="overview">
@@ -187,19 +188,23 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
             data.specificationCategories.map(specificationCategory => (
               <SpecificationCategoryRow>
                 <Col lg={4}>
-                  <SpecificationCategoryTitle>{specificationCategory.title}</SpecificationCategoryTitle>
+                  <VisibilityTrailAnimation>
+                    <SpecificationCategoryTitle>{specificationCategory.title}</SpecificationCategoryTitle>
+                  </VisibilityTrailAnimation>
                 </Col>
                 <Col lg={8}>
                   <Row>
                     {specificationCategory.specifications &&
                       specificationCategory.specifications.map(specification => (
                         <SpecificationCol xs={specification.fullWidth ? 12 : 6}>
-                          {specification.label && <SpecificationLabel>{specification.label}</SpecificationLabel>}
-                          {specification.text && (
-                            <SpecificationValue>
-                              <LinesToParagraphs text={specification.text} />
-                            </SpecificationValue>
-                          )}
+                          <VisibilityTrailAnimation>
+                            {specification.label && <SpecificationLabel>{specification.label}</SpecificationLabel>}
+                            {specification.text && (
+                              <SpecificationValue>
+                                <LinesToParagraphs text={specification.text} />
+                              </SpecificationValue>
+                            )}
+                          </VisibilityTrailAnimation>
                         </SpecificationCol>
                       ))}
                   </Row>
@@ -221,14 +226,24 @@ ProductTemplate.propTypes = {
 }
 
 const Product = ({ data }) => {
-  console.log(data)
-
   const product = {
     id: data.markdownRemark.id,
     ...data.markdownRemark.frontmatter
   }
+  const context = useContext(Context)
 
-  console.log(product)
+  context.set({
+    navDarkMode: false,
+    navDarkModeExpanded: false,
+    navFullWidth: false,
+    navHidden: false,
+    navNeverExpanded: false,
+    navTransparent: false,
+    navTransparentExpanded: true
+  })
+
+  console.log(data)
+  console.log('Product rendered', product)
 
   return (
     <ProductTemplate

@@ -13,7 +13,7 @@ class VisibilitySensor extends Component {
   render() {
     const { active } = this.state
     const { once, partialVisibility, offset, children, onChange, ...props } = this.props
-    console.log(once)
+
     return (
       <VSensor
         active={active}

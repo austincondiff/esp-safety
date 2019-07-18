@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
@@ -6,7 +6,7 @@ import { graphql, Link } from 'gatsby'
 
 import Header from '../components/Header'
 import Section from '../components/Section'
-
+import Context from '../components/Context'
 import Content, { HTMLContent } from '../components/Content'
 
 export const PostTemplate = ({ content, contentComponent, description, tags, title, helmet }) => {
@@ -51,6 +51,17 @@ PostTemplate.propTypes = {
 
 const Post = ({ data }) => {
   const { markdownRemark: post } = data
+  const context = useContext(Context)
+
+  context.set({
+    navDarkMode: false,
+    navDarkModeExpanded: true,
+    navFullWidth: false,
+    navHidden: false,
+    navNeverExpanded: false,
+    navTransparent: false,
+    navTransparentExpanded: true
+  })
 
   return (
     <PostTemplate
