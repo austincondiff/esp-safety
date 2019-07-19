@@ -48,56 +48,45 @@ class Parallax extends React.Component {
   pauseVideo = () => this.parallaxVideoRef.current && this.parallaxVideoRef.current.pause()
 
   handleScroll = () => {
-    // Prevent multiple rAF callbacks
-    if (this.scheduledAnimationFrame) {
-      return
-    }
+    const { windowAnchor, contentAnchor, strength, backgroundVideo, backgroundImage } = this.props
 
-    this.scheduledAnimationFrame = true
+    // Get dimensions
+    const scrollTop = window.scrollY
+    const windowHeight = window.innerHeight
+    const parallaxTop = this.parallaxOuterRef.current && scrollTop + this.parallaxOuterRef.current.getBoundingClientRect().top
+    const parallaxHeight = this.parallaxOuterRef.current && this.parallaxOuterRef.current.offsetHeight
+    const parallaxInViewport = parallaxTop + parallaxHeight > scrollTop && parallaxTop < parallaxTop + windowHeight
 
-    requestAnimationFrame(() => {
-      const { windowAnchor, contentAnchor, strength, backgroundVideo, backgroundImage } = this.props
+    if (parallaxInViewport) {
+      // Do parallax calculations
+      const parallaxOffsetFactor = windowAnchor < 0.5 ? 2 * windowAnchor : 2 - 2 * windowAnchor
+      const contentAnchorOffset = (parallaxTop + parallaxHeight * contentAnchor) * parallaxOffsetFactor
+      const windowAnchorOffset = windowHeight * windowAnchor
+      const scrollAnchor = scrollTop + windowAnchorOffset
+      const strengthSegmentHeight = strength ? parallaxHeight / Math.abs(strength) : 0
+      const strengthSegmentInWindowCount = strengthSegmentHeight
+        ? windowHeight / strengthSegmentHeight + Math.abs(1 * strength + 1)
+        : 0
+      const parallaxInsideHeight = ((strengthSegmentInWindowCount - 1) * parallaxOffsetFactor + 1) * parallaxHeight
+      const heightDifference =
+        (backgroundImage || backgroundVideo) && parallaxInsideHeight ? parallaxInsideHeight - parallaxHeight : 0
+      const parallaxTranslateY = (contentAnchorOffset - scrollAnchor) * strength - heightDifference * windowAnchor
 
-      // Get dimensions
-      const scrollTop = window.scrollY
-      const windowHeight = window.innerHeight
-      const parallaxTop =
-        this.parallaxOuterRef.current && window.scrollY + this.parallaxOuterRef.current.getBoundingClientRect().top
-      const parallaxHeight = this.parallaxOuterRef.current && this.parallaxOuterRef.current.offsetHeight
-      const parallaxInViewport = parallaxTop + parallaxHeight > scrollTop && parallaxTop < parallaxTop + windowHeight
-
-      if (parallaxInViewport) {
-        // Do parallax calculations
-        const parallaxOffsetFactor = windowAnchor < 0.5 ? 2 * windowAnchor : 2 - 2 * windowAnchor
-        const contentAnchorOffset = (parallaxTop + parallaxHeight * contentAnchor) * parallaxOffsetFactor
-        const windowAnchorOffset = windowHeight * windowAnchor
-        const scrollAnchor = scrollTop + windowAnchorOffset
-        const strengthSegmentHeight = strength ? parallaxHeight / Math.abs(strength) : 0
-        const strengthSegmentInWindowCount = strengthSegmentHeight
-          ? windowHeight / strengthSegmentHeight + Math.abs(1 * strength + 1)
-          : 0
-        const parallaxInsideHeight = ((strengthSegmentInWindowCount - 1) * parallaxOffsetFactor + 1) * parallaxHeight
-        const heightDifference =
-          (backgroundImage || backgroundVideo) && parallaxInsideHeight ? parallaxInsideHeight - parallaxHeight : 0
-        const parallaxTranslateY = (contentAnchorOffset - scrollAnchor) * strength - heightDifference * windowAnchor
-
+      requestAnimationFrame(() => {
         // Apply styles
         this.parallaxInnerRef.current.style.transform = `translateY(${parallaxTranslateY}px)`
         this.parallaxInnerRef.current.style.height =
           (backgroundImage || backgroundVideo) && parallaxInsideHeight ? `${parallaxInsideHeight}px` : `100%`
-      }
+      })
+    }
 
-      if (backgroundVideo) {
-        if (!parallaxInViewport && this.isVideoPlaying()) {
-          this.pauseVideo()
-        } else if (parallaxInViewport && !this.isVideoPlaying()) {
-          this.playVideo()
-        }
+    if (backgroundVideo) {
+      if (!parallaxInViewport && this.isVideoPlaying()) {
+        this.pauseVideo()
+      } else if (parallaxInViewport && !this.isVideoPlaying()) {
+        this.playVideo()
       }
-
-      // Allow for another anamation frame to be requested
-      this.scheduledAnimationFrame = false
-    })
+    }
   }
 
   render() {
