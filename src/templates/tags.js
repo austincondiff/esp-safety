@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Helmet from 'react-helmet'
 import { Link, graphql } from 'gatsby'
 
@@ -39,15 +39,17 @@ const TagsTemplate = ({ data, pageContext }) => {
 const Tags = ({ data, pageContext }) => {
   const context = useContext(Context)
 
-  context.set({
-    navDarkMode: false,
-    navDarkModeExpanded: true,
-    navFullWidth: false,
-    navHidden: false,
-    navNeverExpanded: false,
-    navTransparent: false,
-    navTransparentExpanded: true
-  })
+  useEffect(() => {
+    context.set({
+      navDarkMode: false,
+      navDarkModeExpanded: true,
+      navFullWidth: false,
+      navHidden: false,
+      navNeverExpanded: false,
+      navTransparent: false,
+      navTransparentExpanded: true
+    })
+  }, [])
 
   return <TagsTemplate data={data} pageContext={pageContext} />
 }

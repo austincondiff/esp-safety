@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
@@ -90,15 +90,17 @@ const CareersPage = ({ data }) => {
   const { markdownRemark: post } = data
   const context = useContext(Context)
 
-  context.set({
-    navDarkMode: false,
-    navDarkModeExpanded: true,
-    navFullWidth: false,
-    navHidden: false,
-    navNeverExpanded: false,
-    navTransparent: false,
-    navTransparentExpanded: true
-  })
+  useEffect(() => {
+    context.set({
+      navDarkMode: false,
+      navDarkModeExpanded: true,
+      navFullWidth: false,
+      navHidden: false,
+      navNeverExpanded: false,
+      navTransparent: false,
+      navTransparentExpanded: true
+    })
+  }, [])
 
   return <CareersPageTemplate contentComponent={HTMLContent} title={post.frontmatter.title} content={post.html} />
 }

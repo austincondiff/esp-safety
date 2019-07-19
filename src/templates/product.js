@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { kebabCase } from 'lodash'
@@ -251,16 +251,17 @@ const Product = ({ data }) => {
       .frontmatter
   }
   const context = useContext(Context)
-
-  context.set({
-    navDarkMode: false,
-    navDarkModeExpanded: false,
-    navFullWidth: false,
-    navHidden: false,
-    navNeverExpanded: false,
-    navTransparent: false,
-    navTransparentExpanded: false
-  })
+  useEffect(() => {
+    context.set({
+      navDarkMode: false,
+      navDarkModeExpanded: false,
+      navFullWidth: false,
+      navHidden: false,
+      navNeverExpanded: false,
+      navTransparent: false,
+      navTransparentExpanded: false
+    })
+  }, [])
 
   console.log({ product })
   console.log('Product rendered', product)

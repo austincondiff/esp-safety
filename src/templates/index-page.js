@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link, graphql } from 'gatsby'
@@ -378,15 +378,21 @@ const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
   const context = useContext(Context)
 
-  context.set({
-    navDarkMode: false,
-    navDarkModeExpanded: true,
-    navFullWidth: false,
-    navHidden: false,
-    navNeverExpanded: false,
-    navTransparent: false,
-    navTransparentExpanded: true
-  })
+  console.log('Setting context from index')
+
+  useEffect(() => {
+    context.set({
+      navDarkMode: false,
+      navDarkModeExpanded: true,
+      navFullWidth: false,
+      navHidden: false,
+      navNeverExpanded: false,
+      navTransparent: false,
+      navTransparentExpanded: true
+    })
+  }, [])
+
+  console.log('Context context from index')
 
   return (
     <IndexPageTemplate
