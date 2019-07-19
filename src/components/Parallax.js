@@ -64,29 +64,30 @@ class Parallax extends React.Component {
       const parallaxTop =
         this.parallaxOuterRef.current && window.scrollY + this.parallaxOuterRef.current.getBoundingClientRect().top
       const parallaxHeight = this.parallaxOuterRef.current && this.parallaxOuterRef.current.offsetHeight
+      const parallaxInViewport = parallaxTop + parallaxHeight > scrollTop && parallaxTop < parallaxTop + windowHeight
 
-      // Do parallax calculations
-      const parallaxOffsetFactor = windowAnchor < 0.5 ? 2 * windowAnchor : 2 - 2 * windowAnchor
-      const contentAnchorOffset = (parallaxTop + parallaxHeight * contentAnchor) * parallaxOffsetFactor
-      const windowAnchorOffset = windowHeight * windowAnchor
-      const scrollAnchor = scrollTop + windowAnchorOffset
-      const strengthSegmentHeight = strength ? parallaxHeight / Math.abs(strength) : 0
-      const strengthSegmentInWindowCount = strengthSegmentHeight
-        ? windowHeight / strengthSegmentHeight + Math.abs(1 * strength + 1)
-        : 0
-      const parallaxInsideHeight = ((strengthSegmentInWindowCount - 1) * parallaxOffsetFactor + 1) * parallaxHeight
-      const heightDifference =
-        (backgroundImage || backgroundVideo) && parallaxInsideHeight ? parallaxInsideHeight - parallaxHeight : 0
-      const parallaxTranslateY = (contentAnchorOffset - scrollAnchor) * strength - heightDifference * windowAnchor
+      if (parallaxInViewport) {
+        // Do parallax calculations
+        const parallaxOffsetFactor = windowAnchor < 0.5 ? 2 * windowAnchor : 2 - 2 * windowAnchor
+        const contentAnchorOffset = (parallaxTop + parallaxHeight * contentAnchor) * parallaxOffsetFactor
+        const windowAnchorOffset = windowHeight * windowAnchor
+        const scrollAnchor = scrollTop + windowAnchorOffset
+        const strengthSegmentHeight = strength ? parallaxHeight / Math.abs(strength) : 0
+        const strengthSegmentInWindowCount = strengthSegmentHeight
+          ? windowHeight / strengthSegmentHeight + Math.abs(1 * strength + 1)
+          : 0
+        const parallaxInsideHeight = ((strengthSegmentInWindowCount - 1) * parallaxOffsetFactor + 1) * parallaxHeight
+        const heightDifference =
+          (backgroundImage || backgroundVideo) && parallaxInsideHeight ? parallaxInsideHeight - parallaxHeight : 0
+        const parallaxTranslateY = (contentAnchorOffset - scrollAnchor) * strength - heightDifference * windowAnchor
 
-      // Apply styles
-      this.parallaxInnerRef.current.style.transform = `translateY(${parallaxTranslateY}px)`
-      this.parallaxInnerRef.current.style.height =
-        (backgroundImage || backgroundVideo) && parallaxInsideHeight ? `${parallaxInsideHeight}px` : `100%`
+        // Apply styles
+        this.parallaxInnerRef.current.style.transform = `translateY(${parallaxTranslateY}px)`
+        this.parallaxInnerRef.current.style.height =
+          (backgroundImage || backgroundVideo) && parallaxInsideHeight ? `${parallaxInsideHeight}px` : `100%`
+      }
 
       if (backgroundVideo) {
-        const parallaxInViewport = parallaxTop + parallaxHeight > scrollTop && parallaxTop < parallaxTop + windowHeight
-
         if (!parallaxInViewport && this.isVideoPlaying()) {
           this.pauseVideo()
         } else if (parallaxInViewport && !this.isVideoPlaying()) {
