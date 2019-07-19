@@ -163,7 +163,8 @@ const Section = ({
   header,
   videoSrc
 }) => {
-  const { navNeverExpanded, navHeight, navHeightExpanded, navMobileHeight, navMobileHeightExpanded } = useContext(Context).data
+  const context = useContext(Context)
+  const { navNeverExpanded, navHeight, navHeightExpanded, navMobileHeight, navMobileHeightExpanded } = context.data
 
   return (
     <StyledSection
