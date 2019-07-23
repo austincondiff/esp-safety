@@ -170,7 +170,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
                       <h3>{downloadCategory.title}</h3>
                       {downloadCategory.downloads.map(d => (
                         <div>
-                          <a href={`/images/${d.file.relativePath}`}>
+                          <a href={`/images/${d.file.relativePath}`} target="_blank" rel="noreferrer noopener">
                             {d.title} ({d.file.prettySize})
                           </a>{' '}
                           - {d.description}
