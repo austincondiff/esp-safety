@@ -81,6 +81,31 @@ downloadCategories:
         file: /images/sgoes-r08.pdf
         title: SGOES Spec Sheet
     title: Test
+sections:
+  - content: >-
+      The explosion-proof design of SGOES makes it ideal for use in hazardous
+      environments such as: • Refineries • Tank farms • Pipelines • Loading
+      racks. • Oil and gas facilities • Pumping stations
+
+
+      SGOES is FM-certified for use in potentially explosive gas/vapor
+      environments in compliance with FM3615 and CSA-C22.2 No 30 standards for
+      explosion proof protection. In addition, it meets CSA standard E60079-1
+      for flameproof protection, and ANSI/ISA standard 12.13.01-2000 for
+      performance of combustible gas detectors.
+    image: /images/pexels-photo-87236.jpg
+    title: 'Tried, tested, and certified, so you can use it pretty much anywhere'
+  - content: >-
+      The SGOES gas detector is typically used as an indicating device in fire
+      and gas (F&G) detection and suppression systems as well as emergency
+      shutdown (ESD) systems.
+
+
+      The rugged SGOES design allows it to be used in harsh environments. It
+      will operate from -76º F to +185º F (-60ºC to +85ºC) at relative humidity
+      up to 95%.
+    image: /images/296063_thumb.jpg
+    title: 'It can take the heat, even in the harshest of conditions'
 specificationCategories:
   - specifications:
       - label: Voltage
@@ -168,3 +193,4 @@ specificationCategories:
           IP66
     title: Certifications
 ---
+
