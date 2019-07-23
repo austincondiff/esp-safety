@@ -165,7 +165,19 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
                   </Tab>
                 )}
                 <Tab label="Downloads" value="downloads">
-                  <p>Downloads tab content coming soon.</p>
+                  {data.downloadCategories.map(downloadCategory => (
+                    <div>
+                      <h3>{downloadCategory.title}</h3>
+                      {downloadCategory.downloads.map(d => (
+                        <div>
+                          <a href={`/images/${d.file.relativePath}`}>
+                            {d.title} ({d.file.prettySize})
+                          </a>{' '}
+                          - {d.description}
+                        </div>
+                      ))}
+                    </div>
+                  ))}
                 </Tab>
               </Tabs>
             </VisibilityTrailAnimation>
@@ -308,6 +320,17 @@ export const pageQuery = graphql`
         }
         features {
           feature
+        }
+        downloadCategories {
+          title
+          downloads {
+            title
+            file {
+              relativePath
+              prettySize
+            }
+            description
+          }
         }
         specificationCategories {
           title
