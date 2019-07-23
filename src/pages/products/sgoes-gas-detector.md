@@ -1,7 +1,6 @@
 ---
 templateKey: product
 title: SGOES Gas Detector
-subtitle: SIL2 Rated
 slug: sgoes-gas-detector
 category: combustible-gas-detectors
 overview: >-
@@ -75,6 +74,12 @@ features:
   - feature: >-
       Tri-color status LED on the device is easily viewable for a visual report
       of the device’s operating status
+downloadCategories:
+  - downloads:
+      - description: Test description
+        file: /images/sgoes-r08.pdf
+        title: SGOES Spec Sheet
+    title: Test
 specificationCategories:
   - specifications:
       - label: Voltage
@@ -162,3 +167,4 @@ specificationCategories:
           IP66
     title: Certifications
 ---
+
