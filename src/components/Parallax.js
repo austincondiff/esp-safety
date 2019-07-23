@@ -55,7 +55,7 @@ class Parallax extends React.Component {
     const windowHeight = window.innerHeight
     const parallaxTop = this.parallaxOuterRef.current && scrollTop + this.parallaxOuterRef.current.getBoundingClientRect().top
     const parallaxHeight = this.parallaxOuterRef.current && this.parallaxOuterRef.current.offsetHeight
-    const parallaxInViewport = parallaxTop + parallaxHeight > scrollTop && parallaxTop < parallaxTop + windowHeight
+    const parallaxInViewport = scrollTop > parallaxTop - windowHeight && scrollTop < parallaxTop + parallaxHeight
 
     if (parallaxInViewport) {
       requestAnimationFrame(() => {
