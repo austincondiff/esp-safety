@@ -117,16 +117,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
         <Row>
           <Col xs={12} sm={6}>
             <VisibilityTrailAnimation>
-              <ImageGallery
-                images={[
-                  'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2019/06/sgoes.png',
-                  'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2017/05/product-001.png',
-                  'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2019/06/IR3-IRUVAL-IRUVSS.png',
-                  'http://clients.continuumcreative.com/espsafety/wp-content/uploads/2016/07/SSS-903_2013C.png',
-                  'https://images.unsplash.com/photo-1561717507-080fac4a8cca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80',
-                  'https://images.unsplash.com/photo-1561716749-2ab5a223957c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80'
-                ]}
-              />
+              <ImageGallery images={data.images.map(img => `/media/${img.relativePath}`)} />
             </VisibilityTrailAnimation>
           </Col>
           <Col xs={12} sm={6}>
@@ -313,6 +304,10 @@ export const pageQuery = graphql`
         subtitle
         slug
         category
+        images {
+          relativePath
+          name
+        }
         overview
         applications {
           application
