@@ -80,7 +80,12 @@ downloadCategories:
       - description: Test description
         file: /media/sgoes-r08.pdf
         title: SGOES Spec Sheet
-    title: Test
+    title: Product Resources
+  - downloads:
+      - description: A document about the SGOES Cover
+        file: /media/SGOES Protective Cover 130712.pdf
+        title: SGOES Protective Cover
+    title: Accessory Resources
 sections:
   - content: >-
       The explosion-proof design of SGOES makes it ideal for use in hazardous
@@ -193,3 +198,4 @@ specificationCategories:
           IP66
     title: Certifications
 ---
+
