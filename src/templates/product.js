@@ -98,6 +98,11 @@ const SpecificationsTitle = styled.h2`
   color: #ffffff;
 `
 
+const DownloadCategory = styled.div`
+  margin-bottom: 32px;
+`
+const Download = styled.div``
+
 export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
   return (
     <React.Fragment>
@@ -166,17 +171,17 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
                 )}
                 <Tab label="Downloads" value="downloads">
                   {data.downloadCategories.map(downloadCategory => (
-                    <div>
+                    <DownloadCategory>
                       <h3>{downloadCategory.title}</h3>
                       {downloadCategory.downloads.map(d => (
-                        <div>
+                        <Download>
                           <a href={`/media/${d.file.relativePath}`} target="_blank" rel="noreferrer noopener">
                             {d.title} ({d.file.prettySize})
                           </a>{' '}
                           - {d.description}
-                        </div>
+                        </Download>
                       ))}
-                    </div>
+                    </DownloadCategory>
                   ))}
                 </Tab>
               </Tabs>
