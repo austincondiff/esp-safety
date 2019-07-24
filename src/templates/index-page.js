@@ -114,7 +114,7 @@ const FloatingImg = styled.img`
     0 2px 4px rgba(0, 0, 0, 0.1);
 `
 const CertificationBadge = styled(animated.img).attrs({
-  src: '/images/certified-badge.svg'
+  src: '/media/certified-badge.svg'
 })`
   width: 100%;
 `
@@ -134,8 +134,8 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
         title="Technology of the future, protection for today"
         subtitle="We are a team of experts who specialize in the design of fixed toxic and combustible gas detection, flame detection, and complete turn-key safety systems."
         backgroundVideo={{
-          webm: '/images/esp-hero-bg-480p.webm',
-          mp4: '/images/esp-hero-bg-480p.mp4'
+          webm: '/media/esp-hero-bg-480p.webm',
+          mp4: '/media/esp-hero-bg-480p.mp4'
         }}
         primaryButtonLink={'/products'}
         primaryButtonLabel={'View Our Products'}
@@ -145,19 +145,19 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       />
       <Layout>
         <Logos>
-          <Logo label="Mitsubishi" image="/images/mitsubishi.png" url="http://www.mitsubishicorp.com/" />
-          <Logo label="Chevron" image="/images/chevron.png" url="https://www.chevron.com/" />
-          <Logo label="Mitsui & Co." image="/images/mitsui.png" url="https://www.mitsui.com/" />
-          <Logo label="Shell" image="/images/shell.png" url="http://www.shell.com/" />
-          <Logo label="Unilever" image="/images/unilever.png" url="https://www.unilever.com/" />
-          <Logo label="British Petroleum" image="/images/bp.png" url="https://www.bp.com/" />
+          <Logo label="Mitsubishi" image="/media/mitsubishi.png" url="http://www.mitsubishicorp.com/" />
+          <Logo label="Chevron" image="/media/chevron.png" url="https://www.chevron.com/" />
+          <Logo label="Mitsui & Co." image="/media/mitsui.png" url="https://www.mitsui.com/" />
+          <Logo label="Shell" image="/media/shell.png" url="http://www.shell.com/" />
+          <Logo label="Unilever" image="/media/unilever.png" url="https://www.unilever.com/" />
+          <Logo label="British Petroleum" image="/media/bp.png" url="https://www.bp.com/" />
           {/*
-            <Logo label="Pemex" image="/images/pemex.png" url="http://www.pemex.com/en/" />
-            <Logo label="CNPC" image="/images/cnpc.png" url="http://www.cnpc.com.cn/en/" />
-            <Logo label="Caspian Pipeline Consortium" image="/images/caspianpipeline.png" url="http://www.cpc.ru/EN/" />
-            <Logo label="Conoco Phillips" image="/images/conocophillips.png" url="http://www.conocophillips.com/" />
-            <Logo label="ENI" image="/images/eni.png" url="https://www.eni.com/" />
-            <Logo label="Tethys Petroleum" image="/images/tethys.png" url="http://www.tethyspetroleum.com/" />
+            <Logo label="Pemex" image="/media/pemex.png" url="http://www.pemex.com/en/" />
+            <Logo label="CNPC" image="/media/cnpc.png" url="http://www.cnpc.com.cn/en/" />
+            <Logo label="Caspian Pipeline Consortium" image="/media/caspianpipeline.png" url="http://www.cpc.ru/EN/" />
+            <Logo label="Conoco Phillips" image="/media/conocophillips.png" url="http://www.conocophillips.com/" />
+            <Logo label="ENI" image="/media/eni.png" url="https://www.eni.com/" />
+            <Logo label="Tethys Petroleum" image="/media/tethys.png" url="http://www.tethyspetroleum.com/" />
         */}
         </Logos>
       </Layout>
@@ -214,7 +214,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
           </Col>
         </Row>
       </Section>
-      <Section backgroundImage="/images/shutterstock_705791.jpg" backgroundColor="#000000" dark parallax imagePosition="left">
+      <Section backgroundImage="/media/shutterstock_705791.jpg" backgroundColor="#000000" dark parallax imagePosition="left">
         <VisibilityTrailAnimation>
           <SectionSupertitle>Performance when it counts</SectionSupertitle>
           <h2 style={{ color: theme.color.primary }}>Our detectors work as hard as you do</h2>
@@ -255,7 +255,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       <Section
         contentPosition="right"
         backgroundColor="#FFFFFF"
-        foregroundImageSrc="/images/SSS-903_2013C.png"
+        foregroundImageSrc="/media/SSS-903_2013C.png"
         foregroundImageWidth="30%"
         foregroundImagePosition={['70%', '30%']}
         parallax
@@ -272,7 +272,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
         </VisibilityTrailAnimation>
       </Section>
       <Section
-        backgroundImage="/images/shutterstock_68568742.jpg"
+        backgroundImage="/media/shutterstock_68568742.jpg"
         backgroundColor="#F6F6F6"
         imagePosition="right"
         backgroundImagePosition="center left"

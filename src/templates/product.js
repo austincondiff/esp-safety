@@ -170,7 +170,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
                       <h3>{downloadCategory.title}</h3>
                       {downloadCategory.downloads.map(d => (
                         <div>
-                          <a href={`/images/${d.file.relativePath}`} target="_blank" rel="noreferrer noopener">
+                          <a href={`/media/${d.file.relativePath}`} target="_blank" rel="noreferrer noopener">
                             {d.title} ({d.file.prettySize})
                           </a>{' '}
                           - {d.description}
@@ -186,7 +186,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
       </Section>
       {data.sections.map((s, i) => (
         <Section
-          backgroundImage={`/images/${s.image.relativePath}`}
+          backgroundImage={`/media/${s.image.relativePath}`}
           backgroundColor={i % 2 === 0 ? '#F6F6F6' : '#FFFFFF'}
           imagePosition={i % 2 === 0 ? 'right' : 'left'}
           parallax

@@ -78,7 +78,7 @@ features:
 downloadCategories:
   - downloads:
       - description: Test description
-        file: /images/sgoes-r08.pdf
+        file: /media/sgoes-r08.pdf
         title: SGOES Spec Sheet
     title: Test
 sections:
@@ -93,7 +93,7 @@ sections:
       explosion proof protection. In addition, it meets CSA standard E60079-1
       for flameproof protection, and ANSI/ISA standard 12.13.01-2000 for
       performance of combustible gas detectors.
-    image: /images/pexels-photo-87236.jpg
+    image: /media/pexels-photo-87236.jpg
     title: 'Tried, tested, and certified, so you can use it pretty much anywhere'
   - content: >-
       The SGOES gas detector is typically used as an indicating device in fire
@@ -104,7 +104,7 @@ sections:
       The rugged SGOES design allows it to be used in harsh environments. It
       will operate from -76º F to +185º F (-60ºC to +85ºC) at relative humidity
       up to 95%.
-    image: /images/296063_thumb.jpg
+    image: /media/296063_thumb.jpg
     title: 'It can take the heat, even in the harshest of conditions'
 specificationCategories:
   - specifications:
@@ -193,4 +193,3 @@ specificationCategories:
           IP66
     title: Certifications
 ---
-
