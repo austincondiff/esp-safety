@@ -9,264 +9,124 @@ media_folder: static/media
 public_folder: media
 
 collections:
-  - name: 'posts'
-    label: 'Posts'
-    label_singular: 'Post'
-    folder: 'src/pages/news'
+  - name: "posts"
+    label: "Posts"
+    label_singular: "Post"
+    folder: "src/pages/news"
     create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'post' }
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Description', name: 'description', widget: 'text' }
-      - { label: 'Featured Post', name: 'featuredpost', widget: 'boolean' }
-      - { label: 'Featured Image', name: 'featuredimage', widget: 'image' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
-      - { label: 'Tags', name: 'tags', widget: 'list' }
-  - name: 'productCategories'
-    label: 'Product Categories'
-    label_singular: 'Product Category'
-    folder: 'src/pages/product-categories'
+      - { label: "Template Key", name: "templateKey", widget: "hidden", default: "post" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Featured Post", name: "featuredpost", widget: "boolean" }
+      - { label: "Featured Image", name: "featuredimage", widget: "image" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list" }
+  - name: "productCategories"
+    label: "Product Categories"
+    label_singular: "Product Category"
+    folder: "src/pages/product-categories"
     create: true
-    slug: '{{fields.slug}}'
+    slug: "{{fields.slug}}"
     fields:
-      - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'product-category' }
-      - { label: 'Product Category Name', name: 'title' }
-      - {
-          label: 'Slug',
-          name: 'slug',
-          required: true,
-          pattern:
-            [
-              '^[a-z0-9]+(?:-[a-z0-9]+)*$',
-              'Cannot contain spaces, capital letters, or special characters. You may separate words with dashes and numbers are allowed.',
-            ],
-          hint: 'This will be used in the URL.',
-        }
-      - { label: 'Icon', name: 'icon', widget: 'image', required: false }
-  - name: 'products'
-    label: 'Products'
-    label_singular: 'Product'
-    folder: 'src/pages/products'
+      - { label: "Template Key", name: "templateKey", widget: "hidden", default: "product-category" }
+      - { label: "Product Category Name", name: "title" }
+      - { label: "Slug", name: "slug", required: true, pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Cannot contain spaces, capital letters, or special characters. You may separate words with dashes and numbers are allowed."], hint: "This will be used in the URL." }
+      - { label: "Icon", name: "icon", widget: "image", required: false }
+  - name: "products"
+    label: "Products"
+    label_singular: "Product"
+    folder: "src/pages/products"
     create: true
-    slug: '{{fields.slug}}'
+    slug: "{{fields.slug}}"
     fields:
-      - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'product' }
-      - { label: 'Product Name', name: 'title' }
-      - { label: 'Subtitle', name: 'subtitle' }
-      - {
-          label: 'Slug',
-          name: 'slug',
-          required: true,
-          pattern:
-            [
-              '^[a-z0-9]+(?:-[a-z0-9]+)*$',
-              'Cannot contain spaces, capital letters, or special characters. You may separate words with dashes and numbers are allowed.',
-            ],
-          hint: 'This will be used in the URL.',
+      - { label: "Template Key", name: "templateKey", widget: "hidden", default: "product" }
+      - { label: "Product Name", name: "title" }
+      - { label: "Subtitle", name: "subtitle" }
+      - { label: "Slug", name: "slug", required: true, pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Cannot contain spaces, capital letters, or special characters. You may separate words with dashes and numbers are allowed."], hint: "This will be used in the URL." }
+      - { label: "Category", name: "category", widget: "relation", collection: "productCategories", searchFields: ["title"], valueField: "slug", displayFields: ["title"] }
+      - { label: "Image", name: "image", widget: "image", multiple: true }
+      - { label: "Overview", name: "overview", widget: "markdown" }
+      - { label: "Applications", label_singular: "Application", name: "applications", widget: "list", fields: [{label: "Application", name: "application", widget: "string"}] }
+      - { label: "Features", label_singular: "Feature", name: "features", widget: "list", fields: [{label: "Feature", name: "feature", widget: "string"}] }
+      - { label: "Download Categories", label_singular: "Download Category", name: "downloadCategories", widget: "list", fields: [
+          { label: "Title", name: "title", widget: "string" },
+          { label: "Downloads", label_singular: "Download", name: "downloads", widget: "list", fields: [
+            { label: "File", name: "file", widget: "file" },
+            { label: "Title", name: "title", widget: "string" },
+            { label: "Description", name: "description", widget: "string" }
+          ]}
+        ]}
+      - { label: "Sections", label_singular: "Section", name: "sections", widget: "list", fields: [
+          { label: "Title", name: "title", widget: "string", required: false },
+          { label: "Supertitle", name: "supertitle", widget: "string", required: false },
+          { label: "Subtitle", name: "sibtitle", widget: "string", required: false },
+          { label: "Content", name: "content", widget: "markdown" },
+          { label: "Image", name: "image", widget: "image" },
+          { label: "Link", name: "link", widget: "object", required: false, fields: [
+            { label: "Text", name: "text", widget: "string", required: false },
+            { label: "URL", name: "url", widget: "string", required: false },
+            { label: "Open In New Window", name: "newWindow", widget: "boolean", required: false }
+          ]}
+        ]}
+      - { label: "Specification Categories", name: "specificationCategories", widget: "list", fields: [
+            { label: "Title", name: "title", widget: "string", required: true },
+            # { label: "Layout", name: "layout", widget: "select", options: [{ label: "Rows", value: "rows" }, { label: "Columns", value: "columns" }] },
+            { label: "Specifications", name: "specifications", widget: "list", required: true, fields: [
+              { label: "Label", name: "label", widget: "text", required: false },
+              # { label: "Label Position", name: "labelPosition", widget: "select", options: [
+              #   { label: "Top", value: "top" },
+              #   { label: "Left", value: "left" }
+              # ]},
+              { label: "Text", name: "text", widget: "text", required: false },
+              { label: "Image",  name: "image", required: false},
+              # { label: "Image Position", name: "imagePosition", widget: "select", required: false, options: [
+              #   { label: "Top", value: "top" },
+              #   { label: "Left", value: "left" }
+              # ]},
+              { label: "Link", name: "link", widget: "object", required: false, fields: [
+                { label: "Text", name: "text", widget: "string", required: false },
+                { label: "URL", name: "url", widget: "string", required: false },
+                { label: "Open In New Window", name: "newWindow", widget: "boolean", required: false }
+              ]},
+              { label: "Disclaimer",name: "disclaimer", widget: "text", required: false },
+              { label: "Full-width", name: "fullWidth", widget: "boolean", required: false }
+            ]}
+          ]
         }
-      - {
-          label: 'Category',
-          name: 'category',
-          widget: 'relation',
-          collection: 'productCategories',
-          searchFields: ['title'],
-          valueField: 'slug',
-          displayFields: ['title'],
-        }
-      - { label: 'Overview', name: 'overview', widget: 'markdown' }
-      - {
-          label: 'Applications',
-          label_singular: 'Application',
-          name: 'applications',
-          widget: 'list',
-          fields: [{ label: 'Application', name: 'application', widget: 'string' }],
-        }
-      - {
-          label: 'Features',
-          label_singular: 'Feature',
-          name: 'features',
-          widget: 'list',
-          fields: [{ label: 'Feature', name: 'feature', widget: 'string' }],
-        }
-      - {
-          label: 'Download Categories',
-          label_singular: 'Download Category',
-          name: 'downloadCategories',
-          widget: 'list',
-          fields:
-            [
-              { label: 'Title', name: 'title', widget: 'string' },
-              {
-                label: 'Downloads',
-                label_singular: 'Download',
-                name: 'downloads',
-                widget: 'list',
-                fields:
-                  [
-                    { label: 'File', name: 'file', widget: 'file' },
-                    { label: 'Title', name: 'title', widget: 'string' },
-                    { label: 'Description', name: 'description', widget: 'string' },
-                  ],
-              },
-            ],
-        }
-      - {
-          label: 'Sections',
-          label_singular: 'Section',
-          name: 'sections',
-          widget: 'list',
-          fields:
-            [
-              { label: 'Title', name: 'title', widget: 'string', required: false },
-              { label: 'Supertitle', name: 'supertitle', widget: 'string', required: false },
-              { label: 'Subtitle', name: 'sibtitle', widget: 'string', required: false },
-              { label: 'Content', name: 'content', widget: 'markdown' },
-              { label: 'Image', name: 'image', widget: 'image' },
-              {
-                label: 'Link',
-                name: 'link',
-                widget: 'object',
-                required: false,
-                fields:
-                  [
-                    { label: 'Text', name: 'text', widget: 'string', required: false },
-                    { label: 'URL', name: 'url', widget: 'string', required: false },
-                    { label: 'Open In New Window', name: 'newWindow', widget: 'boolean', required: false },
-                  ],
-              },
-            ],
-        }
-      - { label: 'Specification Categories', name: 'specificationCategories', widget: 'list', fields: [
-              { label: 'Title', name: 'title', widget: 'string', required: true },
-              # { label: "Layout", name: "layout", widget: "select", options: [{ label: "Rows", value: "rows" }, { label: "Columns", value: "columns" }] },
-              { label: 'Specifications', name: 'specifications', widget: 'list', required: true, fields: [
-                    { label: 'Label', name: 'label', widget: 'text', required: false },
-                    # { label: "Label Position", name: "labelPosition", widget: "select", options: [
-                    #   { label: "Top", value: "top" },
-                    #   { label: "Left", value: "left" }
-                    # ]},
-                    { label: 'Text', name: 'text', widget: 'text', required: false },
-                    { label: 'Image', name: 'image', required: false },
-                    # { label: "Image Position", name: "imagePosition", widget: "select", required: false, options: [
-                    #   { label: "Top", value: "top" },
-                    #   { label: "Left", value: "left" }
-                    # ]},
-                    {
-                      label: 'Link',
-                      name: 'link',
-                      widget: 'object',
-                      required: false,
-                      fields:
-                        [
-                          { label: 'Text', name: 'text', widget: 'string', required: false },
-                          { label: 'URL', name: 'url', widget: 'string', required: false },
-                          { label: 'Open In New Window', name: 'newWindow', widget: 'boolean', required: false },
-                        ],
-                    },
-                    { label: 'Disclaimer', name: 'disclaimer', widget: 'text', required: false },
-                    { label: 'Full-width', name: 'fullWidth', widget: 'boolean', required: false },
-                  ] },
-            ] }
-      - {
-          label: 'Accessories',
-          name: 'accessories',
-          widget: 'relation',
-          collection: 'products',
-          searchFields: ['title'],
-          valueField: 'slug',
-          displayFields: ['title'],
-          multiple: true,
-          required: false,
-        }
-      - {
-          label: 'Related Products',
-          name: 'relatedProducts',
-          widget: 'relation',
-          collection: 'products',
-          searchFields: ['title'],
-          valueField: 'slug',
-          displayFields: ['title'],
-          multiple: true,
-          required: false,
-        }
-  - name: 'pages'
-    label: 'Pages'
-    label_singular: 'Page'
+      - { label: "Accessories", name: "accessories", widget: "relation", collection: "products", searchFields: ["title"], valueField: "slug", displayFields: ["title"], multiple: true, required: false }
+      - { label: "Related Products", name: "relatedProducts", widget: "relation", collection: "products", searchFields: ["title"], valueField: "slug", displayFields: ["title"], multiple: true, required: false }
+  - name: "pages"
+    label: "Pages"
+    label_singular: "Page"
     files:
-      - file: 'src/pages/index.md'
-        label: 'Landing Page'
-        name: 'index'
+      - file: "src/pages/index.md"
+        label: "Landing Page"
+        name: "index"
         fields:
-          - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'index-page' }
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page" }
           - { label: Title, name: title, widget: string }
           - { label: Image, name: image, widget: image }
           - { label: Heading, name: heading, widget: string }
           - { label: Subheading, name: subheading, widget: string }
-          - {
-              label: Mainpitch,
-              name: mainpitch,
-              widget: object,
-              fields: [{ label: Title, name: title, widget: string }, { label: Description, name: description, widget: text }],
-            }
+          - { label: Mainpitch, name: mainpitch, widget: object, fields: [{label: Title, name: title, widget: string}, {label: Description, name: description, widget: text}] }
           - { label: Description, name: description, widget: string }
-          - {
-              label: Intro,
-              name: intro,
-              widget: object,
-              fields:
-                [
-                  { label: Heading, name: heading, widget: string },
-                  { label: Description, name: description, widget: text },
-                  {
-                    label: Blurbs,
-                    name: blurbs,
-                    widget: list,
-                    fields: [{ label: Image, name: image, widget: image }, { label: Text, name: text, widget: text }],
-                  },
-                ],
-            }
-          - {
-              label: Main,
-              name: main,
-              widget: object,
-              fields:
-                [
-                  { label: Heading, name: heading, widget: string },
-                  { label: Description, name: description, widget: text },
-                  {
-                    label: Image1,
-                    name: image1,
-                    widget: object,
-                    fields: [{ label: Image, name: image, widget: image }, { label: Alt, name: alt, widget: string }],
-                  },
-                  {
-                    label: Image2,
-                    name: image2,
-                    widget: object,
-                    fields: [{ label: Image, name: image, widget: image }, { label: Alt, name: alt, widget: string }],
-                  },
-                  {
-                    label: Image3,
-                    name: image3,
-                    widget: object,
-                    fields: [{ label: Image, name: image, widget: image }, { label: Alt, name: alt, widget: string }],
-                  },
-                ],
-            }
-      - file: 'src/pages/about/index.md'
-        label: 'About'
-        name: 'about'
+          - { label: Intro, name: intro, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Blurbs, name: blurbs, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Text, name: text, widget: text}]}] }
+          - { label: Main, name: main, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Image1, name: image1, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image2, name: image2, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image3, name: image3, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}]}
+      - file: "src/pages/about/index.md"
+        label: "About"
+        name: "about"
         fields:
-          - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'about-page' }
-          - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Body', name: 'body', widget: 'markdown' }
-  - name: 'settings'
-    label: 'Settings'
-    label_singular: 'Setting'
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+  - name: "settings"
+    label: "Settings"
+    label_singular: "Setting"
     files:
-      - file: 'src/data/settings/navigation.yml'
+      - file: "src/data/settings/navigation.yml"
         label: Navigation
         name: navigation
         fields:
@@ -274,43 +134,22 @@ collections:
             name: navigation
             widget: object
             fields:
-              - {
-                  label: 'Links',
-                  label_singular: 'Link',
-                  name: 'links',
-                  widget: 'list',
-                  fields:
-                    [
-                      { label: 'Label', name: 'label', widget: string, required: false },
-                      { label: 'Path', name: 'path', widget: string, required: false },
-                      { label: 'Open In New Window', name: 'newWindow', widget: 'boolean', required: false },
-                      {
-                        label: 'Links',
-                        label_singular: 'Link',
-                        name: 'links',
-                        widget: 'list',
-                        fields:
-                          [
-                            { label: 'Label', name: 'label', widget: string, required: false },
-                            { label: 'Path', name: 'path', widget: string, required: false },
-                            { label: 'Open In New Window', name: 'newWindow', widget: 'boolean', required: false },
-                            {
-                              label: 'Links',
-                              label_singular: 'Link',
-                              name: 'links',
-                              widget: 'list',
-                              fields:
-                                [
-                                  { label: 'Label', name: 'label', widget: string, required: false },
-                                  { label: 'Path', name: 'path', widget: string, required: false },
-                                  { label: 'Open In New Window', name: 'newWindow', widget: 'boolean', required: false },
-                                ],
-                            },
-                          ],
-                      },
-                    ],
-                }
-      - file: 'src/data/settings/footer.yml'
+              - { label: "Links", label_singular: "Link", name: "links", widget: "list", fields: [
+                  { label: "Label", name: "label", widget: string, required: false },
+                  { label: "Path", name: "path", widget: string, required: false },
+                  { label: "Open In New Window", name: "newWindow", widget: "boolean", required: false },
+                  { label: "Links", label_singular: "Link", name: "links", widget: "list", fields: [
+                    { label: "Label", name: "label", widget: string, required: false },
+                    { label: "Path", name: "path", widget: string, required: false },
+                    { label: "Open In New Window", name: "newWindow", widget: "boolean", required: false },
+                    { label: "Links", label_singular: "Link", name: "links", widget: "list", fields: [
+                      { label: "Label", name: "label", widget: string, required: false },
+                      { label: "Path", name: "path", widget: string, required: false },
+                      { label: "Open In New Window", name: "newWindow", widget: "boolean", required: false }
+                    ]}
+                  ]}
+                ]}
+      - file: "src/data/settings/footer.yml"
         label: Footer
         name: footer
         fields:
@@ -318,48 +157,28 @@ collections:
             name: footer
             widget: object
             fields:
-              - {
-                  label: 'Links',
-                  label_singular: 'Link',
-                  name: 'links',
-                  widget: 'list',
-                  fields:
-                    [
-                      { label: 'Label', name: 'label', widget: string, required: false },
-                      { label: 'Path', name: 'path', widget: string, required: false },
-                      { label: 'Open In New Window', name: 'newWindow', widget: 'boolean', required: false },
-                    ],
-                }
-      - file: 'src/data/settings/social-media.yml'
-        label: 'Social Media'
+              - { label: "Links", label_singular: "Link", name: "links", widget: "list", fields: [
+                  { label: "Label", name: "label", widget: string, required: false },
+                  { label: "Path", name: "path", widget: string, required: false },
+                  { label: "Open In New Window", name: "newWindow", widget: "boolean", required: false }
+                ]}
+      - file: "src/data/settings/social-media.yml"
+        label: "Social Media"
         name: social-media
         fields:
-          - label: 'Social Media'
+          - label: "Social Media"
             name: social-media
             widget: object
             fields:
-              - {
-                  label: 'Links',
-                  label_singular: 'Link',
-                  name: 'links',
-                  widget: 'list',
-                  fields:
-                    [
-                      {
-                        label: 'Type',
-                        name: 'type',
-                        widget: 'select',
-                        options:
-                          [
-                            { label: 'Facebook', value: 'facebook' },
-                            { label: 'Instagram', value: 'instagram' },
-                            { label: 'LinkedIn', value: 'linkedin' },
-                            { label: 'Pinterest', value: 'pinterest' },
-                            { label: 'Tumblr', value: 'tumblr' },
-                            { label: 'Twitter', value: 'twitter' },
-                            { label: 'YouTube', value: 'youtube' },
-                          ],
-                      },
-                      { label: 'URL', name: 'url', widget: string, required: false },
-                    ],
-                }
+              - { label: "Links", label_singular: "Link", name: "links", widget: "list", fields: [
+                  { label: "Type", name: "type", widget: "select", options: [
+                    { label: "Facebook", value: "facebook" },
+                    { label: "Instagram", value: "instagram" },
+                    { label: "LinkedIn", value: "linkedin" },
+                    { label: "Pinterest", value: "pinterest" },
+                    { label: "Tumblr", value: "tumblr" },
+                    { label: "Twitter", value: "twitter" },
+                    { label: "YouTube", value: "youtube" }
+                  ]},
+                  { label: "URL", name: "url", widget: string, required: false }
+                ]}
