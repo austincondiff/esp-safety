@@ -184,33 +184,21 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
           </Col>
         </Row>
       </Section>
-      <Section backgroundImage="/images/pexels-photo-87236.jpg" backgroundColor="#F6F6F6" parallax imagePosition="right">
-        <VisibilityTrailAnimation>
-          <h2 style={{ color: '#DD2C2C' }}>Tried, tested, and certified, so you can use it pretty much anywhere</h2>
-          <p>
-            The explosion-proof design of SGOES makes it ideal for use in hazardous environments such as: • Refineries • Tank
-            farms • Pipelines • Loading racks. • Oil and gas facilities • Pumping stations
-          </p>
-          <p>
-            SGOES is FM-certified for use in potentially explosive gas/vapor environments in compliance with FM3615 and
-            CSA-C22.2 No 30 standards for explosion proof protection. In addition, it meets CSA standard E60079-1 for flameproof
-            protection, and ANSI/ISA standard 12.13.01-2000 for performance of combustible gas detectors.
-          </p>
-        </VisibilityTrailAnimation>
-      </Section>
-      <Section backgroundImage="/images/296063_thumb.jpg" backgroundColor="#FFFFFF" parallax imagePosition="left">
-        <VisibilityTrailAnimation>
-          <h2 style={{ color: '#DD2C2C' }}>It can take the heat, even in the harshest of conditions</h2>
-          <p>
-            The SGOES gas detector is typically used as an indicating device in fire and gas (F&G) detection and suppression
-            systems as well as emergency shutdown (ESD) systems.
-          </p>
-          <p>
-            The rugged SGOES design allows it to be used in harsh environments. It will operate from -76º F to +185º F (-60ºC to
-            +85ºC) at relative humidity up to 95%.
-          </p>
-        </VisibilityTrailAnimation>
-      </Section>
+      {data.sections.map((s, i) => (
+        <Section
+          backgroundImage={`/images/${s.image.relativePath}`}
+          backgroundColor={i % 2 === 0 ? '#F6F6F6' : '#FFFFFF'}
+          imagePosition={i % 2 === 0 ? 'right' : 'left'}
+          parallax
+        >
+          <VisibilityTrailAnimation>
+            <h2 style={{ color: '#DD2C2C' }}>{s.title}</h2>
+            <div>
+              <MarkdownContent content={s.content} />
+            </div>
+          </VisibilityTrailAnimation>
+        </Section>
+      ))}
       <SpecificationsSection>
         <Layout>
           <SpecificationsTitle>Specifications</SpecificationsTitle>
@@ -330,6 +318,13 @@ export const pageQuery = graphql`
               prettySize
             }
             description
+          }
+        }
+        sections {
+          title
+          content
+          image {
+            relativePath
           }
         }
         specificationCategories {
