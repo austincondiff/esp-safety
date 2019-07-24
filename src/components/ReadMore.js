@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const ReadMoreContainer = styled.div`
-  height: ${props => props.height};
+  height: ${props => props.height}px;
   mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
   mask-size: 100% ${props => (!props.overflow || props.readMore ? '200%' : '100%')};
   overflow: hidden;
@@ -76,9 +76,9 @@ export default class ReadMore extends React.Component {
   }
 
   setDimensions = () => {
-    const containerWidth = this.containerRef.current.offsetWidth + 'px'
-    const containerHeight = this.props.height || containerWidth
-    const contentHeight = this.contentRef.current.offsetHeight + 'px'
+    const containerWidth = this.containerRef.current.offsetWidth
+    const containerHeight = this.props.height || containerWidth/1.5
+    const contentHeight = this.contentRef.current.offsetHeight
 
     this.setState({
       overflow: contentHeight > containerHeight,
