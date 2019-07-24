@@ -77,9 +77,15 @@ features:
       of the device’s operating status
 downloadCategories:
   - downloads:
-      - description: Test description
-        file: /media/sgoes-r08.pdf
-        title: SGOES Spec Sheet
+      - description: Complete overview, details, and specifications
+        file: /media/SGOES Datasheet.pdf
+        title: SGOES Data Sheet
+      - description: Learn to install SGOES
+        file: /media/SGOES Installation Manual.pdf
+        title: SGOES Installation Manual
+      - description: Find all SGOES SKU's
+        file: /media/SGOES SKU Sheet.pdf
+        title: SGOES SKU Sheet
     title: Product Resources
   - downloads:
       - description: A document about the SGOES Cover
@@ -198,4 +204,3 @@ specificationCategories:
           IP66
     title: Certifications
 ---
-

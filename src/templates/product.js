@@ -101,7 +101,13 @@ const SpecificationsTitle = styled.h2`
 const DownloadCategory = styled.div`
   margin-bottom: 32px;
 `
-const Download = styled.div``
+const Download = styled.div`
+  padding: 12px 0;
+  border-bottom: 1px solid #dddddd;
+  &:last-child {
+    border: none;
+  }
+`
 
 export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
   return (
