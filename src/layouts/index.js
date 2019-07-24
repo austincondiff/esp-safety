@@ -85,6 +85,8 @@ export default ({ children }) => {
               <GlobalStyles
                 navHeightExpanded={data.navHeightExpanded}
                 navHeight={data.navHeight}
+                navMobileHeightExpanded={data.navMobileHeightExpanded}
+                navMobileHeight={data.navMobileHeight}
                 navNeverExpanded={data.navNeverExpanded}
               />
               <App>

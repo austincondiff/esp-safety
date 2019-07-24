@@ -11,7 +11,7 @@ const defaultContextValue = {
     navHidden: false,
     navHeight: 64,
     navHeightExpanded: 104,
-    navMobileHeight: 56,
+    navMobileHeight: 64,
     navMobileHeightExpanded: 96,
     logoHeight: 32,
     logoHeightExpanded: 40,
