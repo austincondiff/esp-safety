@@ -4,6 +4,13 @@ title: SGOES Gas Detector
 subtitle: SIL2 Rated
 slug: sgoes-gas-detector
 category: combustible-gas-detectors
+images:
+  - /media/sgoes.png
+  - /media/img3454715px.jpg
+  - /media/img3437715px.jpg
+  - /media/img3438715px.jpg
+  - /media/img3436715px.jpg
+  - /media/img3434715px.jpg
 overview: >-
   ESP Safety’s Model SGOES Gas Detector measures the concentration of
   hydrocarbon gases present in the monitored environment. The SGOES is
@@ -77,7 +84,7 @@ features:
       of the device’s operating status
 downloadCategories:
   - downloads:
-      - description: Complete overview, details, and specifications
+      - description: 'Complete overview, details, and specifications'
         file: /media/SGOES Datasheet.pdf
         title: SGOES Data Sheet
       - description: Learn to install SGOES
@@ -204,3 +211,4 @@ specificationCategories:
           IP66
     title: Certifications
 ---
+
