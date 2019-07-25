@@ -54,14 +54,17 @@ const MetaWrap = styled.div`
   line-height: 28px;
 `
 const Meta = styled.div`
-  margin: 16px 0;
+  margin: 24px 0;
+  display: flex;
 `
 const MetaLabel = styled.div`
   color: #000000;
   font-weight: 700;
+  width: 25%;
 `
 const MetaText = styled.div`
   font-weight: 300;
+  flex: 1;
 `
 const SpecificationsSection = styled(Section)`
   color: #ffffff;
