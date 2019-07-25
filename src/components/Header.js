@@ -55,6 +55,8 @@ const PageSubtitle = styled.h3`
 
 const Header = ({ title, subtitle, backgroundImage }) => (
   <Section
+    xsPadding="cozy"
+    xlPadding="compact"
     backgroundImage={
       backgroundImage ||
       'https://images.unsplash.com/photo-1536405454887-931a1a783382?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80'

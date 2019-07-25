@@ -26,14 +26,44 @@ const CategoryLink = styled(Link)`
   margin-bottom: 12px;
   display: inline-block;
 `
+const Heading = styled.header`
+  margin-bottom: 48px;
+`
+const Title = styled.h1`
+  margin: 0;
+`
 const Subtitle = styled.span`
   display: block;
   margin-top: 12px;
-  font-size: 0.5em;
+  font-size: 18px;
   font-weight: 700;
   color: #777777;
 `
-const SpecificationsSection = styled.section`
+const Summary = styled.div`
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 28px;
+  margin: 48px 0;
+  & p {
+    font-size: 18px;
+    line-height: 28px;
+  }
+`
+const MetaWrap = styled.div`
+  font-size: 18px;
+  line-height: 28px;
+`
+const Meta = styled.div`
+  margin: 16px 0;
+`
+const MetaLabel = styled.div`
+  color: #000000;
+  font-weight: 700;
+`
+const MetaText = styled.div`
+  font-weight: 300;
+`
+const SpecificationsSection = styled(Section)`
   color: #ffffff;
   background-color: #161616;
   background-size: 128px 128px, 128px 128px, 16px 16px, 16px 16px;
@@ -42,24 +72,6 @@ const SpecificationsSection = styled.section`
     linear-gradient(90deg, rgba(255, 255, 255, 0.033) 2px, transparent 2px),
     linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-  padding-top: 15%;
-  padding-bottom: 15%;
-  ${mediaQueries.sm} {
-    padding-top: 12.5%;
-    padding-bottom: 12.5%;
-  }
-  ${mediaQueries.md} {
-    padding-top: 10%;
-    padding-bottom: 10%;
-  }
-  ${mediaQueries.lg} {
-    padding-top: 7.5%;
-    padding-bottom: 7.5%;
-  }
-  ${mediaQueries.xl} {
-    padding-top: 5%;
-    padding-bottom: 5%;
-  }
 `
 
 const SpecificationCategoryRow = styled(Row)`
@@ -113,20 +125,49 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
   return (
     <React.Fragment>
       {/*}<Header title={title} subtitle={data.category} />*/}
-      <Section>
+      <Section xsPadding="compact">
         <Row>
+          <Col xs={12} sm={6}>
+            <VisibilityTrailAnimation>
+              <Heading>
+                <CategoryLink to={`/product-categories/${data.category.slug}`}>{data.category.title}</CategoryLink>
+                <Title>{title}</Title>
+                <Subtitle>{data.subtitle}</Subtitle>
+              </Heading>
+              <Summary>
+                <LinesToParagraphs text={data.summary} />
+              </Summary>
+              {(data.model || data.function || data.rating) && (
+                <MetaWrap>
+                  {data.model && (
+                    <Meta>
+                      <MetaLabel>Model</MetaLabel>
+                      <MetaText>{data.model}</MetaText>
+                    </Meta>
+                  )}
+                  {data.function && (
+                    <Meta>
+                      <MetaLabel>Function</MetaLabel>
+                      <MetaText>{data.function}</MetaText>
+                    </Meta>
+                  )}
+                  {data.rating && (
+                    <Meta>
+                      <MetaLabel>Rating</MetaLabel>
+                      <MetaText>{data.rating}</MetaText>
+                    </Meta>
+                  )}
+                </MetaWrap>
+              )}
+            </VisibilityTrailAnimation>
+          </Col>
           <Col xs={12} sm={6}>
             <VisibilityTrailAnimation>
               <ImageGallery images={data.images.map(img => `/media/${img.relativePath}`)} />
             </VisibilityTrailAnimation>
           </Col>
-          <Col xs={12} sm={6}>
+          <Col xs={12}>
             <VisibilityTrailAnimation>
-              <CategoryLink to={`/product-categories/${data.category.slug}`}>{data.category.title}</CategoryLink>
-              <h1>
-                {title}
-                <Subtitle>{data.subtitle}</Subtitle>
-              </h1>
               <Tabs>
                 {data.overview && (
                   <Tab label="Product Overview" value="overview">
@@ -188,6 +229,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
       </Section>
       {data.sections.map((s, i) => (
         <Section
+          xsPadding="comfortable"
           backgroundImage={`/media/${s.image.relativePath}`}
           backgroundColor={i % 2 === 0 ? '#F6F6F6' : '#FFFFFF'}
           imagePosition={i % 2 === 0 ? 'right' : 'left'}
@@ -201,37 +243,35 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
           </VisibilityTrailAnimation>
         </Section>
       ))}
-      <SpecificationsSection>
-        <Layout>
-          <SpecificationsTitle>Specifications</SpecificationsTitle>
-          {data.specificationCategories &&
-            data.specificationCategories.map(specificationCategory => (
-              <SpecificationCategoryRow>
-                <Col lg={4}>
-                  <VisibilityTrailAnimation>
-                    <SpecificationCategoryTitle>{specificationCategory.title}</SpecificationCategoryTitle>
-                  </VisibilityTrailAnimation>
-                </Col>
-                <Col lg={8}>
-                  <Row>
-                    {specificationCategory.specifications &&
-                      specificationCategory.specifications.map(specification => (
-                        <SpecificationCol xs={specification.fullWidth ? 12 : 6}>
-                          <VisibilityTrailAnimation>
-                            {specification.label && <SpecificationLabel>{specification.label}</SpecificationLabel>}
-                            {specification.text && (
-                              <SpecificationValue>
-                                <LinesToParagraphs text={specification.text} />
-                              </SpecificationValue>
-                            )}
-                          </VisibilityTrailAnimation>
-                        </SpecificationCol>
-                      ))}
-                  </Row>
-                </Col>
-              </SpecificationCategoryRow>
-            ))}
-        </Layout>
+      <SpecificationsSection xsPadding="cozy">
+        <SpecificationsTitle>Specifications</SpecificationsTitle>
+        {data.specificationCategories &&
+          data.specificationCategories.map(specificationCategory => (
+            <SpecificationCategoryRow>
+              <Col lg={4}>
+                <VisibilityTrailAnimation>
+                  <SpecificationCategoryTitle>{specificationCategory.title}</SpecificationCategoryTitle>
+                </VisibilityTrailAnimation>
+              </Col>
+              <Col lg={8}>
+                <Row>
+                  {specificationCategory.specifications &&
+                    specificationCategory.specifications.map(specification => (
+                      <SpecificationCol xs={specification.fullWidth ? 12 : 6}>
+                        <VisibilityTrailAnimation>
+                          {specification.label && <SpecificationLabel>{specification.label}</SpecificationLabel>}
+                          {specification.text && (
+                            <SpecificationValue>
+                              <LinesToParagraphs text={specification.text} />
+                            </SpecificationValue>
+                          )}
+                        </VisibilityTrailAnimation>
+                      </SpecificationCol>
+                    ))}
+                </Row>
+              </Col>
+            </SpecificationCategoryRow>
+          ))}
       </SpecificationsSection>
     </React.Fragment>
   )
@@ -304,6 +344,10 @@ export const pageQuery = graphql`
         subtitle
         slug
         category
+        summary
+        model
+        function
+        rating
         images {
           relativePath
           name

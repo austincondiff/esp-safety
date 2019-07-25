@@ -161,7 +161,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
         */}
         </Logos>
       </Layout>
-      <Section noPaddingBottom>
+      <Section xsPaddingTop="cozy">
         <Row>
           <Col sm={10} smOffset={1}>
             <VisibilityTrailAnimation>
@@ -178,7 +178,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
           </Col>
         </Row>
       </Section>
-      <Section>
+      <Section xsPadding="cozy">
         <Row>
           <Col xs={6} md={3}>
             <IconBox
@@ -214,7 +214,14 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
           </Col>
         </Row>
       </Section>
-      <Section backgroundImage="/media/shutterstock_705791.jpg" backgroundColor="#000000" dark parallax imagePosition="left">
+      <Section
+        xsPadding="cozy"
+        backgroundImage="/media/shutterstock_705791.jpg"
+        backgroundColor="#000000"
+        dark
+        parallax
+        imagePosition="left"
+      >
         <VisibilityTrailAnimation>
           <SectionSupertitle>Performance when it counts</SectionSupertitle>
           <h2 style={{ color: theme.color.primary }}>Our detectors work as hard as you do</h2>
@@ -226,7 +233,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
           </p>
         </VisibilityTrailAnimation>
       </Section>
-      <Section backgroundColor="#F6F6F6">
+      <Section xsPadding="cozy" backgroundColor="#F6F6F6">
         <Row middle>
           <Col sm={6}>
             <VisibilityTrailAnimation>
@@ -253,6 +260,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
         </Row>
       </Section>
       <Section
+        xsPadding="cozy"
         contentPosition="right"
         backgroundColor="#FFFFFF"
         foregroundImageSrc="/media/SSS-903_2013C.png"
@@ -272,6 +280,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
         </VisibilityTrailAnimation>
       </Section>
       <Section
+        xsPadding="cozy"
         backgroundImage="/media/shutterstock_68568742.jpg"
         backgroundColor="#F6F6F6"
         imagePosition="right"
@@ -296,7 +305,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
           </SectionActions>
         </VisibilityTrailAnimation>
       </Section>
-      <Section backgroundColor="black" dark>
+      <Section xsPadding="cozy" backgroundColor="black" dark>
         <VisibilityTrailAnimation>
           <VisibilitySensor>
             {({ isVisible }) => (
@@ -318,7 +327,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
           </VisibilitySensor>
         </VisibilityTrailAnimation>
       </Section>
-      <Section>
+      <Section xsPadding="cozy">
         <VisibilityTrailAnimation>
           <TestimonalDescription>Customer testimonials</TestimonalDescription>
           <TestimonalTitle>What people are saying about us</TestimonalTitle>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { mediaQueries } from '../Layout'
 
 const TabsWrapper = styled.div`
   padding-bottom: 6%;
@@ -8,6 +9,10 @@ const TabsWrapper = styled.div`
   overflow-y: hidden;
 
   margin: 0 -24px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `
 const StyledTabs = styled.div`
   display: block;
@@ -18,6 +23,13 @@ const StyledTabs = styled.div`
   white-space: nowrap;
 
   padding: 0 24px;
+
+  ${mediaQueries.sm} {
+    min-width: calc(100% - 48px);
+    margin: 0 24px;
+    padding: 0;
+  }
+
 `
 const StyledTab = styled.div`
   display: inline-block;
@@ -61,10 +73,15 @@ class TabContainer extends Component {
     activeTabPosition: null
   }
 
-  tabRefs = {}
+  tabRefs = []
 
   componentDidMount() {
+    window.addEventListener('resize', this.moveActiveTabIndicator)
     this.moveActiveTabIndicator(this.props.value)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.moveActiveTabIndicator)
   }
 
   handleTabChange = value => {
@@ -73,7 +90,9 @@ class TabContainer extends Component {
   }
 
   moveActiveTabIndicator = value => {
-    const activeTab = this.tabRefs[`tab_${value}`]
+    if (typeof value === 'object') value = null
+
+    const activeTab = this.tabRefs[`tab_${value || this.props.value}`]
 
     this.setState({ activeTabWidth: activeTab.offsetWidth, activeTabPosition: activeTab.offsetLeft })
   }

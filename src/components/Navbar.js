@@ -26,8 +26,6 @@ const NavWrap = styled.nav`
   animation: ${slideInFromTop} 0.45s cubic-bezier(0.23, 1, 0.32, 1);
 `
 const NavInside = styled(Layout)`
-  padding-top: 0;
-  padding-bottom: 0;
   height: 100%;
   display: flex;
   align-items: center;

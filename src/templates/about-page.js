@@ -16,7 +16,7 @@ export const AboutPageTemplate = ({ title, content, contentComponent }) => {
         title="About us"
         backgroundImage="https://images.unsplash.com/photo-1556388275-bb5585725aca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
       />
-      <Section>
+      <Section xsPadding="cozy">
         <h1>Introduction</h1>
         <p>
           ESP SAFETY INC. is part of the international holding company, ESP Corporation, which has been successfully operating
@@ -38,7 +38,7 @@ export const AboutPageTemplate = ({ title, content, contentComponent }) => {
           reliable safety devices for the industrial & hazardous environments markets.
         </p>
       </Section>
-      <Section>
+      <Section xsPaddingBottom="cozy">
         <h1>Our commitment</h1>
         <p>
           ESP Safety is committed to an operating philosophy based on openness in communication, integrity in serving our
@@ -49,19 +49,19 @@ export const AboutPageTemplate = ({ title, content, contentComponent }) => {
           Additionally, we are dedicated to creating a profitable business culture that is based on the following principles:
         </p>
       </Section>
-      <Section>
+      <Section xsPaddingBottom="cozy">
         <h1>Our people</h1>
         <p>Our people content coming soon.</p>
       </Section>
-      <Section>
+      <Section xsPaddingBottom="cozy">
         <h1>Our customers</h1>
         <p>Our customers content coming soon.</p>
       </Section>
-      <Section>
+      <Section xsPaddingBottom="cozy">
         <h1>Our community</h1>
         <p>Our community content coming soon.</p>
       </Section>
-      <Section>
+      <Section xsPaddingBottom="cozy">
         <h1>Our quality</h1>
         <p>Our quality content coming soon.</p>
       </Section>

@@ -16,7 +16,7 @@ export const CareersPageTemplate = ({ title, content, contentComponent }) => {
         title="Work for us"
         backgroundImage="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=5102&q=80"
       />
-      <Section>
+      <Section xsPadding="cozy">
         <h1>Team and culture</h1>
         <p>
           Our team is comprised of driven, quick-witted and hardworking individuals who are not afraid to take on the most
@@ -25,6 +25,7 @@ export const CareersPageTemplate = ({ title, content, contentComponent }) => {
         </p>
       </Section>
       <Section
+        xsPadding="cozy"
         backgroundImage="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=3450&q=80"
         backgroundImageOpacity={0.33}
         backgroundColor="#000000"
@@ -42,12 +43,12 @@ export const CareersPageTemplate = ({ title, content, contentComponent }) => {
         </ul>
       </Section>
 
-      <Section>
+      <Section xsPadding="cozy">
         <h1>Our Perspective</h1>
         <p>Quotes coming soon.</p>
       </Section>
 
-      <Section>
+      <Section xsPaddingBottom="cozy">
         <h1>Perks & Benefits</h1>
         <p>
           ESP Safety provides an excellent selection of health care insurance plans including employee and family medical,
@@ -65,7 +66,7 @@ export const CareersPageTemplate = ({ title, content, contentComponent }) => {
         </p>
       </Section>
 
-      <Section>
+      <Section xsPaddingBottom="cozy">
         <h1>Opportunities</h1>
         <p>
           ESP Safety is an Equal Opportunity Employer. Applicants are considered for all positions without regard to race,

@@ -1,4 +1,5 @@
 import React from 'react'
+import theme from '../lib/theme'
 
 const defaultContextValue = {
   data: {
@@ -9,14 +10,7 @@ const defaultContextValue = {
     navDarkMode: false,
     navDarkModeExpanded: true,
     navHidden: false,
-    navHeight: 64,
-    navHeightExpanded: 104,
-    navMobileHeight: 64,
-    navMobileHeightExpanded: 96,
-    logoHeight: 32,
-    logoHeightExpanded: 40,
-    logoMobileHeight: 32,
-    logoMobileHeightExpanded: 40
+    ...theme.navigation
   },
   set: () => {}
 }

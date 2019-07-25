@@ -21,7 +21,7 @@ const StyledSection = styled.section`
       : ``}
 `
 const SectionInside = styled(Layout)`
-  ${({ noPaddingTop, noPaddingBottom, height, parallaxContent, percentage }) => `
+  ${({ height, parallaxContent, percentage }) => `
     ${
       parallaxContent
         ? `
@@ -33,8 +33,6 @@ const SectionInside = styled(Layout)`
     `
         : ``
     }
-    ${!noPaddingTop ? `padding-top: 12%;` : ``}
-    ${!noPaddingBottom ? `padding-bottom: 12%;` : ``}
     ${
       height
         ? `
@@ -45,22 +43,6 @@ const SectionInside = styled(Layout)`
     `
         : ``
     };
-    ${mediaQueries.sm} {
-      ${!noPaddingTop && `padding-top: 11%;`}
-      ${!noPaddingBottom && `padding-bottom: 11%;`}
-    }
-    ${mediaQueries.md} {
-      ${!noPaddingTop && `padding-top: 10%;`}
-      ${!noPaddingBottom && `padding-bottom: 10%;`}
-    }
-    ${mediaQueries.lg} {
-      ${!noPaddingTop && `padding-top: 9%;`}
-      ${!noPaddingBottom && `padding-bottom: 9%;`}
-    }
-    ${mediaQueries.xl} {
-      ${!noPaddingTop && `padding-top: 8%;`}
-      ${!noPaddingBottom && `padding-bottom: 8%;`}
-    }
   `}
 `
 const ParallaxBackground = styled(Parallax)`
@@ -139,10 +121,23 @@ const ContentWrap = styled.div`
 
 const Section = ({
   children,
+  className,
   fullWidth,
-  noPadding,
-  noPaddingTop,
-  noPaddingBottom,
+  xsPaddingTop,
+  smPaddingTop,
+  mdPaddingTop,
+  lgPaddingTop,
+  xlPaddingTop,
+  xsPaddingBottom,
+  smPaddingBottom,
+  mdPaddingBottom,
+  lgPaddingBottom,
+  xlPaddingBottom,
+  xsPadding,
+  smPadding,
+  mdPadding,
+  lgPadding,
+  xlPadding,
   backgroundColor,
   backgroundVideo,
   parallax,
@@ -190,7 +185,25 @@ const Section = ({
             imagePosition={imagePosition}
             backgroundImagePosition={backgroundImagePosition}
           />
-          <SectionInside noPaddingTop={noPaddingTop} noPaddingBottom={noPaddingBottom} fullWidth={fullWidth} height={height}>
+          <SectionInside
+            xsPaddingTop={xsPaddingTop}
+            smPaddingTop={smPaddingTop}
+            mdPaddingTop={mdPaddingTop}
+            lgPaddingTop={lgPaddingTop}
+            xlPaddingTop={xlPaddingTop}
+            xsPaddingBottom={xsPaddingBottom}
+            smPaddingBottom={smPaddingBottom}
+            mdPaddingBottom={mdPaddingBottom}
+            lgPaddingBottom={lgPaddingBottom}
+            xlPaddingBottom={xlPaddingBottom}
+            xsPadding={xsPadding}
+            smPadding={smPadding}
+            mdPadding={mdPadding}
+            lgPadding={lgPadding}
+            xlPadding={xlPadding}
+            fullWidth={fullWidth}
+            height={height}
+          >
             <ContentWrap header={header} contentPosition={contentPosition} imagePosition={imagePosition}>
               {children}
             </ContentWrap>
@@ -204,10 +217,24 @@ const Section = ({
       ) : (
         <React.Fragment>
           <SectionInside
-            noPaddingTop={noPaddingTop}
-            noPaddingBottom={noPaddingBottom}
-            header={header}
+            className={className}
+            xsPaddingTop={xsPaddingTop}
+            smPaddingTop={smPaddingTop}
+            mdPaddingTop={mdPaddingTop}
+            lgPaddingTop={lgPaddingTop}
+            xlPaddingTop={xlPaddingTop}
+            xsPaddingBottom={xsPaddingBottom}
+            smPaddingBottom={smPaddingBottom}
+            mdPaddingBottom={mdPaddingBottom}
+            lgPaddingBottom={lgPaddingBottom}
+            xlPaddingBottom={xlPaddingBottom}
+            xsPadding={xsPadding}
+            smPadding={smPadding}
+            mdPadding={mdPadding}
+            lgPadding={lgPadding}
+            xlPadding={xlPadding}
             fullWidth={fullWidth}
+            header={header}
             height={height}
           >
             <ContentWrap contentPosition={contentPosition} imagePosition={imagePosition}>

@@ -48,9 +48,10 @@ const MainFooter = styled.section`
   padding: 128px 0;
   position: relative;
 `
-const SubFooter = styled.section`
+const SubFooter = styled(Section)`
   background-color: #111111;
-  padding: 32px 0;
+  padding-top: 32px;
+  padding-bottom: 32px;
   overflow: hidden;
 `
 const FooterSections = styled(Row)`
@@ -149,7 +150,7 @@ const Footer = class extends React.Component {
 
     return (
       <FooterWrap>
-        <Section backgroundColor={theme.color.primary}>
+        <Section xsPadding="cozy" backgroundColor={theme.color.primary}>
           <Row>
             <Col xs={12} md={0} fill="md">
               <VisibilityTrailAnimation>
@@ -223,24 +224,22 @@ const Footer = class extends React.Component {
           </Layout>
         </MainFooter>
         <SubFooter>
-          <Layout>
-            <VisibilityTrailAnimation offset={{ bottom: 0 }}>
-              <Row start="md" center="xs" middle>
-                <Col xs={12} md={0} fill="md">
-                  © 2019 ESP Safety. All rights reserved.
-                </Col>
-                <Col xs={12} md={0}>
-                  <SocialLinks>
-                    {socialMedia.links.map(s => (
-                      <SocialLink title={s.type} target="_blank" href={s.url}>
-                        <Icon name={s.type} />
-                      </SocialLink>
-                    ))}
-                  </SocialLinks>
-                </Col>
-              </Row>
-            </VisibilityTrailAnimation>
-          </Layout>
+          <VisibilityTrailAnimation offset={{ bottom: 0 }}>
+            <Row start="md" center="xs" middle>
+              <Col xs={12} md={0} fill="md">
+                © 2019 ESP Safety. All rights reserved.
+              </Col>
+              <Col xs={12} md={0}>
+                <SocialLinks>
+                  {socialMedia.links.map(s => (
+                    <SocialLink title={s.type} target="_blank" href={s.url}>
+                      <Icon name={s.type} />
+                    </SocialLink>
+                  ))}
+                </SocialLinks>
+              </Col>
+            </Row>
+          </VisibilityTrailAnimation>
         </SubFooter>
       </FooterWrap>
     )
