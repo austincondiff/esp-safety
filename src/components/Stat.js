@@ -8,20 +8,9 @@ const StatWrap = styled.div``
 const NumberWrap = styled.div`
   text-align: center;
   font-weight: 100;
-  font-size: 48px;
-  letter-spacing: -1.75px;
-  ${mediaQueries.sm} {
-    font-size: 56px;
-  }
-  ${mediaQueries.md} {
-    font-size: 64px;
-  }
-  ${mediaQueries.lg} {
-    font-size: 72px;
-  }
-  ${mediaQueries.xl} {
-    font-size: 88px;
-  }
+  font-size: 5.5rem;
+  line-height: 1em;
+  letter-spacing: -0.025em;
 `
 const Number = styled(animated.span)``
 const Unit = styled.span`
@@ -31,24 +20,12 @@ const Unit = styled.span`
 `
 const Label = styled.div`
   font-weight: 700;
-  font-size: 12px;
+  font-size: 1rem;
   color: ${props => props.theme.color.primary};
   letter-spacing: 0.1em;
   text-align: center;
   text-transform: uppercase;
   white-space: nowrap;
-  ${mediaQueries.sm} {
-    font-size: 13px;
-  }
-  ${mediaQueries.md} {
-    font-size: 14px;
-  }
-  ${mediaQueries.lg} {
-    font-size: 15px;
-  }
-  ${mediaQueries.xl} {
-    font-size: 16px;
-  }
 `
 
 const Stat = ({ number, unit, label, isVisible }) => {

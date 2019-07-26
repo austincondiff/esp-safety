@@ -26,8 +26,8 @@ import ToxicGasIcon from '../images/toxic-gas.svg'
 import OxygenIcon from '../images/oxygen.svg'
 
 const SectionSupertitle = styled.h3`
-  font-size: 16px;
-  margin-bottom: 8px;
+  font-size: 1.125rem;
+  margin-bottom: .5em;
 `
 const SectionActions = styled.h3`
   margin-top: 32px;

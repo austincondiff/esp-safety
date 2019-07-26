@@ -14,20 +14,15 @@ const IconWrap = styled.div`
   }
 `
 const Title = styled.h3`
-  font-size: 16px;
+  font-size: 1.5rem;
   font-weight: 300;
-  ${mediaQueries.md} {
-    font-size: 24px;
-  }
 `
 const Description = styled.p`
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: 300;
   line-height: 1.75em;
   ${props => (props.hasLink ? 'margin-bottom: 24px;' : '')}
-  ${mediaQueries.md} {
-    font-size: 16px;
-  }
+
 `
 const StyledArrowLink = styled(ArrowLink)`
   margin-top: 24px;

@@ -9,12 +9,25 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     color: #666666;
-    font-size: 14px;
     overflow-x: hidden;
   }
 
   html {
     background-color: #000000;
+    font-size: 12px;
+    line-height: 1.75em;
+    ${mediaQueries.md} {
+      font-size: 13px;
+    }
+    ${mediaQueries.md} {
+      font-size: 14px;
+    }
+    ${mediaQueries.lg} {
+      font-size: 16px;
+    }
+    ${mediaQueries.xl} {
+      font-size: 16px;
+    }
   }
   body {
     background-color: #FFFFFF;
@@ -56,41 +69,17 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1 {
-    font-size: 24px;
-    line-height: 1;
+    font-size: 2.5rem;
+    line-height: 1.25em;
     font-weight: 300;
-    letter-spacing: -0.5px;
-    ${mediaQueries.sm} {
-      font-size: 32px;
-    }
-    ${mediaQueries.md} {
-      font-size: 36px;
-    }
-    ${mediaQueries.lg} {
-      font-size: 40px;
-    }
-    ${mediaQueries.xl} {
-      font-size: 48px;
-    }
+    letter-spacing: -0.0125em;
   }
 
   h2 {
-    font-size: 24px;
-    line-height: 1.1em;
+    font-size: 2.5rem;
+    line-height: 1.25em;
     font-weight: 300;
-    letter-spacing: -0.5px;
-    ${mediaQueries.sm} {
-      font-size: 28px;
-    }
-    ${mediaQueries.md} {
-      font-size: 32px;
-    }
-    ${mediaQueries.lg} {
-      font-size: 36px;
-    }
-    ${mediaQueries.xl} {
-      font-size: 40px;
-    }
+    letter-spacing: -0.0125em;
   }
 
   h3 {
@@ -108,8 +97,6 @@ const GlobalStyles = createGlobalStyle`
 
   p {
     color: #666666;
-    font-size: 14px;
-    line-height: 24px;
     margin-bottom: 24px;
   }
 

@@ -22,8 +22,8 @@ const HeadingText = styled.div`
 `
 const PageTitle = styled.h1`
   margin: 0;
-  font-size: 32px;
-  line-height: 0.95em;
+  font-size: 2.5rem;
+  line-height: 1.25em;
   font-weight: 300;
   letter-spacing: -0.5px;
   -webkit-font-smoothing: antialiased;
@@ -45,7 +45,7 @@ const PageSubtitle = styled.h3`
   margin: 40px 0 0 0;
   color: #cccccc;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.25em;
 
   ${mediaQueries.sm} {

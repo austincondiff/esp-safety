@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { mediaQueries } from '../Layout'
 
 const TabsWrapper = styled.div`
-  padding-bottom: 6%;
+  padding-bottom: 2.5em;
   overflow-x: auto;
   overflow-y: hidden;
 
@@ -37,7 +37,7 @@ const StyledTab = styled.div`
   margin: 0 16px 0 16px;
   vertical-align: middle;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: 500;
   padding: 20px 0px;
   outline: none;

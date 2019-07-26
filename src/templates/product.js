@@ -123,6 +123,10 @@ const Download = styled.div`
     border: none;
   }
 `
+const ColumnsWrap = styled.p`
+  columns: 2;
+  column-gap: 2.5rem;
+`
 
 export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
   return (
@@ -174,9 +178,9 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
               <Tabs>
                 {data.overview && (
                   <Tab label="Product Overview" value="overview">
-                    <ReadMore>
+                    <ColumnsWrap>
                       <LinesToParagraphs text={data.overview} />
-                    </ReadMore>
+                    </ColumnsWrap>
                   </Tab>
                 )}
                 {data.applications && (
