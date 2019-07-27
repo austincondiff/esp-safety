@@ -64,7 +64,7 @@ export default class ImageGallery extends React.Component {
         </SelectedImageWrap>
         <ThumbnailsWrap>
           <Row gutter="8px">
-            {images.map(img => (
+            {images.length > 1 && images.map(img => (
               <Col xs={2} key={img}>
                 <ThumbnailWrap>
                   <Thumbnail src={img} active={img === selectedImage} onClick={() => this.setState({ selectedImage: img })} />
