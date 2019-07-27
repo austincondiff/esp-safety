@@ -21,7 +21,7 @@ class Tabs extends Component {
 
   getTabs = () => {
     const { children } = this.props
-    const tabs = React.Children.toArray(children).filter(c => c != null).map((tab, i) => {
+    const tabs = React.Children.toArray(children).filter(c => c).map((tab, i) => {
       const { label, value, onChange } = tab.props
 
       return { label, value: value ? value : `tab${i}`, onChange }
@@ -39,7 +39,7 @@ class Tabs extends Component {
     return (
       <div>
         <TabNavigation tabs={tabs} value={value} onChange={this.onTabChange} />
-        <TabContent tabs={React.Children.toArray(children)} value={value} />
+        <TabContent tabs={React.Children.toArray(children).filter(c => c)} value={value} />
       </div>
     )
   }
