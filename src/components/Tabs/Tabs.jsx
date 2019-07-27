@@ -21,7 +21,7 @@ class Tabs extends Component {
 
   getTabs = () => {
     const { children } = this.props
-    const tabs = React.Children.map(children, (tab, i) => {
+    const tabs = React.Children.toArray(children).filter(c => c != null).map((tab, i) => {
       const { label, value, onChange } = tab.props
 
       return { label, value: value ? value : `tab${i}`, onChange }

@@ -132,7 +132,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
   return (
     <React.Fragment>
       {/*}<Header title={title} subtitle={data.category} />*/}
-      <Section xsPadding="compact">
+      <Section xsPaddingTop="compact" xsPaddingBottom="cozy">
         <Row>
           <Col xs={12} sm={6}>
             <VisibilityTrailAnimation>
@@ -141,9 +141,11 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
                 <Title>{title}</Title>
                 <Subtitle>{data.subtitle}</Subtitle>
               </Heading>
-              <Summary>
-                <LinesToParagraphs text={data.summary} />
-              </Summary>
+              {data.summary && (
+                <Summary>
+                  <LinesToParagraphs text={data.summary} />
+                </Summary>
+              )}
               {(data.model || data.function || data.rating) && (
                 <MetaWrap>
                   {data.model && (
@@ -168,11 +170,13 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
               )}
             </VisibilityTrailAnimation>
           </Col>
-          <Col xs={12} sm={6}>
-            <VisibilityTrailAnimation>
-              <ImageGallery images={data.images.map(img => `/media/${img.relativePath}`)} />
-            </VisibilityTrailAnimation>
-          </Col>
+          {data.images && data.images.length && (
+            <Col xs={12} sm={6}>
+              <VisibilityTrailAnimation>
+                <ImageGallery images={data.images.map(img => `/media/${img.relativePath}`)} />
+              </VisibilityTrailAnimation>
+            </Col>
+          )}
           <Col xs={12}>
             <VisibilityTrailAnimation>
               <Tabs>
@@ -214,27 +218,30 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
                     </ul>
                   </Tab>
                 )}
-                <Tab label="Downloads" value="downloads">
-                  {data.downloadCategories.map(downloadCategory => (
-                    <DownloadCategory>
-                      <h3>{downloadCategory.title}</h3>
-                      {downloadCategory.downloads.map(d => (
-                        <Download>
-                          <a href={`/media/${d.file.relativePath}`} target="_blank" rel="noreferrer noopener">
+                {console.log(data.downloadCategories)}
+                {data.downloadCategories && data.downloadCategories.length && (
+                  <Tab label="Downloads" value="downloads">
+                    {data.downloadCategories && data.downloadCategories.map(downloadCategory => (
+                      <DownloadCategory>
+                        {data.downloadCategories.length > 1 && (<h3>{downloadCategory.title}</h3>)}
+                        {downloadCategory.downloads.map(d => (
+                          <Download>
+                            <a href={`/media/${d.file.relativePath}`} target="_blank" rel="noreferrer noopener">
                             {d.title} ({d.file.prettySize})
-                          </a>{' '}
-                          - {d.description}
-                        </Download>
-                      ))}
-                    </DownloadCategory>
-                  ))}
-                </Tab>
+                            </a>
+                            {d.description && (<React.Fragment>- {d.description}</React.Fragment>)}
+                          </Download>
+                        ))}
+                      </DownloadCategory>
+                    ))}
+                  </Tab>
+                )}
               </Tabs>
             </VisibilityTrailAnimation>
           </Col>
         </Row>
       </Section>
-      {data.sections.map((s, i) => (
+      {data.sections && data.sections.map((s, i) => (
         <Section
           xsPadding="comfortable"
           backgroundImage={`/media/${s.image.relativePath}`}

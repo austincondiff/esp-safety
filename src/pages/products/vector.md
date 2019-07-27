@@ -6,13 +6,16 @@ slug: vector
 category: combustible-gas-detectors
 images:
   - /media/vector-0813b-w-pgu.png
-overview: >-
+summary: >-
   ESP Safety’s Vector is a state-of the-art field control unit that performs as
   an integrated control terminal and display for ESP Safety’s toxic and/or
   combustible gas detectors. The Vector can operate as a stand-alone display for
   a variety of ESP Safety’s detectors which can be remotely located up to 500
   feet away. A sensor head can also be attached directly to the display housing
   to produce a unified detector/display unit.
+model: 80037-001 R04
+function: Field Control Unit & Display
+rating: SIL (pending)
 applications:
   - application: Offshore platforms
   - application: Land rigs
@@ -26,7 +29,7 @@ features:
   - feature: >-
       A vivid, 2.7” (diagonal) 128x64 pixel resolution, OLED screen
       simultaneously displays a wide range of data including gas concentrations,
-      alarm levels, faults and operational modes. 
+      alarm levels, faults and operational modes.
   - feature: >-
       Analog 4-20 current loop w/ HART , Digital RS-485 Modbus RTU and 4 relays
       are standard data communication channels of the VECTOR FCU
@@ -48,7 +51,7 @@ features:
   - feature: 'Tri-color status LED indicates operational mode, fault & gas presence'
   - feature: >-
       Control Terminal: Two - Analog 4-20mA Signal Outputs, Four - Direct Relay
-      Outputs are standard 
+      Outputs are standard
 specificationCategories:
   - specifications:
       - label: Voltage
@@ -56,7 +59,7 @@ specificationCategories:
       - label: Power
         text: |-
           4.3 W, standby
-          5.3 W, during alarm 
+          5.3 W, during alarm
           12.0 W with heater on (temp ≤ 30°C)
       - label: Outputs
         text: >-
@@ -123,4 +126,3 @@ specificationCategories:
           IP66
     title: Certifications
 ---
-

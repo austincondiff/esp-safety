@@ -97,7 +97,7 @@ features:
 downloadCategories:
   - downloads:
       - description: 'Complete overview, details, and specifications'
-        file: /media/SGOES Datasheet.pdf
+        file: /media/SGOES Specification Sheet R07.pdf
         title: SGOES Data Sheet
       - description: Learn to install SGOES
         file: /media/SGOES Installation Manual.pdf
@@ -108,7 +108,7 @@ downloadCategories:
     title: Product Resources
   - downloads:
       - description: A document about the SGOES Cover
-        file: /media/SGOES Protective Cover 130712.pdf
+        file: /media/SGOES Protective Cover Information Sheet.pdf
         title: SGOES Protective Cover
     title: Accessory Resources
 sections:
