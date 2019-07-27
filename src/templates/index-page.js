@@ -27,7 +27,7 @@ import OxygenIcon from '../images/oxygen.svg'
 
 const SectionSupertitle = styled.h3`
   font-size: 1.125rem;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 `
 const SectionActions = styled.h3`
   margin-top: 32px;
@@ -171,8 +171,8 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
               <PageIntroDescription>
                 Our state-of-the-art manufacturing facility allows us to apply strict quality standards and intelligent
                 engineering to ensure that all of our products meet the demands of the toughest industrial environments and
-                applications. The result is a line of world class products all certified to the strictest global standards for
-                safety and performance.
+                applications. The result is a line of world class flame and gas detectors all certified to the strictest global
+                standards for safety and performance.
               </PageIntroDescription>
             </VisibilityTrailAnimation>
           </Col>
@@ -184,7 +184,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
             <IconBox
               icon={FlameIcon}
               title="Flame Detectors"
-              description="Every flame detector we offer provides reliable service and long-lasting field performance in the harshest of environments, all at the industry’s best pricing."
+              description="Detect hydrogen and hydrocarbon based fires. High immunity to false alarms and wide temperature range."
               link="/products/flame-detectors"
             />
           </Col>
@@ -192,7 +192,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
             <IconBox
               icon={CombustibleGasIcon}
               title="Combustible Gas Detectors"
-              description="Configured to alarm when gas concentrations in the environment reach three independently programmable levels, expressed as a percentage of the lower explosive limit."
+              description="Detects the presence of combustible and flammable gases. Fast response time and wide temperature range."
               link="/products/combustible-gas-detectors"
             />
           </Col>
@@ -200,7 +200,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
             <IconBox
               icon={ToxicGasIcon}
               title="Toxic Gas Detectors"
-              description="Designed to safely detect and monitor a variety of toxic gases, including hydrogen sulfide, carbon monoxide, chlorine, nitric oxide, and sulfur dioxide, over a range of 0-100 ppm."
+              description="Continuous monitoring of the atmosphere for toxic gas leaks "
               link="/products/toxic-gas-detectors"
             />
           </Col>
@@ -208,7 +208,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
             <IconBox
               icon={OxygenIcon}
               title="Oxygen Detectors"
-              description="Monitors oxygen levels and will alarm if it dips below 19.5% v/v or if levels increases to prevent oxygen enriched atmosphere and reduce the risk of flammability of materials and gases."
+              description="Detects oxygen at dangerously low levels or high levels which can cause flammability of materials and gases."
               link="oxygen-detectors"
             />
           </Col>

@@ -175,13 +175,7 @@ const Footer = class extends React.Component {
             <FooterSections>
               <FooterSection sm={4}>
                 <VisibilityTrailAnimation>
-                  <FooterSectionTitle>Locations</FooterSectionTitle>
-                  <FooterSectionAddress>
-                    4001 W. Sam Houston Pkwy N. <br />
-                    Suite #150 <br />
-                    Houston, TX. 77043 <br />
-                    +1.713.999.1050
-                  </FooterSectionAddress>
+                  <FooterSectionTitle>Headquarters</FooterSectionTitle>
                   <FooterSectionAddress>
                     555 North First St.
                     <br />
@@ -194,7 +188,6 @@ const Footer = class extends React.Component {
                 <VisibilityTrailAnimation>
                   <FooterSectionTitle>Contact</FooterSectionTitle>
                   <FooterSectionItem to="/contact">Contact ESP Safety</FooterSectionItem>
-                  <FooterSectionItem to="/contact">Business Inquiries</FooterSectionItem>
                 </VisibilityTrailAnimation>
               </FooterSection>
               <FooterSection sm={4}>
