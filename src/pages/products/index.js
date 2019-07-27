@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, graphql, StaticQuery } from 'gatsby'
+import styled from 'styled-components'
 
 import Header from '../../components/Header'
 import Section from '../../components/Section'
@@ -12,6 +13,12 @@ import FlameIcon from '../../images/flame.svg'
 import CombustibleGasIcon from '../../images/combustible-gas.svg'
 import ToxicGasIcon from '../../images/toxic-gas.svg'
 import OxygenIcon from '../../images/oxygen.svg'
+
+const ProductLink = styled(Link)`
+  display: block;
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+`
 
 const ProductsIndexPage = ({ data }) => {
   console.log(data)
@@ -29,6 +36,13 @@ const ProductsIndexPage = ({ data }) => {
         backgroundImage="https://images.unsplash.com/photo-1536405454887-931a1a783382?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80"
       />
       <Section xsPadding="cozy">
+        {products.map(product => (
+          <ProductLink to={product.slug} key={product.id}>
+            {product.title}
+          </ProductLink>
+        ))}
+      </Section>
+      <Section xsPaddingBottom="cozy">
         <Row>
           <Col xs={6} md={3}>
             <IconBox
@@ -63,14 +77,6 @@ const ProductsIndexPage = ({ data }) => {
             />
           </Col>
         </Row>
-      </Section>
-      <Section xsPaddingBottom="cozy">
-        <p>Product page here</p>
-        {products.map(product => (
-          <Link to={product.slug} key={product.id}>
-            {product.title}
-          </Link>
-        ))}
       </Section>
     </React.Fragment>
   )
