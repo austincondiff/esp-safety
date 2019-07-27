@@ -48,7 +48,11 @@ collections:
       - { label: "Slug", name: "slug", required: true, pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Cannot contain spaces, capital letters, or special characters. You may separate words with dashes and numbers are allowed."], hint: "This will be used in the URL." }
       - { label: "Category", name: "category", widget: "relation", collection: "productCategories", searchFields: ["title"], valueField: "slug", displayFields: ["title"] }
       - { label: "Images", name: "images", widget: "list", field: { label: "Image", name: "image", widget: "image" } }
-      - { label: "Overview", name: "overview", widget: "markdown" }
+      - { label: "Summary", name: "summary", widget: "markdown" }
+      - { label: "Model", name: "model", required: false }
+      - { label: "Function", name: "function", required: false }
+      - { label: "Rating", name: "rating", required: false }
+      - { label: "Overview", name: "overview", widget: "markdown", required: false }
       - { label: "Applications", label_singular: "Application", name: "applications", widget: "list", fields: [{label: "Application", name: "application", widget: "string"}] }
       - { label: "Features", label_singular: "Feature", name: "features", widget: "list", fields: [{label: "Feature", name: "feature", widget: "string"}] }
       - { label: "Download Categories", label_singular: "Download Category", name: "downloadCategories", widget: "list", fields: [
