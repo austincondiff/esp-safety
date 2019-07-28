@@ -32,7 +32,7 @@ overview: >-
   between the active and reference wavelengths determines the amount of gas
   intersecting the beam along its entire length. A microprocessor computes the
   gas concentration and converts the value into a 4-20mA signal and MODBUS
-  register value. 
+  register value.
 
 
   The TGAES Open Path Gas Detector is ideal for monitoring hydrocarbon leaks at
@@ -50,7 +50,7 @@ applications:
   - application: Transportation facilities
 features:
   - feature: >-
-      Detects methane and most common hydrocarbon gases including ethane, 
+      Detects methane and most common hydrocarbon gases including ethane,
       propane, butane and propylene with equal sensitivity
   - feature: Detection range of up to 200m
   - feature: T90 less than 5 seconds
@@ -64,10 +64,10 @@ features:
   - feature: Convenient HART communicator port
   - feature: >-
       Primary heater protects optics from ice and secondary heater protects the
-      internal electronics 
+      internal electronics
   - feature: >-
       Able to operate even when obscured by fog, rain, dust, snow, or blowing
-      sand. 
+      sand.
 downloadCategories: []
 specificationCategories:
   - specifications:
@@ -76,15 +76,6 @@ specificationCategories:
           18 - 32VDC (not including heater)
           Transmitter: 7.0W @ 24VDC
           Receiver: 6.0W @ 24VDC
-      - label: Detectable Gases
-        text: >-
-          Methane, propane, ethane, isobutylene, pentane, cyclopentane, hexane,
-          propylene, methanol
-      - label: Detection Range
-        text: |-
-          1.0 LEL m
-          2.5 LEL m
-          5.0 LEL m
       - label: Visual Indicators
         text: |-
           Tri-color LED: Red - Alarm, Yellow - Fault, Green - Normal
@@ -95,23 +86,34 @@ specificationCategories:
           HART
           RS-485 Modbus RTU
           Dry contact relays
-      - label: Response
-        text: T90 < 5 seconds
-      - label: Accuracy
-        text: +/- 0.25 LEL- meters or 10% of applied gas range
+    title: Electrical Characteristics
+  - specifications:
+      - label: Detectable Gases
+        text: >-
+          Methane, propane, ethane, isobutylene, pentane, cyclopentane, hexane,
+          propylene, methanol
+      - label: Detection Range
+        text: |-
+          1.0 LEL m
+          2.5 LEL m
+          5.0 LEL m
       - label: Temperature
         text: |-
           -40°F to +140°F Operating (-40°C to +60°C)
           0 - 100% relative humidity
+      - label: Response
+        text: T90 < 5 seconds
+      - label: Accuracy
+        text: +/- 0.25 LEL- meters or 10% of applied gas range
+    title: Technical Specifications
+  - specifications:
       - label: Housing
         text: 316 Stainless Steel with dual 3/4” NPT cable entry ports
       - label: Dimensions
         text: |-
-          Length: 10.43” (265 mm) 
-          Diameter: 4.5” (108 mm) 
+          Length: 10.43” (265 mm)
+          Diameter: 4.5” (108 mm)
           Weight: 16 lbs. (7.5 kg) each module with mounting bracket
-      - label: Warranty
-        text: 3 years
       - label: Included Components
         text: |-
           TGAES transmitter module
@@ -120,12 +122,14 @@ specificationCategories:
         text: |-
           Protective hoods for receiver and transmitter;
           ESP Commander RS-485 configuration and
-          monitoring software for Windows-compatible PC 
+          monitoring software for Windows-compatible PC
       - label: Optional Components
         text: |-
           Model SSS-903 Receiver with illuminated LCD status display;
           HART interface cable
-    title: Electrical Characteristics
+      - label: Warranty
+        text: 3 years
+    title: Mechanical Characteristics
   - specifications:
       - text: |-
           Class I, Division 1
@@ -133,8 +137,7 @@ specificationCategories:
           T4 Ta = -40°F to +140°F
           (-40°C to +60°C)
           IP66
-      - label: ''
-        text: |-
+      - text: |-
           Class I, Division 1
           Groups B, C & D
           T4 Ta = -40°F to +140°F
@@ -152,4 +155,3 @@ specificationCategories:
           IP66
     title: Certifications
 ---
-

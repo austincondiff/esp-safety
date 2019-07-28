@@ -168,8 +168,7 @@ specificationCategories:
         text: 11.5” (29 cm)
     title: Mechanical Characteristics
   - specifications:
-      - label: ''
-        text: Coming soon
+      - text: Coming soon
       - text: Coming soon
     title: Dimensions
   - specifications:
