@@ -79,12 +79,12 @@ collections:
             { label: "Title", name: "title", widget: "string", required: true },
             # { label: "Layout", name: "layout", widget: "select", options: [{ label: "Rows", value: "rows" }, { label: "Columns", value: "columns" }] },
             { label: "Specifications", name: "specifications", widget: "list", required: true, fields: [
-              { label: "Label", name: "label", widget: "text", required: false },
+              { label: "Label", name: "label", widget: "string", required: false },
               # { label: "Label Position", name: "labelPosition", widget: "select", options: [
               #   { label: "Top", value: "top" },
               #   { label: "Left", value: "left" }
               # ]},
-              { label: "Text", name: "text", widget: "text", required: false },
+              { label: "Text", name: "text", widget: "markdown", required: false },
               { label: "Image",  name: "image", required: false},
               # { label: "Image Position", name: "imagePosition", widget: "select", required: false, options: [
               #   { label: "Top", value: "top" },
