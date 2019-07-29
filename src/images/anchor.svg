@@ -1,0 +1,8 @@
+<svg width="64px" height="64px" viewBox="0 0 64 64" fill="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M13,35 C13,45.4934102 21.5065898,54 32,54 L32,54 C42.4934102,54 51,45.4934102 51,35" stroke="currentColor" stroke-width="2"></path>
+  <path d="M32,53 L32,18" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+  <path d="M37,13 C37,15.7611111 34.7611111,18 32,18 C29.2388889,18 27,15.7611111 27,13 C27,10.2388889 29.2388889,8 32,8 C34.7611111,8 37,10.2388889 37,13 Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  <polyline id="Stroke-7" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="round" points="9.5 41 12.1878502 34 18.5 36.9794807"></polyline>
+  <polyline id="Stroke-9" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="round" points="54.5 41 51.813296 34 45.5 36.9794807"></polyline>
+  <path d="M23,26 L41,26" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+</svg>

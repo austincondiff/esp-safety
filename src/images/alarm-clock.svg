@@ -1,0 +1,11 @@
+<svg width="64px" height="64px" viewBox="0 0 64 64" fill="none" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <polyline id="Stroke-1" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="round" points="32 20 32 32.6256792 27.0131148 38.0103845"></polyline>
+  <path d="M12.8694876,23 C10.5485598,21.5794584 9,19.0168625 9,16.0914665 C9,11.6228922 12.6133061,8 17.0716289,8 C20.0145297,8 22.5903645,9.57894737 24,11.9384262" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+  <path d="M11,10 L10,9" stroke="currentColor" stroke-width="2" stroke-linecap="square"></path>
+  <path d="M53,10 L54,9" stroke="currentColor" stroke-width="2" stroke-linecap="square"></path>
+  <path d="M51.1305124,23 C53.4514402,21.5794584 55,19.0168625 55,16.0914665 C55,11.6228922 51.3854193,8 46.9283711,8 C43.9854703,8 41.4096355,9.57894737 40,11.9384262" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+  <path d="M13,54 L18,49" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"></path>
+  <path d="M51,54 L46,49" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="round"></path>
+  <path d="M54,32 C54,43.990974 43.990974,54 32,54 C20.009026,54 10,43.990974 10,32 C10,20.009026 20.009026,10 32,10 C43.990974,10 54,20.009026 54,32 Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  <path d="M49,32 C49,41.2657526 41.2657526,49 32,49 C22.7342474,49 15,41.2657526 15,32 C15,22.7342474 22.7342474,15 32,15 C41.2657526,15 49,22.7342474 49,32 Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>

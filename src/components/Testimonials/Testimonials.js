@@ -2,12 +2,9 @@ import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 import { mediaQueries } from '../Layout'
 
-const Flickity =
-  typeof window !== 'undefined'
-    ? require('react-flickity-component')
-    : () => null
+const Flickity = typeof window !== 'undefined' ? require('react-flickity-component') : () => null
 
-const TestimonialsWrap = styled.div`
+export const TestimonialsWrap = styled.div`
   position: relative;
   outline: none;
   & .flickity-enabled {
@@ -38,7 +35,7 @@ const TestimonialsWrap = styled.div`
         left: 4px;
         background-color: #cccccc;
         box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.15);
-        transition: .25s;
+        transition: 0.25s;
       }
       &:hover:after {
         background-color: #666666;
@@ -77,13 +74,9 @@ const TestimonialsWrap = styled.div`
   }
 `
 
-
-
-const Testimonials = ({children}) => (
+const Testimonials = ({ children }) => (
   <TestimonialsWrap>
-    <Flickity options={{ wrapAround: true }}>
-      {children}
-    </Flickity>
+    <Flickity options={{ wrapAround: true }}>{children}</Flickity>
   </TestimonialsWrap>
 )
 export default Testimonials
