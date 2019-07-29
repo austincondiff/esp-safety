@@ -1,8 +1,55 @@
 import React from 'react'
-import { navigate } from 'gatsby-link'
+import Link, { navigate } from 'gatsby-link'
+import styled from 'styled-components'
 
 import Header from '../../components/Header'
 import Section from '../../components/Section'
+import { Button } from '../../components/Button'
+import { Row, Col } from '../../components/Layout'
+
+const Input = styled.input`
+  width: 100%;
+  min-height: 3.5rem;
+  background-color: #eeeeee;
+  border: 0;
+  border-radius: 1.75rem;
+  padding: 1rem 0 1rem 1.5rem;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  outline: none;
+  margin-bottom: 1.5rem;
+`
+const Textarea = styled.textarea`
+  width: 100%;
+  min-height: 3.5rem;
+  background-color: #eeeeee;
+  border: 0;
+  border-radius: 1.75rem;
+  padding: 1rem 0 1rem 1.5rem;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  outline: none;
+  margin-bottom: 1.5rem;
+  resize: none;
+`
+
+const Label = styled.label`
+  font-weight: 500;
+  color: #000000;
+  display: block;
+  margin-bottom: 0.5rem;
+`
+
+const PhoneNumber = styled.div`
+  font-size: 2rem;
+  font-weight: 900;
+  color: #000000;
+`
+const PhoneNumberSubText = styled.div`
+  font-weight: 700;
+  color: #666666;
+  text-transform: uppercase;
+`
 
 function encode(data) {
   return Object.keys(data)
@@ -43,8 +90,8 @@ export default class Index extends React.Component {
           backgroundImage="https://images.unsplash.com/photo-1503217195339-397eb18024e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80"
         />
         <Section xsPadding="cozy">
-          <div className="container">
-            <div className="content">
+          <Row>
+            <Col md={7}>
               <form
                 name="contact"
                 method="post"
@@ -61,11 +108,11 @@ export default class Index extends React.Component {
                   </label>
                 </div>
                 <div className="field">
-                  <label className="label" htmlFor={'name'}>
+                  <Label className="label" htmlFor={'name'}>
                     Your name
-                  </label>
+                  </Label>
                   <div className="control">
-                    <input
+                    <Input
                       className="input"
                       type={'text'}
                       name={'name'}
@@ -76,11 +123,11 @@ export default class Index extends React.Component {
                   </div>
                 </div>
                 <div className="field">
-                  <label className="label" htmlFor={'email'}>
+                  <Label className="label" htmlFor={'email'}>
                     Email
-                  </label>
+                  </Label>
                   <div className="control">
-                    <input
+                    <Input
                       className="input"
                       type={'email'}
                       name={'email'}
@@ -91,11 +138,11 @@ export default class Index extends React.Component {
                   </div>
                 </div>
                 <div className="field">
-                  <label className="label" htmlFor={'message'}>
+                  <Label className="label" htmlFor={'message'}>
                     Message
-                  </label>
+                  </Label>
                   <div className="control">
-                    <textarea
+                    <Textarea
                       className="textarea"
                       name={'message'}
                       onChange={this.handleChange}
@@ -105,13 +152,22 @@ export default class Index extends React.Component {
                   </div>
                 </div>
                 <div className="field">
-                  <button className="button is-link" type="submit">
+                  <Button primary type="submit">
                     Send
-                  </button>
+                  </Button>
                 </div>
               </form>
-            </div>
-          </div>
+            </Col>
+            <Col md={5}>
+              <h3>Hello!</h3>
+              <p>
+                Don’t hesitate to ask us anything. Fill out our form and we will contact you as soon as we can. You can also
+                email us directly hello@espsafety.com or give us a call.
+              </p>
+              <PhoneNumber>555 555 5555</PhoneNumber>
+              <PhoneNumberSubText>Available 24/7</PhoneNumberSubText>
+            </Col>
+          </Row>
         </Section>
       </React.Fragment>
     )

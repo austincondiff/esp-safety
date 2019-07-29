@@ -17,8 +17,18 @@ import OxygenIcon from '../../images/oxygen.svg'
 const ProductLink = styled(Link)`
   display: block;
   padding: 32px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 `
+
+const ProductImage = styled.div`
+  padding-bottom: 100%;
+  position: relative;
+  background-image: url(${props => props.src});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 2rem;
+`
+const ProductTitle = styled.h3``
 
 const ProductsIndexPage = ({ data }) => {
   console.log(data)
@@ -36,46 +46,16 @@ const ProductsIndexPage = ({ data }) => {
         backgroundImage="https://images.unsplash.com/photo-1536405454887-931a1a783382?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80"
       />
       <Section xsPadding="cozy">
-        {products.map(product => (
-          <ProductLink to={product.slug} key={product.id}>
-            {product.title}
-          </ProductLink>
-        ))}
-      </Section>
-      <Section xsPaddingBottom="cozy">
         <Row>
-          <Col xs={6} md={3}>
-            <IconBox
-              icon={FlameIcon}
-              title="Flame Detectors"
-              description="Every flame detector we offer provides reliable service and long-lasting field performance in the harshest of environments, all at the industry’s best pricing."
-              link="/products/flame-detectors"
-            />
-          </Col>
-          <Col xs={6} md={3}>
-            <IconBox
-              icon={CombustibleGasIcon}
-              title="Combustible Gas Detectors"
-              description="Configured to alarm when gas concentrations in the environment reach three independently programmable levels, expressed as a percentage of the lower explosive limit."
-              link="/products/combustible-gas-detectors"
-            />
-          </Col>
-          <Col xs={6} md={3}>
-            <IconBox
-              icon={ToxicGasIcon}
-              title="Toxic Gas Detectors"
-              description="Designed to safely detect and monitor a variety of toxic gases, including hydrogen sulfide, carbon monoxide, chlorine, nitric oxide, and sulfur dioxide, over a range of 0-100 ppm."
-              link="/products/toxic-gas-detectors"
-            />
-          </Col>
-          <Col xs={6} md={3}>
-            <IconBox
-              icon={OxygenIcon}
-              title="Oxygen Detectors"
-              description="Monitors oxygen levels and will alarm if it dips below 19.5% v/v or if levels increases to prevent oxygen enriched atmosphere and reduce the risk of flammability of materials and gases."
-              link="oxygen-detectors"
-            />
-          </Col>
+          {products.map(product => (
+            <Col xs={6} md={4} lg={3} xl={2} key={product.slug}>
+              <ProductLink to={`/${product.slug}`} key={product.id}>
+                <ProductImage src={`/media/${product.images[0].relativePath}`} alt={product.title} />
+                <ProductTitle>{product.title}</ProductTitle>
+                <div>{product.subtitle}</div>
+              </ProductLink>
+            </Col>
+          ))}
         </Row>
       </Section>
     </React.Fragment>
@@ -99,6 +79,10 @@ export default () => (
               }
               frontmatter {
                 title
+                subtitle
+                images {
+                  relativePath
+                }
                 templateKey
                 date(formatString: "MMMM DD, YYYY")
               }
