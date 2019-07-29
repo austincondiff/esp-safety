@@ -103,6 +103,27 @@ const SpecificationValue = styled.div`
     color: inherit;
     margin-bottom: 8px;
   }
+  & table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+  & td, th {
+    margin: 0;
+    border: 0;
+    padding: 12px 16px 12px 0;
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+  & th {
+    color: white;
+    text-align: left;
+    border-bottom: 1px solid #cccccc;
+  }
+  & td {
+    border-bottom: 1px dotted #cccccc;
+  }
 `
 
 const SpecificationCol = styled(Col)`
@@ -276,7 +297,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
                           {specification.label && <SpecificationLabel>{specification.label}</SpecificationLabel>}
                           {specification.text && (
                             <SpecificationValue>
-                              <LinesToParagraphs text={specification.text} />
+                              <MarkdownContent content={specification.text} />
                             </SpecificationValue>
                           )}
                         </VisibilityTrailAnimation>
