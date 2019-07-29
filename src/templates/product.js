@@ -124,6 +124,9 @@ const SpecificationValue = styled.div`
   & td {
     border-bottom: 1px dotted #cccccc;
   }
+  & tr:last-child td {
+    border-bottom: 0;
+  }
 `
 
 const SpecificationCol = styled(Col)`
