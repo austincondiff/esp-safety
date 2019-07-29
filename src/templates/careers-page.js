@@ -44,6 +44,8 @@ export const CareersPageTemplate = ({ title, content, contentComponent }) => {
             </p>
           </Col>
         </Row>
+      </Section>
+      <Section xsPaddingBottom="cozy">
         <Row center="xs">
           <Col md={6}>
             <Testimonial
@@ -103,47 +105,64 @@ export const CareersPageTemplate = ({ title, content, contentComponent }) => {
       </Section>
 
       <Section xsPadding="cozy">
-        <h2>Our team and culture</h2>
-        <p>
-          Our team is comprised of driven, quick-witted and hardworking individuals who are not afraid to take on the most
-          challenging projects in our industry and want to create the most robust, reliable and high performing products for
-          flame and gas detection.
-        </p>
-      </Section>
-
-      <Section xsPadding="cozy">
-        <h2>Our Perspective</h2>
-        <p>Quotes coming soon.</p>
-      </Section>
-
-      <Section xsPaddingBottom="cozy">
-        <h2>Perks & Benefits</h2>
-        <p>
-          ESP Safety provides an excellent selection of health care insurance plans including employee and family medical,
-          dental, vision, employee and family life, short-term disability, FSA, 401 (k), employee assistance programs. You will
-          get 10 PTO days, floating holidays, paid holidays and a winter recess between Christmas and New Year’s. Each ESP team
-          member is eligible to earn additional compensation through bonuses and incentive programs which recognizes and rewards
-          outstanding performance.{' '}
-        </p>
-        <p>
-          Additional benefits include tuition reimbursement for those who want to continue their education, paid fitness
-          membership, plus a snack bar to keep you going. We work hard together and we like to have fun together too, we have
-          company outings and celebrate annual events such as Thanksgiving Potluck and White Elephant Christmas Party. Our
-          office in San Jose is conveniently located close to highways 101, 87 and 17 as well as to a light rail stop. We are
-          also within the walking distance from Japantown and downtown San Jose.
-        </p>
+        <Row center="xs">
+          <Col md={6}>
+            <h2>Our team and culture</h2>
+            <p>
+              Our team is comprised of driven, quick-witted and hardworking individuals who are not afraid to take on the most
+              challenging projects in our industry and want to create the most robust, reliable and high performing products for
+              flame and gas detection.
+            </p>
+          </Col>
+        </Row>
       </Section>
 
       <Section xsPaddingBottom="cozy">
-        <h2>Opportunities</h2>
-        <p>
-          ESP Safety is an Equal Opportunity Employer. Applicants are considered for all positions without regard to race,
-          color, religion, sex, national origin, age, disability, sexual orientation, and ancestry, marital or veteran status.
-        </p>
-        <p>
-          We hire team members who want to make an impact which you will discover the moment you start your job. We offer you
-          room to grow and potential to help us take ESP to the next level. Join us! We need your drive and expertise.
-        </p>
+        <Row center="xs">
+          <Col md={6}>
+            <h2>Our Perspective</h2>
+            <p>Quotes coming soon.</p>
+          </Col>
+        </Row>
+      </Section>
+
+      <Section xsPaddingBottom="cozy">
+        <Row center="xs">
+          <Col md={6}>
+            <h2>Perks & Benefits</h2>
+            <p>
+              ESP Safety provides an excellent selection of health care insurance plans including employee and family medical,
+              dental, vision, employee and family life, short-term disability, FSA, 401 (k), employee assistance programs. You
+              will get 10 PTO days, floating holidays, paid holidays and a winter recess between Christmas and New Year’s. Each
+              ESP team member is eligible to earn additional compensation through bonuses and incentive programs which
+              recognizes and rewards outstanding performance.{' '}
+            </p>
+            <p>
+              Additional benefits include tuition reimbursement for those who want to continue their education, paid fitness
+              membership, plus a snack bar to keep you going. We work hard together and we like to have fun together too, we
+              have company outings and celebrate annual events such as Thanksgiving Potluck and White Elephant Christmas Party.
+              Our office in San Jose is conveniently located close to highways 101, 87 and 17 as well as to a light rail stop.
+              We are also within the walking distance from Japantown and downtown San Jose.
+            </p>
+          </Col>
+        </Row>
+      </Section>
+
+      <Section xsPaddingBottom="cozy">
+        <Row center="xs">
+          <Col md={6}>
+            <h2>Opportunities</h2>
+            <p>
+              ESP Safety is an Equal Opportunity Employer. Applicants are considered for all positions without regard to race,
+              color, religion, sex, national origin, age, disability, sexual orientation, and ancestry, marital or veteran
+              status.
+            </p>
+            <p>
+              We hire team members who want to make an impact which you will discover the moment you start your job. We offer
+              you room to grow and potential to help us take ESP to the next level. Join us! We need your drive and expertise.
+            </p>
+          </Col>
+        </Row>
       </Section>
     </React.Fragment>
   )
