@@ -150,7 +150,7 @@ const Footer = class extends React.Component {
 
     return (
       <FooterWrap>
-        <Section xsPadding="cozy" backgroundColor={theme.color.primary}>
+        <Section xsPadding="comfortable" backgroundColor={theme.color.primary}>
           <Row>
             <Col xs={12} md={0} fill="md">
               <VisibilityTrailAnimation>

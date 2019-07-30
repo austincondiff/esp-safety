@@ -16,7 +16,7 @@ class News extends React.Component {
           title={'News'}
           backgroundImage="https://images.unsplash.com/photo-1539186607619-df476afe6ff1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"
         ></Header>
-        <Section xsPadding="cozy">
+        <Section xsPadding="comfortable">
           News coming soon
           {posts &&
             posts.map(({ node: post }) => (

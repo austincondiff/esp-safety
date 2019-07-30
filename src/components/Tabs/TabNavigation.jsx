@@ -22,24 +22,23 @@ const StyledTabs = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   white-space: nowrap;
 
-  padding: 0 24px;
+  padding: 0 1.5rem;
 
   ${mediaQueries.sm} {
-    min-width: calc(100% - 48px);
-    margin: 0 24px;
+    min-width: calc(100% - 3rem);
+    margin: 0 1.5rem;
     padding: 0;
   }
-
 `
 const StyledTab = styled.div`
   display: inline-block;
   text-align: center;
-  margin: 0 16px 0 16px;
+  margin: 0 1rem 0 1rem;
   vertical-align: middle;
   cursor: pointer;
   font-size: 1rem;
   font-weight: 500;
-  padding: 20px 0px;
+  padding: 1.25rem 0px;
   outline: none;
   color: ${props => (props.active ? props.theme.color.primary : '#000000')};
   transition: 200ms;
@@ -62,7 +61,7 @@ const ActiveTabIndicator = styled.div`
   left: ${props => (props.position ? props.position : 0)}px;
   bottom: 0;
   background-color: ${props => props.theme.color.primary};
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.5);
   transition: 200ms;
   backface-visibility: hidden;
 `

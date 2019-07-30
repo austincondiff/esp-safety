@@ -25,7 +25,7 @@ export const CareersPageTemplate = ({ title, content, contentComponent }) => {
         title="Work for us"
         backgroundImage="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=5102&q=80"
       />
-      <Section xsPadding="cozy">
+      <Section xsPadding="comfortable">
         <Row center="xs">
           <Col md={6}>
             <h2>We build safety products to protect the wold's best employees</h2>
@@ -45,7 +45,7 @@ export const CareersPageTemplate = ({ title, content, contentComponent }) => {
           </Col>
         </Row>
       </Section>
-      <Section xsPaddingBottom="cozy">
+      <Section xsPaddingBottom="comfortable">
         <Row center="xs">
           <Col md={6}>
             <Testimonial
@@ -61,7 +61,7 @@ export const CareersPageTemplate = ({ title, content, contentComponent }) => {
         </Row>
       </Section>
       <Section
-        xsPadding="cozy"
+        xsPadding="comfortable"
         backgroundImage="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=3450&q=80"
         backgroundImageOpacity={0.25}
         backgroundColor="#000000"
@@ -104,7 +104,7 @@ export const CareersPageTemplate = ({ title, content, contentComponent }) => {
         </Row>
       </Section>
 
-      <Section xsPadding="cozy">
+      <Section xsPadding="comfortable">
         <Row center="xs">
           <Col md={6}>
             <h2>Our team and culture</h2>
@@ -117,7 +117,7 @@ export const CareersPageTemplate = ({ title, content, contentComponent }) => {
         </Row>
       </Section>
 
-      <Section xsPaddingBottom="cozy">
+      <Section xsPaddingBottom="comfortable">
         <Row center="xs">
           <Col md={6}>
             <h2>Our Perspective</h2>
@@ -126,7 +126,7 @@ export const CareersPageTemplate = ({ title, content, contentComponent }) => {
         </Row>
       </Section>
 
-      <Section xsPaddingBottom="cozy">
+      <Section xsPaddingBottom="comfortable">
         <Row center="xs">
           <Col md={6}>
             <h2>Perks & Benefits</h2>
@@ -148,7 +148,7 @@ export const CareersPageTemplate = ({ title, content, contentComponent }) => {
         </Row>
       </Section>
 
-      <Section xsPaddingBottom="cozy">
+      <Section xsPaddingBottom="comfortable">
         <Row center="xs">
           <Col md={6}>
             <h2>Opportunities</h2>

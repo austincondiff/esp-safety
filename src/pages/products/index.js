@@ -45,7 +45,7 @@ const ProductsIndexPage = ({ data }) => {
         title="Products"
         backgroundImage="https://images.unsplash.com/photo-1536405454887-931a1a783382?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80"
       />
-      <Section xsPadding="cozy">
+      <Section xsPadding="comfortable">
         <Row>
           {products.map(product => (
             <Col xs={6} md={4} lg={3} xl={2} key={product.slug}>

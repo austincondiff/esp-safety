@@ -1,7 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import mediaQueries from './mediaQueries'
+
+const padding = {
+  xs: { compact: '4%', cozy: '8%', comfortable: '12%' },
+  sm: { compact: '3.333%', cozy: '6.666%', comfortable: '10%' },
+  md: { compact: '2.666%', cozy: '5.333%', comfortable: '8%' },
+  lg: { compact: '2%', cozy: '4%', comfortable: '6%' },
+  xl: { compact: '1.333%', cozy: '2.666%', comfortable: '4%' }
+}
 
 const Layout = styled.div`
   ${({
@@ -42,157 +48,247 @@ const Layout = styled.div`
       ${!fullWidth ? 'padding-left: 12.5%; padding-right: 12.5%;' : ''}
     }
 
-    ${
-      [xsPadding].every(p => p === 'compact')
-        ? 'padding-top: 4%; padding-bottom: 4%;'
-        : [xsPadding].every(p => p === 'cozy')
-        ? 'padding-top: 8%; padding-bottom: 8%;'
-        : [xsPadding].every(p => p === 'comfortable')
-        ? 'padding-top: 12%; padding-bottom: 12%;'
-        : ''
-    }
-    ${
-      [xsPaddingTop].every(p => p === 'compact')
-        ? 'padding-top: 4%;'
-        : [xsPaddingTop].every(p => p === 'cozy')
-        ? 'padding-top: 8%;'
-        : [xsPaddingTop].every(p => p === 'comfortable')
-        ? 'padding-top: 12%;'
-        : ''
-    }
-    ${
-      [xsPaddingBottom].every(p => p === 'compact')
-        ? 'padding-bottom: 4%;'
-        : [xsPaddingBottom].every(p => p === 'cozy')
-        ? 'padding-bottom: 8%;'
-        : [xsPaddingBottom].every(p => p === 'comfortable')
-        ? 'padding-bottom: 12%;'
-        : ''
-    }
+    ${xsPadding === 'compact' ? `
+      padding-top: ${padding.xs.compact}; padding-bottom: ${padding.xs.compact};
+      ${mediaQueries.sm} { padding-top: ${padding.sm.compact}; padding-bottom: ${padding.sm.compact}; }
+      ${mediaQueries.md} { padding-top: ${padding.md.compact}; padding-bottom: ${padding.md.compact}; }
+      ${mediaQueries.lg} { padding-top: ${padding.lg.compact}; padding-bottom: ${padding.lg.compact}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.compact}; padding-bottom: ${padding.xl.compact}; }
+    ` : ``}
+    ${xsPadding === 'cozy' ? `
+      padding-top: ${padding.xs.cozy}; padding-bottom: ${padding.xs.cozy};
+      ${mediaQueries.sm} { padding-top: ${padding.sm.cozy}; padding-bottom: ${padding.sm.cozy}; }
+      ${mediaQueries.md} { padding-top: ${padding.md.cozy}; padding-bottom: ${padding.md.cozy}; }
+      ${mediaQueries.lg} { padding-top: ${padding.lg.cozy}; padding-bottom: ${padding.lg.cozy}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.cozy}; padding-bottom: ${padding.xl.cozy}; }
+    ` : ``}
+    ${xsPadding === 'comfortable' ? `
+      padding-top: ${padding.xs.comfortable}; padding-bottom: ${padding.xs.comfortable};
+      ${mediaQueries.sm} { padding-top: ${padding.sm.comfortable}; padding-bottom: ${padding.sm.comfortable}; }
+      ${mediaQueries.md} { padding-top: ${padding.md.comfortable}; padding-bottom: ${padding.md.comfortable}; }
+      ${mediaQueries.lg} { padding-top: ${padding.lg.comfortable}; padding-bottom: ${padding.lg.comfortable}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.comfortable}; padding-bottom: ${padding.xl.comfortable}; }
+    ` : ``}
 
-    ${mediaQueries.sm} {
-      ${
-        [xsPadding, smPadding].every(p => p === 'compact')
-          ? 'padding-top: 3.333%; padding-bottom: 3.333%;'
-          : [xsPadding, smPadding].every(p => p === 'cozy')
-          ? 'padding-top: 6.666%; padding-bottom: 6.666%;'
-          : [xsPadding, smPadding].every(p => p === 'comfortable')
-          ? 'padding-top: 10%; padding-bottom: 10%;'
-          : ''
-      }
-      ${
-        [xsPaddingTop, smPaddingTop].every(p => p === 'compact')
-          ? 'padding-top: 3.333%;'
-          : [xsPaddingTop, smPaddingTop].every(p => p === 'cozy')
-          ? 'padding-top: 6.666%;'
-          : [xsPaddingTop, smPaddingTop].every(p => p === 'comfortable')
-          ? 'padding-top: 10%;'
-          : ''
-      }
-      ${
-        [xsPaddingBottom, smPaddingBottom].every(p => p === 'compact')
-          ? 'padding-bottom: 3.333%;'
-          : [xsPaddingBottom, smPaddingBottom].every(p => p === 'cozy')
-          ? 'padding-bottom: 6.666%;'
-          : [xsPaddingBottom, smPaddingBottom].every(p => p === 'comfortable')
-          ? 'padding-bottom: 10%;'
-          : ''
-      }
-    }
-    ${mediaQueries.md} {
-      ${
-        [xsPadding, smPadding, mdPadding].every(p => p === 'compact')
-          ? 'padding-top: 2.666%; padding-bottom: 2.666%;'
-          : [xsPadding, smPadding, mdPadding].every(p => p === 'cozy')
-          ? 'padding-top: 5.333%; padding-bottom: 5.333%;'
-          : [xsPadding, smPadding, mdPadding].every(p => p === 'comfortable')
-          ? 'padding-top: 8%; padding-bottom: 8%;'
-          : ''
-      }
-      ${
-        [xsPaddingTop, smPaddingTop, mdPaddingTop].every(p => p === 'compact')
-          ? 'padding-top: 2.666%;'
-          : [xsPaddingTop, smPaddingTop, mdPaddingTop].every(p => p === 'cozy')
-          ? 'padding-top: 5.333%;'
-          : [xsPaddingTop, smPaddingTop, mdPaddingTop].every(p => p === 'comfortable')
-          ? 'padding-top: 8%;'
-          : ''
-      }
-      ${
-        [xsPaddingBottom, smPaddingBottom, mdPaddingBottom].every(p => p === 'compact')
-          ? 'padding-bottom: 2.666%;'
-          : [xsPaddingBottom, smPaddingBottom, mdPaddingBottom].every(p => p === 'cozy')
-          ? 'padding-bottom: 5.333%;'
-          : [xsPaddingBottom, smPaddingBottom, mdPaddingBottom].every(p => p === 'comfortable')
-          ? 'padding-bottom: 8%;'
-          : ''
-      }
-    }
-    ${mediaQueries.lg} {
-      ${
-        [xsPadding, smPadding, mdPadding, lgPadding].every(p => p === 'compact')
-          ? 'padding-top: 2%; padding-bottom: 2%;'
-          : [xsPadding, smPadding, mdPadding, lgPadding].every(p => p === 'cozy')
-          ? 'padding-top: 4%; padding-bottom: 4%;'
-          : [xsPadding, smPadding, mdPadding, lgPadding].every(p => p === 'comfortable')
-          ? 'padding-top: 6%; padding-bottom: 6%;'
-          : ''
-      }
-      ${
-        [xsPaddingTop, smPaddingTop, mdPaddingTop, lgPaddingTop].every(p => p === 'compact')
-          ? 'padding-top: 2%;'
-          : [xsPaddingTop, smPaddingTop, mdPaddingTop, lgPaddingTop].every(p => p === 'cozy')
-          ? 'padding-top: 4%;'
-          : [xsPaddingTop, smPaddingTop, mdPaddingTop, lgPaddingTop].every(p => p === 'comfortable')
-          ? 'padding-top: 6%;'
-          : ''
-      }
-      ${
-        [xsPaddingBottom, smPaddingBottom, mdPaddingBottom, lgPaddingBottom].every(p => p === 'compact')
-          ? 'padding-bottom: 2%;'
-          : [xsPaddingBottom, smPaddingBottom, mdPaddingBottom, lgPaddingBottom].every(p => p === 'cozy')
-          ? 'padding-bottom: 4%;'
-          : [xsPaddingBottom, smPaddingBottom, mdPaddingBottom, lgPaddingBottom].every(p => p === 'comfortable')
-          ? 'padding-bottom: 6%;'
-          : ''
-      }
-    }
-    ${mediaQueries.xl} {
-      ${
-        [xsPadding, smPadding, mdPadding, lgPadding, xlPadding].every(p => p === 'compact')
-          ? 'padding-top: 1.333%; padding-bottom: 1.333%;'
-          : [xsPadding, smPadding, mdPadding, lgPadding, xlPadding].every(p => p === 'cozy')
-          ? 'padding-top: 2.666%; padding-bottom: 2.666%;'
-          : [xsPadding, smPadding, mdPadding, lgPadding, xlPadding].every(p => p === 'comfortable')
-          ? 'padding-top: 4%; padding-bottom: 4%;'
-          : ''
-      }
-      ${
-        [xsPaddingTop, smPaddingTop, mdPaddingTop, lgPaddingTop, xlPaddingTop].every(p => p === 'compact')
-          ? 'padding-top: 1.333%;'
-          : [xsPaddingTop, smPaddingTop, mdPaddingTop, lgPaddingTop, xlPaddingTop].every(p => p === 'cozy')
-          ? 'padding-top: 2.666%;'
-          : [xsPaddingTop, smPaddingTop, mdPaddingTop, lgPaddingTop, xlPaddingTop].every(p => p === 'comfortable')
-          ? 'padding-top: 4%;'
-          : ''
-      }
-      ${
-        [xsPaddingBottom, smPaddingBottom, mdPaddingBottom, lgPaddingBottom, xlPaddingBottom].every(p => p === 'compact')
-          ? 'padding-bottom: 1.333%;'
-          : [xsPaddingBottom, smPaddingBottom, mdPaddingBottom, lgPaddingBottom, xlPaddingBottom].every(p => p === 'cozy')
-          ? 'padding-bottom: 2.666%;'
-          : [xsPaddingBottom, smPaddingBottom, mdPaddingBottom, lgPaddingBottom, xlPaddingBottom].every(
-              p => p === 'comfortable'
-            )
-          ? 'padding-bottom: 4%;'
-          : ''
-      }
-    }
+    ${xsPaddingTop === 'compact' ? `
+      padding-top: ${padding.xs.compact}; ;
+      ${mediaQueries.sm} { padding-top: ${padding.sm.compact}; }
+      ${mediaQueries.md} { padding-top: ${padding.md.compact}; }
+      ${mediaQueries.lg} { padding-top: ${padding.lg.compact}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.compact}; }
+    ` : ``}
+    ${xsPaddingTop === 'cozy' ? `
+      padding-top: ${padding.xs.cozy};
+      ${mediaQueries.sm} { padding-top: ${padding.sm.cozy}; }
+      ${mediaQueries.md} { padding-top: ${padding.md.cozy}; }
+      ${mediaQueries.lg} { padding-top: ${padding.lg.cozy}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.cozy}; }
+    ` : ``}
+    ${xsPaddingTop === 'comfortable' ? `
+      padding-top: ${padding.xs.comfortable};
+      ${mediaQueries.sm} { padding-top: ${padding.sm.comfortable}; }
+      ${mediaQueries.md} { padding-top: ${padding.md.comfortable}; }
+      ${mediaQueries.lg} { padding-top: ${padding.lg.comfortable}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.comfortable}; }
+    ` : ``}
+
+    ${xsPaddingBottom === 'compact' ? `
+      padding-bottom: ${padding.xs.compact}; ;
+      ${mediaQueries.sm} { padding-bottom: ${padding.sm.compact}; }
+      ${mediaQueries.md} { padding-bottom: ${padding.md.compact}; }
+      ${mediaQueries.lg} { padding-bottom: ${padding.lg.compact}; }
+      ${mediaQueries.xl} { padding-bottom: ${padding.xl.compact}; }
+    ` : ``}
+    ${xsPaddingBottom === 'cozy' ? `
+      padding-bottom: ${padding.xs.cozy};
+      ${mediaQueries.sm} { padding-bottom: ${padding.sm.cozy}; }
+      ${mediaQueries.md} { padding-bottom: ${padding.md.cozy}; }
+      ${mediaQueries.lg} { padding-bottom: ${padding.lg.cozy}; }
+      ${mediaQueries.xl} { padding-bottom: ${padding.xl.cozy}; }
+    ` : ``}
+    ${xsPaddingBottom === 'comfortable' ? `
+      padding-bottom: ${padding.xs.comfortable};
+      ${mediaQueries.sm} { padding-bottom: ${padding.sm.comfortable}; }
+      ${mediaQueries.md} { padding-bottom: ${padding.md.comfortable}; }
+      ${mediaQueries.lg} { padding-bottom: ${padding.lg.comfortable}; }
+      ${mediaQueries.xl} { padding-bottom: ${padding.xl.comfortable}; }
+    ` : ``}
+
+    ${smPadding === 'compact' ? `
+      ${mediaQueries.sm} { padding-top: ${padding.sm.compact}; padding-bottom: ${padding.sm.compact}; }
+      ${mediaQueries.md} { padding-top: ${padding.md.compact}; padding-bottom: ${padding.md.compact}; }
+      ${mediaQueries.lg} { padding-top: ${padding.lg.compact}; padding-bottom: ${padding.lg.compact}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.compact}; padding-bottom: ${padding.xl.compact}; }
+    ` : ``}
+    ${smPadding === 'cozy' ? `
+      ${mediaQueries.sm} { padding-top: ${padding.sm.cozy}; padding-bottom: ${padding.sm.cozy}; }
+      ${mediaQueries.md} { padding-top: ${padding.md.cozy}; padding-bottom: ${padding.md.cozy}; }
+      ${mediaQueries.lg} { padding-top: ${padding.lg.cozy}; padding-bottom: ${padding.lg.cozy}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.cozy}; padding-bottom: ${padding.xl.cozy}; }
+    ` : ``}
+    ${smPadding === 'comfortable' ? `
+      ${mediaQueries.sm} { padding-top: ${padding.sm.comfortable}; padding-bottom: ${padding.sm.comfortable}; }
+      ${mediaQueries.md} { padding-top: ${padding.md.comfortable}; padding-bottom: ${padding.md.comfortable}; }
+      ${mediaQueries.lg} { padding-top: ${padding.lg.comfortable}; padding-bottom: ${padding.lg.comfortable}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.comfortable}; padding-bottom: ${padding.xl.comfortable}; }
+    ` : ``}
+
+    ${smPaddingTop === 'compact' ? `
+      ${mediaQueries.sm} { padding-top: ${padding.sm.compact}; }
+      ${mediaQueries.md} { padding-top: ${padding.md.compact}; }
+      ${mediaQueries.lg} { padding-top: ${padding.lg.compact}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.compact}; }
+    ` : ``}
+    ${smPaddingTop === 'cozy' ? `
+      ${mediaQueries.sm} { padding-top: ${padding.sm.cozy}; }
+      ${mediaQueries.md} { padding-top: ${padding.md.cozy}; }
+      ${mediaQueries.lg} { padding-top: ${padding.lg.cozy}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.cozy}; }
+    ` : ``}
+    ${smPaddingTop === 'comfortable' ? `
+      ${mediaQueries.sm} { padding-top: ${padding.sm.comfortable}; }
+      ${mediaQueries.md} { padding-top: ${padding.md.comfortable}; }
+      ${mediaQueries.lg} { padding-top: ${padding.lg.comfortable}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.comfortable}; }
+    ` : ``}
+
+    ${smPaddingBottom === 'compact' ? `
+      ${mediaQueries.sm} { padding-bottom: ${padding.sm.compact}; }
+      ${mediaQueries.md} { padding-bottom: ${padding.md.compact}; }
+      ${mediaQueries.lg} { padding-bottom: ${padding.lg.compact}; }
+      ${mediaQueries.xl} { padding-bottom: ${padding.xl.compact}; }
+    ` : ``}
+    ${smPaddingBottom === 'cozy' ? `
+      ${mediaQueries.sm} { padding-bottom: ${padding.sm.cozy}; }
+      ${mediaQueries.md} { padding-bottom: ${padding.md.cozy}; }
+      ${mediaQueries.lg} { padding-bottom: ${padding.lg.cozy}; }
+      ${mediaQueries.xl} { padding-bottom: ${padding.xl.cozy}; }
+    ` : ``}
+    ${smPaddingBottom === 'comfortable' ? `
+      ${mediaQueries.sm} { padding-bottom: ${padding.sm.comfortable}; }
+      ${mediaQueries.md} { padding-bottom: ${padding.md.comfortable}; }
+      ${mediaQueries.lg} { padding-bottom: ${padding.lg.comfortable}; }
+      ${mediaQueries.xl} { padding-bottom: ${padding.xl.comfortable}; }
+    ` : ``}
+
+    ${mdPadding === 'compact' ? `
+      ${mediaQueries.md} { padding-top: ${padding.md.compact}; padding-bottom: ${padding.md.compact}; }
+      ${mediaQueries.lg} { padding-top: ${padding.lg.compact}; padding-bottom: ${padding.lg.compact}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.compact}; padding-bottom: ${padding.xl.compact}; }
+    ` : ``}
+    ${mdPadding === 'cozy' ? `
+      ${mediaQueries.md} { padding-top: ${padding.md.cozy}; padding-bottom: ${padding.md.cozy}; }
+      ${mediaQueries.lg} { padding-top: ${padding.lg.cozy}; padding-bottom: ${padding.lg.cozy}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.cozy}; padding-bottom: ${padding.xl.cozy}; }
+    ` : ``}
+    ${mdPadding === 'comfortable' ? `
+      ${mediaQueries.md} { padding-top: ${padding.md.comfortable}; padding-bottom: ${padding.md.comfortable}; }
+      ${mediaQueries.lg} { padding-top: ${padding.lg.comfortable}; padding-bottom: ${padding.lg.comfortable}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.comfortable}; padding-bottom: ${padding.xl.comfortable}; }
+    ` : ``}
+
+    ${mdPaddingTop === 'compact' ? `
+      ${mediaQueries.md} { padding-top: ${padding.md.compact}; }
+      ${mediaQueries.lg} { padding-top: ${padding.lg.compact}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.compact}; }
+    ` : ``}
+    ${mdPaddingTop === 'cozy' ? `
+      ${mediaQueries.md} { padding-top: ${padding.md.cozy}; }
+      ${mediaQueries.lg} { padding-top: ${padding.lg.cozy}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.cozy}; }
+    ` : ``}
+    ${mdPaddingTop === 'comfortable' ? `
+      ${mediaQueries.md} { padding-top: ${padding.md.comfortable}; }
+      ${mediaQueries.lg} { padding-top: ${padding.lg.comfortable}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.comfortable}; }
+    ` : ``}
+
+    ${mdPaddingBottom === 'compact' ? `
+      ${mediaQueries.md} { padding-bottom: ${padding.md.compact}; }
+      ${mediaQueries.lg} { padding-bottom: ${padding.lg.compact}; }
+      ${mediaQueries.xl} { padding-bottom: ${padding.xl.compact}; }
+    ` : ``}
+    ${mdPaddingBottom === 'cozy' ? `
+      ${mediaQueries.md} { padding-bottom: ${padding.md.cozy}; }
+      ${mediaQueries.lg} { padding-bottom: ${padding.lg.cozy}; }
+      ${mediaQueries.xl} { padding-bottom: ${padding.xl.cozy}; }
+    ` : ``}
+    ${mdPaddingBottom === 'comfortable' ? `
+      ${mediaQueries.md} { padding-bottom: ${padding.md.comfortable}; }
+      ${mediaQueries.lg} { padding-bottom: ${padding.lg.comfortable}; }
+      ${mediaQueries.xl} { padding-bottom: ${padding.xl.comfortable}; }
+    ` : ``}
+
+    ${lgPadding === 'compact' ? `
+      ${mediaQueries.lg} { padding-top: ${padding.lg.compact}; padding-bottom: ${padding.lg.compact}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.compact}; padding-bottom: ${padding.xl.compact}; }
+    ` : ``}
+    ${lgPadding === 'cozy' ? `
+      ${mediaQueries.lg} { padding-top: ${padding.lg.cozy}; padding-bottom: ${padding.lg.cozy}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.cozy}; padding-bottom: ${padding.xl.cozy}; }
+    ` : ``}
+    ${lgPadding === 'comfortable' ? `
+      ${mediaQueries.lg} { padding-top: ${padding.lg.comfortable}; padding-bottom: ${padding.lg.comfortable}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.comfortable}; padding-bottom: ${padding.xl.comfortable}; }
+    ` : ``}
+
+    ${lgPaddingTop === 'compact' ? `
+      ${mediaQueries.lg} { padding-top: ${padding.lg.compact}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.compact}; }
+    ` : ``}
+    ${lgPaddingTop === 'cozy' ? `
+      ${mediaQueries.lg} { padding-top: ${padding.lg.cozy}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.cozy}; }
+    ` : ``}
+    ${lgPaddingTop === 'comfortable' ? `
+      ${mediaQueries.lg} { padding-top: ${padding.lg.comfortable}; }
+      ${mediaQueries.xl} { padding-top: ${padding.xl.comfortable}; }
+    ` : ``}
+
+    ${lgPaddingBottom === 'compact' ? `
+      ${mediaQueries.lg} { padding-bottom: ${padding.lg.compact}; }
+      ${mediaQueries.xl} { padding-bottom: ${padding.xl.compact}; }
+    ` : ``}
+    ${lgPaddingBottom === 'cozy' ? `
+      ${mediaQueries.lg} { padding-bottom: ${padding.lg.cozy}; }
+      ${mediaQueries.xl} { padding-bottom: ${padding.xl.cozy}; }
+    ` : ``}
+    ${lgPaddingBottom === 'comfortable' ? `
+      ${mediaQueries.lg} { padding-bottom: ${padding.lg.comfortable}; }
+      ${mediaQueries.xl} { padding-bottom: ${padding.xl.comfortable}; }
+    ` : ``}
+
+    ${xlPadding === 'compact' ? `
+      ${mediaQueries.xl} { padding-top: ${padding.xl.compact}; padding-bottom: ${padding.xl.compact}; }
+    ` : ``}
+    ${xlPadding === 'cozy' ? `
+      ${mediaQueries.xl} { padding-top: ${padding.xl.cozy}; padding-bottom: ${padding.xl.cozy}; }
+    ` : ``}
+    ${xlPadding === 'comfortable' ? `
+      ${mediaQueries.xl} { padding-top: ${padding.xl.comfortable}; padding-bottom: ${padding.xl.comfortable}; }
+    ` : ``}
+
+    ${xlPaddingTop === 'compact' ? `
+      ${mediaQueries.xl} { padding-top: ${padding.xl.compact}; }
+    ` : ``}
+    ${xlPaddingTop === 'cozy' ? `
+      ${mediaQueries.xl} { padding-top: ${padding.xl.cozy}; }
+    ` : ``}
+    ${xlPaddingTop === 'comfortable' ? `
+      ${mediaQueries.xl} { padding-top: ${padding.xl.comfortable}; }
+    ` : ``}
+
+    ${xlPaddingBottom === 'compact' ? `
+      ${mediaQueries.xl} { padding-bottom: ${padding.xl.compact}; }
+    ` : ``}
+    ${xlPaddingBottom === 'cozy' ? `
+      ${mediaQueries.xl} { padding-bottom: ${padding.xl.cozy}; }
+    ` : ``}
+    ${xlPaddingBottom === 'comfortable' ? `
+      ${mediaQueries.xl} { padding-bottom: ${padding.xl.comfortable}; }
+    ` : ``}
+
   `}
 `
-
-const propTypes = {
-  fullWidth: PropTypes.bool
-}
 
 export default Layout

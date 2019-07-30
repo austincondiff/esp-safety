@@ -108,7 +108,8 @@ const SpecificationValue = styled.div`
     table-layout: fixed;
     border-collapse: collapse;
   }
-  & td, th {
+  & td,
+  th {
     margin: 0;
     border: 0;
     padding: 12px 16px 12px 0;
@@ -156,8 +157,15 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
   return (
     <React.Fragment>
       {/*}<Header title={title} subtitle={data.category} />*/}
-      <Section xsPaddingTop="compact" xsPaddingBottom="cozy">
-        <Row>
+      <Section xsPaddingTop="cozy" xsPaddingBottom="comfortable">
+        <Row reverse="sm">
+          {data.images && data.images.length && (
+            <Col xs={12} sm={6}>
+              <VisibilityTrailAnimation>
+                <ImageGallery images={data.images.map(img => `/media/${img.relativePath}`)} />
+              </VisibilityTrailAnimation>
+            </Col>
+          )}
           <Col xs={12} sm={6}>
             <VisibilityTrailAnimation>
               <Heading>
@@ -194,13 +202,8 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
               )}
             </VisibilityTrailAnimation>
           </Col>
-          {data.images && data.images.length && (
-            <Col xs={12} sm={6}>
-              <VisibilityTrailAnimation>
-                <ImageGallery images={data.images.map(img => `/media/${img.relativePath}`)} />
-              </VisibilityTrailAnimation>
-            </Col>
-          )}
+        </Row>
+        <Row>
           <Col xs={12}>
             <VisibilityTrailAnimation>
               <Tabs>
@@ -245,19 +248,20 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
                 {console.log(data.downloadCategories)}
                 {data.downloadCategories && data.downloadCategories.length && (
                   <Tab label="Downloads" value="downloads">
-                    {data.downloadCategories && data.downloadCategories.map(downloadCategory => (
-                      <DownloadCategory>
-                        {data.downloadCategories.length > 1 && (<h3>{downloadCategory.title}</h3>)}
-                        {downloadCategory.downloads.map(d => (
-                          <Download>
-                            <a href={`/media/${d.file.relativePath}`} target="_blank" rel="noreferrer noopener">
-                            {d.title} ({d.file.prettySize})
-                            </a>
-                            {d.description && (<React.Fragment>- {d.description}</React.Fragment>)}
-                          </Download>
-                        ))}
-                      </DownloadCategory>
-                    ))}
+                    {data.downloadCategories &&
+                      data.downloadCategories.map(downloadCategory => (
+                        <DownloadCategory>
+                          {data.downloadCategories.length > 1 && <h3>{downloadCategory.title}</h3>}
+                          {downloadCategory.downloads.map(d => (
+                            <Download>
+                              <a href={`/media/${d.file.relativePath}`} target="_blank" rel="noreferrer noopener">
+                                {d.title} ({d.file.prettySize})
+                              </a>
+                              {d.description && <React.Fragment>- {d.description}</React.Fragment>}
+                            </Download>
+                          ))}
+                        </DownloadCategory>
+                      ))}
                   </Tab>
                 )}
               </Tabs>
@@ -265,23 +269,24 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
           </Col>
         </Row>
       </Section>
-      {data.sections && data.sections.map((s, i) => (
-        <Section
-          xsPadding="comfortable"
-          backgroundImage={`/media/${s.image.relativePath}`}
-          backgroundColor={i % 2 === 0 ? '#F6F6F6' : '#FFFFFF'}
-          imagePosition={i % 2 === 0 ? 'right' : 'left'}
-          parallax
-        >
-          <VisibilityTrailAnimation>
-            <h2 style={{ color: '#DD2C2C' }}>{s.title}</h2>
-            <div>
-              <MarkdownContent content={s.content} />
-            </div>
-          </VisibilityTrailAnimation>
-        </Section>
-      ))}
-      <SpecificationsSection xsPadding="cozy">
+      {data.sections &&
+        data.sections.map((s, i) => (
+          <Section
+            xsPadding="comfortable"
+            backgroundImage={`/media/${s.image.relativePath}`}
+            backgroundColor={i % 2 === 0 ? '#F6F6F6' : '#FFFFFF'}
+            imagePosition={i % 2 === 0 ? 'right' : 'left'}
+            parallax
+          >
+            <VisibilityTrailAnimation>
+              <h2 style={{ color: '#DD2C2C' }}>{s.title}</h2>
+              <div>
+                <MarkdownContent content={s.content} />
+              </div>
+            </VisibilityTrailAnimation>
+          </Section>
+        ))}
+      <SpecificationsSection xsPadding="comfortable">
         <SpecificationsTitle>Specifications</SpecificationsTitle>
         {data.specificationCategories &&
           data.specificationCategories.map(specificationCategory => (
