@@ -3,10 +3,10 @@ import mediaQueries from './mediaQueries'
 
 const padding = {
   xs: { compact: '4%', cozy: '8%', comfortable: '12%' },
-  sm: { compact: '3.333%', cozy: '6.666%', comfortable: '10%' },
-  md: { compact: '2.666%', cozy: '5.333%', comfortable: '8%' },
-  lg: { compact: '2%', cozy: '4%', comfortable: '6%' },
-  xl: { compact: '1.333%', cozy: '2.666%', comfortable: '4%' }
+  sm: { compact: '3.666%', cozy: '7.333%', comfortable: '11%' },
+  md: { compact: '3.333%', cozy: '6.666%', comfortable: '10%' },
+  lg: { compact: '3%', cozy: '6%', comfortable: '9%' },
+  xl: { compact: '2.666%', cozy: '5.333%', comfortable: '8%' }
 }
 
 const Layout = styled.div`
