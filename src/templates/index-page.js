@@ -134,8 +134,8 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
         title="Technology of the future, protection for today"
         subtitle="We are a team of experts who specialize in the design of fixed toxic and combustible gas detection, flame detection, and complete turn-key safety systems."
         backgroundVideo={{
-          webm: '/media/esp-hero-bg-480p.webm',
-          mp4: '/media/esp-hero-bg-480p.mp4'
+          webm: '/media/esp-home-hero-bg.webm',
+          mp4: '/media/esp-home-hero-bg.mp4'
         }}
         primaryButtonLink={'/products'}
         primaryButtonLabel={'View Our Products'}
@@ -234,7 +234,20 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
         </VisibilityTrailAnimation>
       </Section>
       <Section xsPadding="comfortable" backgroundColor="#F6F6F6">
-        <Row middle>
+        <Row reverse="sm" middle>
+          <Col sm={6}>
+            <Row>
+              <Col sm={6} smOffset={3}>
+                <VisibilitySensor
+                  once
+                  offset={{ bottom: 300 }}
+                  onChange={certificationBlockIsVisible => setCertificationBlockIsVisible(certificationBlockIsVisible)}
+                >
+                  <CertificationBadge style={stampAnimation} />
+                </VisibilitySensor>
+              </Col>
+            </Row>
+          </Col>
           <Col sm={6}>
             <VisibilityTrailAnimation>
               <SectionSupertitle>Reliability is protection</SectionSupertitle>
@@ -245,17 +258,6 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
                 demand high performance, reliability, and continuous integrity levels.
               </p>
             </VisibilityTrailAnimation>
-          </Col>
-          <Col sm={6}>
-            <div style={{ width: '50%', margin: '0 auto' }}>
-              <VisibilitySensor
-                once
-                offset={{ bottom: 300 }}
-                onChange={certificationBlockIsVisible => setCertificationBlockIsVisible(certificationBlockIsVisible)}
-              >
-                <CertificationBadge style={stampAnimation} />
-              </VisibilitySensor>
-            </div>
           </Col>
         </Row>
       </Section>
