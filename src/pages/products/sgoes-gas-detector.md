@@ -1,21 +1,9 @@
 ---
 templateKey: product
-title: SGOES Gas Detector
+title: '**SGOES** Gas Detector'
 subtitle: SIL2 Rated
 slug: sgoes-gas-detector
 category: combustible-gas-detectors
-summary: >-
-  ESP Safety’s Model SGOES Gas Detector measures the concentration of
-  hydrocarbon gases present in the monitored environment. The SGOES is configured
-  to report alarms when the gas concentrations in the environment reach the two
-  independently programmable levels, expressed as a percentage of the lower
-  explosive limit (LEL) in air.
-model: SGOES M11
-function: Gas detector
-rating: >-
-  FM & CSA Class I, Division 1 Groups B, C & D T4 Ta = -40°F to +167°F (-40°C to
-  +75°C), IP66,ATEX&IECEX  II 2 (1) G Ex db [ia IIC Ga] IIB+H2 T4 Gb Ta = -40°C
-  to +85°C IP66, SIL2
 images:
   - /media/sgoes.png
   - /media/img3454715px.jpg
@@ -23,6 +11,18 @@ images:
   - /media/img3438715px.jpg
   - /media/img3436715px.jpg
   - /media/img3434715px.jpg
+summary: >-
+  **ESP Safety’s Model SGOES** Gas Detector measures the concentration of
+  hydrocarbon gases present in the monitored environment. The SGOES is
+  configured to report alarms when the gas concentrations in the environment
+  reach the two independently programmable levels, expressed as a percentage of
+  the lower explosive limit (LEL) in air.
+model: SGOES M11
+function: Gas detector
+rating: >-
+  FM & CSA Class I, Division 1 Groups B, C & D T4 Ta = -40°F to +167°F (-40°C to
+  +75°C), IP66,ATEX&IECEX  II 2 (1) G Ex db [ia IIC Ga] IIB+H2 T4 Gb Ta = -40°C
+  to +85°C IP66, SIL2
 overview: >-
   ESP Safety’s Model SGOES Gas Detector measures the concentration of
   hydrocarbon gases present in the monitored environment. The SGOES is
@@ -222,3 +222,4 @@ specificationCategories:
           IP66
     title: Certifications
 ---
+
