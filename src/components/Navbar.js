@@ -183,7 +183,7 @@ const NavBar = class extends React.Component {
     this.scheduledAnimationFrame = false
     this.navRef = React.createRef()
     this.logoRef = React.createRef()
-    this.scrollTop = window.scrollY
+    this.scrollTop = typeof window !== `undefined` ? window.scrollY : 0
     this.scrollDirection = 'down'
     this.scrollDirectionChangePoint = null
   }
