@@ -96,26 +96,26 @@ const SpecificationCategoryRow = styled(Row)`
   margin-bottom: 8%;
 `
 const SpecificationCategoryTitle = styled.h3`
-  font-size: 24px;
+  font-size: 1.5rem;
   color: #ffffff;
   letter-spacing: -0.5px;
 `
 const SpecificationLabel = styled.div`
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 700;
   color: #ffffff;
-  letter-spacing: -0.38px;
+  letter-spacing: -0.025rem;
   margin-bottom: 2%;
 `
 const SpecificationValue = styled.div`
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 300;
   color: #cccccc;
-  letter-spacing: -0.38px;
+  letter-spacing: -0.025em;
   & p {
     font-size: inherit;
     color: inherit;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
   }
   & table {
     width: 100%;
@@ -126,7 +126,7 @@ const SpecificationValue = styled.div`
   th {
     margin: 0;
     border: 0;
-    padding: 12px 16px 12px 0;
+    padding: 0.75rem 1rem 0.75rem 0;
     &:last-child {
       padding-right: 0;
     }
@@ -145,18 +145,18 @@ const SpecificationValue = styled.div`
 `
 
 const SpecificationCol = styled(Col)`
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 `
 const SpecificationsTitle = styled.h2`
   color: #ffffff;
 `
 
 const DownloadCategory = styled.div`
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
 `
 const Download = styled.div`
-  padding: 12px 0;
+  padding: 0.75rem 0;
   border-bottom: 1px solid #dddddd;
   &:last-child {
     border: none;
