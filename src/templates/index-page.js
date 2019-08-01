@@ -185,7 +185,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
               icon={FlameIcon}
               title="Flame Detectors"
               description="Detect hydrogen and hydrocarbon based fires. High immunity to false alarms and wide temperature range."
-              link="/products/flame-detectors"
+              link="/products?tab=flame-detectors"
             />
           </Col>
           <Col xs={6} md={3}>
@@ -193,7 +193,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
               icon={CombustibleGasIcon}
               title="Combustible Gas Detectors"
               description="Detects the presence of combustible and flammable gases. Fast response time and wide temperature range."
-              link="/products/combustible-gas-detectors"
+              link="/products?tab=combustible-gas-detectors"
             />
           </Col>
           <Col xs={6} md={3}>
@@ -201,7 +201,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
               icon={ToxicGasIcon}
               title="Toxic Gas Detectors"
               description="Continuous monitoring of the atmosphere for toxic gas leaks "
-              link="/products/toxic-gas-detectors"
+              link="/products?tab=toxic-gas-detectors"
             />
           </Col>
           <Col xs={6} md={3}>
@@ -209,7 +209,7 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
               icon={OxygenIcon}
               title="Oxygen Detectors"
               description="Detects oxygen at dangerously low levels or high levels which can cause flammability of materials and gases."
-              link="oxygen-detectors"
+              link="/products?tab=oxygen-detectors"
             />
           </Col>
         </Row>
