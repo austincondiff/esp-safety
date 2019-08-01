@@ -104,7 +104,7 @@ class TabContainer extends React.Component {
   tabNavWrapRef = React.createRef()
   tabNavRef = React.createRef()
 
-  scrollTop = window.scrollY
+  scrollTop = typeof window !== `undefined` ? window.scrollY : 0
   scrollDirection = 'down'
   scrollDirectionChangePoint = 0
   setScrollingTimeout = null
