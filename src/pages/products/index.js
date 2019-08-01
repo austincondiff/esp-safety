@@ -6,6 +6,7 @@ import Context from '../../components/Context'
 import Header from '../../components/Header'
 import Section from '../../components/Section'
 import VisibilityTrailAnimation from '../../components/VisibilityTrailAnimation'
+import MarkdownContent from '../../components/MarkdownContent'
 
 import { Layout, Row, Col, mediaQueries } from '../../components/Layout'
 import { PageTabs, Tab } from '../../components/Tabs'
@@ -15,6 +16,14 @@ const ProductLink = styled(Link)`
   padding: 32px 0;
 `
 
+const CategoryLink = styled(Link)`
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  display: inline-block;
+  color: #777777;
+`
 const ProductImage = styled.div`
   padding-bottom: 100%;
   position: relative;
@@ -26,6 +35,28 @@ const ProductImage = styled.div`
 `
 const ProductTitle = styled.h3`
   margin: 0;
+  font-weight: 300;
+  & strong {
+    font-weight: 900;
+  }
+`
+const ProductSubtitle = styled.span`
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  font-weight: 700;
+  color: #777777;
+`
+const ProductHighlight = styled.div`
+  background-color: ${props => props.theme.color.primary};
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.35em 0.4em;
+  display: inline-block;
+  margin-bottom: 0.75em;
+  line-height: 1em;
 `
 
 const ProductsIndexPage = ({ data }) => {
@@ -62,8 +93,11 @@ const ProductsIndexPage = ({ data }) => {
                   {console.log({ product })}
                   <ProductLink to={`/products/${product.slug}`} key={product.id}>
                     <ProductImage src={`/media/${product.images[0].relativePath}`} alt={product.title} />
-                    <ProductTitle>{product.title}</ProductTitle>
-                    <div>{product.subtitle}</div>
+                    {product.highlight && <ProductHighlight>{product.highlight}</ProductHighlight>}
+                    <ProductTitle>
+                      <MarkdownContent disallowedTypes={['paragraph']} unwrapDisallowed content={product.title} />
+                    </ProductTitle>
+                    {product.subtitle && <ProductSubtitle>{product.subtitle}</ProductSubtitle>}
                   </ProductLink>
                 </Col>
               ))
@@ -131,6 +165,7 @@ export default () => {
                   category
                   title
                   subtitle
+                  highlight
                   images {
                     relativePath
                   }

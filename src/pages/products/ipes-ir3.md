@@ -1,7 +1,8 @@
 ---
 templateKey: product
-title: IPES IR3
-subtitle: Flame Detector
+title: '**IPES IR3** Flame Detector'
+subtitle: Advanced detection technology ensures rapid flame recognition
+highlight: SIL3 Rated
 slug: ipes-ir3
 category: flame-detectors
 images:

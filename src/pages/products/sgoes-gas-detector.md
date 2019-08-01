@@ -1,7 +1,8 @@
 ---
 templateKey: product
 title: '**SGOES** Gas Detector'
-subtitle: SIL2 Rated
+subtitle: Protect against combustable gasses in any environment
+highlight: SIL2 Rated
 slug: sgoes-gas-detector
 category: combustible-gas-detectors
 images:
@@ -12,7 +13,7 @@ images:
   - /media/img3436715px.jpg
   - /media/img3434715px.jpg
 summary: >-
-  **ESP Safety’s Model SGOES** Gas Detector measures the concentration of
+  **ESP Safety’s Model SGOES Gas Detector** measures the concentration of
   hydrocarbon gases present in the monitored environment. The SGOES is
   configured to report alarms when the gas concentrations in the environment
   reach the two independently programmable levels, expressed as a percentage of
@@ -222,4 +223,3 @@ specificationCategories:
           IP66
     title: Certifications
 ---
-

@@ -14,43 +14,16 @@ import vimeo from '../images/social/vimeo.svg'
 
 const PageTitle = styled.h1`
   margin: 0;
-  font-size: 32px;
-  line-height: 0.95em;
   font-weight: 300;
   letter-spacing: -0.5px;
   -webkit-font-smoothing: antialiased;
-  ${mediaQueries.sm} {
-    font-size: 36px;
-  }
-  ${mediaQueries.md} {
-    font-size: 40px;
-  }
-  ${mediaQueries.lg} {
-    font-size: 44px;
-  }
-  ${mediaQueries.xl} {
-    font-size: 48px;
-  }
 `
 const PageSubtitle = styled.h3`
-  margin: 8px 0 0 0;
+  margin: 0.5rem 0 0 0;
   color: ${props => props.theme.color.primary};
   font-weight: 700;
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 1.25em;
-
-  ${mediaQueries.sm} {
-    font-size: 15px;
-  }
-  ${mediaQueries.md} {
-    font-size: 16px;
-  }
-  ${mediaQueries.lg} {
-    font-size: 18px;
-  }
-  ${mediaQueries.xl} {
-    font-size: 20px;
-  }
 `
 
 const Header = ({ title, subtitle, backgroundImage }) => (

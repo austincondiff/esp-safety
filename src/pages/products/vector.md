@@ -1,7 +1,8 @@
 ---
 templateKey: product
-title: Vector
-subtitle: Field Control Unit & Display
+title: '**Vector** Field Control Unit & Display'
+subtitle: Performs as an integrated control terminal and display
+highlight: SIL Rated (pending)
 slug: vector
 category: combustible-gas-detectors
 images:

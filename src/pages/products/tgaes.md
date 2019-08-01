@@ -1,7 +1,8 @@
 ---
 templateKey: product
-title: TGAES Open Path Gas Detector
-subtitle: Open Path Gas Detector
+title: '**TGAES** Open Path Gas Detector'
+subtitle: Provide continuous monitoring of combustible gas
+highlight: SIL2 Rated
 slug: tgaes
 category: combustible-gas-detectors
 images:

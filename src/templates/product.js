@@ -32,13 +32,26 @@ const Heading = styled.header`
 `
 const Title = styled.h1`
   margin: 0;
+  & strong {
+    font-weight: 900;
+  }
 `
 const Subtitle = styled.span`
   display: block;
-  margin-top: 12px;
-  font-size: 18px;
+  margin-top: 0.25rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #777777;
+`
+const Highlight = styled.div`
+  background-color: ${props => props.theme.color.primary};
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.5rem 0.65rem;
+  display: inline-block;
+  margin-top: 2rem;
+  line-height: 1em;
 `
 const Summary = styled.div`
   font-size: 18px;
@@ -171,12 +184,15 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
             <VisibilityTrailAnimation>
               <Heading>
                 <CategoryLink to={`/product-categories/${data.category.slug}`}>{data.category.title}</CategoryLink>
-                <Title>{title}</Title>
-                <Subtitle>{data.subtitle}</Subtitle>
+                <Title>
+                  <MarkdownContent disallowedTypes={['paragraph']} unwrapDisallowed content={title} />
+                </Title>
+                {data.subtitle && <Subtitle>{data.subtitle}</Subtitle>}
+                {data.highlight && <Highlight>{data.highlight}</Highlight>}
               </Heading>
               {data.summary && (
                 <Summary>
-                  <LinesToParagraphs text={data.summary} />
+                  <MarkdownContent content={data.summary} />
                 </Summary>
               )}
               {(data.model || data.function || data.rating) && (
@@ -398,6 +414,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         subtitle
+        highlight
         slug
         category
         summary
