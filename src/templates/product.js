@@ -14,7 +14,7 @@ import { Layout, Row, Col, mediaQueries } from '../components/Layout'
 import ImageGallery from '../components/ImageGallery'
 import ReadMore from '../components/ReadMore'
 import MarkdownContent from '../components/MarkdownContent'
-import { Tabs, Tab } from '../components/Tabs'
+import { PageTabs, Tab } from '../components/Tabs'
 import Content, { HTMLContent } from '../components/Content'
 import LinesToParagraphs from '../components/LinesToParagraphs'
 import VisibilityTrailAnimation from '../components/VisibilityTrailAnimation'
@@ -157,7 +157,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
   return (
     <React.Fragment>
       {/*}<Header title={title} subtitle={data.category} />*/}
-      <Section xsPaddingTop="cozy" xsPaddingBottom="comfortable">
+      <Section xsPaddingTop="compact" xsPaddingBottom="compact">
         <Row reverse="sm">
           {data.images && data.images.length && (
             <Col xs={12} sm={6}>
@@ -203,119 +203,128 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
             </VisibilityTrailAnimation>
           </Col>
         </Row>
-        <Row>
-          <Col xs={12}>
-            <VisibilityTrailAnimation>
-              <Tabs>
-                {data.overview && (
-                  <Tab label="Product Overview" value="overview">
-                    <ColumnsWrap>
-                      <LinesToParagraphs text={data.overview} />
-                    </ColumnsWrap>
-                  </Tab>
-                )}
-                {data.applications && (
-                  <Tab label="Applications" value="applications">
-                    <p>
-                      The explosion-proof design of SGOES makes it ideal for use in hazardous environments such as the
-                      following.
-                    </p>
-                    <ul
-                      style={{
-                        columnCount: 2
-                      }}
-                    >
-                      {data.applications.map(({ application }) => (
-                        <li>{application}</li>
-                      ))}
-                    </ul>
-                  </Tab>
-                )}
-                {data.features && (
-                  <Tab label="Features & Benefits" value="features">
-                    <p>The following features and benefits make SGOES the perfect solution for your safety requirements.</p>
-                    <ul
-                      style={{
-                        columnCount: 2
-                      }}
-                    >
-                      {data.features.map(({ feature }) => (
-                        <li>{feature}</li>
-                      ))}
-                    </ul>
-                  </Tab>
-                )}
-                {console.log(data.downloadCategories)}
-                {data.downloadCategories && data.downloadCategories.length && (
-                  <Tab label="Downloads" value="downloads">
-                    {data.downloadCategories &&
-                      data.downloadCategories.map(downloadCategory => (
-                        <DownloadCategory>
-                          {data.downloadCategories.length > 1 && <h3>{downloadCategory.title}</h3>}
-                          {downloadCategory.downloads.map(d => (
-                            <Download>
-                              <a href={`/media/${d.file.relativePath}`} target="_blank" rel="noreferrer noopener">
-                                {d.title} ({d.file.prettySize})
-                              </a>
-                              {d.description && <React.Fragment>- {d.description}</React.Fragment>}
-                            </Download>
-                          ))}
-                        </DownloadCategory>
-                      ))}
-                  </Tab>
-                )}
-              </Tabs>
-            </VisibilityTrailAnimation>
-          </Col>
-        </Row>
       </Section>
-      {data.sections &&
-        data.sections.map((s, i) => (
-          <Section
-            xsPadding="comfortable"
-            backgroundImage={`/media/${s.image.relativePath}`}
-            backgroundColor={i % 2 === 0 ? '#F6F6F6' : '#FFFFFF'}
-            imagePosition={i % 2 === 0 ? 'right' : 'left'}
-            parallax
-          >
-            <VisibilityTrailAnimation>
-              <h2 style={{ color: '#DD2C2C' }}>{s.title}</h2>
-              <div>
-                <MarkdownContent content={s.content} />
-              </div>
-            </VisibilityTrailAnimation>
-          </Section>
-        ))}
-      <SpecificationsSection xsPadding="comfortable">
-        <SpecificationsTitle>Specifications</SpecificationsTitle>
-        {data.specificationCategories &&
-          data.specificationCategories.map(specificationCategory => (
-            <SpecificationCategoryRow>
-              <Col lg={4}>
-                <VisibilityTrailAnimation>
-                  <SpecificationCategoryTitle>{specificationCategory.title}</SpecificationCategoryTitle>
-                </VisibilityTrailAnimation>
-              </Col>
-              <Col lg={8}>
-                <Row>
-                  {specificationCategory.specifications &&
-                    specificationCategory.specifications.map(specification => (
-                      <SpecificationCol xs={specification.fullWidth ? 12 : 6}>
-                        <VisibilityTrailAnimation>
-                          {specification.label && <SpecificationLabel>{specification.label}</SpecificationLabel>}
-                          {specification.text && (
-                            <SpecificationValue>
-                              <MarkdownContent content={specification.text} />
-                            </SpecificationValue>
-                          )}
-                        </VisibilityTrailAnimation>
-                      </SpecificationCol>
-                    ))}
-                </Row>
-              </Col>
-            </SpecificationCategoryRow>
-          ))}
-      </SpecificationsSection>
+      <PageTabs scroll>
+        {console.log({ data })}
+        {(data.overview || data.sections) && (
+          <Tab label="Product Overview" value="overview">
+            <React.Fragment>
+              {data.overview && (
+                <Section xsPadding="comfortable">
+                  <h2>Product Overview</h2>
+                  <ColumnsWrap>
+                    <LinesToParagraphs text={data.overview} />
+                  </ColumnsWrap>
+                </Section>
+              )}
+              {data.sections &&
+                data.sections.map((s, i) => (
+                  <Section
+                    xsPadding="comfortable"
+                    backgroundImage={`/media/${s.image.relativePath}`}
+                    backgroundColor={i % 2 === 0 ? '#F6F6F6' : '#FFFFFF'}
+                    imagePosition={i % 2 === 0 ? 'right' : 'left'}
+                    parallax
+                  >
+                    <VisibilityTrailAnimation>
+                      <h2 style={{ color: '#DD2C2C' }}>{s.title}</h2>
+                      <div>
+                        <MarkdownContent content={s.content} />
+                      </div>
+                    </VisibilityTrailAnimation>
+                  </Section>
+                ))}
+            </React.Fragment>
+          </Tab>
+        )}
+        {data.applications && (
+          <Tab label="Applications" value="applications">
+            <Section xsPadding="comfortable">
+              <h2>Applications</h2>
+              <p>The explosion-proof design of SGOES makes it ideal for use in hazardous environments such as the following.</p>
+              <ul
+                style={{
+                  columnCount: 2
+                }}
+              >
+                {data.applications.map(({ application }) => (
+                  <li>{application}</li>
+                ))}
+              </ul>
+            </Section>
+          </Tab>
+        )}
+        {data.features && (
+          <Tab label="Features & Benefits" value="features">
+            <Section xsPadding="comfortable">
+              <h2>Features & Benefits</h2>
+              <p>The following features and benefits make SGOES the perfect solution for your safety requirements.</p>
+              <ul
+                style={{
+                  columnCount: 2
+                }}
+              >
+                {data.features.map(({ feature }) => (
+                  <li>{feature}</li>
+                ))}
+              </ul>
+            </Section>
+          </Tab>
+        )}
+        {data.specificationCategories && (
+          <Tab label="Specifications" value="specifications">
+            <SpecificationsSection xsPadding="comfortable">
+              <SpecificationsTitle>Specifications</SpecificationsTitle>
+              {data.specificationCategories.map(specificationCategory => (
+                <SpecificationCategoryRow>
+                  <Col lg={4}>
+                    <VisibilityTrailAnimation>
+                      <SpecificationCategoryTitle>{specificationCategory.title}</SpecificationCategoryTitle>
+                    </VisibilityTrailAnimation>
+                  </Col>
+                  <Col lg={8}>
+                    <Row>
+                      {specificationCategory.specifications &&
+                        specificationCategory.specifications.map(specification => (
+                          <SpecificationCol xs={specification.fullWidth ? 12 : 6}>
+                            <VisibilityTrailAnimation>
+                              {specification.label && <SpecificationLabel>{specification.label}</SpecificationLabel>}
+                              {specification.text && (
+                                <SpecificationValue>
+                                  <MarkdownContent content={specification.text} />
+                                </SpecificationValue>
+                              )}
+                            </VisibilityTrailAnimation>
+                          </SpecificationCol>
+                        ))}
+                    </Row>
+                  </Col>
+                </SpecificationCategoryRow>
+              ))}
+            </SpecificationsSection>
+          </Tab>
+        )}
+        {data.downloadCategories && data.downloadCategories.length && (
+          <Tab label="Downloads" value="downloads">
+            <Section xsPadding="comfortable">
+              <h2>Downloads</h2>
+              {data.downloadCategories.map(downloadCategory => (
+                <DownloadCategory>
+                  {data.downloadCategories.length > 1 && <h3>{downloadCategory.title}</h3>}
+                  {downloadCategory.downloads.map(d => (
+                    <Download>
+                      <a href={`/media/${d.file.relativePath}`} target="_blank" rel="noreferrer noopener">
+                        {d.title} ({d.file.prettySize})
+                      </a>
+                      {d.description && <React.Fragment>- {d.description}</React.Fragment>}
+                    </Download>
+                  ))}
+                </DownloadCategory>
+              ))}
+            </Section>
+          </Tab>
+        )}
+      </PageTabs>
     </React.Fragment>
   )
 }
@@ -344,7 +353,8 @@ const Product = ({ data }) => {
       navHidden: false,
       navNeverExpanded: false,
       navTransparent: false,
-      navTransparentExpanded: false
+      navTransparentExpanded: false,
+      navShadowExpanded: false
     })
   }, [])
 

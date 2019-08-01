@@ -10,6 +10,7 @@ const defaultContextValue = {
     navDarkMode: false,
     navDarkModeExpanded: true,
     navHidden: false,
+    navShadowExpanded: true,
     ...theme.navigation
   },
   set: () => {}

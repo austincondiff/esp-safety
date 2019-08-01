@@ -61,7 +61,8 @@ const Post = ({ data }) => {
       navHidden: false,
       navNeverExpanded: false,
       navTransparent: false,
-      navTransparentExpanded: true
+      navTransparentExpanded: true,
+      navShadowExpanded: true
     })
   }, [])
 

@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Link, { navigate } from 'gatsby-link'
 import styled from 'styled-components'
 
+import Context from '../../components/Context'
 import Header from '../../components/Header'
 import Section from '../../components/Section'
 import { Button } from '../../components/Button'
@@ -57,7 +58,7 @@ function encode(data) {
     .join('&')
 }
 
-export default class Index extends React.Component {
+class ContactPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = { isValidated: false }
@@ -172,4 +173,23 @@ export default class Index extends React.Component {
       </React.Fragment>
     )
   }
+}
+
+export default () => {
+  const context = useContext(Context)
+
+  useEffect(() => {
+    context.set({
+      navDarkMode: false,
+      navDarkModeExpanded: true,
+      navFullWidth: false,
+      navHidden: false,
+      navNeverExpanded: false,
+      navTransparent: false,
+      navTransparentExpanded: true,
+      navShadowExpanded: true
+    })
+  }, [])
+
+  return <ContactPage />
 }

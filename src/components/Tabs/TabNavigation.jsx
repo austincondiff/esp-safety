@@ -1,14 +1,38 @@
-import React, { Component } from 'react'
+import React, { createRef } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { mediaQueries } from '../Layout'
+import { Layout, mediaQueries } from '../Layout'
+import { debounce } from '../../lib/utils'
 
 const TabsWrapper = styled.div`
   padding-bottom: 2.5em;
   overflow-x: auto;
   overflow-y: hidden;
 
+  height: 4rem;
   margin: 0 -24px;
+
+  ${props =>
+    props.sticky
+      ? `
+      background-color: #FFFFFF;
+      width: 100%;
+      padding: 0;
+      position: relative;
+      box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.15);
+      margin: 0;
+      `
+      : ``}
+
+  ${props =>
+    props.sticky && props.stuck
+      ? `
+    position: fixed;
+    top: 0;
+    z-index: 99;`
+      : ``}
+
+  ${props => (props.centered ? `text-align: center;` : ``)}
 
   &::-webkit-scrollbar {
     display: none;
@@ -19,25 +43,27 @@ const StyledTabs = styled.div`
   position: relative;
   width: fit-content;
   min-width: 100%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-  white-space: nowrap;
-
+  height: 4rem;
   padding: 0 1.5rem;
+  white-space: nowrap;
+  ${props => (props.sticky ? `padding: 0;` : `border-bottom: 1px solid rgba(0, 0, 0, 0.15);`)}
 
   ${mediaQueries.sm} {
-    min-width: calc(100% - 3rem);
+    min-width: ${props => (props.sticky ? `100%` : `calc(100% - 3rem)`)};
     margin: 0 1.5rem;
     padding: 0;
+    ${props => (props.sticky ? `margin: 0;` : ``)}
   }
 `
 const StyledTab = styled.div`
   display: inline-block;
   text-align: center;
-  margin: 0 1rem 0 1rem;
+  height: 4rem;
+  margin: 0 1.25rem 0 1.25rem;
   vertical-align: middle;
   cursor: pointer;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 700;
   padding: 1.25rem 0px;
   outline: none;
   color: ${props => (props.active ? props.theme.color.primary : '#000000')};
@@ -66,21 +92,79 @@ const ActiveTabIndicator = styled.div`
   backface-visibility: hidden;
 `
 
-class TabContainer extends Component {
+class TabContainer extends React.Component {
   state = {
     activeTabWidth: null,
-    activeTabPosition: null
+    activeTabPosition: null,
+    stuck: false
   }
 
   tabRefs = []
 
+  tabNavWrapRef = React.createRef()
+  tabNavRef = React.createRef()
+
+  scrollTop = window.scrollY
+  scrollDirection = 'down'
+  scrollDirectionChangePoint = 0
+  setScrollingTimeout = null
+
   componentDidMount() {
     window.addEventListener('resize', this.moveActiveTabIndicator)
+    if (this.props.sticky) window.addEventListener('scroll', this.handleScroll)
     this.moveActiveTabIndicator(this.props.value)
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.moveActiveTabIndicator)
+    if (this.props.sticky) {
+      window.removeEventListener('scroll', this.handleScroll)
+      window.scrollTo(0, 0)
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.value !== this.props.value) this.moveActiveTabIndicator(this.props.value)
+  }
+
+  handleScroll = () => {
+    const { stuck } = this.state
+    const scrollTop = window.scrollY
+    const tabNavTop = this.tabNavWrapRef.current && scrollTop + this.tabNavWrapRef.current.getBoundingClientRect().top
+
+    const scrollDirection = scrollTop >= this.scrollTop ? 'down' : 'up'
+    const navCondensedHeight = 64
+
+    this.scrollTop = scrollTop
+
+    const stickyAnchor = this.scrollDirectionChangePoint || tabNavTop
+
+    if (scrollTop >= tabNavTop - 64) {
+      if (scrollDirection !== this.scrollDirection) {
+        if (scrollDirection === 'up' && scrollTop > this.scrollDirectionChangePoint + navCondensedHeight) {
+          this.scrollDirectionChangePoint = scrollTop
+        } else if (
+          scrollDirection === 'down' &&
+          (scrollTop < this.scrollDirectionChangePoint - navCondensedHeight || scrollTop > this.scrollDirectionChangePoint)
+        ) {
+          this.scrollDirectionChangePoint = scrollTop + navCondensedHeight
+        }
+
+        this.scrollDirection = scrollDirection
+      }
+
+      const stickyTopScrollOffset = stickyAnchor - scrollTop
+      let tabNavTranslateY =
+        stickyTopScrollOffset > navCondensedHeight ? navCondensedHeight : stickyTopScrollOffset <= 0 ? 0 : stickyTopScrollOffset
+
+      if (this.tabNavRef) this.tabNavRef.current.style.transform = `translateY(${tabNavTranslateY}px)`
+
+      if (!stuck) this.setState({ stuck: true })
+    } else {
+      this.tabNavRef.current.style.transform = ``
+      this.scrollDirectionChangePoint = null
+      if (stuck) this.setState({ stuck: false })
+    }
   }
 
   handleTabChange = value => {
@@ -99,29 +183,34 @@ class TabContainer extends Component {
   handleKeyDown = (value, event) => (event.keyCode === 13 || event.keyCode === 32) && this.handleTabChange(value)
 
   render() {
-    const { activeTabWidth, activeTabPosition } = this.state
-    const { tabs, value } = this.props
+    const { activeTabWidth, activeTabPosition, stuck } = this.state
+    const { tabs, value, useLayout, sticky, centered } = this.props
+    const LayoutComponent = useLayout ? Layout : React.Fragment
 
     return tabs && tabs.length > 1 ? (
-      <TabsWrapper>
-        <StyledTabs>
-          {tabs.map((tab, i) => (
-            <StyledTab
-              active={tab.value === value}
-              key={`tab-${tab.value}-${i}`}
-              onClick={() => this.handleTabChange(tab.value)}
-              onKeyDown={event => this.handleKeyDown(tab.value, event)}
-              ref={el => {
-                this.tabRefs[`tab_${tab.value}`] = el
-              }}
-              tabIndex="0"
-            >
-              <StyledLabel>{tab.label}</StyledLabel>
-            </StyledTab>
-          ))}
-          <ActiveTabIndicator width={activeTabWidth} position={activeTabPosition} />
-        </StyledTabs>
-      </TabsWrapper>
+      <div id={sticky && 'sticky-tabs'} style={{ height: '4rem' }} ref={this.tabNavWrapRef}>
+        <TabsWrapper ref={this.tabNavRef} sticky={sticky} stuck={stuck} centered={centered}>
+          <StyledTabs sticky={sticky}>
+            <LayoutComponent>
+              {tabs.map((tab, i) => (
+                <StyledTab
+                  active={tab.value === value}
+                  key={`tab-${tab.value}-${i}`}
+                  onClick={() => this.handleTabChange(tab.value)}
+                  onKeyDown={event => this.handleKeyDown(tab.value, event)}
+                  ref={el => {
+                    this.tabRefs[`tab_${tab.value}`] = el
+                  }}
+                  tabIndex="0"
+                >
+                  <StyledLabel>{tab.label}</StyledLabel>
+                </StyledTab>
+              ))}
+              <ActiveTabIndicator width={activeTabWidth} position={activeTabPosition} />
+            </LayoutComponent>
+          </StyledTabs>
+        </TabsWrapper>
+      </div>
     ) : null
   }
 }

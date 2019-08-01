@@ -21,11 +21,13 @@ class Tabs extends Component {
 
   getTabs = () => {
     const { children } = this.props
-    const tabs = React.Children.toArray(children).filter(c => c).map((tab, i) => {
-      const { label, value, onChange } = tab.props
+    const tabs = React.Children.toArray(children)
+      .filter(c => c)
+      .map((tab, i) => {
+        const { label, value, onChange } = tab.props
 
-      return { label, value: value ? value : `tab${i}`, onChange }
-    })
+        return { label, value: value ? value : `tab${i}`, onChange }
+      })
 
     return tabs
   }
@@ -33,13 +35,26 @@ class Tabs extends Component {
   onTabChange = value => this.setState({ value }, () => this.props.onChange && this.props.onChange(value))
 
   render() {
-    const { children } = this.props
+    const { children, useLayout, sticky, centered, scroll } = this.props
     const { value, tabs } = this.state
 
     return (
       <div>
-        <TabNavigation tabs={tabs} value={value} onChange={this.onTabChange} />
-        <TabContent tabs={React.Children.toArray(children).filter(c => c)} value={value} />
+        <TabNavigation
+          tabs={tabs}
+          value={value}
+          onChange={this.onTabChange}
+          sticky={sticky}
+          useLayout={useLayout}
+          centered={centered}
+          scroll={scroll}
+        />
+        <TabContent
+          tabs={React.Children.toArray(children).filter(c => c)}
+          value={value}
+          scroll={scroll}
+          onChange={this.onTabChange}
+        />
       </div>
     )
   }

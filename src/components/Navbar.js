@@ -19,7 +19,8 @@ const NavWrap = styled.nav`
   z-index: 100;
   background: ${props => (props.transparent ? 'transparent' : props.darkMode ? '#111111' : 'white')};
   height: ${props => props.height || 104}px;
-  box-shadow: 0 1px 0 ${props => (props.darkMode ? 'rgba(255,255,255,0.25)' : 'rgba(0, 0, 0, 0.15)')};
+  box-shadow: ${props =>
+    props.hasShadow ? `0 1px 0 ${props.darkMode ? 'rgba(255,255,255,0.25)' : 'rgba(0, 0, 0, 0.15)'}` : `0 0 0 transparent`};
   display: flex;
   align-items: center;
   transition: 0.25s background-color, 0.25s box-shadow;
@@ -41,13 +42,13 @@ const LogoLink = styled(Link)`
   height: 100%;
 `
 const NavLinksWrap = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
-  bottom: 0;
   width: 66vw;
+  height: 100vh;
   background-color: #000000;
-  z-index: 100;
+  z-index: 102;
   transform: translateX(${props => (props.showMobileMenu ? '0%' : '100%')});
   transition: transform 0.25s;
   overflow-x: hidden;
@@ -158,7 +159,7 @@ const IconButton = styled.button`
 `
 const MenuIconButton = styled(IconButton)`
   position: relative;
-  z-index: 101;
+  z-index: 102;
   color: ${props => (props.darkMode || props.showMobileMenu ? '#ffffff' : '#000000')};
   ${mediaQueries.md} {
     display: none;
@@ -176,11 +177,15 @@ const NavBar = class extends React.Component {
       transparent: true,
       darkOnTransparent: false,
       darkMode: false,
-      showMobileMenu: false
+      showMobileMenu: false,
+      stuck: false
     }
     this.scheduledAnimationFrame = false
     this.navRef = React.createRef()
     this.logoRef = React.createRef()
+    this.scrollTop = window.scrollY
+    this.scrollDirection = 'down'
+    this.scrollDirectionChangePoint = null
   }
 
   static contextType = Context
@@ -223,7 +228,7 @@ const NavBar = class extends React.Component {
       logoMobileHeightExpanded,
       isMobile
     } = this.props
-    const { expanded } = this.state
+    const { expanded, stuck } = this.state
     const navExpandedHeight = isMobile ? mobileHeightExpanded : heightExpanded
     const navCondensedHeight = isMobile ? mobileHeight : height
     const logoExpandedHeight = isMobile ? logoMobileHeightExpanded : logoHeightExpanded
@@ -232,6 +237,49 @@ const NavBar = class extends React.Component {
     const scrollFactor = scrollTop / (navExpandedHeight - navCondensedHeight)
     const currentHeight = navExpandedHeight - scrollTop
     const currentLogoHeight = logoExpandedHeight - scrollFactor * (logoExpandedHeight - logoCondensedHeight)
+
+    const stickyTabs = document.getElementById('sticky-tabs')
+    const scrollDirection = scrollTop >= this.scrollTop ? 'down' : 'up'
+    this.scrollTop = scrollTop
+
+    if (scrollDirection !== this.scrollDirection) {
+      if (scrollDirection === 'up' && scrollTop > this.scrollDirectionChangePoint + navCondensedHeight) {
+        this.scrollDirectionChangePoint = scrollTop
+      } else if (
+        scrollDirection === 'down' &&
+        (scrollTop < this.scrollDirectionChangePoint - navCondensedHeight || scrollTop > this.scrollDirectionChangePoint)
+      ) {
+        this.scrollDirectionChangePoint = scrollTop + navCondensedHeight
+      }
+
+      this.scrollDirection = scrollDirection
+    }
+
+    if (stickyTabs) {
+      const stickyTabsTop = scrollTop + stickyTabs.getBoundingClientRect().top
+      const stickyAnchor = this.scrollDirectionChangePoint || stickyTabsTop
+
+      if (scrollTop + navCondensedHeight > stickyTabsTop) {
+        const stickyTopScrollOffset = stickyAnchor - navCondensedHeight - scrollTop
+        let navTranslateY =
+          stickyTopScrollOffset > -navCondensedHeight
+            ? stickyTopScrollOffset <= 0
+              ? stickyTopScrollOffset
+              : 0
+            : -navCondensedHeight
+
+        this.navRef.current.style.transform = `translateY(${navTranslateY}px)`
+
+        if (!stuck) this.setState({ stuck: true })
+      } else {
+        this.navRef.current.style.transform = ``
+        this.scrollDirectionChangePoint = null
+        if (stuck) this.setState({ stuck: false })
+      }
+    } else {
+      this.navRef.current.style.transform = ``
+      if (this.state.stuck) this.setState({ stuck: false })
+    }
 
     if (scrollTop < navExpandedHeight - navCondensedHeight) {
       this.navRef.current.style.height = `${currentHeight}px`
@@ -250,16 +298,25 @@ const NavBar = class extends React.Component {
       darkMode: darkModeCondensed,
       darkModeExpanded,
       transparent: transparentCondensed,
-      transparentExpanded
+      transparentExpanded,
+      shadowExpanded
     } = this.props
-    const { expanded, showMobileMenu } = this.state
+    const { expanded, showMobileMenu, stuck } = this.state
     const { links } = data
 
     const darkMode = (expanded && darkModeExpanded) || (!expanded && darkModeCondensed)
     const transparent = (expanded && transparentExpanded) || (!expanded && transparentCondensed)
+    const hasShadow = !stuck && ((expanded && shadowExpanded) || !expanded)
 
     return (
-      <NavWrap ref={this.navRef} transparent={transparent} darkMode={darkMode} role="navigation" aria-label="main-navigation">
+      <NavWrap
+        ref={this.navRef}
+        transparent={transparent}
+        darkMode={darkMode}
+        hasShadow={hasShadow}
+        role="navigation"
+        aria-label="main-navigation"
+      >
         <NavInside>
           <LogoWrap>
             <LogoLink ref={this.logoRef} to="/" title="Logo">
@@ -349,6 +406,7 @@ export default ({ ...props }) => {
           transparent={context.data.navTransparent}
           darkMode={context.data.navDarkMode}
           darkModeExpanded={context.data.navDarkModeExpanded}
+          shadowExpanded={context.data.navShadowExpanded}
           hidden={context.data.navHidden}
           height={context.data.navHeight}
           heightExpanded={context.data.navHeightExpanded}
