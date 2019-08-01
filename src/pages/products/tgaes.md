@@ -1,6 +1,6 @@
 ---
 templateKey: product
-title: TGAES
+title: TGAES Open Path Gas Detector
 subtitle: Open Path Gas Detector
 slug: tgaes
 category: combustible-gas-detectors

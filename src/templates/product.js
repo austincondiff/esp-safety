@@ -25,6 +25,7 @@ const CategoryLink = styled(Link)`
   letter-spacing: 0.5px;
   margin-bottom: 12px;
   display: inline-block;
+  color: #777777;
 `
 const Heading = styled.header`
   margin-bottom: 48px;
@@ -227,7 +228,9 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
                     parallax
                   >
                     <VisibilityTrailAnimation>
-                      <h2 style={{ color: '#DD2C2C' }}>{s.title}</h2>
+                      <h2 style={{ color: '#DD2C2C' }}>
+                        <MarkdownContent content={s.title} />
+                      </h2>
                       <div>
                         <MarkdownContent content={s.content} />
                       </div>
