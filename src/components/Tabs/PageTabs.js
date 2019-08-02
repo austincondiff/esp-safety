@@ -13,7 +13,7 @@ class PageTabs extends React.Component {
     const { activeTab } = this.state
 
     return (
-      <Tabs scroll={scroll} useLayout sticky onChange={this.handleChange} value={activeTab}>
+      <Tabs scroll={scroll} useLayout useRouter sticky onChange={this.handleChange} value={activeTab}>
         {children}
       </Tabs>
     )

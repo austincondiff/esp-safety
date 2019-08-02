@@ -35,7 +35,7 @@ class Tabs extends Component {
   onTabChange = value => this.setState({ value }, () => this.props.onChange && this.props.onChange(value))
 
   render() {
-    const { children, useLayout, sticky, centered, scroll } = this.props
+    const { children, useLayout, sticky, centered, scroll, useRouter } = this.props
     const { value, tabs } = this.state
 
     return (
@@ -48,6 +48,7 @@ class Tabs extends Component {
           useLayout={useLayout}
           centered={centered}
           scroll={scroll}
+          useRouter={useRouter}
         />
         <TabContent
           tabs={React.Children.toArray(children).filter(c => c)}

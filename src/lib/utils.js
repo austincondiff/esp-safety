@@ -56,15 +56,14 @@ export const scrollTo = (scrollTargetY = 0, speed = 1000, callbackFn, easing = '
   tick()
 }
 
-export const debounce = (a, b, c) => {
-  var d, e
-  return function() {
-    function h() {
-      ;(d = null), c || (e = a.apply(f, g))
-    }
-    var f = this,
-      g = arguments
+export const paramsToObject = val => {
+  const params = new URLSearchParams(val)
+  let result = {}
 
-    return clearTimeout(d), (d = setTimeout(h, b)), c && !d && (e = a.apply(f, g)), e
+  for (let param of params) {
+    const [key, value] = param
+    result[key] = value
   }
+
+  return result
 }

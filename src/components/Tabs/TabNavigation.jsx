@@ -2,7 +2,7 @@ import React, { createRef } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Layout, mediaQueries } from '../Layout'
-import { debounce } from '../../lib/utils'
+import { paramsToObject } from '../../lib/utils'
 
 const TabsWrapper = styled.div`
   padding-bottom: 2.5em;
@@ -110,6 +110,14 @@ class TabContainer extends React.Component {
   setScrollingTimeout = null
 
   componentDidMount() {
+    const { tabs, useRouter, location, value } = this.props
+
+    if (useRouter) {
+      const { tab } = paramsToObject(window.location.search)
+      console.log(paramsToObject(window.location.search))
+      if (tab) this.handleTabChange(tab)
+    }
+
     window.addEventListener('resize', this.moveActiveTabIndicator)
     if (this.props.sticky) window.addEventListener('scroll', this.handleScroll)
     this.moveActiveTabIndicator(this.props.value)
@@ -168,8 +176,12 @@ class TabContainer extends React.Component {
   }
 
   handleTabChange = value => {
+    console.log(`Changing tabs to ${value}`)
     this.moveActiveTabIndicator(value)
     this.props.onChange(value)
+    if (this.props.useRouter) {
+      window.history.pushState(null, '', `${window.location.pathname}?tab=${value}`)
+    }
   }
 
   moveActiveTabIndicator = value => {

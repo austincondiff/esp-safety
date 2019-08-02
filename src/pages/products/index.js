@@ -14,6 +14,14 @@ import { PageTabs, Tab } from '../../components/Tabs'
 const ProductLink = styled(Link)`
   display: block;
   padding: 32px 0;
+  margin: -2rem;
+  padding: 2rem;
+  background-color: transparent;
+  border-radius: 8px;
+  transition: 0.25s;
+  &:hover {
+    background-color: #f7f7f7;
+  }
 `
 
 const CategoryLink = styled(Link)`
@@ -84,13 +92,11 @@ const ProductsIndexPage = ({ data }) => {
     return (
       <Section xsPaddingTop="cozy" xsPaddingBottom="comfortable">
         <Row>
-          {console.log({ categorySlug })}
           {categoryProducts.length ? (
             categoryProducts
               .filter(p => !categorySlug || p.category === categorySlug)
               .map(product => (
                 <Col xs={6} md={4} lg={3} xl={2} key={product.slug}>
-                  {console.log({ product })}
                   <ProductLink to={`/products/${product.slug}`} key={product.id}>
                     <ProductImage src={`/media/${product.images[0].relativePath}`} alt={product.title} />
                     {product.highlight && <ProductHighlight>{product.highlight}</ProductHighlight>}
@@ -118,9 +124,13 @@ const ProductsIndexPage = ({ data }) => {
           <h1>Products</h1>
         </Section>
         <PageTabs>
-          <Tab label="All Products">{productsInCategory()}</Tab>
+          <Tab label="All Products" value="all">
+            {productsInCategory()}
+          </Tab>
           {categories.map(category => (
-            <Tab label={category.title}>{productsInCategory(category.slug)}</Tab>
+            <Tab label={category.title} value={category.slug}>
+              {productsInCategory(category.slug)}
+            </Tab>
           ))}
         </PageTabs>
       </VisibilityTrailAnimation>

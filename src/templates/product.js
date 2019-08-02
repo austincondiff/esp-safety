@@ -26,6 +26,10 @@ const CategoryLink = styled(Link)`
   margin-bottom: 12px;
   display: inline-block;
   color: #777777;
+  transition: 0.25s;
+  &:hover {
+    color: ${props => props.theme.color.primary};
+  }
 `
 const Heading = styled.header`
   margin-bottom: 48px;
@@ -167,6 +171,24 @@ const ColumnsWrap = styled.p`
   column-gap: 2.5rem;
 `
 
+const ImageGalleryWrap = styled.div`
+  ${mediaQueries.sm} {
+    background: #f7f7f7;
+    padding: 5rem;
+    border-radius: 8px;
+  }
+`
+
+const Arrow = styled.div`
+  display: inline-block;
+  width: 0.666em;
+  height: 0.666em;
+  border-top: 1.5px solid ${props => (props.color ? props.color : props.theme.color.primary)};
+  border-right: 1.5px solid ${props => (props.color ? props.color : props.theme.color.primary)};
+  transform: rotate(45deg);
+  margin: 0 1rem 0 0.75rem;
+`
+
 export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
   return (
     <React.Fragment>
@@ -176,14 +198,18 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
           {data.images && data.images.length && (
             <Col xs={12} sm={6}>
               <VisibilityTrailAnimation>
-                <ImageGallery images={data.images.map(img => `/media/${img.relativePath}`)} />
+                <ImageGalleryWrap>
+                  <ImageGallery images={data.images.map(img => `/media/${img.relativePath}`)} />
+                </ImageGalleryWrap>
               </VisibilityTrailAnimation>
             </Col>
           )}
           <Col xs={12} sm={6}>
             <VisibilityTrailAnimation>
               <Heading>
-                <CategoryLink to={`/product-categories/${data.category.slug}`}>{data.category.title}</CategoryLink>
+                <CategoryLink to={`/products`}>Products</CategoryLink>
+                <Arrow color="#AAAAAA" />
+                <CategoryLink to={`/products/?tab=${data.category.slug}`}>{data.category.title}</CategoryLink>
                 <Title>
                   <MarkdownContent disallowedTypes={['paragraph']} unwrapDisallowed content={title} />
                 </Title>
@@ -244,9 +270,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
                     parallax
                   >
                     <VisibilityTrailAnimation>
-                      <h2 style={{ color: '#DD2C2C' }}>
-                        <MarkdownContent content={s.title} />
-                      </h2>
+                      <h2 style={{ color: '#DD2C2C' }}>{s.title}</h2>
                       <div>
                         <MarkdownContent content={s.content} />
                       </div>
