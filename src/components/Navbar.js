@@ -18,13 +18,16 @@ const NavWrap = styled.nav`
   left: 0;
   z-index: 100;
   background: ${props => (props.transparent ? 'transparent' : props.darkMode ? '#111111' : 'white')};
-  height: ${props => props.height || 104}px;
+  height: ${props => props.mobileHeight || 96}px;
   box-shadow: ${props =>
     props.hasShadow ? `0 1px 0 ${props.darkMode ? 'rgba(255,255,255,0.25)' : 'rgba(0, 0, 0, 0.15)'}` : `0 0 0 transparent`};
   display: flex;
   align-items: center;
   transition: 0.25s background-color, 0.25s box-shadow;
   animation: ${slideInFromTop} 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+  ${mediaQueries.md} {
+    height: ${props => props.height || 104}px;
+  }
 `
 const NavInside = styled(Layout)`
   height: 100%;
@@ -39,7 +42,10 @@ const LogoWrap = styled.div`
 `
 const LogoLink = styled(Link)`
   display: block;
-  height: 100%;
+  height: ${props => props.mobileHeight || 40}px;
+  ${mediaQueries.md} {
+    height: ${props => props.height || 40}px;
+  }
 `
 const NavLinksWrap = styled.div`
   position: absolute;
@@ -299,7 +305,15 @@ const NavBar = class extends React.Component {
       darkModeExpanded,
       transparent: transparentCondensed,
       transparentExpanded,
-      shadowExpanded
+      shadowExpanded,
+      height,
+      heightExpanded,
+      mobileHeight,
+      mobileHeightExpanded,
+      logoHeight,
+      logoHeightExpanded,
+      logoMobileHeight,
+      logoMobileHeightExpanded
     } = this.props
     const { expanded, showMobileMenu, stuck } = this.state
     const { links } = data
@@ -316,10 +330,18 @@ const NavBar = class extends React.Component {
         hasShadow={hasShadow}
         role="navigation"
         aria-label="main-navigation"
+        height={expanded ? heightExpanded : height}
+        mobileHeight={expanded ? mobileHeightExpanded : mobileHeight}
       >
         <NavInside>
           <LogoWrap>
-            <LogoLink ref={this.logoRef} to="/" title="Logo">
+            <LogoLink
+              ref={this.logoRef}
+              to="/"
+              title="Logo"
+              height={expanded ? logoHeightExpanded : logoHeight}
+              mobileHeight={expanded ? logoMobileHeightExpanded : logoMobileHeight}
+            >
               <Logo light={darkMode} height="100%" />
             </LogoLink>
           </LogoWrap>

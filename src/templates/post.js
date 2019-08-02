@@ -15,7 +15,7 @@ export const PostTemplate = ({ content, contentComponent, description, tags, tit
   return (
     <React.Fragment>
       <Header title={title} subtitle={description} />
-      <Section className="section">
+      <Section xsPadding="comfortable">
         {helmet || ''}
         <div className="container content">
           <div className="columns">
