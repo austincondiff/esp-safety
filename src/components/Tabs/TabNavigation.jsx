@@ -179,9 +179,6 @@ class TabContainer extends React.Component {
     console.log(`Changing tabs to ${value}`)
     this.moveActiveTabIndicator(value)
     this.props.onChange(value)
-    if (this.props.useRouter) {
-      window.history.pushState(null, '', `${window.location.pathname}?tab=${value}`)
-    }
   }
 
   moveActiveTabIndicator = value => {

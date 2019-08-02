@@ -32,7 +32,13 @@ class Tabs extends Component {
     return tabs
   }
 
-  onTabChange = value => this.setState({ value }, () => this.props.onChange && this.props.onChange(value))
+  onTabChange = value =>
+    this.setState({ value }, () => {
+      if (this.props.onChange) this.props.onChange(value)
+      if (this.props.useRouter) {
+        window.history.pushState(null, '', `${window.location.pathname}?tab=${value}`)
+      }
+    })
 
   render() {
     const { children, useLayout, sticky, centered, scroll, useRouter } = this.props
