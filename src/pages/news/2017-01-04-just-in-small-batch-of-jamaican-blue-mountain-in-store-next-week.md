@@ -2,7 +2,7 @@
 templateKey: 'post'
 title: 'Test Post Three'
 date: 2017-01-04T15:04:10.000Z
-featuredpost: true
+featuredPost: true
 description: >-
   This is a description for test post three.
 tags:

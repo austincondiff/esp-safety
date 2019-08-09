@@ -3,8 +3,8 @@ templateKey: post
 title: Test Post One
 date: 2016-12-17T15:04:10.000Z
 description: This is a description for test post one.
-featuredpost: false
-featuredimage: /media/296063_thumb.jpg
+featuredPost: false
+featuredImage: /media/296063_thumb.jpg
 tags:
   - one
   - two
