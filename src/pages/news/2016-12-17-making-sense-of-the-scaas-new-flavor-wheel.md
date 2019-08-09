@@ -2,14 +2,13 @@
 templateKey: post
 title: Test Post One
 date: 2016-12-17T15:04:10.000Z
-featuredpost: false
-featuredimage: /images/flavor_wheel.jpg
 description: This is a description for test post one.
+featuredpost: false
+featuredimage: /media/296063_thumb.jpg
 tags:
   - one
   - two
 ---
-
 Lorem ipsum dolor sit amet, ius autem velit honestatis in. Prima integre ne mea, in inermis alienum sea, diam putent dictas ut qui. Liber alterum aliquid nam cu. Eos putent albucius an, id eos ancillae cotidieque. His discere sanctus delicata ea.
 
 Usu eruditi disputando ne, euismod intellegat scriptorem ea vix. Sea dicit simul ei, consul dissentias liberavisse an mel. Cibo dolorem quo eu, id sit virtute prodesset scripserit, cu sumo iusto nec. Ex diam dicat voluptua sit. Pri ea debitis eleifend, eam natum fabellas ex, ius ex amet eleifend.
@@ -18,10 +17,10 @@ Usu eruditi disputando ne, euismod intellegat scriptorem ea vix. Sea dicit simul
 
 Mel habeo dissentiet id, ei abhorreant rationibus referrentur pro. Atqui voluptaria nam eu, has alia dissentiunt ut. Postulant sadipscing mei in, ne sed tale prima expetenda, harum utroque volumus in sed. Et duo diceret rationibus mnesarchum, ut est consul laoreet urbanitas.
 
-- producers
-- importers/exporters
-- retailers
-- manufacturers
+* producers
+* importers/exporters
+* retailers
+* manufacturers
 
 Lorem ipsum dolor sit amet, ius autem velit honestatis in. Prima integre ne mea, in inermis alienum sea, diam putent dictas ut qui. Liber alterum aliquid nam cu. Eos putent albucius an, id eos ancillae cotidieque. His discere sanctus delicata ea.
 
