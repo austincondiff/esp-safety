@@ -9,12 +9,12 @@ import Section from '../components/Section'
 import Context from '../components/Context'
 import Content, { HTMLContent } from '../components/Content'
 
-export const PostTemplate = ({ content, contentComponent, description, tags, title, helmet }) => {
+export const PostTemplate = ({ content, contentComponent, description, tags, title, featuredImage, helmet }) => {
   const PostContent = contentComponent || Content
 
   return (
     <React.Fragment>
-      <Header title={title} subtitle={description} />
+      <Header title={title} subtitle={description} backgroundImage={featuredImage} />
       <Section xsPadding="comfortable">
         {helmet || ''}
         <div className="container content">
@@ -99,6 +99,7 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
+        featuredImage
         description
         tags
       }

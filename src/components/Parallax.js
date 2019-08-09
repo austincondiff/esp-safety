@@ -22,6 +22,12 @@ class Parallax extends React.Component {
     if (this.parallaxContainerRef.current && window.getComputedStyle(this.parallaxContainerRef.current).position === 'static') {
       this.parallaxContainerRef.current.style.position = 'relative'
     }
+
+    if (this.props.backgroundImage) {
+      var img = new Image()
+      img.onload = this.handleBackgroundImageLoad
+      img.src = this.props.backgroundImage
+    }
   }
 
   componentWillUnmount() {
@@ -89,6 +95,8 @@ class Parallax extends React.Component {
     }
   }
 
+  getFileExtension = str => str.match(/\.([0-9a-z]+)(?:[\?#]|$)/i)[1]
+
   render() {
     const { backgroundImage, backgroundImagePosition, backgroundVideo, children, className, style } = this.props
     const { backgroundImageLoaded } = this.state
@@ -114,13 +122,6 @@ class Parallax extends React.Component {
               opacity: (backgroundImage || backgroundVideo) && !backgroundImageLoaded ? 0 : 1
             }}
           >
-            {backgroundImage && !backgroundImageLoaded && (
-              <img
-                src={backgroundImage}
-                style={{ opacity: 0, pointerEvents: 'none' }}
-                onLoad={this.handleBackgroundImageLoad}
-              />
-            )}
             {backgroundVideo && (
               <video
                 ref={this.parallaxVideoRef}
@@ -132,6 +133,7 @@ class Parallax extends React.Component {
                 muted
                 playsInline
                 onCanPlay={this.handleBackgroundImageLoad}
+                onPlaying={this.handleBackgroundImageLoad}
                 style={{
                   position: 'absolute',
                   top: '50%',
@@ -145,7 +147,7 @@ class Parallax extends React.Component {
                 }}
               >
                 {typeof backgroundVideo === 'string' ? (
-                  <source src={backgroundVideo} type="video/webm" />
+                  <source src={backgroundVideo} type={`video/${this.getFileExtension(backgroundVideo)}`} />
                 ) : (
                   <React.Fragment>
                     <source src={backgroundVideo.webm} type="video/webm" />

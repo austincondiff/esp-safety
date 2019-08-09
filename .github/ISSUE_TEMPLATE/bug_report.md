@@ -17,10 +17,6 @@ about: Create a report to help us improve
 <!-- This project is starter project using Gatsby and NetlifyCMS in it, if you think the issue can originate from upstream then please report it-->
 # Bug report
 
-<!-- Please ask questions on Spectrum for Gatsby questions or the Gitter channel for NetlifyCMS. -->
-<!-- https://spectrum.chat/?t=da07ec65-96f9-41be-baf0-0271b5b772ef -->
-<!-- https://gitter.im/netlify/NetlifyCMS -->
-<!-- Issues which contain questions or support requests will be closed. -->
 
 **What is the current behavior?**
 
@@ -37,14 +33,6 @@ about: Create a report to help us improve
 **What is the expected behavior?**
 
 
-<!-- "It should work" is not a helpful explanation -->
 <!-- Explain exactly how it should behave -->
 
 **Other relevant information:**
-
-<!--Run `gatsby info --clipboard` in your project directory and paste the output here. Not working? You may need to update your global gatsby-cli - `npm install -g gatsby-cli` -->
-
-Node.js version: 
-NPM/Yarn version
-Operating System: 
-Additional tools:
