@@ -79,6 +79,7 @@ const Post = ({ data }) => {
       }
       tags={post.frontmatter.tags}
       title={post.frontmatter.title}
+      featuredImage={post.featuredImage && `/media/${post.featuredImage.relativePath}`}
     />
   )
 }
@@ -99,7 +100,9 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
-        featuredImage
+        featuredImage {
+          relativePath
+        }
         description
         tags
       }
