@@ -4,7 +4,7 @@ class Parallax extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { backgroundImageLoaded: false }
+    this.state = { backgroundImageLoaded: false, parallaxInViewport: false }
 
     this.parallaxContainerRef = React.createRef()
     this.parallaxOuterRef = React.createRef()
@@ -65,6 +65,7 @@ class Parallax extends React.Component {
 
     if (parallaxInViewport) {
       requestAnimationFrame(() => {
+        if(!this.state.parallaxInViewport) this.setState({ parallaxInViewport: true })
         // Do parallax calculations
         const parallaxOffsetFactor = windowAnchor < 0.5 ? 2 * windowAnchor : 2 - 2 * windowAnchor
         const contentAnchorOffset = (parallaxTop + parallaxHeight * contentAnchor) * parallaxOffsetFactor
@@ -84,7 +85,10 @@ class Parallax extends React.Component {
         this.parallaxInnerRef.current.style.height =
           (backgroundImage || backgroundVideo) && parallaxInsideHeight ? `${parallaxInsideHeight}px` : `100%`
       })
+    } else {
+      if(this.state.parallaxInViewport) this.setState({ parallaxInViewport: false })
     }
+
 
     if (backgroundVideo) {
       if (!parallaxInViewport && this.isVideoPlaying()) {
@@ -99,7 +103,7 @@ class Parallax extends React.Component {
 
   render() {
     const { backgroundImage, backgroundImagePosition, backgroundVideo, children, className, style } = this.props
-    const { backgroundImageLoaded } = this.state
+    const { backgroundImageLoaded, parallaxInViewport } = this.state
 
     return backgroundImage || backgroundVideo ? (
       <div ref={this.parallaxContainerRef} style={{ overflow: 'hidden', ...style }} className={className}>
@@ -109,8 +113,8 @@ class Parallax extends React.Component {
             style={{
               position: 'absolute',
               top: 0,
-              right: 'auto',
-              bottom: 'auto',
+              right: parallaxInViewport ? 'auto' : 0,
+              bottom: parallaxInViewport ? 'auto' : 0,
               left: 0,
               width: '100%',
               transformOrigin: `50% 50%`,

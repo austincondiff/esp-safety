@@ -190,12 +190,13 @@ const Arrow = styled.div`
 `
 
 export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
+  console.log('product template rendered')
   return (
     <React.Fragment>
       {/*}<Header title={title} subtitle={data.category} />*/}
       <Section xsPaddingTop="compact" xsPaddingBottom="compact">
         <Row reverse="sm">
-          {data.images && data.images.length && (
+          {!!data.images && !!data.images.length && (
             <Col xs={12} sm={6}>
               <VisibilityTrailAnimation>
                 <ImageGalleryWrap>
@@ -282,7 +283,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
         )}
         {data.applications && (
           <Tab label="Applications" value="applications">
-            <Section xsPadding="comfortable">
+            <Section xsPaddingBottom="comfortable">
               <h2>Applications</h2>
               <p>The explosion-proof design of SGOES makes it ideal for use in hazardous environments such as the following.</p>
               <ul
@@ -299,7 +300,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
         )}
         {data.features && (
           <Tab label="Features & Benefits" value="features">
-            <Section xsPadding="comfortable">
+            <Section xsPaddingBottom="comfortable">
               <h2>Features & Benefits</h2>
               <p>The following features and benefits make SGOES the perfect solution for your safety requirements.</p>
               <ul
@@ -357,7 +358,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
                   {downloadCategory.downloads.map(d => (
                     <Download>
                       <a href={`/media/${d.file.relativePath}`} target="_blank" rel="noreferrer noopener">
-                        {d.title} ({d.file.prettySize})
+                        {d.title} {d.file.prettySize ? `(${d.file.prettySize})` : ''}
                       </a>
                       {d.description && <React.Fragment>- {d.description}</React.Fragment>}
                     </Download>

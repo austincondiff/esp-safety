@@ -1,0 +1,3 @@
+[class*="-EditorContainer "] [class*="-Editor "] {
+  max-width: 100%;
+}

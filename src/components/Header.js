@@ -28,15 +28,13 @@ const PageSubtitle = styled.h3`
 
 const Header = ({ title, subtitle, backgroundImage }) => (
   <Section
-    xsPadding="comfortable"
-    backgroundImage={
-      backgroundImage ||
-      'https://images.unsplash.com/photo-1536405454887-931a1a783382?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80'
-    }
-    backgroundImageOpacity={0.5}
-    backgroundColor="#000000"
-    dark
-    parallax
+    xsPaddingTop="comfortable"
+    xsPaddingBottom={backgroundImage && 'comfortable'}
+    backgroundImage={backgroundImage}
+    backgroundImageOpacity={backgroundImage && 0.5}
+    backgroundColor={backgroundImage && '#000000'}
+    dark={!!backgroundImage}
+    parallax={!!backgroundImage}
     parallaxContent
     follWidth
     header

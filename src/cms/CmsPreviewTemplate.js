@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheetManager, ThemeProvider } from 'styled-components'
+import ContextConsumer, { ContextProvider } from '../components/Context'
 import GlobalStyles from '../components/GlobalStyles'
 import theme from '../lib/theme'
 
@@ -22,18 +23,30 @@ class CmsPreviewTemplate extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        {this.state.iframeRef && (
-          <StyleSheetManager target={this.state.iframeRef}>
-            <ThemeProvider theme={theme}>
-              <React.Fragment>
-                <GlobalStyles />
-                {this.props.children}
-              </React.Fragment>
-            </ThemeProvider>
-          </StyleSheetManager>
-        )}
-      </React.Fragment>
+      <ContextProvider>
+        <ContextConsumer>
+          {({ data, set }) => (
+            <React.Fragment>
+              {this.state.iframeRef && (
+                <StyleSheetManager target={this.state.iframeRef}>
+                  <ThemeProvider theme={theme}>
+                    <React.Fragment>
+                      <GlobalStyles
+                        navHeightExpanded={data.navHeightExpanded}
+                        navHeight={data.navHeight}
+                        navMobileHeightExpanded={data.navMobileHeightExpanded}
+                        navMobileHeight={data.navMobileHeight}
+                        navNeverExpanded={data.navNeverExpanded}
+                      />
+                      {this.props.children}
+                    </React.Fragment>
+                  </ThemeProvider>
+                </StyleSheetManager>
+              )}
+            </React.Fragment>
+          )}
+        </ContextConsumer>
+      </ContextProvider>
     )
   }
 }

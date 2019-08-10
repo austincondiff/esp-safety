@@ -43,38 +43,30 @@ collections:
     slug: "{{fields.slug}}"
     fields:
       - { label: "Template Key", name: "templateKey", widget: "hidden", default: "product" }
-      - { label: "Product Name", name: "title" }
-      - { label: "Subtitle", name: "subtitle" }
       - { label: "Slug", name: "slug", required: true, pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Cannot contain spaces, capital letters, or special characters. You may separate words with dashes and numbers are allowed."], hint: "This will be used in the URL." }
       - { label: "Category", name: "category", widget: "relation", collection: "productCategories", searchFields: ["title"], valueField: "slug", displayFields: ["title"] }
+      - { label: "Product Name", name: "title" }
+      - { label: "Subtitle", name: "subtitle" }
+      - { label: "Highlight", name: "highlight" }
       - { label: "Images", name: "images", widget: "list", field: { label: "Image", name: "image", widget: "image" } }
       - { label: "Summary", name: "summary", widget: "markdown" }
       - { label: "Model", name: "model", required: false }
       - { label: "Function", name: "function", required: false }
       - { label: "Rating", name: "rating", required: false }
       - { label: "Overview", name: "overview", widget: "markdown", required: false }
-      - { label: "Applications", label_singular: "Application", name: "applications", widget: "list", fields: [{label: "Application", name: "application", widget: "string"}] }
-      - { label: "Features", label_singular: "Feature", name: "features", widget: "list", fields: [{label: "Feature", name: "feature", widget: "string"}] }
-      - { label: "Download Categories", label_singular: "Download Category", name: "downloadCategories", widget: "list", fields: [
-          { label: "Title", name: "title", widget: "string" },
-          { label: "Downloads", label_singular: "Download", name: "downloads", widget: "list", fields: [
-            { label: "File", name: "file", widget: "file" },
-            { label: "Title", name: "title", widget: "string" },
-            { label: "Description", name: "description", widget: "string" }
-          ]}
-        ]}
       - { label: "Sections", label_singular: "Section", name: "sections", widget: "list", fields: [
-          { label: "Title", name: "title", widget: "string", required: false },
-          { label: "Supertitle", name: "supertitle", widget: "string", required: false },
-          { label: "Subtitle", name: "sibtitle", widget: "string", required: false },
-          { label: "Content", name: "content", widget: "markdown" },
           { label: "Image", name: "image", widget: "image" },
+          { label: "Supertitle", name: "supertitle", widget: "string", required: false },
+          { label: "Title", name: "title", widget: "string", required: false },
+          { label: "Content", name: "content", widget: "markdown" },
           { label: "Link", name: "link", widget: "object", required: false, fields: [
             { label: "Text", name: "text", widget: "string", required: false },
             { label: "URL", name: "url", widget: "string", required: false },
             { label: "Open In New Window", name: "newWindow", widget: "boolean", required: false }
           ]}
         ]}
+      - { label: "Applications", label_singular: "Application", name: "applications", widget: "list", fields: [{label: "Application", name: "application", widget: "string"}] }
+      - { label: "Features", label_singular: "Feature", name: "features", widget: "list", fields: [{label: "Feature", name: "feature", widget: "string"}] }
       - { label: "Specification Categories", name: "specificationCategories", widget: "list", fields: [
             { label: "Title", name: "title", widget: "string", required: true },
             # { label: "Layout", name: "layout", widget: "select", options: [{ label: "Rows", value: "rows" }, { label: "Columns", value: "columns" }] },
@@ -100,6 +92,14 @@ collections:
             ]}
           ]
         }
+      - { label: "Download Categories", label_singular: "Download Category", name: "downloadCategories", widget: "list", fields: [
+          { label: "Title", name: "title", widget: "string" },
+          { label: "Downloads", label_singular: "Download", name: "downloads", widget: "list", fields: [
+            { label: "File", name: "file", widget: "file" },
+            { label: "Title", name: "title", widget: "string" },
+            { label: "Description", name: "description", widget: "string" }
+          ]}
+        ]}
       - { label: "Accessories", name: "accessories", widget: "relation", collection: "products", searchFields: ["title"], valueField: "slug", displayFields: ["title"], multiple: true, required: false }
       - { label: "Related Products", name: "relatedProducts", widget: "relation", collection: "products", searchFields: ["title"], valueField: "slug", displayFields: ["title"], multiple: true, required: false }
   - name: "pages"
