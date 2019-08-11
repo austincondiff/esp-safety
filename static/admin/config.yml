@@ -117,10 +117,12 @@ collections:
               { label: Title, name: title, widget: string },
               { label: Testimonials, name: testimonials, widget: list, fields: [
                 { label: Quote, name: quote, widget: text, required: true },
-                { label: Image, name: image, widget: image, required: false },
-                { label: Name, name: name, widget: string, required: true },
-                { label: Title, name: title, widget: string, required: false },
-                { label: Company, name: company, widget: string, required: false }
+                { label: Author, name: author, widget: object, fields: [
+                  { label: Name, name: name, widget: string, required: true },
+                  { label: Title, name: title, widget: string, required: false },
+                  { label: Company, name: company, widget: string, required: false },
+                  { label: Image, name: image, widget: image, required: false }
+                ] },
               ] }
             ] }
       - file: "src/pages/about/index.md"
