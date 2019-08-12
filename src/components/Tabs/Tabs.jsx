@@ -46,16 +46,18 @@ class Tabs extends Component {
 
     return (
       <div>
-        <TabNavigation
-          tabs={tabs}
-          value={value}
-          onChange={this.onTabChange}
-          sticky={sticky}
-          useLayout={useLayout}
-          centered={centered}
-          scroll={scroll}
-          useRouter={useRouter}
-        />
+        {!!tabs && tabs.length > 1 && (
+          <TabNavigation
+            tabs={tabs}
+            value={value}
+            onChange={this.onTabChange}
+            sticky={sticky}
+            useLayout={useLayout}
+            centered={centered}
+            scroll={scroll}
+            useRouter={useRouter}
+            />
+        )}
         <TabContent
           tabs={React.Children.toArray(children).filter(c => c)}
           value={value}

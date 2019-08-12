@@ -5,6 +5,7 @@ import { Link, graphql } from 'gatsby'
 import { animated, useSpring, useChain, config } from 'react-spring'
 
 import theme from '../lib/theme'
+import { getMediaPath } from '../lib/utils'
 
 import MarkdownContent from '../components/MarkdownContent'
 import Context from '../components/Context'
@@ -119,15 +120,6 @@ const CertificationBadge = styled(animated.img).attrs({
 })`
   width: 100%;
 `
-
-const getMediaPath = img => {
-  if (!img) return null
-  if (typeof img === 'string') {
-    return `/media/${img.replace('/media/', '')}`
-  } else {
-    return `/media/${img.relativePath}`
-  }
-}
 
 export const IndexPageTemplate = ({
   header,

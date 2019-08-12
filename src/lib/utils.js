@@ -67,3 +67,12 @@ export const paramsToObject = val => {
 
   return result
 }
+
+export const getMediaPath = img => {
+  if (!img) return null
+  if (typeof img === 'string') {
+    return `/media/${img.replace('/media/', '')}`
+  } else {
+    return `/media/${img.relativePath}`
+  }
+}

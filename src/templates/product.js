@@ -5,7 +5,7 @@ import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 
-import { convertLinesToParagraphs } from '../lib/utils'
+import { convertLinesToParagraphs, getMediaPath } from '../lib/utils'
 
 import Context from '../components/Context'
 import Header from '../components/Header'
@@ -196,11 +196,11 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
       {/*}<Header title={title} subtitle={data.category} />*/}
       <Section xsPaddingTop="compact" xsPaddingBottom="compact">
         <Row reverse="sm">
-          {!!data.images && !!data.images.length && (
+          {!!data.images && !!data.images.length && !!data.images.filter(img => img).length && (
             <Col xs={12} sm={6}>
               <VisibilityTrailAnimation>
                 <ImageGalleryWrap>
-                  <ImageGallery images={data.images.map(img => `/media/${img.relativePath}`)} />
+                  <ImageGallery images={data.images.map(img => getMediaPath(img))} />
                 </ImageGalleryWrap>
               </VisibilityTrailAnimation>
             </Col>
@@ -210,7 +210,9 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
               <Heading>
                 <CategoryLink to={`/products`}>Products</CategoryLink>
                 <Arrow color="#AAAAAA" />
-                <CategoryLink to={`/products/?tab=${data.category.slug}`}>{data.category.title}</CategoryLink>
+                {data.category && (
+                  <CategoryLink to={`/products/?tab=${data.category.slug}`}>{data.category.title}</CategoryLink>
+                )}
                 <Title>
                   <MarkdownContent disallowedTypes={['paragraph']} unwrapDisallowed content={title} />
                 </Title>
@@ -265,16 +267,18 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
                 data.sections.map((s, i) => (
                   <Section
                     xsPadding="comfortable"
-                    backgroundImage={`/media/${s.image.relativePath}`}
+                    backgroundImage={s.image && getMediaPath(s.image)}
                     backgroundColor={i % 2 === 0 ? '#F6F6F6' : '#FFFFFF'}
                     imagePosition={i % 2 === 0 ? 'right' : 'left'}
-                    parallax
+                    parallax={!!s.image}
                   >
                     <VisibilityTrailAnimation>
-                      <h2 style={{ color: '#DD2C2C' }}>{s.title}</h2>
-                      <div>
-                        <MarkdownContent content={s.content} />
-                      </div>
+                      {s.title && <h2 style={{ color: '#DD2C2C' }}>{s.title}</h2>}
+                      {s.content && (
+                        <div>
+                          <MarkdownContent content={s.content} />
+                        </div>
+                      )}
                     </VisibilityTrailAnimation>
                   </Section>
                 ))}
@@ -283,9 +287,8 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
         )}
         {data.applications && (
           <Tab label="Applications" value="applications">
-            <Section xsPaddingBottom="comfortable">
+            <Section xsPaddingTop={data.sections && 'comfortable'} xsPaddingBottom="comfortable">
               <h2>Applications</h2>
-              <p>The explosion-proof design of SGOES makes it ideal for use in hazardous environments such as the following.</p>
               <ul
                 style={{
                   columnCount: 2
@@ -300,9 +303,8 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
         )}
         {data.features && (
           <Tab label="Features & Benefits" value="features">
-            <Section xsPaddingBottom="comfortable">
+            <Section xsPaddingTop={data.sections && !data.applications && 'comfortable'} xsPaddingBottom="comfortable">
               <h2>Features & Benefits</h2>
-              <p>The following features and benefits make SGOES the perfect solution for your safety requirements.</p>
               <ul
                 style={{
                   columnCount: 2
@@ -354,15 +356,17 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
               <h2>Downloads</h2>
               {data.downloadCategories.map(downloadCategory => (
                 <DownloadCategory>
-                  {data.downloadCategories.length > 1 && <h3>{downloadCategory.title}</h3>}
-                  {downloadCategory.downloads.map(d => (
-                    <Download>
-                      <a href={`/media/${d.file.relativePath}`} target="_blank" rel="noreferrer noopener">
-                        {d.title} {d.file.prettySize ? `(${d.file.prettySize})` : ''}
-                      </a>
-                      {d.description && <React.Fragment>- {d.description}</React.Fragment>}
-                    </Download>
-                  ))}
+                  {data.downloadCategories.length > 1 && downloadCategory.title && <h3>{downloadCategory.title}</h3>}
+                  {downloadCategory.downloads &&
+                    downloadCategory.downloads.length &&
+                    downloadCategory.downloads.map(d => (
+                      <Download>
+                        <a href={d.file && getMediaPath(d.file)} target="_blank" rel="noreferrer noopener">
+                          {d.title} {d.file && d.file.prettySize ? `(${d.file.prettySize})` : ''}
+                        </a>
+                        {d.description && <React.Fragment>- {d.description}</React.Fragment>}
+                      </Download>
+                    ))}
                 </DownloadCategory>
               ))}
             </Section>
