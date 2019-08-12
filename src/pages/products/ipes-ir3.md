@@ -1,10 +1,10 @@
 ---
 templateKey: product
-title: '**IPES IR3** Flame Detector'
-subtitle: Advanced detection technology ensures rapid flame recognition
-highlight: SIL3 Rated
 slug: ipes-ir3
 category: flame-detectors
+title: '**IPES IR3** Flame Detector'
+subtitle: Advanced detection technology ensures rapid flame recognition.
+highlight: SIL3 Rated
 images:
   - /media/ipes-ir3-01.png
 summary: >-
@@ -82,7 +82,6 @@ features:
   - feature: >-
       5-year warranty – long, reliable product life; low cost to operate over
       time
-downloadCategories: []
 specificationCategories:
   - specifications:
       - label: Operating Voltage
@@ -151,20 +150,40 @@ specificationCategories:
     title: Mechanical Characteristics
   - specifications:
       - fullWidth: true
-        text: |-
-          | Fuel      | Size        | Distance Feet (M) | Typical Response Time (Sec.) |
-          | --------- | ----------- | ----------------- | ---------------------------- |
-          | n-Heptane | 1 ft x 1 ft | 210 (64.0)        | 6.0                          |
-          | Methanol  | 1 ft x 1 ft | 150 (45.7)        | 7.0                          |
-          | JP5       | 2 ft x 2 ft | 210 (64.0)        | 4.5                          |
+        text: >-
+          | Fuel      | Size        | Distance Feet (M) | Typical Response Time
+          (Sec.) |
+
+          | --------- | ----------- | ----------------- |
+          ---------------------------- |
+
+          | n-Heptane | 1 ft x 1 ft | 210 (64.0)        |
+          6.0                          |
+
+          | Methanol  | 1 ft x 1 ft | 150 (45.7)        |
+          7.0                          |
+
+          | JP5       | 2 ft x 2 ft | 210 (64.0)        |
+          4.5                          |
     title: Response Time
   - specifications:
       - fullWidth: true
-        text: |-
-          | Fuel      | Horizontal (left) | Horizontal (right) | Vertical (up) | Vertical (down) | Min. Distance Feet (down) | Avg. Time |
-          | --------- | ----------------- | ------------------ | ------------- | --------------- | ------------------------- | --------- |
-          | n-Heptane | 50°               | 50°                | 50°           | 50°             | 56.1 (17.1)               | 3 sec.    |
-          | Methanol  | 50°               | 50°                | 50°           | 50°             | 41.0 (12.5)               | 3 sec.    |
-          | JP5       | 50°               | 50°                | 50°           | 50°             | 82.0 (25.0)               | 3 sec.    |
+        text: >-
+          | Fuel      | Horizontal (left) | Horizontal (right) | Vertical (up) |
+          Vertical (down) | Min. Distance Feet (down) | Avg. Time |
+
+          | --------- | ----------------- | ------------------ | ------------- |
+          --------------- | ------------------------- | --------- |
+
+          | n-Heptane | 50°               | 50°                | 50°           |
+          50°             | 56.1 (17.1)               | 3 sec.    |
+
+          | Methanol  | 50°               | 50°                | 50°           |
+          50°             | 41.0 (12.5)               | 3 sec.    |
+
+          | JP5       | 50°               | 50°                | 50°           |
+          50°             | 82.0 (25.0)               | 3 sec.    |
     title: Field of View
+downloadCategories: []
 ---
+
