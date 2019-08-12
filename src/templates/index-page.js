@@ -6,6 +6,7 @@ import { animated, useSpring, useChain, config } from 'react-spring'
 
 import theme from '../lib/theme'
 
+import MarkdownContent from '../components/MarkdownContent'
 import Context from '../components/Context'
 import Parallax from '../components/Parallax'
 import VisibilityTrailAnimation from '../components/VisibilityTrailAnimation'
@@ -119,7 +120,25 @@ const CertificationBadge = styled(animated.img).attrs({
   width: 100%;
 `
 
-export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch, description, intro }) => {
+const getMediaPath = img => {
+  if (typeof img === 'string') {
+    return `/media/${img.replace('/media/', '')}`
+  } else {
+    return `/media/${img.relativePath}`
+  }
+}
+
+export const IndexPageTemplate = ({
+  header,
+  mainPitch,
+  productCategories,
+  detectors,
+  certifications,
+  convenience,
+  customerService,
+  statistics,
+  customerTestimonials
+}) => {
   const [certificationBlockIsVisible, setCertificationBlockIsVisible] = useState()
   const stampAnimation = useSpring({
     config: config.stiff,
@@ -131,34 +150,23 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
     <div>
       <Hero
         height="88vh"
-        title="Technology of the future, protection for today"
-        subtitle="We are a team of experts who specialize in the design of fixed toxic and combustible gas detection, flame detection, and complete turn-key safety systems."
+        title={header.title}
+        subtitle={header.subtitle}
         backgroundVideo={{
-          webm: '/media/esp-home-hero-bg.webm',
-          mp4: '/media/esp-home-hero-bg.mp4'
+          webm: getMediaPath(header.backgroundVideo.webm),
+          mp4: getMediaPath(header.backgroundVideo.mp4)
         }}
-        primaryButtonLink={'/products'}
-        primaryButtonLabel={'View Our Products'}
-        secondaryButtonLink={'/about'}
-        secondaryButtonLabel={'Learn About Us'}
+        primaryButtonLink={header.primaryButton.path}
+        primaryButtonLabel={header.primaryButton.label}
+        secondaryButtonLink={header.secondaryButton.path}
+        secondaryButtonLabel={header.secondaryButton.label}
         showArrow
       />
       <Layout>
         <Logos>
-          <Logo label="Mitsubishi" image="/media/mitsubishi.png" url="http://www.mitsubishicorp.com/" />
-          <Logo label="Chevron" image="/media/chevron.png" url="https://www.chevron.com/" />
-          <Logo label="Mitsui & Co." image="/media/mitsui.png" url="https://www.mitsui.com/" />
-          <Logo label="Shell" image="/media/shell.png" url="http://www.shell.com/" />
-          <Logo label="Unilever" image="/media/unilever.png" url="https://www.unilever.com/" />
-          <Logo label="British Petroleum" image="/media/bp.png" url="https://www.bp.com/" />
-          {/*
-            <Logo label="Pemex" image="/media/pemex.png" url="http://www.pemex.com/en/" />
-            <Logo label="CNPC" image="/media/cnpc.png" url="http://www.cnpc.com.cn/en/" />
-            <Logo label="Caspian Pipeline Consortium" image="/media/caspianpipeline.png" url="http://www.cpc.ru/EN/" />
-            <Logo label="Conoco Phillips" image="/media/conocophillips.png" url="http://www.conocophillips.com/" />
-            <Logo label="ENI" image="/media/eni.png" url="https://www.eni.com/" />
-            <Logo label="Tethys Petroleum" image="/media/tethys.png" url="http://www.tethyspetroleum.com/" />
-        */}
+          {header.logos.map(logo => (
+            <Logo label={logo.name} image={getMediaPath(logo.image)} url={logo.url} />
+          ))}
         </Logos>
       </Layout>
       <Section xsPaddingTop="comfortable">
@@ -166,13 +174,10 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
           <Col sm={10} smOffset={1}>
             <VisibilityTrailAnimation>
               <PageIntroTitle>
-                We keep you safe with our industry leading safety products specializing in gas and flame detectors
+                {mainPitch.title}
               </PageIntroTitle>
               <PageIntroDescription>
-                Our state-of-the-art manufacturing facility allows us to apply strict quality standards and intelligent
-                engineering to ensure that all of our products meet the demands of the toughest industrial environments and
-                applications. The result is a line of world class flame and gas detectors all certified to the strictest global
-                standards for safety and performance.
+                {mainPitch.description}
               </PageIntroDescription>
             </VisibilityTrailAnimation>
           </Col>
@@ -216,21 +221,16 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       </Section>
       <Section
         xsPadding="comfortable"
-        backgroundImage="/media/shutterstock_705791.jpg"
+        backgroundImage={getMediaPath(detectors.image)}
         backgroundColor="#000000"
         dark
         parallax
         imagePosition="left"
       >
         <VisibilityTrailAnimation>
-          <SectionSupertitle>Performance when it counts</SectionSupertitle>
-          <h2 style={{ color: theme.color.primary }}>Our detectors work as hard as you do</h2>
-          <p>
-            The proven design of ESP Safety’s detectors guarantees the precise response when a real event occurs in your
-            critical area under normal or severe environmental conditions. The engineered smart-design of the flame and gas
-            detectors eliminates the false alarms due to false stimulating factors present in your detection area minimizing the
-            unnecessary and costly process shutdowns.
-          </p>
+          <SectionSupertitle>{detectors.supertitle}</SectionSupertitle>
+          <h2 style={{ color: theme.color.primary }}>{detectors.title}</h2>
+          <MarkdownContent content={detectors.description} />
         </VisibilityTrailAnimation>
       </Section>
       <Section xsPadding="comfortable" backgroundColor="#F6F6F6">
@@ -250,13 +250,9 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
           </Col>
           <Col sm={6}>
             <VisibilityTrailAnimation>
-              <SectionSupertitle>Reliability is protection</SectionSupertitle>
-              <h2 style={{ color: theme.color.primary }}>Tried, tested, and certified</h2>
-              <p>
-                ESP Safety explosion-proof detectors are certified to meet the most demanding performance standards in the
-                industry, including FM, ATEX, IECx, GOST, and ABS. The detectors are widely used in hazardous locations that
-                demand high performance, reliability, and continuous integrity levels.
-              </p>
+              <SectionSupertitle>{certifications.supertitle}</SectionSupertitle>
+              <h2 style={{ color: theme.color.primary }}>{certifications.title}</h2>
+              <MarkdownContent content={certifications.description} />
             </VisibilityTrailAnimation>
           </Col>
         </Row>
@@ -265,25 +261,20 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
         xsPadding="comfortable"
         contentPosition="right"
         backgroundColor="#FFFFFF"
-        foregroundImageSrc="/media/SSS-903_2013C.png"
+        foregroundImageSrc={getMediaPath(convenience.image)}
         foregroundImageWidth="30%"
         foregroundImagePosition={['70%', '30%']}
         parallax
       >
         <VisibilityTrailAnimation>
-          <SectionSupertitle>Convenient and easy to use</SectionSupertitle>
-          <h2 style={{ color: theme.color.primary }}>Straightforward, user-friendly design</h2>
-          <p>
-            ESP Safety detectors are designed to ease the complications of installations, calibrations and maintenance. By
-            offering standard multiple signal outputs, the detectors provide the compatibility to work with different fire and
-            gas systems. The different methods available to perform calibrations give you the flexibility to choose the best
-            option for your needs. With minimum maintenance required, your detector’s service life is maximized.
-          </p>
+          <SectionSupertitle>{convenience.supertitle}</SectionSupertitle>
+          <h2 style={{ color: theme.color.primary }}>{convenience.title}</h2>
+          <MarkdownContent content={convenience.description} />
         </VisibilityTrailAnimation>
       </Section>
       <Section
         xsPadding="comfortable"
-        backgroundImage="/media/shutterstock_68568742.jpg"
+        backgroundImage={getMediaPath(customerService.image)}
         backgroundColor="#F6F6F6"
         imagePosition="right"
         backgroundImagePosition="center left"
@@ -292,18 +283,11 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
         follWidth
       >
         <VisibilityTrailAnimation>
-          <h2 style={{ color: theme.color.primary }}>Meeting your expectations with premium service</h2>
-          <p>
-            When you contact us, you are assigned a dedicated representative that works with you to recommend the right solution
-            for your application. By working with an experienced representative you are assured that you are speaking with
-            someone that knows and fully understands your project from the beginning.{' '}
-          </p>
-          <p>
-            An experienced team of engineers will support and assist you from start to finish ensuring your project’s success.
-            Have a project in mind? Contact us and we’ll help you get started!
-          </p>
+          <SectionSupertitle>{customerService.supertitle}</SectionSupertitle>
+          <h2 style={{ color: theme.color.primary }}>{customerService.title}</h2>
+          <MarkdownContent content={customerService.description} />
           <SectionActions>
-            <ArrowLink to="/contact">Contact us</ArrowLink>
+            <ArrowLink to={customerService.link.path}>{customerService.link.label}</ArrowLink>
           </SectionActions>
         </VisibilityTrailAnimation>
       </Section>
@@ -331,41 +315,18 @@ export const IndexPageTemplate = ({ image, title, heading, subheading, mainpitch
       </Section>
       <Section xsPadding="comfortable">
         <VisibilityTrailAnimation>
-          <TestimonalDescription>Customer testimonials</TestimonalDescription>
-          <TestimonalTitle>What people are saying about us</TestimonalTitle>
+          <TestimonalDescription>{customerTestimonials.supertitle}</TestimonalDescription>
+          <TestimonalTitle>{customerTestimonials.title}</TestimonalTitle>
           <Testimonials>
-            <Testimonial
-              quote="In our previous projects we worked extensively with the ESP Safety line of Flame and Gas detectors, and had nothing but good experiences. We have determined that the ESP’s flame detectors significantly outshines the others. "
-              name="John S."
-              title="Industrial Engineer"
-              avatar=""
-              logo=""
-              company="Pemex"
-            />
-            <Testimonial
-              quote="I have worked with ESP Safety since 2011. We use ESP gas detectors and controllers along with flame detectors on our offshore platforms. They have performed exceptionally well and are highly reliable. Minimum maintenance has been required despite the harsh operating environment. "
-              name="Jane D."
-              title="Industrial Engineer"
-              avatar=""
-              logo=""
-              company="Energy XXL"
-            />
-            <Testimonial
-              quote="Because of recent issues with the alignment and alarms of a different vendor’s gas detector I had to research alternatives to our problem. My first call was to ESP Safety. Within a few days ESP employees appeared at our site and installed the open path gas detector in one of our most difficult locations. Since the installation this detection equipment has worked great. "
-              name="Jack G."
-              title="Industrial Engineer"
-              avatar=""
-              logo=""
-              company="Philips 66"
-            />
-            <Testimonial
-              quote="We have dealt with ESP Safety for the past several months, during which time they have provided an excellent product and support in the areas of long Range Gas Detection. I can confidently recommend ESP Safety as a solid and reliable supplier, and experts in their field. "
-              name="Zak R."
-              title="Industrial Engineer"
-              avatar=""
-              logo=""
-              company="Acme Co."
-            />
+            {customerTestimonials.testimonials.map(testimonial => (
+              <Testimonial
+                quote={testimonial.quote}
+                name={testimonial.author.name}
+                title={testimonial.author.title}
+                company={testimonial.author.company}
+                avatar={getMediaPath(testimonial.author.image)}
+              />
+            ))}
           </Testimonials>
         </VisibilityTrailAnimation>
       </Section>
@@ -389,8 +350,6 @@ const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
   const context = useContext(Context)
 
-  console.log('Setting context from index')
-
   useEffect(() => {
     context.set({
       navDarkMode: false,
@@ -404,17 +363,17 @@ const IndexPage = ({ data }) => {
     })
   }, [])
 
-  console.log('Context context from index')
-
   return (
     <IndexPageTemplate
-      image={frontmatter.image}
-      title={frontmatter.title}
-      heading={frontmatter.heading}
-      subheading={frontmatter.subheading}
-      mainpitch={frontmatter.mainpitch}
-      description={frontmatter.description}
-      intro={frontmatter.intro}
+      header={frontmatter.header}
+      mainPitch={frontmatter.mainPitch}
+      productCategories={frontmatter.productCategories}
+      detectors={frontmatter.detectors}
+      certifications={frontmatter.certifications}
+      convenience={frontmatter.convenience}
+      customerService={frontmatter.customerService}
+      statistics={frontmatter.statistics}
+      customerTestimonials={frontmatter.customerTestimonials}
     />
   )
 }
@@ -433,34 +392,110 @@ export const pageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
-        title
-        image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
+        header {
+          title
+          subtitle
+          primaryButton {
+            label
+            path
+          }
+          secondaryButton {
+            label
+            path
+          }
+          backgroundVideo {
+            mp4 {
+              relativePath
+            }
+            webm {
+              relativePath
             }
           }
+          backgroundImage {
+            relativePath
+          }
+          logos {
+            name
+            image {
+              relativePath
+            }
+            url
+          }
         }
-        heading
-        subheading
-        mainpitch {
+        mainPitch {
+          supertitle
           title
           description
         }
-        description
-        intro {
-          blurbs {
-            image {
-              childImageSharp {
-                fluid(maxWidth: 240, quality: 64) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-            text
-          }
-          heading
+        productCategories {
+          productCategory
           description
+        }
+        detectors {
+          supertitle
+          title
+          description
+          link {
+            label
+            path
+          }
+          image {
+            relativePath
+          }
+        }
+        certifications {
+          supertitle
+          title
+          description
+          logos {
+            image {
+              relativePath
+            }
+          }
+        }
+        convenience {
+          supertitle
+          title
+          description
+          link {
+            label
+            path
+          }
+          image {
+            relativePath
+          }
+        }
+        customerService {
+          supertitle
+          title
+          description
+          link {
+            label
+            path
+          }
+          image {
+            relativePath
+          }
+        }
+        statistics {
+          number
+          unit
+          label
+        }
+        customerTestimonials {
+          supertitle
+          title
+          testimonials {
+            quote
+            author {
+              name
+              image {
+                relativePath
+              }
+              title
+              company
+            }
+          }
         }
       }
     }

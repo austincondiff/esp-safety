@@ -38,13 +38,13 @@ collections:
               { label: Title, name: title, widget: string },
               { label: Subtitle, name: subtitle, widget: text },
               { label: "Primary Button", name: 'primaryButton', widget: object, fields: [
-                { label: "Label", name: "label", widget: string, required: true },
-                { label: "Path", name: "path", widget: string, required: true },
-                { label: "Open In New Window", name: "newWindow", widget: "boolean", required: false },
+                { label: "Label", name: "label", widget: string, default: '', required: true },
+                { label: "Path", name: "path", widget: string, default: '', required: true },
+                { label: "Open In New Window", name: "newWindow", widget: "boolean", default: false, required: false },
               ] },
               { label: "Secondary Button", name: 'secondaryButton', widget: object, fields: [
-                { label: "Label", name: "label", widget: string, required: true },
-                { label: "Path", name: "path", widget: string, required: true },
+                { label: "Label", name: "label", widget: string, default: '', required: true },
+                { label: "Path", name: "path", widget: string, default: '', required: true },
                 { label: "Open In New Window", name: "newWindow", widget: "boolean", required: false }
               ] },
               { label: Background Video, name: backgroundVideo, widget: object, fields: [
@@ -53,7 +53,7 @@ collections:
               ] },
               { label: Background Image, name: backgroundImage, widget: image, required: true },
               { label: Logos, label_singular: "Logo", name: logos, widget: list, fields: [
-                { label: "Title", name: "title", required: true },
+                { label: "Name", name: "name", required: true },
                 { label: "Image", name: "image", required: true },
                 { label: "URL", name: "url", required: true }
               ] }
@@ -67,13 +67,13 @@ collections:
               { label: Product Category, name: productCategory, widget: relation, collection: "productCategories", searchFields: ["title"], valueField: "slug", displayFields: ["title"] },
               { label: Description, name: description, widget: text }
             ] }
-          - { label: Performance, name: performance, widget: object, fields: [
+          - { label: Detectors, name: detectors, widget: object, fields: [
               { label: Supertitle, name: supertitle, widget: string },
               { label: Title, name: title, widget: string },
               { label: Description, name: description, widget: text },
               { label: "Link", name: 'link', widget: object, fields: [
-                { label: "Label", name: "label", widget: string, required: false },
-                { label: "Path", name: "path", widget: string, required: false },
+                { label: "Label", name: "label", widget: string, default: '', required: false },
+                { label: "Path", name: "path", widget: string, default: '', required: false },
                 { label: "Open In New Window", name: "newWindow", widget: "boolean", required: false }
               ] }
             ] }
@@ -81,10 +81,15 @@ collections:
               { label: Supertitle, name: supertitle, widget: string },
               { label: Title, name: title, widget: string },
               { label: Description, name: description, widget: markdown },
+              { label: Logos, label_singular: "Logo", name: logos, widget: list, fields: [
+                { label: "Name", name: "name", required: true },
+                { label: "Image", name: "image", required: true },
+                { label: "URL", name: "url", default: '', required: false }
+              ] }
               { label: "Link", name: 'link', widget: object, fields: [
-                { label: "Label", name: "label", widget: string, required: false },
-                { label: "Path", name: "path", widget: string, required: false },
-                { label: "Open In New Window", name: "newWindow", widget: "boolean", required: false }
+                { label: "Label", name: "label", widget: string, default: '', required: false },
+                { label: "Path", name: "path", widget: string, default: '', required: false },
+                { label: "Open In New Window", name: "newWindow", widget: "boolean", default: false, required: false }
               ] }
             ] }
           - { label: Convenience, name: convenience, widget: object, fields: [
@@ -92,9 +97,9 @@ collections:
               { label: Title, name: title, widget: string },
               { label: Description, name: description, widget: markdown },
               { label: "Link", name: 'link', widget: object, fields: [
-                { label: "Label", name: "label", widget: string, required: false },
-                { label: "Path", name: "path", widget: string, required: false },
-                { label: "Open In New Window", name: "newWindow", widget: "boolean", required: false }
+                { label: "Label", name: "label", widget: string, default: '', required: false },
+                { label: "Path", name: "path", widget: string, default: '', required: false },
+                { label: "Open In New Window", name: "newWindow", widget: "boolean", default: false, required: false }
               ] }
             ] }
           - { label: Customer Service, name: customerService, widget: object, fields: [
@@ -102,9 +107,9 @@ collections:
               { label: Title, name: title, widget: string },
               { label: Description, name: description, widget: markdown },
               { label: "Link", name: 'link', widget: object, fields: [
-                { label: "Label", name: "label", widget: string, required: false },
-                { label: "Path", name: "path", widget: string, required: false },
-                { label: "Open In New Window", name: "newWindow", widget: "boolean", required: false }
+                { label: "Label", name: "label", widget: string, default: '', required: false },
+                { label: "Path", name: "path", widget: string, default: '', required: false },
+                { label: "Open In New Window", name: "newWindow", default: false, widget: "boolean", required: false }
               ] }
             ] }
           - { label: Statistics, name: statustics, widget: list, fields: [
@@ -121,7 +126,7 @@ collections:
                   { label: Name, name: name, widget: string, required: true },
                   { label: Title, name: title, widget: string, required: false },
                   { label: Company, name: company, widget: string, required: false },
-                  { label: Image, name: image, widget: image, required: false }
+                  { label: Image, name: image, widget: image, required: false, default: /media/avatar-placeholder.png }
                 ] },
               ] }
             ] }
