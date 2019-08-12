@@ -259,7 +259,7 @@ export const ProductTemplate = ({ data, title, helmet, contentComponent }) => {
                 <Section xsPadding="comfortable">
                   <h2>Product Overview</h2>
                   <ColumnsWrap>
-                    <LinesToParagraphs text={data.overview} />
+                    <MarkdownContent content={data.overview} />
                   </ColumnsWrap>
                 </Section>
               )}
