@@ -1,21 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import CmsPreviewTemplate from '../CmsPreviewTemplate'
 import { IndexPageTemplate } from '../../templates/index-page'
 
 const IndexPagePreview = ({ entry, getAsset }) => {
   const data = entry.getIn(['data']).toJS()
 
+  console.log({data})
+
   if (data) {
     return (
-      <IndexPageTemplate
-        image={data.image}
-        title={data.title}
-        heading={data.heading}
-        subheading={data.subheading}
-        description={data.description}
-        intro={data.intro || { blurbs: [] }}
-        mainpitch={data.mainpitch || {}}
-      />
+      <CmsPreviewTemplate>
+        <IndexPageTemplate
+          header={data.header}
+          mainPitch={data.mainPitch}
+          productCategories={data.productCategories}
+          detectors={data.detectors}
+          certifications={data.certifications}
+          convenience={data.convenience}
+          customerService={data.customerService}
+          statistics={data.statistics}
+          customerTestimonials={data.customerTestimonials}
+        />
+      </CmsPreviewTemplate>
     )
   } else {
     return <div>Loading...</div>

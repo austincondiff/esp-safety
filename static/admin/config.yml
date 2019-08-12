@@ -75,7 +75,8 @@ collections:
                 { label: "Label", name: "label", widget: string, default: '', required: false },
                 { label: "Path", name: "path", widget: string, default: '', required: false },
                 { label: "Open In New Window", name: "newWindow", widget: "boolean", required: false }
-              ] }
+              ] },
+              { label: "Image", name: "image", widget: "image" }
             ] }
           - { label: Certifications, name: certifications, widget: object, fields: [
               { label: Supertitle, name: supertitle, widget: string },
@@ -90,7 +91,8 @@ collections:
                 { label: "Label", name: "label", widget: string, default: '', required: false },
                 { label: "Path", name: "path", widget: string, default: '', required: false },
                 { label: "Open In New Window", name: "newWindow", widget: "boolean", default: false, required: false }
-              ] }
+              ] },
+              { label: "Image", name: "image", widget: "image" }
             ] }
           - { label: Convenience, name: convenience, widget: object, fields: [
               { label: Supertitle, name: supertitle, widget: string },
@@ -100,7 +102,8 @@ collections:
                 { label: "Label", name: "label", widget: string, default: '', required: false },
                 { label: "Path", name: "path", widget: string, default: '', required: false },
                 { label: "Open In New Window", name: "newWindow", widget: "boolean", default: false, required: false }
-              ] }
+              ] },
+              { label: "Image", name: "image", widget: "image" }
             ] }
           - { label: Customer Service, name: customerService, widget: object, fields: [
               { label: Supertitle, name: supertitle, widget: string },
@@ -110,7 +113,8 @@ collections:
                 { label: "Label", name: "label", widget: string, default: '', required: false },
                 { label: "Path", name: "path", widget: string, default: '', required: false },
                 { label: "Open In New Window", name: "newWindow", default: false, widget: "boolean", required: false }
-              ] }
+              ] },
+              { label: "Image", name: "image", widget: "image" }
             ] }
           - { label: Statistics, name: statustics, widget: list, fields: [
               { label: Number, name: number, widget: string, required: true },

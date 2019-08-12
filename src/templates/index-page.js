@@ -121,6 +121,7 @@ const CertificationBadge = styled(animated.img).attrs({
 `
 
 const getMediaPath = img => {
+  if (!img) return null
   if (typeof img === 'string') {
     return `/media/${img.replace('/media/', '')}`
   } else {
