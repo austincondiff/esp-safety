@@ -4,7 +4,7 @@
 
 **Note:** This project uses [Gatsby v2](https://www.gatsbyjs.org/blog/2018-09-17-gatsby-v2/).
 
-This repo contains the front-facing website for ESP Safety that is built with [React](https://reactjs.org/), [Gatsby](https://www.gatsbyjs.org/), and [Netlify CMS](https://www.netlifycms.org): **[Website Link](https://esp-safety.netlify.com/)**.
+This repo contains the front-facing website for ESP Safety that is built with [React](https://reactjs.org/), [Gatsby](https://www.gatsbyjs.org/), and [Netlify CMS](https://www.netlifycms.org): **[Website Link](https://espsafety.netlify.com/)**.
 
 It follows the [JAMstack architecture](https://jamstack.org) by using Git as a single source of truth, and [Netlify](https://www.netlify.com) for continuous deployment, and CDN distribution.
 

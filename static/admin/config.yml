@@ -2,9 +2,9 @@ backend:
   name: git-gateway
   branch: master
 
-site_url: https://esp-safety.netlify.com
-public_url: https://esp-safety.netlify.com
-logo_url: https://esp-safety.netlify.com/media/logo.svg
+site_url: https://espsafety.netlify.com
+public_url: https://espsafety.netlify.com
+logo_url: https://espsafety.netlify.com/media/logo.svg
 media_folder: static/media
 public_folder: media
 
